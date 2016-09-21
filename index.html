@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=11' />
+    <title>Cadasta API Documentation</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link href='css/base.css' rel='stylesheet' />
+    <link href='css/style.css' rel='stylesheet' />
+    <link href='css/railscasts.css' rel='stylesheet' />
+  </head>
+  <body>
+    <!--START--><div id='app'><div class="container unlimiter" data-reactroot="" data-reactid="1" data-react-checksum="1628008481"><div class="fixed-top fixed-right space-left16" data-reactid="2"><div class="fill-light col6 pin-right" data-reactid="3"></div></div><div class="space-top5 scroll-styled overflow-auto pad1 width16 sidebar fixed-left fill-dark dark" data-reactid="4"><div class="pad0x small" data-reactid="5"><div class="small pad0x quiet space-top1" data-reactid="6">Introduction</div><a href="#cadasta-api-documentation" class="line-height15 pad0x pad00y quiet block " data-reactid="7">Cadasta API documentation</a><div class="small pad0x quiet space-top1" data-reactid="8">Users</div><a href="#managing-a-user-account" class="line-height15 pad0x pad00y quiet block " data-reactid="9">Managing a user account</a><a href="#platform-users" class="line-height15 pad0x pad00y quiet block " data-reactid="10">Platform Users</a><div class="small pad0x quiet space-top1" data-reactid="11">Organization</div><a href="#organization-1" class="line-height15 pad0x pad00y quiet block " data-reactid="12">Organization</a><a href="#members" class="line-height15 pad0x pad00y quiet block " data-reactid="13">Members</a><div class="small pad0x quiet space-top1" data-reactid="14">Project</div><a href="#project-1" class="line-height15 pad0x pad00y quiet block " data-reactid="15">Project</a><a href="#members-1" class="line-height15 pad0x pad00y quiet block " data-reactid="16">Members</a><div class="small pad0x quiet space-top1" data-reactid="17">Records</div><a href="#spatial-units" class="line-height15 pad0x pad00y quiet block " data-reactid="18">Spatial Units</a><a href="#parties" class="line-height15 pad0x pad00y quiet block " data-reactid="19">Parties</a><a href="#relationships" class="line-height15 pad0x pad00y quiet block " data-reactid="20">Relationships</a><div class="small pad0x quiet space-top1" data-reactid="21">Resources</div><a href="#project-resources" class="line-height15 pad0x pad00y quiet block " data-reactid="22">Project resources</a><a href="#spatial-resources" class="line-height15 pad0x pad00y quiet block " data-reactid="23">Spatial resources</a></div></div><div class="space-left16" data-reactid="24"><div class="" data-reactid="25"><div class="clearfix" data-reactid="26"><div data-title="Cadasta API documentation" class="keyline-top section contain clearfix " data-reactid="27"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="28"><h2 id="cadasta-api-documentation">Cadasta API documentation</h2>
+<p>Welcome to the Cadasta API documentation.</p>
+</div></div><div data-title="Managing a user account" class="keyline-top section contain clearfix " data-reactid="29"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="30"><h2 id="managing-a-user-account">Managing a user account</h2>
+</div></div><div data-title="Login" class="keyline-top section contain clearfix " data-reactid="31"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="32"><h3 id="login">Login</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="33"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/account/login/</div>
+    </div>
+</div></div><div data-title="Logout" class="keyline-top section contain clearfix " data-reactid="34"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="35"><h3 id="logout">Logout</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="36"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/account/logout/</div>
+    </div>
+</div></div><div data-title="Register a new user" class="keyline-top section contain clearfix " data-reactid="37"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="38"><h3 id="register-a-new-user">Register a new user</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="39"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/account/register/</div>
+    </div>
+</div></div><div data-title="Get the user account" class="keyline-top section contain clearfix " data-reactid="40"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="41"><h3 id="get-the-user-account">Get the user account</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="42"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/account/</div>
+    </div>
+</div></div><div data-title="Update the user account" class="keyline-top section contain clearfix " data-reactid="43"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="44"><h3 id="update-the-user-account">Update the user account</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="45"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>PATCH</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/account/</div>
+    </div>
+</div></div><div data-title="Activate a user account" class="keyline-top section contain clearfix " data-reactid="46"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="47"><h3 id="activate-a-user-account">Activate a user account</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="48"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/account/activate/</div>
+    </div>
+</div></div><div data-title="Change the password" class="keyline-top section contain clearfix " data-reactid="49"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="50"><h3 id="change-the-password">Change the password</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="51"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/account/password/</div>
+    </div>
+</div></div><div data-title="Reset the password" class="keyline-top section contain clearfix " data-reactid="52"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="53"><h3 id="reset-the-password">Reset the password</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="54"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/account/password/reset/</div>
+    </div>
+</div></div><div data-title="Confirm the password reset" class="keyline-top section contain clearfix " data-reactid="55"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="56"><h3 id="confirm-the-password-reset">Confirm the password reset</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="57"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/account/password/reset/confirm/</div>
+    </div>
+</div></div><div data-title="Platform Users" class="keyline-top section contain clearfix " data-reactid="58"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="59"><h2 id="platform-users">Platform Users</h2>
+</div></div><div data-title="List platform users" class="keyline-top section contain clearfix " data-reactid="60"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="61"><h3 id="list-platform-users">List platform users</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="62"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/users/</div>
+    </div>
+</div></div><div data-title="Get a platform user" class="keyline-top section contain clearfix " data-reactid="63"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="64"><h3 id="get-a-platform-user">Get a platform user</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="65"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/users/<span class="strong">{username}</span>/</div>
+    </div>
+</div></div><div data-title="Update a platform user" class="keyline-top section contain clearfix " data-reactid="66"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="67"><h3 id="update-a-platform-user">Update a platform user</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="68"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>PATCH</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/users/<span class="strong">{username}</span>/</div>
+    </div>
+</div></div><div data-title="Organization" class="keyline-top section contain clearfix " data-reactid="69"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="70"><h2 id="organization-1">Organization</h2>
+<p>An organization JSON object contains the following properties.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>The ID of the organization</td>
+</tr>
+<tr>
+<td><code>slug</code></td>
+<td>The short label of the organization; usually used in URLs.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>The name of the organization.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>(optional) A long-form description of the organization.</td>
+</tr>
+<tr>
+<td><code>archived</code></td>
+<td><code>Boolean</code>
+ indicating whether the organization has be archived.</td>
+</tr>
+<tr>
+<td><code>urls</code></td>
+<td>A list of URLs to websites of this organization.</td>
+</tr>
+<tr>
+<td><code>contacts</code></td>
+<td>A list of contacts for this organization. A contact is a JSON object containing 
+<code>name</code>
+, 
+<code>email</code>
+ (optional) and 
+<code>tel</code>
+ (optional).</td>
+</tr>
+</tbody>
+</table>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="71"><h4 id="example-organization-json-object">Example organization JSON object</h4>
+<pre class='hljs'>{
+  <span class="hljs-attr">"id"</span>: <span class="hljs-string">"wS3Mp76Spqu9A0Crg9bMxB2o"</span>,
+  <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"david-org"</span>,
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"David Org"</span>,
+  <span class="hljs-attr">"description"</span>: <span class="hljs-string">"David Org (testing)"</span>,
+  <span class="hljs-attr">"archived"</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">"urls"</span>: [],
+  <span class="hljs-attr">"contacts"</span>: [
+    {
+      <span class="hljs-attr">"tel"</span>: <span class="hljs-literal">null</span>,
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"David"</span>,
+      <span class="hljs-attr">"email"</span>: <span class="hljs-string">"david@example.com"</span>
+    },
+    {
+      <span class="hljs-attr">"tel"</span>: <span class="hljs-literal">null</span>,
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Frank"</span>,
+      <span class="hljs-attr">"email"</span>: <span class="hljs-string">"frank@example.com"</span>
+    }
+  ]
+}</pre>
+</div></div><div data-title="List organizations" class="keyline-top section contain clearfix " data-reactid="72"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="73"><h3 id="list-organizations">List organizations</h3>
+<p><strong>Response</strong></p>
+<p>The response body is an array containing <a href="#organization-1">organization JSON objects</a>.</p>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="74"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/</div>
+    </div>
+<h4 id="example-response">Example response</h4>
+<pre class='hljs'>[
+  {
+    <span class="hljs-attr">"id"</span>: <span class="hljs-string">"C9nWLc9znHQ5V0aaX1tmZQoN"</span>,
+    <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"cadasta"</span>,
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Cadasta"</span>,
+    <span class="hljs-attr">"description"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">"archived"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"urls"</span>: [],
+    <span class="hljs-attr">"contacts"</span>: []
+  },
+  {
+    <span class="hljs-attr">"id"</span>: <span class="hljs-string">"wS3Mp76Spqu9A0Crg9bMxB2o"</span>,
+    <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"david-org"</span>,
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"David Org"</span>,
+    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"David Org (testing)"</span>,
+    <span class="hljs-attr">"archived"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">"urls"</span>: [],
+    <span class="hljs-attr">"contacts"</span>: [
+      {
+        <span class="hljs-attr">"tel"</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"David"</span>,
+        <span class="hljs-attr">"email"</span>: <span class="hljs-string">"david@example.com"</span>
+      },
+      {
+        <span class="hljs-attr">"tel"</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Frank"</span>,
+        <span class="hljs-attr">"email"</span>: <span class="hljs-string">"frank@example.com"</span>
+      }
+    ]
+  }
+]</pre>
+</div></div><div data-title="Create an organization" class="keyline-top section contain clearfix " data-reactid="75"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="76"><h3 id="create-an-organization">Create an organization</h3>
+<p><strong>Request payload</strong></p>
+<p>The request payload is a JSON object containing the following properties.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>The name of the organization.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>(optional) A long-form description of the organization.</td>
+</tr>
+<tr>
+<td><code>archived</code></td>
+<td><code>Boolean</code>
+ indicating whether the organization has be archived.</td>
+</tr>
+<tr>
+<td><code>urls</code></td>
+<td>A list of URLs to websites of this organization.</td>
+</tr>
+<tr>
+<td><code>contacts</code></td>
+<td>A list of contacts for this organization. A contact is a JSON object containing 
+<code>name</code>
+, 
+<code>email</code>
+ (optional) and 
+<code>tel</code>
+ (optional); either 
+<code>email</code>
+ or 
+<code>tel</code>
+ must be provided.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response</strong></p>
+<p>The response body contains an <a href="#organization-1">organization JSON object</a>.</p>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="77"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/</div>
+    </div>
+<h4 id="example-response-1">Example response</h4>
+<pre class='hljs'>{
+  <span class="hljs-attr">"id"</span>: <span class="hljs-string">"wS3Mp76Spqu9A0Crg9bMxB2o"</span>,
+  <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"david-org"</span>,
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"David Org"</span>,
+  <span class="hljs-attr">"description"</span>: <span class="hljs-string">"David Org (testing)"</span>,
+  <span class="hljs-attr">"archived"</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">"urls"</span>: [],
+  <span class="hljs-attr">"contacts"</span>: [
+    {
+      <span class="hljs-attr">"tel"</span>: <span class="hljs-literal">null</span>,
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"David"</span>,
+      <span class="hljs-attr">"email"</span>: <span class="hljs-string">"dpalomino@cadasta.org"</span>
+    },
+    {
+      <span class="hljs-attr">"tel"</span>: <span class="hljs-literal">null</span>,
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Frank"</span>,
+      <span class="hljs-attr">"email"</span>: <span class="hljs-string">"fpichel@cadasta.org"</span>
+    }
+  ],
+  <span class="hljs-attr">"users"</span>: []
+}</pre>
+</div></div><div data-title="Get an organization" class="keyline-top section contain clearfix " data-reactid="78"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="79"><h3 id="get-an-organization">Get an organization</h3>
+<p><strong>URL parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>organization_slug</code></td>
+<td>The short label of the organization.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response</strong></p>
+<p>The response body contains an <a href="#organization-1">organization JSON object</a>.</p>
+<p>The response also contains the field <code>users</code>, which provides a list of members of this organization.</p>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="80"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/</div>
+    </div>
+<h4 id="example-response-2">Example response</h4>
+<pre class='hljs'>{
+  <span class="hljs-attr">"id"</span>: <span class="hljs-string">"wS3Mp76Spqu9A0Crg9bMxB2o"</span>,
+  <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"david-org"</span>,
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"David Org"</span>,
+  <span class="hljs-attr">"description"</span>: <span class="hljs-string">"David Org (testing)"</span>,
+  <span class="hljs-attr">"archived"</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">"urls"</span>: [],
+  <span class="hljs-attr">"contacts"</span>: [
+    {
+      <span class="hljs-attr">"tel"</span>: <span class="hljs-literal">null</span>,
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"David"</span>,
+      <span class="hljs-attr">"email"</span>: <span class="hljs-string">"dpalomino@cadasta.org"</span>
+    },
+    {
+      <span class="hljs-attr">"tel"</span>: <span class="hljs-literal">null</span>,
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Frank"</span>,
+      <span class="hljs-attr">"email"</span>: <span class="hljs-string">"fpichel@cadasta.org"</span>
+    }
+  ],
+  <span class="hljs-attr">"users"</span>: [
+    {
+      <span class="hljs-attr">"username"</span>: <span class="hljs-string">"Kate"</span>,
+      <span class="hljs-attr">"full_name"</span>: <span class="hljs-string">"Kate"</span>,
+      <span class="hljs-attr">"email"</span>: <span class="hljs-string">"Kate@example.com"</span>,
+      <span class="hljs-attr">"email_verified"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"last_login"</span>: <span class="hljs-string">"2016-07-15T00:01:29.446812Z"</span>
+    }
+  ]
+}</pre>
+</div></div><div data-title="Update an organization" class="keyline-top section contain clearfix " data-reactid="81"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="82"><h3 id="update-an-organization">Update an organization</h3>
+<p><strong>URL parameters</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>organization_slug</code></td>
+<td>The short label of the organization.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Request payload</strong></p>
+<p>The request payload is a JSON object containing the following properties. All properties are optional, if a property is not present it the request payload, the property will not be updated.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>The name of the organization.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>(optional) A long-form description of the organization.</td>
+</tr>
+<tr>
+<td><code>archived</code></td>
+<td><code>Boolean</code>
+ indicating whether the organization has be archived.</td>
+</tr>
+<tr>
+<td><code>urls</code></td>
+<td>A list of URLs to websites of this organization.</td>
+</tr>
+<tr>
+<td><code>contacts</code></td>
+<td>A list of contacts for this organization. A contact is a JSON object containing 
+<code>name</code>
+, 
+<code>email</code>
+ (optional) and 
+<code>tel</code>
+ (optional); either 
+<code>email</code>
+ or 
+<code>tel</code>
+ must be provided.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response</strong></p>
+<p>The response body contains an <a href="#organization-1">organization JSON object</a>.</p>
+<p>The response also contains the field <code>users</code>, which provides a list of members of this organization.</p>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="83"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>PATCH</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/</div>
+    </div>
+<h4 id="example-response-3">Example response</h4>
+<pre class='hljs'>{
+  <span class="hljs-attr">"id"</span>: <span class="hljs-string">"wS3Mp76Spqu9A0Crg9bMxB2o"</span>,
+  <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"david-org"</span>,
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"David Org"</span>,
+  <span class="hljs-attr">"description"</span>: <span class="hljs-string">"David Org (testing)"</span>,
+  <span class="hljs-attr">"archived"</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">"urls"</span>: [],
+  <span class="hljs-attr">"contacts"</span>: [
+    {
+      <span class="hljs-attr">"tel"</span>: <span class="hljs-literal">null</span>,
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"David"</span>,
+      <span class="hljs-attr">"email"</span>: <span class="hljs-string">"dpalomino@cadasta.org"</span>
+    },
+    {
+      <span class="hljs-attr">"tel"</span>: <span class="hljs-literal">null</span>,
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Frank"</span>,
+      <span class="hljs-attr">"email"</span>: <span class="hljs-string">"fpichel@cadasta.org"</span>
+    }
+  ],
+  <span class="hljs-attr">"users"</span>: [
+    {
+      <span class="hljs-attr">"username"</span>: <span class="hljs-string">"Kate"</span>,
+      <span class="hljs-attr">"full_name"</span>: <span class="hljs-string">"Kate"</span>,
+      <span class="hljs-attr">"email"</span>: <span class="hljs-string">"Kate@example.com"</span>,
+      <span class="hljs-attr">"email_verified"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"last_login"</span>: <span class="hljs-string">"2016-07-15T00:01:29.446812Z"</span>
+    }
+  ]
+}</pre>
+</div></div><div data-title="Members" class="keyline-top section contain clearfix " data-reactid="84"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="85"><h2 id="members">Members</h2>
+</div></div><div data-title="List organization members" class="keyline-top section contain clearfix " data-reactid="86"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="87"><h3 id="list-organization-members">List organization members</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="88"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/users/</div>
+    </div>
+</div></div><div data-title="Add an organization member" class="keyline-top section contain clearfix " data-reactid="89"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="90"><h3 id="add-an-organization-member">Add an organization member</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="91"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/users/</div>
+    </div>
+</div></div><div data-title="Get an organization member" class="keyline-top section contain clearfix " data-reactid="92"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="93"><h3 id="get-an-organization-member">Get an organization member</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="94"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/users/<span class="strong">{username}</span>/</div>
+    </div>
+</div></div><div data-title="Update an organization member" class="keyline-top section contain clearfix " data-reactid="95"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="96"><h3 id="update-an-organization-member">Update an organization member</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="97"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>PATCH</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/users/<span class="strong">{username}</span>/</div>
+    </div>
+</div></div><div data-title="Remove an organization member" class="keyline-top section contain clearfix " data-reactid="98"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="99"><h3 id="remove-an-organization-member">Remove an organization member</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="100"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>DELETE</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/users/<span class="strong">{username}</span>/</div>
+    </div>
+</div></div><div data-title="Project" class="keyline-top section contain clearfix " data-reactid="101"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="102"><h2 id="project-1">Project</h2>
+<p>An project JSON object contains the following properties.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>The ID of the project</td>
+</tr>
+<tr>
+<td><code>slug</code></td>
+<td>The short label of the project; usually used in URLs.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>The name of the project.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>(optional) A long-form description of the project.</td>
+</tr>
+<tr>
+<td><code>archived</code></td>
+<td><code>Boolean</code>
+ indicating whether the project has be archived.</td>
+</tr>
+<tr>
+<td><code>urls</code></td>
+<td>A list of URLs to websites of this project.</td>
+</tr>
+<tr>
+<td><code>contacts</code></td>
+<td>A list of contacts for this project. A contact is a JSON object containing 
+<code>name</code>
+, 
+<code>email</code>
+ (optional) and 
+<code>tel</code>
+ (optional).</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td>The country where the project is located; represented as a two-letter 
+<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>
+ code.</td>
+</tr>
+<tr>
+<td><code>access</code></td>
+<td>Indicates whether access to the project is restricted; is either 
+<code>"public"</code>
+ or 
+<code>"private"</code>
+.</td>
+</tr>
+<tr>
+<td><code>organization</code></td>
+<td><a href="#organization-1">JSON object of the project's organization</a>
+.</td>
+</tr>
+</tbody>
+</table>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="103"><h5 id="example-project-json-object">Example project JSON object</h5>
+<pre class='hljs'>{
+  <span class="hljs-attr">"id"</span>: <span class="hljs-string">"z82wdtrf8m9sh56bdph6qeig"</span>,
+  <span class="hljs-attr">"organization"</span>: {
+    <span class="hljs-attr">"id"</span>: <span class="hljs-string">"3r48bi5xy8xzfu5d94smpb7a"</span>,
+    <span class="hljs-attr">"slug"</span>: <span class="hljs-string">"jei"</span>,
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"JEI"</span>,
+    <span class="hljs-attr">"description"</span>: <span class="hljs-string">"JEI is a non-profit, non-governmental organization based in Lagos and Port Harcourt, Nigeria. We empower poor and marginalized individuals and communities to lead the changes that they would like to see in their own communities -- whether greater access to justice for the poor, pro-poor urban governance and policy, or community-led in-situ upgrading and development."</span>,
+    <span class="hljs-attr">"archived"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">"urls"</span>: [
+      <span class="hljs-string">"http://www.justempower.org/"</span>
+    ],
+    <span class="hljs-attr">"contacts"</span>: [
+      {
+        <span class="hljs-attr">"tel"</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Andrew Maki"</span>,
+        <span class="hljs-attr">"email"</span>: <span class="hljs-string">"andrew@example.org"</span>
+      },
+      {
+        <span class="hljs-attr">"tel"</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Megan Chapman"</span>,
+        <span class="hljs-attr">"email"</span>: <span class="hljs-string">"megan@example.org"</span>
+      }
+  },
+  <span class="hljs-string">"country"</span>: <span class="hljs-string">"NG"</span>,
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"Lagos Tenure Assessment (old)"</span>,
+  <span class="hljs-string">"description"</span>: <span class="hljs-string">"Security of Tenure Profiling in Lagos"</span>,
+  <span class="hljs-string">"archived"</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-string">"urls"</span>: [],
+  <span class="hljs-string">"contacts"</span>: [],
+  <span class="hljs-string">"access"</span>: <span class="hljs-string">"public"</span>,
+  <span class="hljs-string">"slug"</span>: <span class="hljs-string">"lagos-tenure-assessment"</span>
+}</pre>
+</div></div><div data-title="List all projects" class="keyline-top section contain clearfix " data-reactid="104"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="105"><h3 id="list-all-projects">List all projects</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="106"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/projects/</div>
+    </div>
+</div></div><div data-title="List organization projects" class="keyline-top section contain clearfix " data-reactid="107"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="108"><h3 id="list-organization-projects">List organization projects</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="109"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/</div>
+    </div>
+</div></div><div data-title="Create a project" class="keyline-top section contain clearfix " data-reactid="110"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="111"><h3 id="create-a-project">Create a project</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="112"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/</div>
+    </div>
+</div></div><div data-title="Get a project" class="keyline-top section contain clearfix " data-reactid="113"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="114"><h3 id="get-a-project">Get a project</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="115"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/</div>
+    </div>
+</div></div><div data-title="Update a project" class="keyline-top section contain clearfix " data-reactid="116"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="117"><h3 id="update-a-project">Update a project</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="118"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>PATCH</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/</div>
+    </div>
+</div></div><div data-title="Members" class="keyline-top section contain clearfix " data-reactid="119"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="120"><h2 id="members-1">Members</h2>
+</div></div><div data-title="List project members" class="keyline-top section contain clearfix " data-reactid="121"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="122"><h3 id="list-project-members">List project members</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="123"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/users/</div>
+    </div>
+</div></div><div data-title="Add a project member" class="keyline-top section contain clearfix " data-reactid="124"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="125"><h3 id="add-a-project-member">Add a project member</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="126"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/users/</div>
+    </div>
+</div></div><div data-title="Get a project member" class="keyline-top section contain clearfix " data-reactid="127"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="128"><h3 id="get-a-project-member">Get a project member</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="129"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/users/<span class="strong">{username}</span>/</div>
+    </div>
+</div></div><div data-title="Update a project member" class="keyline-top section contain clearfix " data-reactid="130"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="131"><h3 id="update-a-project-member">Update a project member</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="132"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>PATCH</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/users/<span class="strong">{username}</span>/</div>
+    </div>
+</div></div><div data-title="Remove a project member" class="keyline-top section contain clearfix " data-reactid="133"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="134"><h3 id="remove-a-project-member">Remove a project member</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="135"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>DELETE</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/users/<span class="strong">{username}</span>/</div>
+    </div>
+</div></div><div data-title="Spatial Units" class="keyline-top section contain clearfix " data-reactid="136"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="137"><h2 id="spatial-units">Spatial Units</h2>
+</div></div><div data-title="List spatial units" class="keyline-top section contain clearfix " data-reactid="138"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="139"><h3 id="list-spatial-units">List spatial units</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="140"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/spatial/</div>
+    </div>
+</div></div><div data-title="Create a new spatial unit" class="keyline-top section contain clearfix " data-reactid="141"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="142"><h3 id="create-a-new-spatial-unit">Create a new spatial unit</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="143"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/spatial/</div>
+    </div>
+</div></div><div data-title="Get a spatial unit" class="keyline-top section contain clearfix " data-reactid="144"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="145"><h3 id="get-a-spatial-unit">Get a spatial unit</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="146"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/spatial/<span class="strong">{spatial_unit_id}</span>/</div>
+    </div>
+</div></div><div data-title="Update a spatial unit" class="keyline-top section contain clearfix " data-reactid="147"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="148"><h3 id="update-a-spatial-unit">Update a spatial unit</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="149"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>PATCH</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/spatial/<span class="strong">{spatial_unit_id}</span>/</div>
+    </div>
+</div></div><div data-title="Delete a spatial unit" class="keyline-top section contain clearfix " data-reactid="150"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="151"><h3 id="delete-a-spatial-unit">Delete a spatial unit</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="152"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>DELETE</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/spatial/<span class="strong">{spatial_unit_id}</span>/</div>
+    </div>
+</div></div><div data-title="Parties" class="keyline-top section contain clearfix " data-reactid="153"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="154"><h2 id="parties">Parties</h2>
+</div></div><div data-title="List parties" class="keyline-top section contain clearfix " data-reactid="155"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="156"><h3 id="list-parties">List parties</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="157"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/parties/</div>
+    </div>
+</div></div><div data-title="Create a new party" class="keyline-top section contain clearfix " data-reactid="158"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="159"><h3 id="create-a-new-party">Create a new party</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="160"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/parties/</div>
+    </div>
+</div></div><div data-title="Get a party" class="keyline-top section contain clearfix " data-reactid="161"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="162"><h3 id="get-a-party">Get a party</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="163"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/parties/<span class="strong">{party_id}</span>/</div>
+    </div>
+</div></div><div data-title="Update a party" class="keyline-top section contain clearfix " data-reactid="164"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="165"><h3 id="update-a-party">Update a party</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="166"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>PATCH</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/parties/<span class="strong">{party_id}</span>/</div>
+    </div>
+</div></div><div data-title="Delete a party" class="keyline-top section contain clearfix " data-reactid="167"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="168"><h3 id="delete-a-party">Delete a party</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="169"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>DELETE</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/parties/<span class="strong">{party_id}</span>/</div>
+    </div>
+</div></div><div data-title="Relationships" class="keyline-top section contain clearfix " data-reactid="170"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="171"><h2 id="relationships">Relationships</h2>
+</div></div><div data-title="List relationships of a party" class="keyline-top section contain clearfix " data-reactid="172"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="173"><h3 id="list-relationships-of-a-party">List relationships of a party</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="174"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/parties/<span class="strong">{party_id}</span>/relationships/</div>
+    </div>
+</div></div><div data-title="List relationships of a spatial unit" class="keyline-top section contain clearfix " data-reactid="175"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="176"><h3 id="list-relationships-of-a-spatial-unit">List relationships of a spatial unit</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="177"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/spatial/<span class="strong">{spatial_unit_id}</span>/relationships/</div>
+    </div>
+</div></div><div data-title="Create a new tenure relationship" class="keyline-top section contain clearfix " data-reactid="178"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="179"><h3 id="create-a-new-tenure-relationship">Create a new tenure relationship</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="180"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/relationships/tenure/</div>
+    </div>
+</div></div><div data-title="Get a tenure relationship" class="keyline-top section contain clearfix " data-reactid="181"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="182"><h3 id="get-a-tenure-relationship">Get a tenure relationship</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="183"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/relationships/tenure/<span class="strong">{relationship_id}</span>/</div>
+    </div>
+</div></div><div data-title="Update a tenure relationship" class="keyline-top section contain clearfix " data-reactid="184"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="185"><h3 id="update-a-tenure-relationship">Update a tenure relationship</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="186"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>PATCH</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/relationships/tenure/<span class="strong">{relationship_id}</span>/</div>
+    </div>
+</div></div><div data-title="Delete a tenure relationship" class="keyline-top section contain clearfix " data-reactid="187"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="188"><h3 id="delete-a-tenure-relationship">Delete a tenure relationship</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="189"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>DELETE</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/relationships/tenure/<span class="strong">{relationship_id}</span>/</div>
+    </div>
+</div></div><div data-title="Project resources" class="keyline-top section contain clearfix " data-reactid="190"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="191"><h2 id="project-resources">Project resources</h2>
+</div></div><div data-title="List project resources" class="keyline-top section contain clearfix " data-reactid="192"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="193"><h3 id="list-project-resources">List project resources</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="194"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/resources/</div>
+    </div>
+</div></div><div data-title="Create a new project resource" class="keyline-top section contain clearfix " data-reactid="195"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="196"><h3 id="create-a-new-project-resource">Create a new project resource</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="197"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>POST</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/resources/</div>
+    </div>
+</div></div><div data-title="Get a project resource" class="keyline-top section contain clearfix " data-reactid="198"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="199"><h3 id="get-a-project-resource">Get a project resource</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="200"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/resources/<span class="strong">{resource_id}</span>/</div>
+    </div>
+</div></div><div data-title="Update a project resource" class="keyline-top section contain clearfix " data-reactid="201"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="202"><h3 id="update-a-project-resource">Update a project resource</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="203"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>PATCH</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/resources/<span class="strong">{resource_id}</span>/</div>
+    </div>
+</div></div><div data-title="Spatial resources" class="keyline-top section contain clearfix " data-reactid="204"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="205"><h2 id="spatial-resources">Spatial resources</h2>
+</div></div><div data-title="List all spatial resources" class="keyline-top section contain clearfix " data-reactid="206"><div class="space-bottom8 col6 pad2x prose clip" data-reactid="207"><h3 id="list-all-spatial-resources">List all spatial resources</h3>
+</div><div class="space-bottom4 col6 pad2 prose clip fill-light space-top5" data-reactid="208"><div class='endpoint dark fill-dark round '>
+      <div class='round-left pad0y pad1x fill-lighten0 code small endpoint-method'>GET</div>
+      <div class='pad0 code small endpoint-url'>/api/v1/organizations/<span class="strong">{organization_slug}</span>/projects/<span class="strong">{project_slug}</span>/spatialresources/</div>
+    </div>
+</div></div></div></div></div><div class="fixed-top space-left16" data-reactid="209"><div class="events fill-light bottom-shadow pad1 col6 pin-topright  " data-reactid="210"><div class="space-right1 small quiet inline" data-reactid="211">Show examples in:</div><div class="rounded-toggle inline short" data-reactid="212"><a class="strong active" data-reactid="213">cURL</a><a class="strong " data-reactid="214">cli</a><a class="strong " data-reactid="215">Python</a><a class="strong " data-reactid="216">JS</a><a class="strong " data-reactid="217">Java</a><a class="strong " data-reactid="218">ObjC</a><a class="strong " data-reactid="219">Swift</a></div><div class="fr pad0" data-reactid="220"><a title="Display as 1 column" style="cursor:pointer;" class="icon quiet caret-left pad0 fill-darken0 round" data-reactid="221"></a></div></div></div><div class="fill-dark dark bottom-shadow fixed-top pad0 width16" data-reactid="222"><a href="/" class="active space-top1 space-left1 pin-topleft icon round dark pad0 fill-red" data-reactid="223"></a><div class="strong small pad0
+          
+          space-left4 line-height15" data-reactid="224">Cadasta API Documentation</div></div></div></div><!--STOP-->
+    <script src='bundle.js'></script>
+  </body>
+</html>
