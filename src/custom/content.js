@@ -18,6 +18,8 @@ module.exports =
   fs.readFileSync('./content/organization.md', 'utf8') + '\n' +
   '# Project\n' +
   fs.readFileSync('./content/project.md', 'utf8') + '\n' +
+  '# Questionnaires\n' +
+  fs.readFileSync('./content/questionnaires.md', 'utf8') + '\n' +
   '# Records\n' +
   fs.readFileSync('./content/records.md', 'utf8') + '\n' +
   '# Resources\n' +
