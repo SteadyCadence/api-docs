@@ -48,7 +48,7 @@ https://platform-staging-api.cadasta.org/api/v1/organizations/
 
 The page you'll see looks like this:
 
-![](_img/api-01.png)
+![](_img/api-01-ai.png)
 
 Here you're seeing the output from the GET method - all of the publicly viewable organizations in the system. 
 
