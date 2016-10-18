@@ -2,7 +2,7 @@
 
 This section outlines all endpoints that begin with `/api/vi/account/`.
 
-### Login {#login}
+### Login{#login}
 
 Many endpoints of Cadasta's API require an authenticated user. To authenticate a user you need to sign API requests with an authorization token, which you can obtain by login the user in.
 
