@@ -2,7 +2,7 @@
 
 Welcome to the Cadasta Platform API documentation! We're glad you found it. 
 
-This documentation is intended for use alongside the Cadasta Platform API, which is a RESTful API using common HTTP methods. To access the API, visit:
+This documentation is intended for use alongside the Cadasta Platform API, a RESTful API using common HTTP methods. To access the API, visit:
 
 https://platform-staging-api.cadasta.org/api/v1/docs/
 
@@ -65,3 +65,9 @@ If you'd like to post a new organization, you can scroll to the bottom of the pa
 ![](_img/api-04-ai.png)
 
 Both the DRF Docs and Platform API offer the same methods and options; the view that you use is up to you.
+
+### Authentification 
+
+Many endpoints in the Cadasta API require an authenticated user. To authenticate a user, sign API requests with an authorization token, which you can obtain by loging the user in.
+
+See documentation for [/api/v1/account/login/](02-users.md#login) to see how to get an authentication token. 
