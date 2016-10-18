@@ -6,7 +6,7 @@ This documentation is intended for use alongside the Cadasta Platform API, which
 
 https://platform-staging-api.cadasta.org/api/v1/docs/
 
-![](_img/drf-01.png)
+![](_img/drf-01-ai.png)
 
 This page uses Django REST Framework (a.k.a. DRF Docs) to show each API endpoint available, along with what kind of methods work with each one. For example, `/api/v1/account/register` can use the POST method. 
 
@@ -48,7 +48,7 @@ https://platform-staging-api.cadasta.org/api/v1/organizations/
 
 The page you'll see looks like this:
 
-![](_img/api-01-ai.png)
+![](_img/api-01.png)
 
 Here you're seeing the output from the GET method - all of the publicly viewable organizations in the system. 
 
