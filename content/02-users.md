@@ -2,11 +2,11 @@
 
 ### Login
 
-Many endpoints of Cadasta's API require an authenticated user. To authenticate
-a user you need to sign API requests with an authorization token, which you
-can obtain by login the user in.
+Many endpoints of Cadasta's API require an authenticated user. To authenticate a user you need to sign API requests with an authorization token, which you can obtain by login the user in.
 
-```endpoint
+
+```
+endpoint
 POST /api/v1/account/login/
 ```
 
