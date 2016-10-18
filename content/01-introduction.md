@@ -14,7 +14,7 @@ This page uses Django REST Framework (a.k.a. DRF Docs) to show each API endpoint
 
 To view the fields available for each node, click either "Options" or the node itself.
 
-![](_img/drf-02.png)
+![](_img/drf-02-ai.png)
 
 Now you can see that the following fields are available:
 
@@ -28,11 +28,11 @@ Fields with the square `R` next to them are required.
 
 To register a new user here using the POST method, click the plugin symbol on the right. From there, you'll be taken to a pop-up window where you can register a new user. 
 
-![](_img/drf-03.png)
+![](_img/drf-03-ai.png)
 
 You can also select OPTIONS to add any needed additional fields.
 
-![](_img/drf-04.png)
+![](_img/drf-04-ai.png)
 
 When you're done, press Send. An `HTTP 200` message indicates that your data has been posted successfully. 
 
@@ -48,20 +48,20 @@ https://platform-staging-api.cadasta.org/api/v1/organizations/
 
 The page you'll see looks like this:
 
-![](_img/api-01.png)
+![](_img/api-01-ai.png)
 
 Here you're seeing the output from the GET method - all of the publicly viewable organizations in the system. 
 
 On the right, you can use the dropdown next to the GET button to select whether you'd like the API view or JSON. 
 
-![](_img/api-02.png)
+![](_img/api-02-ai.png)
 
 You can also select Filters, which will take you to a pop-up window where you can filter though results. 
 
-![](_img/api-03.png)
+![](_img/api-03-ai.png)
 
 If you'd like to post a new organization, you can scroll to the bottom of the page. Here, you can add all the fields necessary to create a new organization. Submit the information by selecting POST. 
 
-![](_img/api-04.png)
+![](_img/api-04-ai.png)
 
 Both the DRF Docs and Platform API offer the same methods and options; the view that you use is up to you.
