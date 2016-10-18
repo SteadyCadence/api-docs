@@ -11,16 +11,16 @@ var fs = require('fs');
  */
 module.exports =
   '# Introduction\n' +
-  fs.readFileSync('./content/introduction.md', 'utf8') + '\n' +
+  fs.readFileSync('./content/01-introduction.md', 'utf8') + '\n' +
   '# Users\n' +
-  fs.readFileSync('./content/users.md', 'utf8') + '\n' +
+  fs.readFileSync('./content/02-users.md', 'utf8') + '\n' +
   '# Organization\n' +
-  fs.readFileSync('./content/organization.md', 'utf8') + '\n' +
+  fs.readFileSync('./content/03-organization.md', 'utf8') + '\n' +
   '# Project\n' +
-  fs.readFileSync('./content/project.md', 'utf8') + '\n' +
+  fs.readFileSync('./content/04-project.md', 'utf8') + '\n' +
   '# Questionnaires\n' +
-  fs.readFileSync('./content/questionnaires.md', 'utf8') + '\n' +
+  fs.readFileSync('./content/05-questionnaires.md', 'utf8') + '\n' +
   '# Records\n' +
-  fs.readFileSync('./content/records.md', 'utf8') + '\n' +
+  fs.readFileSync('./content/06-records.md', 'utf8') + '\n' +
   '# Resources\n' +
-  fs.readFileSync('./content/resources.md', 'utf8') + '\n';
+  fs.readFileSync('./content/07-resources.md', 'utf8') + '\n';
