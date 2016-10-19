@@ -4,15 +4,13 @@ Welcome to the Cadasta Platform API documentation.
 
 Using this platform API, you can: 
 
-* Manage user accounts - creating them, deleting them, and amending them as needed, 
-* Create and edit organizations, 
-* Access JSON for all of the publicly viewable projects in the system, 
-* Create and modify
+* Manage user [accounts](02-users.md) - creating them, deleting them, and amending them as needed, 
+* Create and edit [organizations](03-organization.md), 
+* View, create, and modify [projects](04-project.md) in the system, 
+* Upload new [questionnaires](05-questionnaires.md), and
+* Add, modify, and delete [project resources](07-resources.md) (including [spatial data](06-records.md)). 
 
-
-- How do I list, get, create, update and delete resources via the API?
-- How are responses structured; i.e. what fields are present, what data types do they have?
-- What do I need to send to the server to create or update a resource?
+Each of the sections listed above will outline how to use API endpoints to make these things happen.
 
 ### Using the Platform API
 
@@ -46,11 +44,11 @@ https://platform-staging-api.cadasta.org/api/v1/organizations/
 
 ### Using DRF Docs
 
-If you'd like an alternative view into the API, you can visit the documentation created using Django REST Framework, or DRF Docs. You can visit that by going here:
+If you'd like an alternative view into the API, you can visit the documentation automatically created using Django REST Framework, or DRF Docs. You can visit that by going here:
 
 https://platform-staging-api.cadasta.org/api/v1/docs/
 
-To view the fields available for each endpoint, click either "Options" or the enpoint itself.
+To view the fields available for each endpoint, click either "Options" or the endpoint itself.
 
 ![](_img/drf-02-ai.png)
 
