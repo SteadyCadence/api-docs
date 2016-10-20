@@ -1,5 +1,6 @@
 ## Managing a user account
 
+You can use the Cadasta API to manage user accounts, provided that you have their login and password. This section outlines how to do that. 
 
 ### Log a User In 
 
@@ -9,25 +10,14 @@ POST /api/v1/account/login/
 
 Many endpoints of Cadasta's API require an authenticated user. To authenticate a user, you need to sign API requests with an authorization token, which you can obtain by logging the user in.
 
+Getting your authorization token is one of the first things you need to do before using the Cadasta Platform API.
+
 **Request payload**
 
-Property | Description
----|---
-`username` | The user's username.
-`password` | The user's password.
-
-**Response properties**
-
-Property | Description
----|---
-`auth_token` | The authorization token, use it to sign requests to the API.
-
-**Response codes**
-
-Property | Description
----|---
-`200` | The user was logged in successfully.
-`400` | Username or password were incorrect or the user has not verified their email address.
+Property | Type | Required? | Description
+---|---|:---:|---
+`username` | CharField | x | The user's username.
+`password` | CharField | x | The user's password.
 
 #### Example response
 
@@ -37,25 +27,49 @@ Property | Description
 }
 ```
 
+**Response**
+
+The response contains a JSON object with the following properties:
+
+Property | Description
+---|---
+`auth_token` | The authorization token, use it to sign requests to the API.
 
 
+**Response codes**
 
+Property | Description
+---|---
+`200` | The user was logged in successfully.
+`400` | Username or password were incorrect or the user has not verified their email address.
 
-
+***
 
 ### Log a User Out
 
-> Oliver, I'm not really clear on how this works. How does it log someone out if you don't provide any information? 
+> Oliver, not sure how this one actually works. 
 
 ```endpoint
 POST /api/v1/account/logout/
 ```
-
 Logging a user out removes the authorization token. Requests cannot be signed with any token obtained previously.
 
 **Request payload**
 
 No payload required.
+
+#### Example response
+
+> example response here, if any
+
+**Response**
+
+The response contains a JSON object with the following properties:
+
+> fill out below as needed
+
+Property | Description
+---|---
 
 **Response codes**
 
@@ -63,8 +77,7 @@ Property | Description
 ---|---
 `200` | The user was logged out successfully.
 
-> Add: example response
-
+***
 
 
 
@@ -85,15 +98,13 @@ POST /api/v1/account/register/
 
 **Request payload**
 
-> Oliver, this is the chart with extra fields. What do you think? And also what if I call these "attributes" vs. "request payload"?
-
 Property | Type | Required? | Description
 ---|---|:---:|---
 `username` | CharField | x |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | CharField | | The user's full name 
+`full_name` | CharField |  | The user's full name.
 `email` | EmailField| x |The user's email address.
 `password` | CharField | x |The user's password.
-`email_verified` | BooleanField|  |Whether or not the email has been verified
+`email_verified` | BooleanField|  |Whether or not the email has been verified.
 
 #### Example response
 
@@ -124,20 +135,18 @@ Property | Description
 `201` | The user was registered successfully.
 `400` | The is problem with the user data provided.
 
+***
 
 
 
 
 
-
-
-
-### Get the user account
+### Get the User Account
 
 ```endpoint
 GET /api/v1/account/
 ```
-Returns the account information for the user that is authenticated with the request.
+Returns the account information for the user authenticated with the request.
 
 **Request Payload**
 
@@ -181,7 +190,7 @@ Property | Description
 `201` | The user was returned successfully.
 `401` | No authentication token was provided with the `Authorization` header.
 
-
+***
 
 
 
@@ -240,7 +249,7 @@ Property | Description
 `400` | There is problem with the user data provided.
 `401` | No authentication token was provided with the `Authorization` header.
 
-
+***
 
 
 
@@ -289,7 +298,7 @@ Property | Description
 Property | Description
 ---|---
 
-
+***
 
 
 
@@ -324,7 +333,7 @@ Property | Description
 `400` | The is problem with the user data provided, e.g. the passwords don't match.
 `401` | No authentication token was provided with the `Authorization` header.
 
-
+***
 
 
 
@@ -358,7 +367,7 @@ Property | Description
 `200` | The request has been sent succesfully.
 `400` | The email address provided is either not valid or there was no user found with that email address.
 
-
+***
 
 
 
@@ -395,7 +404,7 @@ Property | Description
 ---|---
 `200` | The request has been sent succesfully.
 
-
+***
 
 
 
@@ -403,7 +412,7 @@ Property | Description
 
 ## Manage Users in Relation to an Organization
 
-
+If you need to see all the users 
 
 ### List platform users
 
