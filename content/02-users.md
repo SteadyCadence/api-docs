@@ -1,14 +1,11 @@
 ## Managing a user account
 
-This section outlines all endpoints that begin with `/api/vi/account/`.
 
-### Login [login] ##
+### Login 
 
-Many endpoints of Cadasta's API require an authenticated user. To authenticate a user you need to sign API requests with an authorization token, which you can obtain by login the user in.
-
+Many endpoints of Cadasta's API require an authenticated user. To authenticate a user, you need to sign API requests with an authorization token, which you can obtain by logging the user in.
 
 ```
-endpoint
 POST /api/v1/account/login/
 ```
 
@@ -34,7 +31,8 @@ Property | Description
 
 #### Example response
 
-```json
+```
+json
 {
   "auth_token": "UER33kHWhdLPq9nKkvENFtLvu3FF68GQ"
 }
@@ -42,10 +40,9 @@ Property | Description
 
 ### Logout
 
-Logging a user out removes the authorization token. Requests cannot be signed 
-with any token obtained previously.
+Logging a user out removes the authorization token. Requests cannot be signed with any token obtained previously.
 
-```endpoint
+```
 POST /api/v1/account/logout/
 ```
 
@@ -59,22 +56,25 @@ Property | Description
 ---|---
 `200` | The user was logged out successfully.
 
+> Add: example response
+
 ### Register a new user
 
 Register a new user to the platform. _Note:_ This does not log the user in.
 
-```endpoint
+```
 POST /api/v1/account/register/
 ```
 
 **Request payload**
 
-Property | Description
----|---
-`username` | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`password` | The user's password.
-`full_name` | (optional) The user's full name.
-`email` | The user's email address.
+Property | Required? | Description
+---|---|---
+`username` | yes |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` | |(optional) The user's full name.
+`email` | yes|The user's email address.
+`password` | yes |The user's password.
+`email_verified` |  |whether or not the email has been verified
 
 #### Example response
 
