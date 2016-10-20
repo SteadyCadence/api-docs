@@ -68,13 +68,13 @@ POST /api/v1/account/register/
 
 **Request payload**
 
-Property | Required? | Description
----|---|---
-`username` | yes |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | |(optional) The user's full name.
-`email` | yes|The user's email address.
-`password` | yes |The user's password.
-`email_verified` |  |whether or not the email has been verified
+Property | Type | Required? | Description
+---|---|:---:|---
+`username` | CharField | x |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` | CharField | |(optional) The user's full name.
+`email` | EmailField| x |The user's email address.
+`password` | CharField | x |The user's password.
+`email_verified` | BooleanField|  |whether or not the email has been verified
 
 #### Example response
 
