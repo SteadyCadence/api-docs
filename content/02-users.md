@@ -4,6 +4,8 @@ You can use the Cadasta API to manage user accounts, provided that you have thei
 
 ### Log a User In 
 
+> Beth notes: right now, this grants me my authorization token but doesn't actually log me in. If I want to actually log in, I have to log in on the staging site. (This might be how this is supposed to work, but I'm noting it here just in case.)
+
 ```endpoint
 POST /api/v1/account/login/
 ```
@@ -45,14 +47,20 @@ Property | Description
 
 ***
 
-### Log a User Out
 
-> Oliver, not sure how this one actually works. 
+
+
+
+
+
+
+
+### Log a User Out 
 
 ```endpoint
 POST /api/v1/account/logout/
 ```
-Logging a user out removes the authorization token. Requests cannot be signed with any token obtained previously.
+Logging a user out removes their authorization token. Requests cannot be signed with any token obtained previously.
 
 **Request payload**
 
@@ -60,16 +68,14 @@ No payload required.
 
 #### Example response
 
-> example response here, if any
+Once a user is logged out, you'll see an HTTP 200 message like this one:
 
-**Response**
-
-The response contains a JSON object with the following properties:
-
-> fill out below as needed
-
-Property | Description
----|---
+```
+HTTP 200 OK
+Allow: POST, OPTIONS
+Content-Type: application/json
+Vary: Accept
+```
 
 **Response codes**
 
@@ -260,7 +266,7 @@ Property | Description
 
 ### Activate a user account
 
-> Apparently this is complicated; Oliver writing up a bit about how this works. on 10.21. Beth has provided some basic framework below. 
+> Oliver writing up a bit about how this works, as apparently it's a bit complicated
 
 ```endpoint
 POST /api/v1/account/activate/
@@ -342,7 +348,11 @@ Property | Description
 
 ### Reset the password
 
-> Note: there appears to be an error with this; password reset is sent, however the link that's sent does not seem to work.
+> Oliver to draft some language to address the following issue:
+
+>>>Beth writes: I sent a password reset to my staging account. When I clicked on the link in the email, I go this. Tried logging out and clicking again, and I got the same response.
+
+>>Oliver writes: That’s correct behaviour; it’s similar to activating your account. You probably received that URL via an email, right? The thing with this is, the developer need to implement that URL in the client, the client reads the two tokens (`Nw` and `4gb-…` in your case and `POST` them with `/api/v1/account/password/reset/confirm/`). We need to document this in the API docs. I’ll write something up
 
 ```endpoint
 POST /api/v1/account/password/reset/

@@ -81,3 +81,20 @@ https://platform-staging-api.cadasta.org/api/v1/docs/
 One of the first things you need to do to get started is get an authentification token, which is required by many endpoints in the Cadasta API. To authenticate a user, sign API requests with an authorization token, which you can obtain by loging the user in.
 
 See documentation for [`/api/v1/account/login/`](02-users.md) to see how to get an authentication token. 
+
+### Requests
+
+All requests are encoded in `application/json`, unless they involve some kind of file upload. Those requests should be indicated in the documentation.
+
+### Common Response Codes
+
+After submitting any API request, you'll get one of the following responses. 
+
+Property | Description
+---|---
+
+`200` | The operation has been completed successfully
+`400` | There was a problem with the request payload. Usually this means required attributes are missing or the values provided are not accepted. Only applies the `POST`, `PATCH` and `PUT` requests. 
+`401` | No valid authentication token was provided with the request. 
+`403` | Permission denied, the user has no permission to access this resource or perform this action. 
+`404` | Not found. (The object with the given ID was not in the database.)
