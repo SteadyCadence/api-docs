@@ -92,7 +92,6 @@ After submitting any API request, you'll get one of the following responses.
 
 Property | Description
 ---|---
-
 `200` | The operation has been completed successfully
 `400` | There was a problem with the request payload. Usually this means required attributes are missing or the values provided are not accepted. Only applies the `POST`, `PATCH` and `PUT` requests. 
 `401` | No valid authentication token was provided with the request. 
