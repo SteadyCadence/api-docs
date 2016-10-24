@@ -1,6 +1,10 @@
 ## Managing a User Account
 
-You can use the Cadasta API to manage user accounts, provided that you have their username and password. This section outlines how to do that, focusing on endpoints that start with `api/v1/account`. 
+You can use the Cadasta API to manage user accounts, provided that you have their username and password. This section outlines how to do that, focusing on endpoints that start with: 
+
+```endpoint
+api/v1/account
+```
 
 An `account` JSON object contains the following properties:
 
@@ -385,7 +389,7 @@ Property | Type | Required? | Description
 `last_login` | DateTimeField |  | The last date of the user's login.
 
 
-
+***
 
 
 

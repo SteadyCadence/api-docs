@@ -12,9 +12,13 @@ Using this platform API, you can:
 
 Each of the sections listed above will outline how to use API endpoints to make these things happen.
 
+> Oliver, added this note. Is it OK?
+
+It's worth noting that this API works best with locally-hosted versions of the platform. If you have any questions about using the API, please don't hesitate to [contact us](). 
+
 ### Using the Platform API
 
-You can view each endpoint directly throught the Cadasta Platform API. 
+You can view each endpoint directly through the Cadasta Platform API. 
 
 First, determine which endpoint you'd like to access. Then, add it to the end of the URL `https://platform-staging-api.cadasta.org/`. For example, to get to `api/v1/organizations/`, you'd write:
 
