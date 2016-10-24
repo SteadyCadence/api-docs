@@ -228,7 +228,7 @@ Update the user's credentials.
 Property | Type | Required? | Description
 ---|---|:---:|---
 `username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | CharField | | (optional) The user's full name.
+`full_name` | CharField | | The user's full name.
 `email` | EmailField | x | The user's email address.
 `email_verified` | BooleanField | | Indicates whether the user has verified their email address.
 `last_login` | DateTimeField | | Date and time of the user's last login.
@@ -432,13 +432,121 @@ Property | Description
 
 ## Manage Users in Relation to an Organization
 
-If you need to see all the users 
+> Oliver, do we need to make a note about permissions here?
+
+This section refers to endpoints that begin with: 
+
+```
+/api/v1/users/
+```
+
+The `users` JSON object is structured like this:
+
+* `username`: CharField (Required)
+* `full_name`: CharField
+* `email`: EmailField (Required)
+* `organizations`: ListSerializer (Array of objects)
+    * `id`: CharField
+    * `slug`: SlugField
+    * `name`: CharField (Required)
+    * `description`: CharField
+    * `archived`: BooleanField
+    * `urls`: ListField
+    * `contacts`: JSONField
+    * `users`: ListSerializer (Array of objects)
+        * `username`: CharField (Required)
+        * `full_name`: CharField
+        * `email`: EmailField (Required)
+        * `email_verified`: BooleanField
+        * `last_login`: DateTimeField
+* `last_login`: DateTimeField
+* `is_active`: BooleanField
+
+> Oliver, please check descriptions in below tables.
+
+Here is a table of the first tier properties:
+
+Property | Type | Required? | Description
+---|---|:---:|---
+`username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` |  CharField | | The user's full name.
+`email` |  EmailField  | x | The user's email associated with their account.
+`organizations` |  ListSerializer | | An array of properties in the `organization` object. See table below for more information.
+`last_login` | DateTimeField |  | Date and time of last user login.
+`is_active`| BooleanField |  | Whether or not the user is active.
+
+
+Here is a table of the properties of the `organizations` object (which is contained in the `users` object:
+
+
+Property | Type | Required? | Description
+---|---|:---:|---
+`id` | CharField |  | The ID of the organization.
+`slug` | SlugField |  | The short label of the organization; usually based in URLs.
+`name` | CharField | x | The name of the organization.
+`description` | CharField |  | A long-form description of the organization.
+`archived` | BooleanField |  | Indicates whether or not the organization has been archived.
+`urls` | ListField |  | A list of URLS to websites of this organization. 
+`contacts` | JSONField |  | A list of contacts for this organization. A contact is a JSON object containing name, email (optional) and tel (optional).
+`users` | ListSerializer |  | An array of properties in the `users` object. See table below for more information.
+
+> Oliver, there is a `users` object inside of `organizations` which is inside of `users`. Do we need to explain that at all?
+
+And here is a table of the properties of `users`, an array of all the user accounts associated with an organization: 
+
+Property | Type | Required? | Description
+---|---|:---:|---
+`username` | CharField | x | The user's username.
+`full_name` | CharField |  | The user's full name. 
+`email` | EmailField | x | The user's email associated with their Cadasta account.
+`email_verified` | BooleanField |  | Whether or not the email has been verified.
+`last_login` | DateTimeField |  | The last date of the user's login.
+
+
+
+
+
+
+
 
 ### List platform users
 
 ```endpoint
 GET /api/v1/users/
 ```
+The above method returns all of the users in the platform. 
+
+**Request Payload**
+
+Property | Type | Required? | Description
+---|---|:---:|---
+
+
+#### Example response
+
+```json
+{
+
+}
+```
+
+**Response**
+
+The response contains a JSON object with the following properties:
+
+Property | Description
+---|---
+`403` | You do not have permission to perform this action.
+
+
+**Response codes**
+
+Property | Description
+---|---
+
+***
+
+
 
 
 
@@ -449,8 +557,37 @@ GET /api/v1/users/
 ```endpoint
 GET /api/v1/users/{username}/
 ```
+Use the above method to view a single user in the 
+
+**Request Payload**
+
+Property | Type | Required? | Description
+---|---|:---:|---
 
 
+#### Example response
+
+```json
+{
+
+}
+```
+
+**Response**
+
+The response contains a JSON object with the following properties:
+
+Property | Description
+---|---
+
+
+
+**Response codes**
+
+Property | Description
+---|---
+
+***
 
 
 
@@ -461,7 +598,37 @@ GET /api/v1/users/{username}/
 PATCH /api/v1/users/{username}/
 ```
 
+> Description needed
 
+**Request Payload**
+
+Property | Type | Required? | Description
+---|---|:---:|---
+
+
+#### Example response
+
+```json
+{
+
+}
+```
+
+**Response**
+
+The response contains a JSON object with the following properties:
+
+Property | Description
+---|---
+
+
+
+**Response codes**
+
+Property | Description
+---|---
+
+***
 
 
 
@@ -470,3 +637,35 @@ PATCH /api/v1/users/{username}/
 ```endpoint
 PATCH /api/v1/users/{username}/
 ```
+
+> Description needed
+
+**Request Payload**
+
+Property | Type | Required? | Description
+---|---|:---:|---
+
+
+#### Example response
+
+```json
+{
+
+}
+```
+
+**Response**
+
+The response contains a JSON object with the following properties:
+
+Property | Description
+---|---
+
+
+
+**Response codes**
+
+Property | Description
+---|---
+
+***
