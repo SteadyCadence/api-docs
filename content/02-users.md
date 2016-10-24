@@ -1,7 +1,5 @@
 ## Managing a User Account
 
-[test](#test)
-
 You can use the Cadasta API to manage user accounts, provided that you have their login and password. This section outlines how to do that, focusing on endpoints that start with `api/v1/account`. 
 
 An `account` JSON object contains the following properties:
@@ -65,7 +63,7 @@ Property | Description
 
 
 
-### Log a User Out <a id="test"></a>
+### Log a User Out 
 
 ```endpoint
 POST /api/v1/account/logout/
@@ -390,6 +388,8 @@ Property | Type | Required? | Description
 
 ### List platform users
 
+> Oliver,  need response information
+
 ```endpoint
 GET /api/v1/users/
 ```
@@ -397,9 +397,7 @@ The above method returns all of the users in the platform.
 
 **Request Payload**
 
-Property | Type | Required? | Description
----|---|:---:|---
-
+No request payload, however an authorization key connected to an account with appropriate permissions is required.
 
 #### Example response
 
@@ -415,13 +413,12 @@ The response contains a JSON object with the following properties:
 
 Property | Description
 ---|---
-`403` | You do not have permission to perform this action.
-
 
 **Response codes**
 
 Property | Description
 ---|---
+`403` | You do not have permission to perform this action.
 
 ***
 
@@ -433,16 +430,20 @@ Property | Description
 
 ### Get a platform user
 
+> Oliver, need response information
+
 ```endpoint
 GET /api/v1/users/{username}/
 ```
-Use the above method to view a single user in the  
+Use the above method to view a single user in the platform. For example, to see the information for username `janesmith`, you'd write:
+
+```
+https://platform-staging-api.cadasta.org/api/v1/users/janesmith/
+``` 
 
 **Request Payload**
 
-Property | Type | Required? | Description
----|---|:---:|---
-
+No request payload, however an authorization key connected to an account with appropriate permissions is required.
 
 #### Example response
 
@@ -477,12 +478,18 @@ Property | Description
 PATCH /api/v1/users/{username}/
 ```
 
-> Description needed
+Use the above method to update some of the fields associated with a specific username.
 
 **Request Payload**
 
 Property | Type | Required? | Description
 ---|---|:---:|---
+`username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` |  CharField | | The user's full name.
+`email` |  EmailField  | x | The user's email associated with their account.
+`organizations` |  ListSerializer | | An array of properties in the `organization` object. See table below for more information.
+`last_login` | DateTimeField |  | Date and time of last user login.
+`is_active`| BooleanField |  | Whether or not the user is active.
 
 
 #### Example response
@@ -513,16 +520,24 @@ Property | Description
 
 ### Replace a platform user
 
+> Oliver, need response information
+
 ```endpoint
-PATCH /api/v1/users/{username}/
+PUT /api/v1/users/{username}/
 ```
 
-> Description needed
+Use the above method to replace a user.
 
 **Request Payload**
 
 Property | Type | Required? | Description
 ---|---|:---:|---
+`username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` |  CharField | | The user's full name.
+`email` |  EmailField  | x | The user's email associated with their account.
+`organizations` |  ListSerializer | | An array of properties in the `organization` object. See table below for more information.
+`last_login` | DateTimeField |  | Date and time of last user login.
+`is_active`| BooleanField |  | Whether or not the user is active.
 
 
 #### Example response
