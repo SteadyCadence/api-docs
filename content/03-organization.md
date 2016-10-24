@@ -1,5 +1,11 @@
 ## Organization
 
+The Cadasta API allows you to work with data associated with organizations that have been added to the platform. The endpoint for these objects start with:
+
+```endpoint
+api/v1/organizations
+```
+
 An organization JSON object contains the following properties.
 
 Property | Description
@@ -43,9 +49,11 @@ Property | Description
 GET /api/v1/organizations/
 ```
 
+The above method returns all of the publicly available organizations in the platform.
+
 **Response**
 
-The response body is an array containing [organization JSON objects](#organization-1).
+The response body is an array containing [organization JSON objects](#user-content-example-organization-json-object).
 
 
 #### Example response
