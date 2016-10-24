@@ -274,52 +274,6 @@ Property | Description
 
 
 
-### Activate a user account
-
-> Oliver writing up a bit about how this works, as apparently it's a bit complicated
-
-```endpoint
-POST /api/v1/account/activate/
-```
-
-> Description goes here
-
-**Request payload**
-
-Property | Type | Required? | Description
----|---|:---:|---
-`uid` | CharField | x | 
-`token` | CharField | x | 
-
-
-#### Example response
-
-```json
-{
-
-}
-```
-
-**Response**
-
-The response contains a JSON object with the following properties.
-
-Property | Description
----|---
-`uid` | 
-`token` | 
-
-**Response codes**
-
-Property | Description
----|---
-
-***
-
-
-
-
-
 
 ### Change the password
 
@@ -354,77 +308,6 @@ Property | Description
 
 
 
-
-
-### Reset the password
-
-> Oliver to draft some language to address the following issue:
-
->>>Beth writes: I sent a password reset to my staging account. When I clicked on the link in the email, I go this. Tried logging out and clicking again, and I got the same response.
-
->>Oliver writes: That’s correct behaviour; it’s similar to activating your account. You probably received that URL via an email, right? The thing with this is, the developer need to implement that URL in the client, the client reads the two tokens (`Nw` and `4gb-…` in your case and `POST` them with `/api/v1/account/password/reset/confirm/`). We need to document this in the API docs. I’ll write something up
-
-```endpoint
-POST /api/v1/account/password/reset/
-```
-
-Request a reset of the user's password.
-
-**Request payload**
-
-Property | Type | Required? | Description
----|---|:---:|---
-`email` | EmailField| x | The email address of the user that wishes to reset their password.
-
-#### Example response
-
-No response is shown; only a response code (shown below).
-
-**Response codes**
-
-Property | Description
----|---
-`200` | The request has been sent succesfully.
-`400` | The email address provided is either not valid or there was no user found with that email address.
-
-***
-
-
-
-
-
-
-### Confirm the password reset
-
-> Oliver, this requires the UID and I'm not sure what that is. Seems similar to activating a user account. I may need your help filling in the blanks below.
-
-```endpoint
-POST /api/v1/account/password/reset/confirm/
-```
-Confirms that a password has been reset.
-
-**Request Payload**
-
-Property | Type | Required? | Description
----|---|:---:|---
-`uid` | CharField| ? | 
-`token` | CharField| ? | 
-`new_password` | CharField | ? | The new password.
-`re_new_password` | CharField | ? | A confirmation of the new password.
-
-#### Example Response
-
-> not sure, can't see
-
-**Response codes**
-
-> what other response codes go here?
-
-Property | Description
----|---
-`200` | The request has been sent succesfully.
-
-***
 
 
 
