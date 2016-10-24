@@ -65,7 +65,7 @@ Property | Description
 
 
 
-### Log a User Out (#test)
+### Log a User Out <a id="test"></a>
 
 ```endpoint
 POST /api/v1/account/logout/
