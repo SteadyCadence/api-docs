@@ -1,6 +1,6 @@
 ## Managing a User Account
 
-You can use the Cadasta API to manage user accounts, provided that you have their login and password. This section outlines how to do that, focusing on endpoints that start with `api/v1/account`. 
+You can use the Cadasta API to manage user accounts, provided that you have their username and password. This section outlines how to do that, focusing on endpoints that start with `api/v1/account`. 
 
 An `account` JSON object contains the following properties:
 
@@ -12,15 +12,18 @@ Property | Type | Required? | Description
 `email_verified` | BooleanField | | Indicates whether the user has verified their email address.
 `last_login` | DateTimeField | | Date and time of last user login.
 
+***
+
 ### Log a User In 
 
 ```endpoint
 POST /api/v1/account/login/
 ```
 
-Many endpoints of Cadasta's API require an authenticated user. To authenticate a user, you need to sign API requests with an authorization token, which you can obtain by logging the user in.
+Getting your authorization token is one of the first things you need to do before using the Cadasta Platform API. That's because many endpoints of Cadasta's API require an authenticated user. To authenticate a user, you need to sign API requests with an authorization token, which you can obtain by logging the user in.
 
-Getting your authorization token is one of the first things you need to do before using the Cadasta Platform API.
+Note that logging a user into the API does not log them into the platform.
+
 
 **Request payload**
 
@@ -70,6 +73,8 @@ POST /api/v1/account/logout/
 ```
 Logging a user out removes their authorization token. Requests cannot be signed with any token obtained previously.
 
+Note that logging a user out of the API does not log them out of the platform.
+
 **Request payload**
 
 No payload required.
@@ -102,7 +107,7 @@ Property | Description
 
 
 
-### Register a new user
+### Register a New User
 
 Register a new user to the platform. _**Note:** This does not log the user in._
 
