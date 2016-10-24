@@ -1,5 +1,7 @@
 ## Managing a User Account
 
+[test](#test)
+
 You can use the Cadasta API to manage user accounts, provided that you have their login and password. This section outlines how to do that, focusing on endpoints that start with `api/v1/account`. 
 
 An `account` JSON object contains the following properties:
@@ -13,8 +15,6 @@ Property | Type | Required? | Description
 `last_login` | DateTimeField | | Date and time of last user login.
 
 ### Log a User In 
-
-> Beth notes: right now, this grants me my authorization token but doesn't actually log me in. If I want to actually log in, I have to log in on the staging site. (This might be how this is supposed to work, but I'm noting it here just in case.)
 
 ```endpoint
 POST /api/v1/account/login/
@@ -65,7 +65,7 @@ Property | Description
 
 
 
-### Log a User Out 
+### Log a User Out {#test}
 
 ```endpoint
 POST /api/v1/account/logout/
@@ -345,8 +345,6 @@ The `users` JSON object is structured like this:
 * `last_login`: DateTimeField
 * `is_active`: BooleanField
 
-> Oliver, please check descriptions in below tables.
-
 Here is a table of the first tier properties:
 
 Property | Type | Required? | Description
@@ -359,7 +357,7 @@ Property | Type | Required? | Description
 `is_active`| BooleanField |  | Whether or not the user is active.
 
 
-Here is a table of the properties of the `organizations` object (which is contained in the `users` object:
+Here is a table of the properties of the `organizations` object (which is contained in the `users` object):
 
 
 Property | Type | Required? | Description
@@ -373,9 +371,7 @@ Property | Type | Required? | Description
 `contacts` | JSONField |  | A list of contacts for this organization. A contact is a JSON object containing name, email (optional) and tel (optional).
 `users` | ListSerializer |  | An array of properties in the `users` object. See table below for more information.
 
-> Oliver, there is a `users` object inside of `organizations` which is inside of `users`. Do we need to explain that at all?
-
-And here is a table of the properties of `users`, an array of all the user accounts associated with an organization: 
+And here is a table of the properties of `users`, an array of a user account associated with an organization: 
 
 Property | Type | Required? | Description
 ---|---|:---:|---
@@ -440,7 +436,7 @@ Property | Description
 ```endpoint
 GET /api/v1/users/{username}/
 ```
-Use the above method to view a single user in the 
+Use the above method to view a single user in the  
 
 **Request Payload**
 
