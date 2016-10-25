@@ -11,7 +11,7 @@ An organization JSON object contains the following properties.
 > NOTE: per DRF docs, `users` is also a property. However, when I test it on the API I don't see it.
 
 | Property | Type | Required? | Description |
-| --- | --- | --- | --- |
+| --- | --- | :---: | --- |
 | `id` | CharField |  | The ID of the organization |
 | `slug` | SlugField |  | The short label of the organization; usually used in URLs. |
 | `name` | CharField | x | The name of the organization. |
@@ -20,7 +20,7 @@ An organization JSON object contains the following properties.
 | `urls` | ListField |  | A list of URLs to websites of this organization. |
 | `contacts` | JSONField |  | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` \(optional\) and `tel` \(optional\). |
 
-#### Example Organization JSON Object
+##### Example Organization JSON Object
 
 ```json
 {
@@ -46,6 +46,7 @@ An organization JSON object contains the following properties.
 ```
 
 ---
+
 
 ### List organizations
 

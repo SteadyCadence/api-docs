@@ -64,8 +64,23 @@ Property | Description
 }
 ```
 
+### Slugs
 
-### List all projects
+To get at, create, or modify projects and project members, you'll need to access a couple different kinds of slugs: 
+
+* `organization_slug`, and 
+* `project_slug`
+
+You can find the `organization_slug` by locating the organization in the [list of all organziations](03-organization.md#user-content-list-organizations) and then copying the value of the `slug` property. 
+
+You can find the `project_slug` in a similar fashion: viewing all of the projects. If it's a public organization, you can find it
+When you get the slug, add it to your endpoint so it reads something like this: 
+
+```
+https://https://platform-staging-api.cadasta.org/api/v1/organizations/example-organization/projects/
+```
+
+### List All Projects 
 
 ```endpoint
 GET /api/v1/projects/
@@ -86,26 +101,135 @@ The response body is an array containing a [project JSON object](#user-content-e
 ####Example Response
 
 ```json
+[
+    {
+        "id": "pw6esdz94iztk4k23hskj73q",
+        "organization": {
+            "id": "rm4ahxqizjxqbzt3h8itmb3f",
+            "slug": "brian-org",
+            "name": "Brian Org",
+            "description": "",
+            "archived": false,
+            "urls": [],
+            "contacts": []
+        },
+        "country": "BD",
+        "name": "Download Test",
+        "description": "",
+        "archived": false,
+        "urls": [
+            ""
+        ],
+        "contacts": [],
+        "access": "public",
+        "slug": "download-test"
+    },
+    {
+        "id": "jugibdxzaz5i2v3uni5bt6d9",
+        "organization": {
+            "id": "rm4ahxqizjxqbzt3h8itmb3f",
+            "slug": "brian-org",
+            "name": "Brian Org",
+            "description": "",
+            "archived": false,
+            "urls": [],
+            "contacts": []
+        },
+        "country": "BD",
+        "name": "Import Test",
+        "description": "",
+        "archived": false,
+        "urls": [
+            ""
+        ],
+        "contacts": [],
+        "access": "public",
+        "slug": "import-test-1"
+    }
+]
+
 
 ```
 
-### List organization projects
+### List All Projects in an Organization
+
+> Getting an error; fill in content when error is resolved
 
 ```endpoint
 GET /api/v1/organizations/{organization_slug}/projects/
 ```
 
-### Create a project
+To see all of the projects in an organization, you can use the above method. 
+
+**Request Payload**
+
+Property | Type | Required? | Description 
+--- | --- | :---: | --- 
+`thing` | CharField | x | words
+
+**Response**
+
+The response body is an array containing a [project JSON object](#user-content-example-project-json-object).
+
+####Example Response
+
+> Getting an error, can't see
+
+***
+
+
+
+
+### Create a New Project
+
+> Getting an error; fill in content when error is resolved
+
 
 ```endpoint
 POST /api/v1/organizations/{organization_slug}/projects/
 ```
 
+Use the above endpoint to create a new project. All projects must be connected to an organization. 
+
+To use this method, ou'll need to get the `slug` of the organization, which you can find by [getting a specific organization by its name](03-organization.md#user-content-get-a-specific-organization) and then copying the value of the `slug` property. 
+
+When you get the slug, add it to your endpoint so it reads something like this: 
+
+```
+https://https://platform-staging-api.cadasta.org/api/v1/organizations/example-organization/projects/
+```
+
+
+
+**Request Payload**
+
+Property | Type | Required? | Description 
+--- | --- | :---: | --- 
+`thing` | CharField | x | words
+
+**Response**
+
+The response body is an array containing a [project JSON object](#user-content-example-project-json-object).
+
+####Example Response
+
+> Getting an error, can't see
+
+
+
+
+
 ### Get a project
+
+> Getting an error; fill in content when error is resolved
 
 ```endpoint
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/
 ```
+
+Use the above method
+
+user-content-list-all-projects
 
 ### Update a project
 
