@@ -1,6 +1,18 @@
 ## Project
 
-An project JSON object contains the following properties.
+The Cadasta API allows you work with data for projects that have been added to the platform. The two main endpoints you'll need to work with project data begin with:
+
+```endpoint
+/api/v1/projects/
+```
+
+and 
+
+```endpoint
+GET /api/v1/organizations/{organization_slug}/projects/
+```
+
+A project JSON object contains the following properties.
 
 Property | Description
 ---|---
@@ -13,7 +25,7 @@ Property | Description
 `contacts` | A list of contacts for this project. A contact is a JSON object containing `name`, `email` (optional) and `tel` (optional).
 `country` | The country where the project is located; represented as a two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
 `access` | Indicates whether access to the project is restricted; is either `"public"` or `"private"`.
-`organization` | [JSON object of the project's organization](#organization-1).
+`organization` | [JSON object of the project's organization](03-organization#user-content-example-organization-json-object).
 
 ##### Example project JSON object
 
@@ -22,22 +34,22 @@ Property | Description
   "id": "z82wdtrf8m9sh56bdph6qeig",
   "organization": {
     "id": "3r48bi5xy8xzfu5d94smpb7a",
-    "slug": "jei",
-    "name": "JEI",
-    "description": "JEI is a non-profit, non-governmental organization based in Lagos and Port Harcourt, Nigeria. We empower poor and marginalized individuals and communities to lead the changes that they would like to see in their own communities -- whether greater access to justice for the poor, pro-poor urban governance and policy, or community-led in-situ upgrading and development.",
+    "slug": "example-organization",
+    "name": "Example Organization",
+    "description": "Example Organization is a non-profit, non-governmental organization working to empower poor and marginalized individuals and communities.",
     "archived": false,
     "urls": [
-      "http://www.justempower.org/"
+      "http://www.example.org/"
     ],
     "contacts": [
       {
         "tel": null,
-        "name": "Andrew Maki",
+        "name": "Andrew Brown",
         "email": "andrew@example.org"
       },
       {
         "tel": null,
-        "name": "Megan Chapman",
+        "name": "Megan Jones",
         "email": "megan@example.org"
       }
   },
@@ -58,6 +70,9 @@ Property | Description
 ```endpoint
 GET /api/v1/projects/
 ```
+
+Use the above method to list all the publicly viewable projects in the Cadasta system. You can also see 
+
 
 ### List organization projects
 
