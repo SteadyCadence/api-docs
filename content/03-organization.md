@@ -422,7 +422,7 @@ The response body is an array containing an [organization JSON object](#user-con
 ```
 ---
 
-### Add an organization member
+### Add an Organization Member
 
 > Getting a platform error; add content when the error is resolved.
 
@@ -443,37 +443,82 @@ Property | Type | Required? | Description
 
 ####Example Response
 
-
+> fill in when platform no longer throwing an error
 
 
 
 
 ---
 
-### Get an organization member
+### Get an Organization Member
+
+> Getting a platform error; add content when the error is resolved.
+
 
 ```endpoint
 GET /api/v1/organizations/{organization_slug}/users/{username}/
 ```
-The above method adds a member to the organization. Note that the person needs to have an account for this to work.
+The above method gets the information of a specific member of an organization. This can be helpful if you need to see whether that person is an admininstrator of the organization or not. 
+
+**Request Payload**
+
+Property | Type | Required? | Description
+---|---|:---:|---
+
+
+**Response**
+
+
+####Example Response
+
 
 
 
 ---
 
-### Update an organization member
+### Update an Organization Member
+
+> Getting a platform error; add content when the error is resolved.
+
 
 ```endpoint
 PATCH /api/v1/organizations/{organization_slug}/users/{username}/
 ```
 
+The above method updates the information of a specific member of an organization. 
+
+**Request Payload**
+
+Property | Type | Required? | Description
+---|---|:---:|---
+
+**Response**
+
+####Example Response
+
+
 ---
 
 ### Remove an organization member
 
+> Getting a platform error; add content when the error is resolved.
+
 ```endpoint
 DELETE /api/v1/organizations/{organization_slug}/users/{username}/
 ```
+
+The above method updates the information of a specific member of an organization.
+
+**Request Payload**
+
+Property | Type | Required? | Description
+---|---|:---:|---
+
+
+**Response**
+
+####Example Response
+
 
 ---
 
