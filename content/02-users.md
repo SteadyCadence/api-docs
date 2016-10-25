@@ -53,13 +53,6 @@ Property | Description
 `auth_token` | The authorization token, use it to sign requests to the API.
 
 
-**Response codes**
-
-Property | Description
----|---
-`200` | The user was logged in successfully.
-`400` | Username or password were incorrect or the user has not verified their email address.
-
 ***
 
 
@@ -93,12 +86,6 @@ Allow: POST, OPTIONS
 Content-Type: application/json
 Vary: Accept
 ```
-
-**Response codes**
-
-Property | Description
----|---
-`200` | The user was logged out successfully.
 
 ***
 
@@ -151,12 +138,6 @@ Property | Description
 `email` | The user's email address.
 `email_verified` | Boolean indicating whether the user has verified their email address.
 
-**Response codes**
-
-Property | Description
----|---
-`201` | The user was registered successfully.
-`400` | The is problem with the user data provided.
 
 ***
 
@@ -205,13 +186,6 @@ Property | Description
 `email_verified` | Boolean indicating whether the user has verified their email address.
 `last_login` | Date and time of last user login.
 
-
-**Response codes**
-
-Property | Description
----|---
-`201` | The user was returned successfully.
-`401` | No authentication token was provided with the `Authorization` header.
 
 ***
 
@@ -264,13 +238,6 @@ Property | Description
 `email_verified` | Boolean indicating whether the user has verified their email address.
 `last_login` | Date and time of the user's last login.
 
-**Response codes**
-
-Property | Description
----|---
-`201` | The user was updated successfully.
-`400` | There is problem with the user data provided.
-`401` | No authentication token was provided with the `Authorization` header.
 
 ***
 
@@ -302,13 +269,6 @@ Property | Type | Required? | Description
 
 No response is shown; only a response code (shown below).
 
-**Response codes**
-
-Property | Description
----|---
-`200` | The user's password was updated successfully.
-`400` | The is problem with the user data provided, e.g. the passwords don't match.
-`401` | No authentication token was provided with the `Authorization` header.
 
 ***
 
@@ -423,11 +383,6 @@ The response contains a JSON object with the following properties:
 Property | Description
 ---|---
 
-**Response codes**
-
-Property | Description
----|---
-`403` | You do not have permission to perform this action.
 
 ***
 
@@ -469,12 +424,6 @@ The response contains a JSON object with the following properties:
 Property | Description
 ---|---
 
-
-
-**Response codes**
-
-Property | Description
----|---
 
 ***
 
@@ -518,11 +467,6 @@ Property | Description
 
 
 
-**Response codes**
-
-Property | Description
----|---
-
 ***
 
 
@@ -564,11 +508,5 @@ The response contains a JSON object with the following properties:
 Property | Description
 ---|---
 
-
-
-**Response codes**
-
-Property | Description
----|---
 
 ***
