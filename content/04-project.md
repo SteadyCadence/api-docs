@@ -27,7 +27,7 @@ Property | Description
 `access` | Indicates whether access to the project is restricted; is either `"public"` or `"private"`.
 `organization` | [JSON object of the project's organization](03-organization.md#user-content-example-organization-json-object).
 
-##### Example project JSON object
+##### Example Project JSON Object
 
 ```json
 {
@@ -52,7 +52,7 @@ Property | Description
         "name": "Megan Jones",
         "email": "megan@example.org"
       }
-  },
+  ],
   "country": "NG",
   "name": "Lagos Tenure Assessment (old)",
   "description": "Security of Tenure Profiling in Lagos",
@@ -71,8 +71,23 @@ Property | Description
 GET /api/v1/projects/
 ```
 
-Use the above method to list all the publicly viewable projects in the Cadasta system. You can also see 
+Use the above method to list all the publicly viewable projects in the Cadasta system. You can also see any private projects that you have access to.
 
+**Request Payload**
+
+Property | Type | Required? | Description 
+--- | --- | :---: | --- 
+`thing` | CharField | x | words
+
+**Response**
+
+The response body is an array containing a [project JSON object](#user-content-example-project-json-object).
+
+####Example Response
+
+```json
+
+```
 
 ### List organization projects
 
