@@ -113,11 +113,13 @@ The response contains a JSON object with the following properties:
 
 ### Create an organization
 
+> Note: need to add notes about properly formatting multiple URLs and contact information.
+
 ```endpoint
 POST /api/v1/organizations/
 ```
 
-Use the above endpoint to create a new organization. The user who creates this organization automatically becomes its first user,
+Use the above endpoint to create a new organization. The user who creates this organization automatically becomes its first user, and thereby the administrator.
 
 **Request payload**
 
@@ -332,7 +334,9 @@ For example, Example Organization might have the slug `example-organization`. Th
 https://platform-staging-api.cadasta.org/api/v1/organizations/example-organization/
 ```
 
-A user JSON object has the following properties. 
+> add proper links to the object below
+
+A member JSON object has the following properties. These properties are similar to the `account` JSON objects, but they include whether that user is an admin of the organization in question.
 
 Property | Type | Required? | Description
 ---|---|:---:|---
@@ -370,17 +374,79 @@ Use the above method to return all of the users in an organization.
 
 **Request Payload**
 
-No request payload is needed; only the `slug` value for the 
+No request payload is needed; only the `slug` value for the organization. 
 
+**Response**
 
+The response body is an array containing an [organization JSON object](#user-content-example-organization-json-object).
 
+#### Example Response
+
+```json
+{
+ "id": "wS3Mp76Spqu9A0Crg9bMxB2o",
+ "slug": "david-org",
+ "name": "David Org",
+ "description": "David Org (testing)",
+ "archived": false,
+ "urls": [],
+ "contacts": [
+     {
+         "tel": null,
+         "name": "David",
+         "email": "david@example.org"
+     },
+     {
+         "tel": null,
+         "name": "Frank",
+         "email": "frank@example.org"
+     }
+     ],
+ "users": [
+     {
+         "username": "Kate",
+         "full_name": "Kate",
+         "email": "kate@example.org",
+         "email_verified": false,
+         "last_login": "2016-07-15T00:01:29.446812Z"
+     }
+     {
+         "username": "Beth",
+         "full_name": "Beth",
+         "email": "beth@example.org",
+         "email_verified": true,
+         "last_login": "2016-04-17T00:01:29.446812Z"
+     }
+   ]
+}
+```
 ---
 
 ### Add an organization member
 
+> Getting a platform error; add content when the error is resolved.
+
 ```endpoint
 POST /api/v1/organizations/{organization_slug}/users/
 ```
+
+The above method adds a member to the organization. Note that the person needs to have an account for this to work. 
+
+**Request Payload**
+
+Property | Type | Required? | Description
+---|---|:---:|---
+`username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`admin` | BooleanField |  | Indicates whether the user will have admin
+
+**Response**
+
+####Example Response
+
+
+
+
+
 
 ---
 
@@ -389,6 +455,9 @@ POST /api/v1/organizations/{organization_slug}/users/
 ```endpoint
 GET /api/v1/organizations/{organization_slug}/users/{username}/
 ```
+The above method adds a member to the organization. Note that the person needs to have an account for this to work.
+
+
 
 ---
 

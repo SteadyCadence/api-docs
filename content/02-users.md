@@ -280,7 +280,7 @@ No response is shown; only a response code.
 
 
 
-## Manage Users 
+## Manage Users in Relation to their Organizations
 
 This section refers to endpoints that begin with: 
 
@@ -288,7 +288,7 @@ This section refers to endpoints that begin with:
 /api/v1/users/
 ```
 
-`users` is different than `account` in that it shows the organizations that the user is a part of. You may need to know this 
+`users` is different than `account` in that it shows the organizations that the user is a part of. 
 
 The `users` JSON object is structured like this:
 
