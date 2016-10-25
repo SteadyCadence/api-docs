@@ -10,18 +10,17 @@ An organization JSON object contains the following properties.
 
 > NOTE: per DRF docs, `users` is also a property. However, when I test it on the API I don't see it.
 
-Property | Type | Required? | Description
----|---|:---:|---
-`id` | CharField | | The ID of the organization
-`slug` | SlugField | |  The short label of the organization; usually used in URLs.
-`name` | CharField | x |  The name of the organization.
-`description`| CharField| |  (optional) A long-form description of the organization.
-`archived` | BooleanField | |  Indicates whether the organization has been archived.
-`urls` | ListField | |  A list of URLs to websites of this organization.
-`contacts` | JSONField | |  A list of contacts for this organization. A contact is a JSON object containing `name`, `email` (optional) and `tel` (optional).
+| Property | Type | Required? | Description |
+| --- | --- | --- | --- |
+| `id` | CharField |  | The ID of the organization |
+| `slug` | SlugField |  | The short label of the organization; usually used in URLs. |
+| `name` | CharField | x | The name of the organization. |
+| `description` | CharField |  | \(optional\) A long-form description of the organization. |
+| `archived` | BooleanField |  | Indicates whether the organization has been archived. |
+| `urls` | ListField |  | A list of URLs to websites of this organization. |
+| `contacts` | JSONField |  | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` \(optional\) and `tel` \(optional\). |
 
-
-#### Example organization JSON object
+#### Example Organization JSON Object
 
 ```json
 {
@@ -46,17 +45,7 @@ Property | Type | Required? | Description
 }
 ```
 
-***
-
-
-
-
-
-
-
-
-
-
+---
 
 ### List organizations
 
@@ -68,8 +57,7 @@ The above method returns all of the publicly available organizations in the plat
 
 **Response**
 
-The response body is an array containing [organization JSON object](#user-content-example-organization-json-object).
-
+The response body is an array containing an [organization JSON object](#user-content-example-organization-json-object).
 
 #### Example response
 
@@ -111,28 +99,17 @@ The response body is an array containing [organization JSON object](#user-conten
 
 The response contains a JSON object with the following properties:
 
-Property | Description
----|---
-`id` | The ID of the organization
-`slug` | The short label of the organization; usually used in URLs.
-`name` | The name of the organization.
-`description`| (optional) A long-form description of the organization.
-`archived` | `Boolean` indicating whether the organization has been archived.
-`urls` | A list of URLs to websites of this organization.
-`contacts` | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` (optional) and `tel` (optional).
+| Property | Description |
+| --- | --- |
+| `id` | The ID of the organization |
+| `slug` | The short label of the organization; usually used in URLs. |
+| `name` | The name of the organization. |
+| `description` | \(optional\) A long-form description of the organization. |
+| `archived` | `Boolean` indicating whether the organization has been archived. |
+| `urls` | A list of URLs to websites of this organization. |
+| `contacts` | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` \(optional\) and `tel` \(optional\). |
 
-***
-
-
-
-
-
-
-
-
-
-
-
+---
 
 ### Create an organization
 
@@ -140,19 +117,19 @@ Property | Description
 POST /api/v1/organizations/
 ```
 
-Use the above endpoint to create a new organization. The user who creates this organization automatically becomes its first user, 
+Use the above endpoint to create a new organization. The user who creates this organization automatically becomes its first user,
 
 **Request payload**
 
 The request payload is a JSON object containing the following properties.
 
-Property | Type | Required? | Description
----|---|:---:|---
-`name` | CharField | x | The name of the organization.
-`description`| CharField | | A long-form description of the organization.
-`archived` | BooleanField | | Indicates whether the organization has been archived.
-`urls` | ListField | | A list of URLs to websites of this organization.
-`contacts` | JSONField | | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` (optional) and `tel` (optional); either `email` or `tel` must be provided.
+| Property | Type | Required? | Description |
+| --- | --- | --- | --- |
+| `name` | CharField | x | The name of the organization. |
+| `description` | CharField |  | A long-form description of the organization. |
+| `archived` | BooleanField |  | Indicates whether the organization has been archived. |
+| `urls` | ListField |  | A list of URLs to websites of this organization. |
+| `contacts` | JSONField |  | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` \(optional\) and `tel` \(optional\); either `email` or `tel` must be provided. |
 
 **Response**
 
@@ -194,18 +171,7 @@ The response also contains the field `users`, which provides a list of members o
 }
 ```
 
-***
-
-
-
-
-
-
-
-
-
-
-
+---
 
 ### Get a Specific Organization
 
@@ -213,7 +179,7 @@ The response also contains the field `users`, which provides a list of members o
 GET /api/v1/organizations/{organization_slug}/
 ```
 
-The above method gets at a specific organization. It requires using the organization's slug, which is usually generated from the organization's name. To find the slug you need, find the organizion using the `GET /api/v1/organizations/` method and then get the value of the `slug` property.
+The above method gets at a specific organization. It requires using the organization's slug, which is usually generated from the organization's name. To find the slug you need, find the organization using the `GET /api/v1/organizations/` method and then get the value of the `slug` property.
 
 For example, Example Organization might have the slug `example-organization`. The URL you'd need to access it would look like this:
 
@@ -223,9 +189,9 @@ https://platform-staging-api.cadasta.org/api/v1/organizations/example-organizati
 
 **URL parameters**
 
-Property | Description
----|---
-`organization_slug` | The short label of the organization, which usually contains no upper case letters or spaces.
+| Property | Description |
+| --- | --- |
+| `organization_slug` | The short label of the organization, which usually contains no upper case letters or spaces. |
 
 **Response**
 
@@ -267,18 +233,7 @@ The response also contains the field `users`, which provides a list of members o
 }
 ```
 
-
-
-***
-
-
-
-
-
-
-
-
-
+---
 
 ### Update an organization
 
@@ -296,21 +251,21 @@ https://platform-staging-api.cadasta.org/api/v1/organizations/example-organizati
 
 **URL parameters**
 
-Property | Description
----|---
-`organization_slug` | The short label of the organization.
+| Property | Description |
+| --- | --- |
+| `organization_slug` | The short label of the organization. |
 
 **Request payload**
 
 The request payload is a JSON object containing the following properties. All properties are optional - if a property is not presented the request payload, the property will not be updated.
 
-Property | Description
----|---
-`name` | The name of the organization.
-`description`| (optional) A long-form description of the organization.
-`archived` | `Boolean` indicating whether the organization has been archived.
-`urls` | A list of URLs to websites of this organization.
-`contacts` | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` (optional) and `tel` (optional); either `email` or `tel` must be provided.
+| Property | Description |
+| --- | --- |
+| `name` | The name of the organization. |
+| `description` | \(optional\) A long-form description of the organization. |
+| `archived` | `Boolean` indicating whether the organization has been archived. |
+| `urls` | A list of URLs to websites of this organization. |
+| `contacts` | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` \(optional\) and `tel` \(optional\); either `email` or `tel` must be provided. |
 
 **Response**
 
@@ -359,40 +314,47 @@ The response also contains the field `users`, which provides a list of members o
 }
 ```
 
-
-
-***
-
-
-
-
-
-
-
-
+---
 
 ## Members
 
 Users associated with an organization are known as **members**. The endpoint you need to access the members of an organization is:
 
 ```endpoint
-api/v1/organizations
+api/v1/organizations/{organization_slug}/users/
 ```
 
-An organization JSON object contains the following properties.
-
-> NOTE: per DRF docs, `users` is also a property. However, when I test it on the API I don't see it.
+A user JSON object has the following properties. 
 
 Property | Type | Required? | Description
 ---|---|:---:|---
-`id` | CharField | | The ID of the organization
-`slug` | SlugField | |  The short label of the organization; usually used in URLs.
-`name` | CharField | x |  The name of the organization.
-`description`| CharField| |  (optional) A long-form description of the organization.
-`archived` | BooleanField | |  Indicates whether the organization has been archived.
-`urls` | ListField | |  A list of URLs to websites of this organization.
-`contacts` | JSONField | |  A list of contacts for this organization. A contact is a JSON object containing `name`, `email` (optional) and `tel` (optional).
+`username` | CharField | x | The user's username.
+`full_name` | CharField | | The user's full name.
+`email` | EmailField | x | The user's email associated with their Cadasta account.
+`email_verified` | BooleanField | | Whether or not the email has been verified.
+`last_login` | DateTimeField | | The last date of the user's login.
+`admin` | BooleanField | | Indicates whether or not the user is an admin of the organization of which they are a member.
 
+#### Example Member JSON Object
+
+```json
+{ 
+    username: "Joyce", 
+    full_name: "Joyce Jones", 
+    email: "joyce@example.org", 
+    email_verified: true, 
+    last_login: "2016-10-21T23:18:45.135341Z", 
+    admin: true 
+}
+```
+
+
+
+
+
+
+
+***
 
 
 ### List organization members
@@ -401,20 +363,7 @@ Property | Type | Required? | Description
 GET /api/v1/organizations/{organization_slug}/users/
 ```
 
-***
-
-
-
-
-
-
-
-
-
-
-
-
-
+---
 
 ### Add an organization member
 
@@ -422,17 +371,7 @@ GET /api/v1/organizations/{organization_slug}/users/
 POST /api/v1/organizations/{organization_slug}/users/
 ```
 
-***
-
-
-
-
-
-
-
-
-
-
+---
 
 ### Get an organization member
 
@@ -440,21 +379,7 @@ POST /api/v1/organizations/{organization_slug}/users/
 GET /api/v1/organizations/{organization_slug}/users/{username}/
 ```
 
-***
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+---
 
 ### Update an organization member
 
@@ -462,19 +387,7 @@ GET /api/v1/organizations/{organization_slug}/users/{username}/
 PATCH /api/v1/organizations/{organization_slug}/users/{username}/
 ```
 
-***
-
-
-
-
-
-
-
-
-
-
-
-
+---
 
 ### Remove an organization member
 
@@ -482,5 +395,5 @@ PATCH /api/v1/organizations/{organization_slug}/users/{username}/
 DELETE /api/v1/organizations/{organization_slug}/users/{username}/
 ```
 
-***
+---
 
