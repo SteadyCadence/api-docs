@@ -324,6 +324,14 @@ Users associated with an organization are known as **members**. The endpoint you
 api/v1/organizations/{organization_slug}/users/
 ```
 
+The `organization_slug` is the the slug associated with the organization, and is usually generated from the organization's name. To find the slug you need, find the organizion using the `GET /api/v1/organizations/` method and then get the value of the `slug` property.
+
+For example, Example Organization might have the slug `example-organization`. The URL you'd need to access it would look like this:
+
+```
+https://platform-staging-api.cadasta.org/api/v1/organizations/example-organization/
+```
+
 A user JSON object has the following properties. 
 
 Property | Type | Required? | Description
@@ -349,11 +357,6 @@ Property | Type | Required? | Description
 ```
 
 
-
-
-
-
-
 ***
 
 
@@ -362,6 +365,14 @@ Property | Type | Required? | Description
 ```endpoint
 GET /api/v1/organizations/{organization_slug}/users/
 ```
+
+Use the above method to return all of the users in an organization.
+
+**Request Payload**
+
+No request payload is needed; only the `slug` value for the 
+
+
 
 ---
 
