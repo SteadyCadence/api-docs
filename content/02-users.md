@@ -267,7 +267,7 @@ Property | Type | Required? | Description
 
 #### Example response
 
-No response is shown; only a response code (shown below).
+No response is shown; only a response code.
 
 
 ***
@@ -280,15 +280,15 @@ No response is shown; only a response code (shown below).
 
 
 
-## Manage Users in Relation to an Organization
-
-> Oliver, do we need to make a note about permissions here?
+## Manage Users 
 
 This section refers to endpoints that begin with: 
 
 ```
 /api/v1/users/
 ```
+
+`users` is different than `account` in that it shows the organizations that the user is a part of. You may need to know this 
 
 The `users` JSON object is structured like this:
 

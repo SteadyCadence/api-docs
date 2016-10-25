@@ -86,6 +86,14 @@ One of the first things you need to do to get started is get an authentification
 
 See documentation for [`/api/v1/account/login/`](02-users.md) to see how to get an authentication token. 
 
+### Permissions
+
+> Oliver, added: please check for accuracy
+
+Your authorization code will allow you to see content that you have access to: primarily your account, and organizations and projects that you create or administer. 
+
+If you need access to information in someone else's account, contact them to to get their username and password. From there, you can get their authorization token and gain access to the needed information.
+
 ### Requests
 
 All requests are encoded in `application/json`, unless they involve some kind of file upload. Those requests should be indicated in the documentation.
