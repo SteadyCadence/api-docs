@@ -25,7 +25,7 @@ Property | Description
 `contacts` | A list of contacts for this project. A contact is a JSON object containing `name`, `email` (optional) and `tel` (optional).
 `country` | The country where the project is located; represented as a two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
 `access` | Indicates whether access to the project is restricted; is either `"public"` or `"private"`.
-`organization` | [JSON object of the project's organization](03-organization#user-content-example-organization-json-object).
+`organization` | [JSON object of the project's organization](03-organization.md#user-content-example-organization-json-object).
 
 ##### Example project JSON object
 
