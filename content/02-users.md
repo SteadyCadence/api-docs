@@ -1,5 +1,7 @@
 ## Managing a User Account
 
+> add `account` object
+
 You can use the Cadasta API to manage user accounts, provided that you have their username and password. This section outlines how to do that, focusing on endpoints that start with: 
 
 ```endpoint
@@ -281,6 +283,8 @@ No response is shown; only a response code.
 
 
 ## Manage Users in Relation to their Organizations
+
+> format `users` object so that it's consistent and linkable.
 
 This section refers to endpoints that begin with: 
 
