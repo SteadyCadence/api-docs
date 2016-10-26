@@ -393,6 +393,8 @@ If you need to update project members, see the section on members.
 
 **Request Payload**
 
+> Which of these fields are required??
+
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
 `country` | CountryField | | The country where the project is located; represented as a two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
