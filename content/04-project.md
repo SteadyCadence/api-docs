@@ -622,7 +622,6 @@ Note that project members need to already have a user account and be a member of
 _Learn more about [creating user accounts](02_users.md) and [adding organization members](03-organizations.md)._
 
 
-
 **Request Payload**
 
 Property | Type | Required? | Description 
