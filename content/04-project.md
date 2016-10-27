@@ -3,7 +3,7 @@
 The Cadasta API allows you work with data for projects that have been added to the platform. The two main endpoints you'll need to work with project data begin with:
 
 ```endpoint
-/api/v1/projects/
+GET /api/v1/projects/
 ```
 
 and 
