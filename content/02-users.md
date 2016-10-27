@@ -1,7 +1,5 @@
 ## Managing a User Account
 
-> add `account` object
-
 You can use the Cadasta API to manage user accounts, provided that you have their username and password. This section outlines how to do that, focusing on endpoints that start with: 
 
 ```endpoint
@@ -55,6 +53,13 @@ Property | Description
 `auth_token` | The authorization token, use it to sign requests to the API.
 
 
+**Response codes**
+
+Property | Description
+---|---
+`200` | The user was logged in successfully.
+`400` | Username or password were incorrect or the user has not verified their email address.
+
 ***
 
 
@@ -88,6 +93,12 @@ Allow: POST, OPTIONS
 Content-Type: application/json
 Vary: Accept
 ```
+
+**Response codes**
+
+Property | Description
+---|---
+`200` | The user was logged out successfully.
 
 ***
 
@@ -140,6 +151,12 @@ Property | Description
 `email` | The user's email address.
 `email_verified` | Boolean indicating whether the user has verified their email address.
 
+**Response codes**
+
+Property | Description
+---|---
+`201` | The user was registered successfully.
+`400` | The is problem with the user data provided.
 
 ***
 
@@ -188,6 +205,13 @@ Property | Description
 `email_verified` | Boolean indicating whether the user has verified their email address.
 `last_login` | Date and time of last user login.
 
+
+**Response codes**
+
+Property | Description
+---|---
+`201` | The user was returned successfully.
+`401` | No authentication token was provided with the `Authorization` header.
 
 ***
 
@@ -240,6 +264,13 @@ Property | Description
 `email_verified` | Boolean indicating whether the user has verified their email address.
 `last_login` | Date and time of the user's last login.
 
+**Response codes**
+
+Property | Description
+---|---
+`201` | The user was updated successfully.
+`400` | There is problem with the user data provided.
+`401` | No authentication token was provided with the `Authorization` header.
 
 ***
 
@@ -269,8 +300,15 @@ Property | Type | Required? | Description
 
 #### Example response
 
-No response is shown; only a response code.
+No response is shown; only a response code (shown below).
 
+**Response codes**
+
+Property | Description
+---|---
+`200` | The user's password was updated successfully.
+`400` | The is problem with the user data provided, e.g. the passwords don't match.
+`401` | No authentication token was provided with the `Authorization` header.
 
 ***
 
@@ -282,17 +320,13 @@ No response is shown; only a response code.
 
 
 
-## Manage Users in Relation to their Organizations
-
-> format `users` object so that it's consistent and linkable.
+## Manage Users in Relation to an Organization
 
 This section refers to endpoints that begin with: 
 
 ```
 /api/v1/users/
 ```
-
-`users` is different than `account` in that it shows the organizations that the user is a part of. 
 
 The `users` JSON object is structured like this:
 
@@ -301,18 +335,7 @@ The `users` JSON object is structured like this:
 * `email`: EmailField (Required)
 * `organizations`: ListSerializer (Array of objects)
     * `id`: CharField
-    * `slug`: SlugField
     * `name`: CharField (Required)
-    * `description`: CharField
-    * `archived`: BooleanField
-    * `urls`: ListField
-    * `contacts`: JSONField
-    * `users`: ListSerializer (Array of objects)
-        * `username`: CharField (Required)
-        * `full_name`: CharField
-        * `email`: EmailField (Required)
-        * `email_verified`: BooleanField
-        * `last_login`: DateTimeField
 * `last_login`: DateTimeField
 * `is_active`: BooleanField
 
@@ -334,24 +357,7 @@ Here is a table of the properties of the `organizations` object (which is contai
 Property | Type | Required? | Description
 ---|---|:---:|---
 `id` | CharField |  | The ID of the organization.
-`slug` | SlugField |  | The short label of the organization; usually based in URLs.
 `name` | CharField | x | The name of the organization.
-`description` | CharField |  | A long-form description of the organization.
-`archived` | BooleanField |  | Indicates whether or not the organization has been archived.
-`urls` | ListField |  | A list of URLS to websites of this organization. 
-`contacts` | JSONField |  | A list of contacts for this organization. A contact is a JSON object containing name, email (optional) and tel (optional).
-`users` | ListSerializer |  | An array of properties in the `users` object. See table below for more information.
-
-And here is a table of the properties of `users`, an array of a user account associated with an organization: 
-
-Property | Type | Required? | Description
----|---|:---:|---
-`username` | CharField | x | The user's username.
-`full_name` | CharField |  | The user's full name. 
-`email` | EmailField | x | The user's email associated with their Cadasta account.
-`email_verified` | BooleanField |  | Whether or not the email has been verified.
-`last_login` | DateTimeField |  | The last date of the user's login.
-
 
 ***
 
@@ -360,8 +366,6 @@ Property | Type | Required? | Description
 
 
 ### List platform users
-
-> Oliver,  need response information
 
 ```endpoint
 GET /api/v1/users/
@@ -375,18 +379,33 @@ No request payload, however an authorization key connected to an account with ap
 #### Example response
 
 ```json
-{
-
-}
+[
+    {
+        "username": "janesmith",
+        "full_name": "Jane Smith",
+        "email": "j.smith@example.com",
+        "last_login": "2016-10-20T19:20:27.848272Z",
+        "is_active": true,
+        "organizations": [{
+            "id": "90ush89adh89shd89sah89sah",
+            "name": "Cadasta"
+        }, {
+            "id": "kxzncjkxhziuhsaiojdioasjd",
+            "name": "Foo Coorp."
+        }]
+    }
+]
 ```
 
 **Response**
 
-The response contains a JSON object with the following properties:
+The response contains a a list of user objects, including the organizations the user is a member of:
+
+**Response codes**
 
 Property | Description
 ---|---
-
+`403` | You do not have permission to perform this action. **Note:** You must be a superuser of the platform to perform this action.
 
 ***
 
@@ -417,7 +436,18 @@ No request payload, however an authorization key connected to an account with ap
 
 ```json
 {
-
+    "username": "janesmith",
+    "full_name": "Jane Smith",
+    "email": "j.smith@example.com",
+    "last_login": "2016-10-20T19:20:27.848272Z",
+    "is_active": true,
+    "organizations": [{
+        "id": "90ush89adh89shd89sah89sah",
+        "name": "Cadasta"
+    }, {
+        "id": "kxzncjkxhziuhsaiojdioasjd",
+        "name": "Foo Coorp."
+    }]
 }
 ```
 
@@ -428,6 +458,13 @@ The response contains a JSON object with the following properties:
 Property | Description
 ---|---
 
+
+
+**Response codes**
+
+Property | Description
+---|---
+`403` | You do not have permission to perform this action. **Note:** You must be a superuser of the platform to perform this action.
 
 ***
 
@@ -444,11 +481,13 @@ Use the above method to update some of the fields associated with a specific use
 
 **Request Payload**
 
+All fields are optional, if a field is not present in the request payload, that field not be updated. 
+
 Property | Type | Required? | Description
 ---|---|:---:|---
-`username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`username` | CharField | | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
 `full_name` |  CharField | | The user's full name.
-`email` |  EmailField  | x | The user's email associated with their account.
+`email` |  EmailField  | | The user's email associated with their account.
 `organizations` |  ListSerializer | | An array of properties in the `organization` object. See table below for more information.
 `last_login` | DateTimeField |  | Date and time of last user login.
 `is_active`| BooleanField |  | Whether or not the user is active.
@@ -458,7 +497,18 @@ Property | Type | Required? | Description
 
 ```json
 {
-
+    "username": "janesmith",
+    "full_name": "Jane Smith",
+    "email": "j.smith@example.com",
+    "last_login": "2016-10-20T19:20:27.848272Z",
+    "is_active": true,
+    "organizations": [{
+        "id": "90ush89adh89shd89sah89sah",
+        "name": "Cadasta"
+    }, {
+        "id": "kxzncjkxhziuhsaiojdioasjd",
+        "name": "Foo Coorp."
+    }]
 }
 ```
 
@@ -471,46 +521,9 @@ Property | Description
 
 
 
-***
-
-
-
-### Replace a platform user
-
-> Oliver, need response information
-
-```endpoint
-PUT /api/v1/users/{username}/
-```
-
-Use the above method to replace a user.
-
-**Request Payload**
-
-Property | Type | Required? | Description
----|---|:---:|---
-`username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` |  CharField | | The user's full name.
-`email` |  EmailField  | x | The user's email associated with their account.
-`organizations` |  ListSerializer | | An array of properties in the `organization` object. See table below for more information.
-`last_login` | DateTimeField |  | Date and time of last user login.
-`is_active`| BooleanField |  | Whether or not the user is active.
-
-
-#### Example response
-
-```json
-{
-
-}
-```
-
-**Response**
-
-The response contains a JSON object with the following properties:
+**Response codes**
 
 Property | Description
 ---|---
-
 
 ***
