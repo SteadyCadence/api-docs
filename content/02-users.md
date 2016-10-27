@@ -5,7 +5,7 @@
 You can use the Cadasta API to manage user accounts, provided that you have their username and password. This section outlines how to do that, focusing on endpoints that start with: 
 
 ```endpoint
-api/v1/account
+GET api/v1/account
 ```
 
 An `account` JSON object contains the following properties:
