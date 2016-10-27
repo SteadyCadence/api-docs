@@ -550,7 +550,7 @@ Property | Type | Required? | Description
 }
 ```
 
-### List project members
+### List Project Members
 
 ```endpoint
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/
@@ -569,7 +569,7 @@ No request payload; only a properly formatted endpoint.
 The response contains a JSON object with the following properties:
 
 Property | Type | Description
----|---
+---|---|---
 `username` | CharField |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
 `full_name` | CharField| The user's full name. (optional)
 `email` | EmailField | The user's email address.
