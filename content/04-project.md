@@ -212,8 +212,31 @@ The response body is an array containing a [project JSON object](#user-content-e
 ####Example Response
 
 ```json
-
 [
+    {
+        "id": "h8ridjt2jazkac4e97srzmh2",
+        "organization": {
+            "id": "gae6pjf9xygxddgyg5dq45iq",
+            "slug": "example-organization",
+            "name": "Example Organization",
+            "description": "",
+            "archived": false,
+            "urls": [
+                "http://example.com"
+            ],
+            "contacts": null
+        },
+        "country": "",
+        "name": "Atlanta Project",
+        "description": "",
+        "archived": false,
+        "urls": [
+            "http://www.atlanta-example.org"
+        ],
+        "contacts": null,
+        "access": "public",
+        "slug": "atlanta-project"
+    },
     {
         "id": "hxk4k8aee5rh5htahhh5uenn",
         "organization": {
@@ -236,23 +259,23 @@ The response body is an array containing a [project JSON object](#user-content-e
         ],
         "contacts": [
             {
+                "name": "Kate",
                 "email": "kate@example.org",
-                "tel": null,
-                "name": "Kate"
+                "tel": null
             },
             {
+                "name": "Oliver",
                 "email": "oliver@example.org",
-                "tel": "444-555-6789",
-                "name": "Oliver"
+                "tel": "444-555-6789"
             },
             {
+                "name": "David",
                 "email": null,
-                "tel": "555-555-5555",
-                "name": "David"
+                "tel": "555-555-5555"
             }
         ],
         "access": "public",
-        "slug": "global-project"
+        "slug": "portland-project"
     }
 ]
 
@@ -351,7 +374,7 @@ The response body is an array containing a [project JSON object](#user-content-e
 
 ```json
 {
-    "id": "h8ridjt2jazkac4e97srzmh2",
+    "id": "hxk4k8aee5rh5htahhh5uenn",
     "organization": {
         "id": "gae6pjf9xygxddgyg5dq45iq",
         "slug": "example-organization",
@@ -363,17 +386,33 @@ The response body is an array containing a [project JSON object](#user-content-e
         ],
         "contacts": null
     },
-    "country": "",
-    "name": "Atlanta Project",
-    "description": "Documenting marginalized land use in Atlanta, GA",
+    "country": "US",
+    "name": "Portland Project",
+    "description": "",
     "archived": false,
     "urls": [
-        "http://www.atlanta-example.org"
+        ""
     ],
-    "contacts": null,
+    "contacts": [
+        {
+            "name": "Kate",
+            "email": "kate@example.org",
+            "tel": null
+        },
+        {
+            "name": "Oliver",
+            "email": "oliver@example.org",
+            "tel": "444-555-6789"
+        },
+        {
+            "name": "David",
+            "email": null,
+            "tel": "555-555-5555"
+        }
+    ],
     "users": [],
     "access": "public",
-    "slug": "atlanta-project"
+    "slug": "global-project"
 }
 ```
 
@@ -413,7 +452,7 @@ The response body is an array containing a [project JSON object](#user-content-e
 
 ```json
 {
-    "id": "h8ridjt2jazkac4e97srzmh2",
+    "id": "hxk4k8aee5rh5htahhh5uenn",
     "organization": {
         "id": "gae6pjf9xygxddgyg5dq45iq",
         "slug": "example-organization",
@@ -425,31 +464,91 @@ The response body is an array containing a [project JSON object](#user-content-e
         ],
         "contacts": null
     },
-    "country": "",
-    "name": "Atlanta Project",
+    "country": "US",
+    "name": "Portland Project",
     "description": "",
     "archived": false,
     "urls": [
-        "http://www.atlanta-example.org"
+        ""
     ],
-    "contacts": null,
-    "users": [],
+    "contacts": [
+        {
+            "name": "Kate",
+            "email": "kate@example.org",
+            "tel": null
+        },
+        {
+            "name": "Oliver",
+            "email": "oliver@example.org",
+            "tel": "444-555-6789"
+        },
+        {
+            "name": "David",
+            "email": null,
+            "tel": "555-555-5555"
+        }
+    ],
+    "users": [
+        {
+            "username": "dpalomino",
+            "full_name": "David Palomino",
+            "email": "dpalomino@example.org",
+            "email_verified": true,
+            "last_login": "2016-10-24T14:46:56.317086Z"
+        },
+        {
+            "username": "kate",
+            "full_name": "Kate",
+            "email": "kate@example.org",
+            "email_verified": false,
+            "last_login": "2016-10-21T11:00:46.182648Z"
+        }
+    ],
     "access": "public",
-    "slug": "atlanta-project"
+    "slug": "portland-project"
 }
+
 ```
 
 
-x             x
- x           x
-  x         x
-   x       x
-    x     x
-     x   x
-      x x
-       x
 
-## Members
+
+## Project Members
+
+Project members are users associated with projects in the Cadasta Platform. Using the Cadasta API, you can add, view, update, and delete project members.
+
+> add links to above sections
+
+The endpoint for project member objects start with:
+
+```endpoint
+/api/v1/organizations/example-organization/projects/global-project/users/
+```
+
+An project member JSON object contains the following properties:
+
+Property | Type | Required? | Description
+---|---|:---:|---
+`username` | CharField | x |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` | CharField | | The user's full name. (optional)
+`email` | EmailField | | The user's email address.
+`email_verified` | BooleanField | | Boolean indicating whether the user has verified their email address.
+`last_login` | DateTimeField | |  Date and time of last user login.
+`role` | CharField | x | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
+
+
+##### Example Project Member JSON Object
+
+```json
+{
+    "username": "kate",
+    "full_name": "Kate",
+    "email": "kate@example.org",
+    "email_verified": false,
+    "last_login": "2016-10-21T11:00:46.182648Z",
+    "role": "PM"
+}
+```
 
 ### List project members
 
@@ -457,65 +556,153 @@ x             x
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/
 ```
 
+Use the above method see the members of a project, specifically the Project Managers (PMs) and Data Collectors (DCs). 
+
+Note that Project Administrators are not listed, nor are Public Users. 
+
 **Request Payload**
 
-Property | Type | Required? | Description 
---- | --- | :---: | --- 
-`thing` | CharField | x | words
+No request payload; only a properly formatted endpoint.
 
 **Response**
 
+The response contains a JSON object with the following properties:
+
+Property | Type | Description
+---|---
+`username` | CharField |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` | CharField| The user's full name. (optional)
+`email` | EmailField | The user's email address.
+`email_verified` | BooleanField|Boolean indicating whether the user has verified their email address.
+`last_login` | DateTimeField | Date and time of last user login.
+`role` | CharField | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
 
 ####Example Response
 
+```json
+[
+    {
+        "username": "dpalomino",
+        "full_name": "David Palomino",
+        "email": "dpalomino@example.org",
+        "email_verified": true,
+        "last_login": "2016-10-24T14:46:56.317086Z",
+        "role": "DC"
+    },
+    {
+        "username": "kate",
+        "full_name": "Kate",
+        "email": "kate@example.org",
+        "email_verified": false,
+        "last_login": "2016-10-21T11:00:46.182648Z",
+        "role": "PM"
+    }
+]
+```
 
 
 
 
 
 
-### Add a project member
+
+
+### Add a Project Member
 
 ```endpoint
 POST /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/
 ```
 
+Use the above method to add a new project member to a project. 
+
+Note that project members need to already have a user account and be a member of the organization administering the project. 
+
+> update links with IDs
+
+_Learn more about [creating user accounts](02_users.md) and [adding organization members](03-organizations.md)._
+
+
+
 **Request Payload**
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`thing` | CharField | x | words
+`username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`role` | CharField | x | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
 
 **Response**
+
+The response contains a JSON object with the following properties:
+
+Property | Type | Description
+---|---
+`username` | CharField |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` | CharField| The user's full name. (optional)
+`email` | EmailField | The user's email address.
+`email_verified` | BooleanField|Boolean indicating whether the user has verified their email address.
+`last_login` | DateTimeField | Date and time of last user login.
+`role` | CharField | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
 
 
 ####Example Response
 
+```json
+{
+    "username": "jane",
+    "full_name": "Jane Doe",
+    "email": "jane@example.org",
+    "email_verified": false,
+    "last_login": "2016-10-27T20:37:19.453868Z",
+    "role": "DC"
+}
+```
 
 
 
 
 
 
-
-
-### Get a project member
+### Get a Project Member
 
 ```endpoint
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/{username}/
 ```
 
+Use the above method to see a member of a project. This can be helpful if you need to see or change their role in the project.
+
 **Request Payload**
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`thing` | CharField | x | words
+`username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`role` | CharField | x | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
+
 
 **Response**
 
+The response contains a JSON object with the following properties:
+
+Property | Type | Description
+---|---
+`username` | CharField |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` | CharField| The user's full name. (optional)
+`email` | EmailField | The user's email address.
+`email_verified` | BooleanField|Boolean indicating whether the user has verified their email address.
+`last_login` | DateTimeField | Date and time of last user login.
+`role` | CharField | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
 
 ####Example Response
 
+```json
+{
+    "username": "jane",
+    "full_name": "Jane Doe",
+    "email": "jane@example.org",
+    "email_verified": false,
+    "last_login": "2016-10-27T20:37:19.453868Z",
+    "role": "DC"
+}
+```
 
 
 
@@ -523,8 +710,9 @@ Property | Type | Required? | Description
 
 
 
+### Update a Project Member
 
-### Update a project member
+> getting a platform error; fill in content when error is resolved.
 
 ```endpoint
 PATCH /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/{username}/
@@ -534,37 +722,50 @@ PATCH /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/{u
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`thing` | CharField | x | words
+`username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`role` | CharField | x | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
 
 **Response**
+
+> fill in when I'm not getting an error
 
 
 ####Example Response
 
+> fill in when I'm not getting an error
 
 
 
 
 
-
-
-### Remove a project member
+### Remove a Project Member
 
 ```endpoint
 DELETE /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/{username}/
 ```
 
+The above method removes a member from a project. 
+
 **Request Payload**
 
-Property | Type | Required? | Description 
---- | --- | :---: | --- 
-`thing` | CharField | x | words
+No payload required. However, pressing the **Delete** button from the API UI will delete the member.
+
+![](_img/delete-jane-doe.png)
 
 **Response**
 
+> add link to response code section
+
+Response will be in the form of a response code. An `HTTP 204 No Content` indicates that there is no longer content in the project associated with that username, meaning their information has been removed.
 
 ####Example Response
 
+```response
+HTTP 204 No Content
+Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+Content-Type: application/json
+Vary: Accept
+```
 
 
 

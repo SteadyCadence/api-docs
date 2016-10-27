@@ -94,11 +94,6 @@ Content-Type: application/json
 Vary: Accept
 ```
 
-**Response codes**
-
-Property | Description
----|---
-`200` | The user was logged out successfully.
 
 ***
 
@@ -111,7 +106,7 @@ Property | Description
 
 
 
-### Register a New User
+### Register a New User / Create a New User Account
 
 Register a new user to the platform. _**Note:** This does not log the user in._
 
@@ -214,7 +209,6 @@ Property | Description
 `401` | No authentication token was provided with the `Authorization` header.
 
 ***
-
 
 
 

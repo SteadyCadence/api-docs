@@ -425,8 +425,6 @@ The response body is an array containing an [organization JSON object](#user-con
 
 ### Add an Organization Member
 
-> Getting a platform error; add content when the error is resolved.
-
 ```endpoint
 POST /api/v1/organizations/{organization_slug}/users/
 ```
@@ -442,10 +440,18 @@ Property | Type | Required? | Description
 
 **Response**
 
+> add
+
 ####Example Response
 
-> fill in when platform no longer throwing an error
-
+{
+    "username": "jane",
+    "full_name": "Jane Doe",
+    "email": "jane@example.org",
+    "email_verified": false,
+    "last_login": "2016-10-27T20:37:19.453868Z",
+    "admin": false
+}
 
 
 

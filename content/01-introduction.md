@@ -2,6 +2,8 @@
 
 Welcome to the Cadasta Platform API documentation. 
 
+> add note about reading the intro to the system documentation
+
 Using this platform API, you can: 
 
 * Manage user [accounts](02-users.md) - creating them, deleting them, and amending them as needed, 
@@ -16,7 +18,9 @@ Each of the sections listed above will outline how to use API endpoints to make 
 
 It's worth noting that this API works best with locally-hosted versions of the platform. If you have any questions about using the API, please don't hesitate to [contact us](). 
 
-### Using the Platform API
+### Using the Platform API UI
+
+> add note about breadcrumbs at the top of the API UI
 
 You can view each endpoint directly through the Cadasta Platform API. 
 
