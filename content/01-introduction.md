@@ -2,7 +2,9 @@
 
 Welcome to the Cadasta Platform API documentation. 
 
-> add note about reading the intro to the system documentation
+> add 
+* note about reading the intro to the system documentation
+* Overview about REST (now common practice, see [Mapbox docs](https://www.mapbox.com/api-documentation/))
 
 Using this platform API, you can: 
 
@@ -17,6 +19,10 @@ Each of the sections listed above will outline how to use API endpoints to make 
 > Oliver, added this note. Is it OK?
 
 It's worth noting that this API works best with locally-hosted versions of the platform. If you have any questions about using the API, please don't hesitate to [contact us](). 
+
+## API User Interfaces
+
+> Note that this section may be removed, as both of the interfaces are a bit confusing.
 
 ### Using the Platform API UI
 

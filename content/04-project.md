@@ -2,7 +2,7 @@
 
 The Cadasta API allows you work with data for projects that have been added to the platform. The two main endpoints you'll need to work with project data begin with:
 
-```endpoint
+```
 GET /api/v1/projects/
 ```
 
@@ -320,31 +320,72 @@ The response body is an array containing a [project JSON object](#user-content-e
 ####Example Response
 
 ```
-{
-    "id": "h8ridjt2jazkac4e97srzmh2",
-    "organization": {
-        "id": "gae6pjf9xygxddgyg5dq45iq",
-        "slug": "example-organization",
-        "name": "Example Organization",
+[
+    {
+        "id": "h8ridjt2jazkac4e97srzmh2",
+        "organization": {
+            "id": "gae6pjf9xygxddgyg5dq45iq",
+            "slug": "example-organization",
+            "name": "Example Organization",
+            "description": "",
+            "archived": false,
+            "urls": [
+                "http://example.com"
+            ],
+            "contacts": null
+        },
+        "country": "",
+        "name": "Atlanta Project",
         "description": "",
         "archived": false,
         "urls": [
-            "http://example.com"
+            "http://www.atlanta-example.org"
         ],
-        "contacts": null
+        "contacts": null,
+        "access": "public",
+        "slug": "atlanta-project"
     },
-    "country": "",
-    "name": "Atlanta Project",
-    "description": "Documenting marginalized land use in Atlanta, GA",
-    "archived": false,
-    "urls": [
-        "http://www.atlanta-example.org"
-    ],
-    "contacts": null,
-    "users": [],
-    "access": "public",
-    "slug": "atlanta-project"
-}
+    {
+        "id": "hxk4k8aee5rh5htahhh5uenn",
+        "organization": {
+            "id": "gae6pjf9xygxddgyg5dq45iq",
+            "slug": "example-organization",
+            "name": "Example Organization",
+            "description": "",
+            "archived": false,
+            "urls": [
+                "http://example.com"
+            ],
+            "contacts": null
+        },
+        "country": "US",
+        "name": "Portland Project",
+        "description": "",
+        "archived": false,
+        "urls": [
+            ""
+        ],
+        "contacts": [
+            {
+                "name": "Kate",
+                "tel": null,
+                "email": "kate@example.org"
+            },
+            {
+                "name": "Oliver",
+                "tel": "444-555-6789",
+                "email": "oliver@example.org"
+            },
+            {
+                "name": "David",
+                "tel": "555-555-5555",
+                "email": null
+            }
+        ],
+        "access": "public",
+        "slug": "global-project"
+    }
+]
 ```
 
 
@@ -521,7 +562,7 @@ Project members are users associated with projects in the Cadasta Platform. Usin
 
 The endpoint for project member objects start with:
 
-```endpoint
+```
 /api/v1/organizations/example-organization/projects/global-project/users/
 ```
 
@@ -609,6 +650,8 @@ Property | Type | Description
 
 ### Add a Project Member
 
+> NOTE: should be able to see Public User and Administrator; bug being fixed.
+
 ```endpoint
 POST /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/
 ```
@@ -671,6 +714,8 @@ Use the above method to see a member of a project. This can be helpful if you ne
 
 **Request Payload**
 
+> NOTE: should be able to see Public User and Administrator as options in the `role` field; bug being fixed.
+
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
 `username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
@@ -709,7 +754,7 @@ Property | Type | Description
 
 
 
-### Update a Project Member
+### Update Project Member Permissions
 
 > getting a platform error; fill in content when error is resolved.
 
@@ -717,7 +762,16 @@ Property | Type | Description
 PATCH /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/{username}/
 ```
 
+This method allows you to update the permissions granted to a project member. You can select one of the following permissions:
+
+ID | Title
+---|---
+DC | Data Collector
+PM | Project Manager
+
 **Request Payload**
+
+> NOTE: should be able to see Public User and Administrator in the `role` field; bug being fixed.
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 

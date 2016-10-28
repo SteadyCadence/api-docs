@@ -1,8 +1,8 @@
 ## Organization
 
-The Cadasta API allows you to work with data associated with organizations that have been added to the platform. The endpoint for these objects start with:
+The Cadasta API allows you to work with data associated with organizations that have been added to the platform. The endpoint for these objects starts with:
 
-```endpoint
+```
 GET api/v1/organizations
 ```
 
@@ -323,8 +323,8 @@ The response also contains the field `users`, which provides a list of members o
 
 Users associated with an organization are known as **members**. The endpoint you need to access the members of an organization is:
 
-```endpoint
-GET api/v1/organizations/{organization_slug}/users/
+```
+api/v1/organizations/{organization_slug}/users/
 ```
 
 The `organization_slug` is the the slug associated with the organization, and is usually generated from the organization's name. To find the slug you need, find the organizion using the `GET /api/v1/organizations/` method and then get the value of the `slug` property.
