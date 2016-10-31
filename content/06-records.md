@@ -670,7 +670,7 @@ The response contains a JSON object with the following structure:
 
 * `type`: ChoiceField (set automatically to `Feature`)
 * `geometry`: GeometryField
-    * `type`: ChoiceField (whether the feature is a `point`, `line `or `polygon`)
+    * `type`: ChoiceField (whether the feature is a `Point`, `LineString` or `Polygon`)
     * `coordinates` (the coordinates that make up the geometry)
 * `properties`
     * `id`: CharField (the unique ID for the spatial unit / project location)
@@ -817,8 +817,11 @@ Each project location has a relationship with people of all kinds – sometimes
 
 _<a href="https://docs.cadasta.org/en/04-records.html#location-relationships" target="_blank">Read more about Parties in our Platform Documentation</a>_
 
-
 Using the API, you can view, create, update, and delete parties for your project. 
+
+```
+/api/v1/organizations/{organization_slug}/projects/{project_slug}/parties/
+```
 
 > add in object structure after writing the rest
 
@@ -827,11 +830,7 @@ Using the API, you can view, create, update, and delete parties for your project
 
 
 
-x       x
- x     x
-  x   x
-   x x
-    x
+
 
 
 ### List Parties
@@ -856,24 +855,18 @@ Property | Type | Required? | Description
 `name` | CharField | x | The name of the party.
 `type` | ChoiceField | x | The type of party, indicating whether it's an individual (`IN`), a group (`GR`), or a corporation (`CO`).
 `contacts` | JSONField |  | ??
-`attributes` | JSONFiels |  | ??
+`attributes` | JSONField |  | ??
 
 > Oliver, `contacts` and `attributes` are both empty. Also, I don't see them as options for collecting data on the platform. Are these future features?
 
 ####Example Response
 
+```json
 [
     {
         "id": "ajnyj54mpma7kpexxejfv5he",
         "name": "Example Corp.",
         "type": "CO",
-        "contacts": {},
-        "attributes": {}
-    },
-    {
-        "id": "iksz69s85ku6985zwem9c5ic",
-        "name": "James Abercrombie",
-        "type": "IN",
         "contacts": {},
         "attributes": {}
     },
@@ -893,6 +886,7 @@ Property | Type | Required? | Description
     }
 ]
 
+```
 ***
 
 
@@ -975,8 +969,6 @@ The response contains a JSON object that's structured as follows:
 
 
 
-
-
 ### Get a Party
 
 ```endpoint
@@ -985,18 +977,62 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/parties/{p
 
 Use the above method to get at a specific party. 
 
-Using this method requires using the party ID, which you can find by listing all of the parties. 
+Using this method requires using the party ID, which you can find by [listing all of the parties](#user-content-list-parties). Find the party that you're looking for, and then identify the `id` field. It will look something like this:
+
+```
+"id": "z8f83bt6fskq6wcvnp223t3q",
+```
+
+Add the ID to the end of your endpoint, without quotes or commas, so that it reads something like this:
+
+```endpoint
+GET /api/v1/organizations/example-organization/projects/global-project/parties/z8f83bt6fskq6wcvnp223t3q/
+```
+
+**Request Payload**
+
+There's no payload; only a propertly formatted URL.
+
+**Response**
+
+The response contains a JSON object that's structured as follows:
+
+* `id`: CharField (unique ID for the party)
+* `name`: CharField (name of the party)
+* `type`: ChoiceField (whether the party is an individual (`IN`), a group (`GR`), or a corporation (`CO`)
+* `contacts`: JSONField
+* `attributes`: JSONField
+* `project`: NestedProjectSerializer
+    * `id`: CharField (unique ID for the project)
+    * `organization`: OrganizationSerializer
+        * `id`: CharField (unique ID for the organization)
+        * `slug`: SlugField (the organization slug)
+        * `name`: CharField (the name of the organization)
+    * `name`: CharField (the name of the project)
+    * `slug`: SlugField (the project slug)
 
 
+####Example Response
 
-
-
-
-
-
-
-
-
+```json
+{
+    "id": "z8f83bt6fskq6wcvnp223t3q",
+    "name": "Jane Doe",
+    "type": "IN",
+    "contacts": {},
+    "attributes": {},
+    "project": {
+        "id": "hxk4k8aee5rh5htahhh5uenn",
+        "organization": {
+            "id": "gae6pjf9xygxddgyg5dq45iq",
+            "slug": "example-organization",
+            "name": "Example Organization"
+        },
+        "name": "Portland Project",
+        "slug": "global-project"
+    }
+}
+```
 
 ***
 
@@ -1013,13 +1049,80 @@ Using this method requires using the party ID, which you can find by listing all
 
 
 
-
-### Update a party
+### Update a Party
 
 ```endpoint
 PATCH /api/v1/organizations/{organization_slug}/projects/{project_slug}/parties/{party_id}/
 ```
 
+Use the above method to update the `name`, `type`, `contacts`, or `attributes` of a party.
+
+Using this method requires using the party ID, which you can find by [listing all of the parties](#user-content-list-parties). Find the party that you're looking for, and then identify the `id` field. It will look something like this:
+
+```
+"id": "z8f83bt6fskq6wcvnp223t3q",
+```
+
+Add the ID to the end of your endpoint, without quotes or commas, so that it reads something like this:
+
+```endpoint
+GET /api/v1/organizations/example-organization/projects/global-project/parties/z8f83bt6fskq6wcvnp223t3q/
+```
+
+**Request Payload**
+
+You can modify any one of these fields:
+
+Property | Type  | Description 
+--- | --- | --- 
+`name` | CharField | The name of the party.
+`type` | ChoiceField | The type of party, indicating whether it's an individual (`IN`), a group (`GR`), or a corporation (`CO`).
+`contacts` | JSONField | ??
+`attributes` | JSONField | ??
+
+
+**Response**
+
+The response contains a JSON object that's structured as follows:
+
+* `id`: CharField (unique ID for the party)
+* `name`: CharField (name of the party)
+* `type`: ChoiceField (whether the party is an individual (`IN`), a group (`GR`), or a corporation (`CO`)
+* `contacts`: JSONField
+* `attributes`: JSONField
+* `project`: NestedProjectSerializer
+    * `id`: CharField (unique ID for the project)
+    * `organization`: OrganizationSerializer
+        * `id`: CharField (unique ID for the organization)
+        * `slug`: SlugField (the organization slug)
+        * `name`: CharField (the name of the organization)
+    * `name`: CharField (the name of the project)
+    * `slug`: SlugField (the project slug)
+
+
+####Example Response
+
+```json
+{
+    "id": "z8f83bt6fskq6wcvnp223t3q",
+    "name": "Jane Doe",
+    "type": "IN",
+    "contacts": {},
+    "attributes": {},
+    "project": {
+        "id": "hxk4k8aee5rh5htahhh5uenn",
+        "organization": {
+            "id": "gae6pjf9xygxddgyg5dq45iq",
+            "slug": "example-organization",
+            "name": "Example Organization"
+        },
+        "name": "Portland Project",
+        "slug": "global-project"
+    }
+}
+
+```
+
 ***
 
 
@@ -1035,14 +1138,60 @@ PATCH /api/v1/organizations/{organization_slug}/projects/{project_slug}/parties/
 
 
 
-### Delete a party
+
+### Delete a Party
 
 ```endpoint
 DELETE /api/v1/organizations/{organization_slug}/projects/{project_slug}/parties/{party_id}/
 ```
 
-***
+Use the above method and endpoint to delete a party. 
 
+Using this method requires using the party ID, which you can find by [listing all of the parties](#user-content-list-parties). Find the party that you're looking for, and then identify the `id` field. It will look something like this:
+
+```
+"id": "z8f83bt6fskq6wcvnp223t3q",
+```
+
+Add the ID to the end of your endpoint, without quotes or commas, so that it reads something like this:
+
+```endpoint
+GET /api/v1/organizations/example-organization/projects/global-project/parties/z8f83bt6fskq6wcvnp223t3q/
+```
+
+
+**Request Payload**
+
+No payload required. Pressing the **Delete** button from the API UI will delete the party.
+
+![](_img/delete-party.png)
+
+
+**Response**
+
+> Oliver, not sure if this is what's supposed to happen, but this is what happened.
+
+If the deletion has properly occurred, then you should get a message like the following:
+
+```
+NOT FOUND
+
+The requested URL /api/v1/organizations/example-organization/projects/global-project/parties/iksz69s85ku6985zwem9c5ic/ was not found on this server.
+```
+
+When you [list all of the parties in the project](#user-content-list-parties), the one you've just deleted should be gone.
+
+Otherwise, you'll get an error message or one of these [common response codes](01-introduction.md#user-content-common-response-codes).
+
+####Example Response
+
+```
+NOT FOUND
+
+The requested URL /api/v1/organizations/example-organization/projects/global-project/spatial/w4rwh32mqctn9g223wnry2gx/ was not found on this server.
+```
+
+***
 
 
 
@@ -1058,6 +1207,58 @@ DELETE /api/v1/organizations/{organization_slug}/projects/{project_slug}/parties
 
 ## Relationships
 
+Each location has a relationship with one or more parties, and each of those parties has a specific type of relationship with the land. For example, a municipal body may own a park, and a local tribe may have right-of-way access to it. Ownership and right-of-way-access are both types of relationships (which can also be referred to as tenure relationships).
+
+_<a href="https://docs.cadasta.org/en/04-records.html#location-relationships" target="_blank">Read more about Relationships in our Platform Documentation</a>_
+
+The Cadasta API allows you to both list relationships of a party and list relationships to a spacial unit / project location. You can get, create, update, and delete tenure relationships as well.
+
+Endpoints in this section start with:
+
+```
+/api/v1/organizations/{organization_slug}/projects/{project_slug}/parties/{party_id}/relationships/
+```
+
+or
+
+```
+/api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/{spatial_unit_id}/relationships/
+```
+
+or
+
+```
+/api/v1/organizations/{organization_slug}/projects/{project_slug}/relationships/tenure/{relationship_id}/
+```
+
+> add object overview once I'm done writing
+
+###Tenure Categories
+
+Tenure relationships fall into one of the following categories. The abbreviations on the left are what you'd use when modifying or reading a tenure relationship using the API:
+
+Abbreviation | What it Represents
+---|---
+AL | All Types
+CR | Carbon Rights
+CO | Concessionary Rights
+CU | Customary Rights
+EA | Easement
+ES | Equitable Servitude
+FH | Freehold
+GR | Grazing Rights
+HR | Hunting/Fishing/Harvest Rights
+IN | Indigenous Land Rights
+JT | Joint Tenancy
+LH | Leasehold
+LL | Longterm leasehold
+MR | Mineral Rights
+OC | Occupancy (No Documented Rights)
+TN | Tenancy (Documented Sub-lease)
+TC | Tenancy in Common
+UC | Undivided Co-ownership
+WR | Water Rights
+
 
 
 ***
@@ -1069,12 +1270,55 @@ DELETE /api/v1/organizations/{organization_slug}/projects/{project_slug}/parties
 
 
 
-### List relationships of a party
+
+
+
+
+
+
+
+
+
+
+
+### List Relationships of a Party to Spatial Units / Project Locations
+
+> Currently this method returns an empty array; fill in when it's working.
 
 ```endpoint
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/parties/{party_id}/relationships/
 ```
 
+One party may have relationships with many locations. But which ones? Use the above method to find out.
+
+Using this method requires using the party ID, which you can find by [listing all of the parties](#user-content-list-parties). Find the party that you're looking for, and then identify the `id` field. It will look something like this:
+
+```
+"id": "z8f83bt6fskq6wcvnp223t3q",
+```
+
+Add the ID to the end of your endpoint, without quotes or commas, so that it reads something like this:
+
+```endpoint
+GET /api/v1/organizations/example-organization/projects/portland-project/parties/ajnyj54mpma7kpexxejfv5he/relationships
+```
+
+**Request Payload**
+
+> fill in
+
+Property | Type | Required? | Description 
+--- | --- | :---: | --- 
+`thing` | CharField | x | words
+
+**Response**
+
+> fill in
+
+####Example Response
+
+> fill in
+
 ***
 
 
@@ -1087,16 +1331,184 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/parties/{p
 
 
 
-
-
-
-
-### List relationships of a spatial unit
+### List Relationships to a Spatial Unit
 
 ```endpoint
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/{spatial_unit_id}/relationships/
 ```
 
+One spatial unit may have relationships with many parties. But which ones? Use the above method to find out.
+
+This method requires using the spatial unit / project location ID, which you can find by [listing all of the spatial units / project locations in a project](#user-content-list-spatial-units--project-locations). Find the spatial unit that you're looking for, and then identify the `id` field in the `properties` object. It will look something like this:
+
+```
+"id": "xtc4de68iawwzgtawp8avgv8",
+```
+
+Add the ID to the end of your endpoint, without quotes or commas, so that it reads something like this:
+
+```endpoint
+GET /api/v1/organizations/example-organization/projects/global-project/spatial/xtc4de68iawwzgtawp8avgv8/relationships/
+```
+
+**Request Payload**
+
+No payload is required; only a properly formatted endpoint.
+
+**Response**
+
+The response is a JSON Object with an array of spatial relationship objects, which have the following structure: 
+
+* `rel_class` (automatically defined as `tenure`)
+* `id`: CharField (the ID of the relationship)
+* `party` (the object containing the party that the spatial unit is related to)
+    * `id`: CharField(the ID of the party)
+    * `name`: CharField (the name of the party)
+    * `type`: ChoiceField (the type of party; an individual (`IN`), a group (`GR`), or a corporation (`CO`).)
+* `spatial_unit` (the spatial unit / project location object)
+    * `type`: ChoiceField (automatically set to `Feature`)
+    * `geometry`: GeometryField
+        * `type`: ChoiceField (whether the feature is a `Point`, `LineString` or `Polygon`)
+        * `coordinates` (the coordinates that make up the geometry)
+    * `properties`
+        * `id`: CharField (unique ID of the spatial unit / project location)
+        * `type`: ChoiceField (the kind of property it is; e.g. `PA` = Parcel)
+* `tenure_type`: ChoiceField (the kind of relationship; see the Tenure Relationship table for more information)
+* `attributes`: JSONField (an array of attributes)
+
+> add link to Tenure Relationship table when live
+
+
+####Example Response
+
+```json
+[
+    {
+        "rel_class": "tenure",
+        "id": "mmikx24rcjd2stgyqz495fqa",
+        "party": {
+            "id": "wvvi6sbgdf77nfwbe26fgz3z",
+            "name": "Portland Islands Neighborhood Association",
+            "type": "GR"
+        },
+        "spatial_unit": {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -122.7457809448242,
+                            45.64344809984393
+                        ],
+                        [
+                            -122.7308464050293,
+                            45.640807770704704
+                        ],
+                        [
+                            -122.74543762207031,
+                            45.64068775278732
+                        ],
+                        [
+                            -122.7457809448242,
+                            45.64344809984393
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "xtc4de68iawwzgtawp8avgv8",
+                "type": "PA"
+            }
+        },
+        "tenure_type": "TN",
+        "attributes": {}
+    },
+    {
+        "rel_class": "tenure",
+        "id": "f2eq96ez7rnkucwz9sr4my9y",
+        "party": {
+            "id": "ajnyj54mpma7kpexxejfv5he",
+            "name": "Example Corp.",
+            "type": "CO"
+        },
+        "spatial_unit": {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -122.7457809448242,
+                            45.64344809984393
+                        ],
+                        [
+                            -122.7308464050293,
+                            45.640807770704704
+                        ],
+                        [
+                            -122.74543762207031,
+                            45.64068775278732
+                        ],
+                        [
+                            -122.7457809448242,
+                            45.64344809984393
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "xtc4de68iawwzgtawp8avgv8",
+                "type": "PA"
+            }
+        },
+        "tenure_type": "LL",
+        "attributes": {}
+    },
+    {
+        "rel_class": "tenure",
+        "id": "5ueeskcsfgf4iuwcgmji3dik",
+        "party": {
+            "id": "cnpsvntqugkncywqevhznnsz",
+            "name": "Joan Arches",
+            "type": "IN"
+        },
+        "spatial_unit": {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -122.7457809448242,
+                            45.64344809984393
+                        ],
+                        [
+                            -122.7308464050293,
+                            45.640807770704704
+                        ],
+                        [
+                            -122.74543762207031,
+                            45.64068775278732
+                        ],
+                        [
+                            -122.7457809448242,
+                            45.64344809984393
+                        ]
+                    ]
+                ]
+            },
+            "properties": {
+                "id": "xtc4de68iawwzgtawp8avgv8",
+                "type": "PA"
+            }
+        },
+        "tenure_type": "WR",
+        "attributes": {}
+    }
+]
+```
+
 ***
 
 
@@ -1112,16 +1524,30 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/{s
 
 
 
+### Create a New Tenure Relationship
 
-
-
-
-### Create a new tenure relationship
+> Not sure how to format this to get it to work. Also, `attributes` may not be left blank, but I haven't seen an example of what goes into that field...
 
 ```endpoint
 POST /api/v1/organizations/{organization_slug}/projects/{project_slug}/relationships/tenure/
 ```
 
+**Request Payload**
+
+> fill in 
+
+Property | Type | Required? | Description 
+--- | --- | :---: | --- 
+`thing` | CharField | x | words
+
+**Response**
+
+> fill in
+
+####Example Response
+
+> fill in
+
 ***
 
 
@@ -1137,12 +1563,103 @@ POST /api/v1/organizations/{organization_slug}/projects/{project_slug}/relations
 
 
 
-
-### Get a tenure relationship
+### Get a Tenure Relationship
 
 ```endpoint
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/relationships/tenure/{relationship_id}/
 ```
+
+Use the above method and endpoint to get a specific tenure relationship. 
+
+Doing this requires finding the relationship ID, which can be found from [listing all of the relationships to a spatial unit](user-content-list-relationships-of-a-spatial-unit). 
+
+The ID can be found towards the top of the relationship object, just below the `rel_class` field. It looks something like this:
+
+```
+"id": "f2eq96ez7rnkucwz9sr4my9y",
+```
+
+Add this ID – without any quotation marks, commas, spaces or other characters – to the end of the endpoint, so that it reads something like this:
+
+```endpoint
+GET /api/v1/organizations/example-organization/projects/global-project/relationships/tenure/f2eq96ez7rnkucwz9sr4my9y/
+
+```
+
+**Request Payload**
+
+There's no request payload; only a properly formatted endpoint. 
+
+**Response**
+
+The response is a JSON Object with an array of spatial relationship objects, which have the following structure: 
+
+* `rel_class` (automatically defined as `tenure`)
+* `id`: CharField (the ID of the relationship)
+* `party` (the object containing the party that the spatial unit is related to)
+    * `id`: CharField(the ID of the party)
+    * `name`: CharField (the name of the party)
+    * `type`: ChoiceField (the type of party; an individual (`IN`), a group (`GR`), or a corporation (`CO`).)
+* `spatial_unit` (the spatial unit / project location object)
+    * `type`: ChoiceField (automatically set to `Feature`)
+    * `geometry`: GeometryField
+        * `type`: ChoiceField (whether the feature is a `Point`, `LineString` or `Polygon`)
+        * `coordinates` (the coordinates that make up the geometry)
+    * `properties`
+        * `id`: CharField (unique ID of the spatial unit / project location)
+        * `type`: ChoiceField (the kind of property it is; e.g. `PA` = Parcel)
+* `tenure_type`: ChoiceField (the kind of relationship; see the Tenure Relationship table for more information)
+* `attributes`: JSONField (an array of attributes)
+
+
+####Example Response
+
+```json
+{
+    "rel_class": "tenure",
+    "id": "f2eq96ez7rnkucwz9sr4my9y",
+    "party": {
+        "id": "ajnyj54mpma7kpexxejfv5he",
+        "name": "Example Corp.",
+        "type": "CO"
+    },
+    "spatial_unit": {
+        "type": "Feature",
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -122.7457809448242,
+                        45.64344809984393
+                    ],
+                    [
+                        -122.7308464050293,
+                        45.640807770704704
+                    ],
+                    [
+                        -122.74543762207031,
+                        45.64068775278732
+                    ],
+                    [
+                        -122.7457809448242,
+                        45.64344809984393
+                    ]
+                ]
+            ]
+        },
+        "properties": {
+            "id": "xtc4de68iawwzgtawp8avgv8",
+            "type": "PA"
+        }
+    },
+    "tenure_type": "LL",
+    "attributes": {}
+}
+
+```
+
+
 ***
 
 
@@ -1155,12 +1672,71 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/relationsh
 
 
 
-### Update a tenure relationship
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Update a Tenure Relationship
+
+> Not able to perform this method; getting errors that have to do with `spatial_unit` and `party`
 
 ```endpoint
 PATCH /api/v1/organizations/{organization_slug}/projects/{project_slug}/relationships/tenure/{relationship_id}/
 ```
 
+Use the above method and endpoint to update a tenure relationship.
+
+Doing this requires finding the relationship ID, which can be found from [listing all of the relationships to a spatial unit](user-content-list-relationships-of-a-spatial-unit). 
+
+The ID can be found towards the top of the relationship object, just below the `rel_class` field. It looks something like this:
+
+```
+"id": "f2eq96ez7rnkucwz9sr4my9y",
+```
+
+Add this ID – without any quotation marks, commas, spaces or other characters – to the end of the endpoint, so that it reads something like this:
+
+```endpoint
+GET /api/v1/organizations/example-organization/projects/global-project/relationships/tenure/f2eq96ez7rnkucwz9sr4my9y/
+```
+
+
+**Request Payload**
+
+> Fill in 
+
+Property | Type | Required? | Description 
+--- | --- | :---: | --- 
+`thing` | CharField | x | words
+
+**Response**
+
+> Fill in 
+
+####Example Response
+
+> Fill in 
+
+
+
+
+
 ***
 
 
@@ -1174,10 +1750,42 @@ PATCH /api/v1/organizations/{organization_slug}/projects/{project_slug}/relation
 
 
 
-### Delete a tenure relationship
+### Delete a Tenure Relationship
 
 ```endpoint
 DELETE /api/v1/organizations/{organization_slug}/projects/{project_slug}/relationships/tenure/{relationship_id}/
+```
+
+Use the above method to delete a tenure relationship from a project.
+
+**Request Payload**
+
+No payload required. Pressing the **Delete** button from the API UI will delete the relationship between the party and the spatial unit.
+
+![](_img/delete-tenure-relationship.png)
+
+**Response**
+
+> Oliver, not sure if this is what's supposed to happen, but this is what happened.
+
+If the deletion has properly occurred, then you should get a message like the following:
+
+```
+NOT FOUND
+
+The requested URL /api/v1/organizations/example-organization/projects/global-project/relationships/tenure/f2eq96ez7rnkucwz9sr4my9y/ was not found on this server.
+```
+
+Now, when you go to look at the relationships by either spatial unit or party, the two will not longer be linked.
+
+Otherwise, you'll get an error message or one of these [common response codes](01-introduction.md#user-content-common-response-codes).
+
+####Example Response
+
+```
+NOT FOUND
+
+The requested URL /api/v1/organizations/example-organization/projects/global-project/relationships/tenure/f2eq96ez7rnkucwz9sr4my9y/ was not found on this server.
 ```
 
 ***
