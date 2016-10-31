@@ -801,7 +801,7 @@ The above method removes a member from a project.
 
 **Request Payload**
 
-No payload required. However, pressing the **Delete** button from the API UI will delete the member.
+No payload required. Pressing the **Delete** button from the API UI will delete the member.
 
 ![](_img/delete-jane-doe.png)
 

@@ -90,6 +90,8 @@ Take a moment to explore any endpoint using DRF docs:
 
 https://platform-staging-api.cadasta.org/api/v1/docs/
 
+## Using the Cadasta API
+
 ### Authentification 
 
 One of the first things you need to do to get started is get an authentification token, which is required by many endpoints in the Cadasta API. To authenticate a user, sign API requests with an authorization token, which you can obtain by loging the user in.
@@ -119,3 +121,7 @@ Property | Description
 `401` | No valid authentication token was provided with the request. 
 `403` | Permission denied, the user has no permission to access this resource or perform this action. 
 `404` | Not found. (The object with the given ID was not in the database.)
+
+### Kinds of Fields
+
+> Add, listing out CharField, GeometryField, etc.
