@@ -32,7 +32,7 @@ Property | Type | Required? | Description
 
 ***
 
-### Log a User In 
+### Log a User In / Get Authorization Key
 
 ```endpoint
 POST /api/v1/account/login/
