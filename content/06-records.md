@@ -134,6 +134,7 @@ Property | Type | Description
 
 ####Example Response
 
+```json
 {
     "type": "FeatureCollection",
     "features": [
@@ -285,7 +286,7 @@ Property | Type | Description
         }
     ]
 }
-
+```
 
 
 
