@@ -1,9 +1,5 @@
 ## Cadasta API documentation
 
-> Notes for Oliver
-* Added some more overview information; looked to [Mapbox docs](https://www.mapbox.com/api-documentation/) for guidance.
-* Feel free to leave me comments inline anywhere in this documentation. Please add `> Beth` at the beginning of them if you do. (I've left you lots of notes that start with `> Oliver`, you lucky dog you ;) 
-
 
 Welcome to the Cadasta Platform API documentation. 
 
@@ -15,6 +11,8 @@ Using this platform API, you can:
 * Upload new [questionnaires](05-questionnaires.md), and
 * Add, modify, and delete [project resources](07-resources.md) (including [spatial data](06-records.md)). 
 
+> Beth We should add a bullet point + links to everything records (spatial units, parties, relationships)
+
 Each of the sections listed above will outline how to use API endpoints to make these things happen.
 
 ## Topics
@@ -25,7 +23,7 @@ This documentation is structured primarily by related functionality and topic, a
 
 Each endpoint is described using several parts:
 
-* **The HTTP method.** The primary methods you'll see here are GET, POST, PATCH, and DELETE.
+* **The HTTP method.** The primary methods you'll see here are `GET`, `POST`, `PATCH`, and `DELETE`.
 
 * **The path**, such as `/api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/`.
 
@@ -33,12 +31,12 @@ Each endpoint is described using several parts:
 
 In addition, each method + endpoint combination is described by a request payload, properties, and an example output. 
 
-All URLs referenced here begin with the base path `https://platform-staging-api.cadasta.org`, which you put before the endpoint. If you're using a browser, the completed path will take you to the [API UI](#user-content-using-the-platform-api-ui), described below. 
+All URLs referenced here begin with the base path `https://platform-staging-api.cadasta.org`, which you put before the endpoint. If you're using a browser, the completed path will take you to the [API UI](#using-the-platform-api-ui), described below. 
+
+> Beth Not sure about using the staging site as an example. The API docs should be generic and not pointing to a specific instance. Maybe we can rephrase this to "You have to prepend to the host name to the API examples." We could point to the demo site for users who want to explore the API. 
 
 
 ### Using the API
-
-> Oliver, added this section. Please check for accuracy!
 
 This API works best in one of two scenarios: 
 
@@ -51,6 +49,8 @@ If you have any questions about using the API, please don't hesitate to [contact
 ### Using the Platform API UI
 
 > Note that this section may be removed, as both of the interfaces are a bit confusing. However, at this time, the documents are written to work with these interfaces.
+
+> Beth I agree, we should remove this and the next section. Maybe we can add a note in the introduction, where we point to this UI (we shouldn't point anyone to the DRF docs though) explaining that this is an easy way to explore the API, but this is an unsupported site and there might be some issues.
 
 You can view each endpoint directly through the Cadasta Platform API. This API begins with the following base URL:
 
@@ -130,23 +130,23 @@ https://platform-staging-api.cadasta.org/api/v1/docs/
 
 ### Authentication / Authorization Tokens
 
-One of the first things you need to do to get started is get an authorization token, which is required by most endpoints in the Cadasta API. You can obtain an authorization token which you can obtain by logging the user into the API.
+One of the first things you need to do to get started is get an authorization token, which is required by most endpoints in the Cadasta API. You can obtain an authorization token by logging the user into the API.
 
-To do this, see the documentation for [`/api/v1/account/login/`](02-users.md#user-content-log-a-user-in) to see how to get an authentication token. 
+To do this, see the documentation for [`/api/v1/account/login/`](#log-a-user-in) to see how to get an authentication token. 
 
 Note that logging someone into the API does not log them into the platform.
 
 ### Permissions
 
-> Oliver, added: please check for accuracy
-
 Your authorization code will allow you to see content that you have access to: primarily your account, and organizations and projects that you create or administer. 
 
-If you need access to information in someone else's account, contact them to to get their username and password. From there, you can [log them into the API](02-users.md#user-content-log-a-user-in) to get their authorization token.
+If you need access to information in someone else's account, contact them to get their username and password. From there, you can [log them into the API](02-users.md#user-content-log-a-user-in) to get their authorization token.
+
+> Beth Users should never hand-over usernames an password to someone else. Getting access to another organization or project via the API works the same as it does on the platform: An organization admin grants specific rights ta a user. 
 
 ### Requests
 
-All requests are encoded in `application/json`, unless they involve some kind of file upload. Any exceptions requests should be indicated in the documentation.
+All requests are encoded in `application/json`, unless they involve some kind of file upload. Any exceptions are indicated in the documentation.
 
 ### Common Response Codes
 
@@ -164,7 +164,11 @@ Property | Description
 
 The type of fields being used are based in Django. If you're not sure how to use one of the field types documented, visit <a href="https://docs.djangoproject.com/en/1.10/ref/models/fields/#field-types" target="_blank">Django's documentation on Field Types</a>.
 
+> Beth, this part is not necessary. We should document all information here in the API docs. Indicating the type of an attribute and if its required should be sufficient. Once we have the first draft of the docs ready, I'll go through and add some more special cases, like you can't use `new` or `add` as an org name. But that's nothing we should worry about at the moment. 
+
 ### Slugs
+
+> Beth, Maybe we should rephase this a little, as this also applies to IDs for other objects. Maybe call this section "Accessing objects via URLs" or so.
 
 To get at, create, or modify projects, organizations, organization members and more, you'll need to access a couple different kinds of slugs: 
 
@@ -186,5 +190,5 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/
 If the `organization_slug` is `sample-organization` and the `project_slug` is `sample-project`, then the endpoint should look like this:
 
 ```
-GET /api/v1/organizations/`sample-organization`/projects/project_slug/
+GET /api/v1/organizations/sample-organization/projects/sample-project/
 ```

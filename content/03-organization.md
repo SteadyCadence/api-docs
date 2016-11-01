@@ -12,14 +12,16 @@ An organization JSON object contains the following properties.
 
 > NOTE: per DRF docs, `users` is also a property. However, when I test it on the API I don't see it.
 
+> Beth, users is a property of organization, but it is only present when you look at a single organzization. User will not be listed in the list of organizations.
+
 | Property | Type | Required? | Description |
 | --- | --- | :---: | --- |
-| `id` | CharField |  | The ID of the organization |
-| `slug` | SlugField |  | The short label of the organization; usually used in URLs. |
+| `id` | CharField | x | The ID of the organization |
+| `slug` | SlugField | x | The short label of the organization; usually used in URLs. |
 | `name` | CharField | x | The name of the organization. |
 | `description` | CharField |  | \(optional\) A long-form description of the organization. |
-| `archived` | BooleanField |  | Indicates whether the organization has been archived. |
-| `urls` | ListField |  | A list of URLs to websites of this organization. |
+| `archived` | BooleanField | x | Indicates whether the organization has been archived. |
+| `urls` | ListField | | A list of URLs to websites of this organization. |
 | `contacts` | JSONField |  | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` \(optional\) and `tel` \(optional\). |
 
 ##### Example Organization JSON Object
@@ -104,8 +106,6 @@ The response body is an array containing an [organization JSON object](#user-con
 
 ### Create an Organization
 
-> Oliver: it's worth noting that when using the API UI to do this, if you don't format things correctly, the response you get is an HTTP 200 and a list of organizations that does not contain the organization you just created. Not sure if that's bug or normal; noting it here.
-
 ```endpoint
 POST /api/v1/organizations/
 ```
@@ -124,16 +124,15 @@ The request payload is a JSON object containing the following properties.
 | `urls` | ListField |  | A list of URLs to websites of this organization. |
 | `contacts` | JSONField |  | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` \(optional\) and `tel` \(optional\); either `email` or `tel` must be provided. |
 
-Formatting your URLS and contacts can be tricky. The using the API UI, you'll want to use the Raw HTML window. 
+Formatting your URLs and contacts can be tricky. The using the API UI, you'll want to use the Raw HTML window. 
 
 Here's how you need to format your URLs:
 
 ```
-"urls":
-   [
-        "http://www.example.org",
-        "http://bethsorganization.org"
-    ],
+"urls": [
+  "http://www.example.org",
+  "http://bethsorganization.org"
+],
 ```
 
 Here's how you need to format your contacts:
@@ -146,9 +145,9 @@ Here's how you need to format your contacts:
     "tel": ""
   }, 
   {
-  "name": "Archimedes",
-  "email": "archimedes@example.org",
-  "tel": "555-555-5555"
+    "name": "Archimedes",
+    "email": "archimedes@example.org",
+    "tel": "555-555-5555"
   }
 ]
 ```
@@ -385,14 +384,15 @@ The response body is an array containing an [organization JSON object](#user-con
 #### Example Response
 
 ```json
+[
 {
- "id": "wS3Mp76Spqu9A0Crg9bMxB2o",
- "slug": "david-org",
- "name": "David Org",
- "description": "David Org (testing)",
- "archived": false,
- "urls": [],
- "contacts": [
+  "id": "wS3Mp76Spqu9A0Crg9bMxB2o",
+  "slug": "david-org",
+  "name": "David Org",
+  "description": "David Org (testing)",
+  "archived": false,
+  "urls": [],
+  "contacts": [
      {
          "tel": null,
          "name": "David",
@@ -420,7 +420,7 @@ The response body is an array containing an [organization JSON object](#user-con
          "last_login": "2016-04-17T00:01:29.446812Z"
      }
    ]
-}
+}]
 ```
 ---
 
@@ -445,7 +445,7 @@ Property | Type | Required? | Description
 
 The response is an [organization member JSON object](user-content-example-member-json-object). 
 
-####Example Response
+#### Example Response
 
 ```json
 {
@@ -475,7 +475,7 @@ Additionally, it requires using an orgazation member's username. You can find th
 
 For example, to get information for username `jane`, who is a member of `example-organization`, you'd write:
 
-```endpoint
+```
 GET /api/v1/organizations/exmaple-organization/users/jane/
 ``` 
 
@@ -489,7 +489,7 @@ No payload required, simply a properly formatted endpoint.
 The response includes the properties of an [organization member JSON object](user-content-example-member-json-object). 
 
 
-####Example Response
+#### Example Response
 
 ```json
 {
@@ -519,8 +519,8 @@ Additionally, it requires using an orgazation member's username. You can find th
 
 For example, to get information for username `jane`, who is a member of `example-organization`, you'd write:
 
-```endpoint
-GET /api/v1/organizations/example-organization/users/jane/
+```
+PATCH /api/v1/organizations/example-organization/users/jane/
 ``` 
 
 **Request Payload**
@@ -536,7 +536,7 @@ Property | Type | Required? | Description
 
 The response is an [organization member JSON object](user-content-example-member-json-object). 
 
-####Example Response
+#### Example Response
 
 ```json
 {
