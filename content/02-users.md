@@ -2,6 +2,8 @@
 
 Every person who uses the Cadasta Platform is required to <a href="https://docs.cadasta.org/en/01-gettingstarted.html#createnewaccount" target="_blank">set up a user account</a>. 
 
+> Beth, this is not excactly true. You can still access oublic information without an user account, but the things you can see or do are limited. For instance, you can't create new orgs or projects or records. 
+
 You can use the Cadasta API to manage these accounts, provided that you have their username and password. This section outlines how to do that, focusing on endpoints that start with: 
 
 ```
@@ -18,9 +20,9 @@ Property | Type | Required? | Description
 `email_verified` | BooleanField | | Indicates whether the user has verified their email address.
 `last_login` | DateTimeField | | Date and time of last user login.
 
-####Example Account JSON Object
+#### Example Account JSON Object
 
-```
+```json
 {
     "username": "janedoe",
     "full_name": "Jane Doe",
@@ -89,17 +91,9 @@ Note that logging a user out of the API does not log them out of the platform.
 
 No payload required.
 
-#### Example response
+**Response**
 
-Once a user is logged out, you'll see an HTTP 200 message like this one:
-
-```
-HTTP 200 OK
-Allow: POST, OPTIONS
-Content-Type: application/json
-Vary: Accept
-```
-
+When the logout was successful, you receive an empty response with status code `200`.
 
 ***
 
@@ -130,7 +124,6 @@ Property | Type | Required? | Description
 `full_name` | CharField |  | The user's full name.
 `email` | EmailField| x |The user's email address.
 `password` | CharField | x |The user's password.
-`email_verified` | BooleanField|  |Whether or not the email has been verified.
 
 **Response**
 
@@ -174,8 +167,6 @@ Property | Type | Required? | Description
 `username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
 `full_name` | CharField | | (optional) The user's full name.
 `email` | EmailField | x | The user's email address.
-`email_verified` | BooleanField | | Indicates whether the user has verified their email address.
-`last_login` | DateTimeField | | Date and time of last user login.
 
 **Response**
 
@@ -224,8 +215,6 @@ Property | Type | Required? | Description
 `username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
 `full_name` | CharField | | The user's full name.
 `email` | EmailField | x | The user's email address.
-`email_verified` | BooleanField | | Indicates whether the user has verified their email address.
-`last_login` | DateTimeField | | Date and time of the user's last login.
 
 **Response**
 
@@ -299,9 +288,9 @@ Property | Description
 
 
 
-## Manage Users in Relation to an Organization
+## Manage Platform Users
 
-> Oliver, please check this description to make sure it's accurate. I still have a hard time distinguishing between users and members. 
+> Beth, these endpoints are for superusers to list and manage all user that have an account with the platform. It's not really about finding out about their organizations, it's more like an entry point to all users in the platform/ 
 
 This section refers to endpoints that begin with: 
 
@@ -322,16 +311,20 @@ The `users` JSON object is structured like this:
 * `last_login`: DateTimeField
 * `is_active`: BooleanField
 
+> Beth, these listings are not necessary the tables below should be sufficient. 
+
 Here is a table of the first tier properties:
 
 Property | Type | Required? | Description
 ---|---|:---:|---
-`username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` |  CharField | | The user's full name.
-`email` |  EmailField  | x | The user's email associated with their account.
-`organizations` |  ListSerializer | | An array of properties in the `organization` object. See table below for more information.
-`last_login` | DateTimeField |  | Date and time of last user login.
-`is_active`| BooleanField |  | Whether or not the user is active.
+`username` | `String` | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` |  `String` | | The user's full name.
+`email` |  `String` | x | The user's email associated with their account. Must be valid email address.
+`organizations` |  `Array` | | An array of organizations the user is a member of. See table below for more information.
+`last_login` | `String` |  | Date and time of last user login. 
+`is_active`| `Boolean |  | Whether or not the user is active.
+
+> Beth, I changed the types here. Could you amend the other tables as well? There are ususally only a hand-ful of types we support. String for anything that's a text (including emails or dates), numbers, Boolean (True or False), and Array for everything that is a list.
 
 
 Here is a table of the properties of the `organizations` object (which is contained in the `users` object):
@@ -380,9 +373,11 @@ The above method and endpoint return all of the users in the platform.
 
 No request payload, however an authorization key connected to an account with appropriate permissions is required.
 
+> Beth, if there is no request payload, e.g. for all `GET` requests we shouldn't add this section.
+
 **Response**
 
-The response contains a [list of user objects](#user-content-example-user-object), including the organizations the user is a member of.
+The response contains a [list of user objects](#manage-platform-users), including the organizations the user is a member of.
 
 #### Example response
 
@@ -474,8 +469,6 @@ Property | Type | Required? | Description
 `username` | CharField | | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
 `full_name` |  CharField | | The user's full name.
 `email` |  EmailField  | | The user's email associated with their account.
-`organizations` |  ListSerializer | | An array of properties in the `organization` object. See table below for more information.
-`last_login` | DateTimeField |  | Date and time of last user login.
 `is_active`| BooleanField |  | Whether or not the user is active.
 
 **Response**

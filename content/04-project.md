@@ -97,7 +97,7 @@ No payload is required; simply a properly formatted endpoint.
 
 The response body is an array containing a [project JSON object](#user-content-example-project-json-object).
 
-####Example Response
+#### Example Response
 
 ```json
 [
@@ -176,7 +176,7 @@ No payload required. Enter the URL for the organization in question to return al
 
 The response body is an array containing a [project JSON object](#user-content-example-project-json-object).
 
-####Example Response
+#### Example Response
 
 ```json
 [
@@ -284,9 +284,9 @@ Property | Type | Required? | Description
 
 The response body is an array containing a [project JSON object](#user-content-example-project-json-object).
 
-####Example Response
+#### Example Response
 
-```
+```json
 [
     {
         "id": "h8ridjt2jazkac4e97srzmh2",
@@ -577,11 +577,11 @@ Property | Type | Description
 `username` | CharField |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
 `full_name` | CharField| The user's full name. (optional)
 `email` | EmailField | The user's email address.
-`email_verified` | BooleanField|Boolean indicating whether the user has verified their email address.
+`email_verified` | BooleanField| Boolean indicating whether the user has verified their email address.
 `last_login` | DateTimeField | Date and time of last user login.
 `role` | CharField | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
 
-####Example Response
+#### Example Response
 
 ```json
 [
@@ -647,7 +647,7 @@ Property | Type | Description
 `role` | CharField | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
 
 
-####Example Response
+#### Example Response
 
 ```json
 {
@@ -673,14 +673,7 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/{use
 
 Use the above method to see a member of a project. This can be helpful if you need to see or change their role in the project.
 
-**Request Payload**
-
 > NOTE: should be able to see Public User and Administrator as options in the `role` field; bug being fixed.
-
-Property | Type | Required? | Description 
---- | --- | :---: | --- 
-`username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`role` | CharField | x | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
 
 > Beth to update `role` once bug is fixed. 
 
@@ -695,9 +688,9 @@ Property | Type | Description
 `email` | EmailField | The user's email address.
 `email_verified` | BooleanField|Boolean indicating whether the user has verified their email address.
 `last_login` | DateTimeField | Date and time of last user login.
-`role` | CharField | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
+`role` | CharField | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector, PU = Project User)
 
-####Example Response
+#### Example Response
 
 ```json
 {
@@ -718,8 +711,6 @@ Property | Type | Description
 
 ### Update Project Member Permissions
 
-> getting a platform error; fill in content when error is resolved.
-
 ```endpoint
 PATCH /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/{username}/
 ```
@@ -728,6 +719,7 @@ This method allows you to update the permissions granted to a project member. Yo
 
 ID | Title
 ---|---
+PU | Project User
 DC | Data Collector
 PM | Project Manager
 
@@ -737,18 +729,33 @@ PM | Project Manager
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
 `role` | CharField | x | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
 
 **Response**
 
-> fill in when I'm not getting an error
+The response contains a JSON object with the following properties:
 
+Property | Type | Description
+---|---|---
+`username` | CharField |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` | CharField| The user's full name. (optional)
+`email` | EmailField | The user's email address.
+`email_verified` | BooleanField|Boolean indicating whether the user has verified their email address.
+`last_login` | DateTimeField | Date and time of last user login.
+`role` | CharField | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector, PU = Project User)
 
-####Example Response
+#### Example Response
 
-> fill in when I'm not getting an error
-
+```json
+{
+    "username": "jane",
+    "full_name": "Jane Doe",
+    "email": "jane@example.org",
+    "email_verified": false,
+    "last_login": "2016-10-27T20:37:19.453868Z",
+    "role": "DC"
+}
+```
 
 
 
@@ -772,7 +779,7 @@ No payload required. Pressing the **Delete** button from the API UI will delete 
 Response will be in the form of a response code. An `HTTP 204 No Content` indicates that there is no longer content in the project associated with that username, meaning their information has been removed.
 
 If there's an error, then you'll get an error message or another [response code](01-introduction.md#user-content-common-response-codes). 
-####Example Response
+#### Example Response
 
 ```response
 HTTP 204 No Content
