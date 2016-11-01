@@ -76,39 +76,6 @@ Property | Type | Description
 
 
 
-### Slugs
-
-To get at, create, or modify projects and project members, you'll need to access a couple different kinds of slugs: 
-
-* `organization_slug`, and 
-* `project_slug`
-
-You can find the `organization_slug` by locating the organization in the [list of all organziations](03-organization.md#user-content-list-organizations) and then copying the value of the `slug` property. 
-
-You can find most `project_slugs` by [viewing all of the projects in the Cadasta system](03-organization.md#user-content-list-all-projects), which returns publicly viewable projects as well as projects you have access to. If it's a private project, you must have access to it and find it by [listing all of the projects in an organization](#user-content-list-all-projects-in-an-organization). 
-
-Once you get your slugs, add them to your endpoint outside of the curly braces. 
-
-For example, to get at a specific project, you need to use the following endpoint:
-
-```endpoint
-GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/
-```
-
-If the `organization_slug` is `sample-organization` and the `project_slug` is `sample-project`, then the endpoint should look like this:
-
-```
-GET /api/v1/organizations/`sample-organization`/projects/project_slug/
-```
-
-***
-
-
-
-
-
-
-
 
 
 

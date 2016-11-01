@@ -1,10 +1,12 @@
 ## Organization
 
-The Cadasta API allows you to work with data associated with organizations that have been added to the platform. The endpoint for these objects starts with:
+Organizations in the Cadasta Platform represent organizations in real life. The Cadasta API allows you to work with data associated with organizations that have been added to the platform, and to add organizations as well. The endpoint for these objects starts with:
 
 ```
 GET api/v1/organizations
 ```
+
+_To learn more about organizations, [see our documentation on Organizations](https://docs.cadasta.org/en/02-organizations.html)._
 
 An organization JSON object contains the following properties.
 
@@ -96,25 +98,13 @@ The response body is an array containing an [organization JSON object](#user-con
 ]
 ```
 
-**Response**
-
-The response contains a JSON object with the following properties:
-
-| Property | Description |
-| --- | --- |
-| `id` | The ID of the organization |
-| `slug` | The short label of the organization; usually used in URLs. |
-| `name` | The name of the organization. |
-| `description` | \(optional\) A long-form description of the organization. |
-| `archived` | `Boolean` indicating whether the organization has been archived. |
-| `urls` | A list of URLs to websites of this organization. |
-| `contacts` | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` \(optional\) and `tel` \(optional\). |
-
 ---
 
-### Create an organization
 
-> Note: need to add notes about properly formatting multiple URLs and contact information.
+
+### Create an Organization
+
+> Oliver: it's worth noting that when using the API UI to do this, if you don't format things correctly, the response you get is an HTTP 200 and a list of organizations that does not contain the organization you just created. Not sure if that's bug or normal; noting it here.
 
 ```endpoint
 POST /api/v1/organizations/
@@ -133,6 +123,37 @@ The request payload is a JSON object containing the following properties.
 | `archived` | BooleanField |  | Indicates whether the organization has been archived. |
 | `urls` | ListField |  | A list of URLs to websites of this organization. |
 | `contacts` | JSONField |  | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` \(optional\) and `tel` \(optional\); either `email` or `tel` must be provided. |
+
+Formatting your URLS and contacts can be tricky. The using the API UI, you'll want to use the Raw HTML window. 
+
+Here's how you need to format your URLs:
+
+```
+"urls":
+   [
+        "http://www.example.org",
+        "http://bethsorganization.org"
+    ],
+```
+
+Here's how you need to format your contacts:
+
+```
+"contacts": [
+  {
+    "name": "Orion",
+    "email": "orion@example.org",
+    "tel": ""
+  }, 
+  {
+  "name": "Archimedes",
+  "email": "archimedes@example.org",
+  "tel": "555-555-5555"
+  }
+]
+```
+
+Note that this formatting can be on a single line; they're shown on multiple lines above for easier reading.
 
 **Response**
 
@@ -190,11 +211,6 @@ For example, Example Organization might have the slug `example-organization`. Th
 https://platform-staging-api.cadasta.org/api/v1/organizations/example-organization/
 ```
 
-**URL parameters**
-
-| Property | Description |
-| --- | --- |
-| `organization_slug` | The short label of the organization, which usually contains no upper case letters or spaces. |
 
 **Response**
 
@@ -244,19 +260,9 @@ The response also contains the field `users`, which provides a list of members o
 PATCH /api/v1/organizations/{organization_slug}/
 ```
 
-The above method allows you to update an organization. It requires using the organization's slug, which is usually generated from the organization's name. To find the slug you need, find the organizion using the `GET /api/v1/organizations/` method and then get the value of the `slug` property.
+The above method allows you to update an organization. 
 
-For example, Example Organization might have the slug `example-organization`. The URL you'd need to access it would look like this:
-
-```
-https://platform-staging-api.cadasta.org/api/v1/organizations/example-organization/
-```
-
-**URL parameters**
-
-| Property | Description |
-| --- | --- |
-| `organization_slug` | The short label of the organization. |
+It also requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs). 
 
 **Request payload**
 
@@ -276,7 +282,7 @@ The response body contains an [organization JSON object](#user-content-example-o
 
 The response also contains the field `users`, which provides a list of members of this organization.
 
-#### Example response
+#### Example Response
 
 ```json
 {
@@ -326,18 +332,11 @@ Users associated with an organization are known as **members**. The endpoint you
 ```
 api/v1/organizations/{organization_slug}/users/
 ```
-
-The `organization_slug` is the the slug associated with the organization, and is usually generated from the organization's name. To find the slug you need, find the organizion using the `GET /api/v1/organizations/` method and then get the value of the `slug` property.
-
-For example, Example Organization might have the slug `example-organization`. The URL you'd need to access it would look like this:
-
-```
-https://platform-staging-api.cadasta.org/api/v1/organizations/example-organization/
-```
+Endpoints in this category require using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs). 
 
 > add proper links to the object below
 
-A member JSON object has the following properties. These properties are similar to the `account` JSON objects, but they include whether that user is an admin of the organization in question.
+A member JSON object has the following properties. These properties are similar to the [`account` JSON object](02-users.md#user-content-example-account-json-object), but they include whether that user is an admin of the organization in question.
 
 Property | Type | Required? | Description
 ---|---|:---:|---
@@ -352,12 +351,12 @@ Property | Type | Required? | Description
 
 ```json
 { 
-    username: "Joyce", 
-    full_name: "Joyce Jones", 
-    email: "joyce@example.org", 
-    email_verified: true, 
-    last_login: "2016-10-21T23:18:45.135341Z", 
-    admin: true 
+    "username": "Joyce", 
+    "full_name": "Joyce Jones", 
+    "email": "joyce@example.org", 
+    "email_verified": true, 
+    "last_login": "2016-10-21T23:18:45.135341Z", 
+    "admin": true 
 }
 ```
 
@@ -365,13 +364,15 @@ Property | Type | Required? | Description
 ***
 
 
-### List organization members
+### List Organization Members
 
 ```endpoint
 GET /api/v1/organizations/{organization_slug}/users/
 ```
 
-Use the above method to return all of the users in an organization.
+Use the above method to return all of the members of an organization.
+
+This method requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs).
 
 **Request Payload**
 
@@ -431,6 +432,8 @@ POST /api/v1/organizations/{organization_slug}/users/
 
 The above method adds a member to the organization. Note that the person needs to have an account for this to work. 
 
+This method also requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs).
+
 **Request Payload**
 
 Property | Type | Required? | Description
@@ -440,10 +443,11 @@ Property | Type | Required? | Description
 
 **Response**
 
-> add
+The response is an [organization member JSON object](user-content-example-member-json-object). 
 
 ####Example Response
 
+```json
 {
     "username": "jane",
     "full_name": "Jane Doe",
@@ -452,14 +456,12 @@ Property | Type | Required? | Description
     "last_login": "2016-10-27T20:37:19.453868Z",
     "admin": false
 }
-
+```
 
 
 ---
 
 ### Get an Organization Member
-
-> Getting a platform error; add content when the error is resolved.
 
 
 ```endpoint
@@ -467,46 +469,89 @@ GET /api/v1/organizations/{organization_slug}/users/{username}/
 ```
 The above method gets the information of a specific member of an organization. This can be helpful if you need to see whether that person is an admininstrator of the organization or not. 
 
+This method requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs).
+
+Additionally, it requires using an orgazation member's username. You can find their username by [listing organization members](user-content-list-organization-members) and adding the username to the end of the endpoint. 
+
+For example, to get information for username `jane`, who is a member of `example-organization`, you'd write:
+
+```endpoint
+GET /api/v1/organizations/exmaple-organization/users/jane/
+``` 
+
 **Request Payload**
 
-Property | Type | Required? | Description
----|---|:---:|---
+No payload required, simply a properly formatted endpoint. 
 
 
 **Response**
 
+The response includes the properties of an [organization member JSON object](user-content-example-member-json-object). 
+
 
 ####Example Response
 
-
+```json
+{
+    "username": "jane",
+    "full_name": "Jane Doe",
+    "email": "jane@example.org",
+    "email_verified": false,
+    "last_login": "2016-10-27T20:37:19.453868Z",
+    "admin": false
+}
+```
 
 
 ---
 
-### Update an Organization Member
-
-> Getting a platform error; add content when the error is resolved.
-
+### Update an Organization Member's Admin Status
 
 ```endpoint
 PATCH /api/v1/organizations/{organization_slug}/users/{username}/
 ```
 
-The above method updates the information of a specific member of an organization. 
+The above method updates the admin status of a specific member of an organization. If you need to change the user's account information, see how to [update a user account](02-users.md#user-content-update-a-user-account). 
+
+This method requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs). 
+
+Additionally, it requires using an orgazation member's username. You can find their username by [listing organization members](user-content-list-organization-members) and adding the username to the end of the endpoint. 
+
+For example, to get information for username `jane`, who is a member of `example-organization`, you'd write:
+
+```endpoint
+GET /api/v1/organizations/example-organization/users/jane/
+``` 
 
 **Request Payload**
 
+You must provide the username and the admin status. 
+
 Property | Type | Required? | Description
 ---|---|:---:|---
+`username` | CharField | x | The user's username.
+`admin` | BooleanField | x | Indicates whether or not the user is an admin of the organization of which they are a member.
 
 **Response**
 
+The response is an [organization member JSON object](user-content-example-member-json-object). 
+
 ####Example Response
 
+```json
+{
+    "username": "jane",
+    "full_name": "Jane Doe",
+    "email": "jane@example.org",
+    "email_verified": false,
+    "last_login": "2016-10-27T20:37:19.453868Z",
+    "admin": true
+}
+```
 
 ---
 
-### Remove an organization member
+### Remove an Organization Member
 
 > Getting a platform error; add content when the error is resolved.
 
@@ -516,16 +561,37 @@ DELETE /api/v1/organizations/{organization_slug}/users/{username}/
 
 The above method updates the information of a specific member of an organization.
 
+This method requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs). 
+
+Additionally, it requires using an orgazation member's username. You can find their username by [listing organization members](user-content-list-organization-members) and adding the username to the end of the endpoint. 
+
+For example, to get information for username `jane`, who is a member of `example-organization`, you'd write:
+
+```endpoint
+GET /api/v1/organizations/example-organization/users/jane/
+``` 
+
+Using the API UI, you can delete a member by clicking the Delete button at the top. 
+
 **Request Payload**
 
-Property | Type | Required? | Description
----|---|:---:|---
-
+No payload required; only a properly formatted endpoint. 
 
 **Response**
 
+Your response will be in the form of an `HTTP 204: No Content` message. 
+
+If there's an error, then you'll get an error message or another [response code](01-introduction.md#user-content-common-response-codes). 
+
+
 ####Example Response
 
+```json
+HTTP 204 No Content
+Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+Content-Type: application/json
+Vary: Accept
+```
 
 ---
 

@@ -342,7 +342,7 @@ Property | Type | Required? | Description
 `id` | CharField |  | The ID of the organization.
 `name` | CharField | x | The name of the organization.
 
-####Example User Object
+####Example User JSON Object
 
 ```json
 [
@@ -457,7 +457,7 @@ The response contains a [user object](#user-content-example-user-object), includ
 
 
 
-### Update a platform user
+### Update a Platform User
 
 ```endpoint
 PATCH /api/v1/users/{username}/
