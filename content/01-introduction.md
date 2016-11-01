@@ -40,7 +40,7 @@ All URLs referenced here require their own base path, likely your own local inst
 
 This API works best in one of two scenarios: 
 
-1. **You're a developer working with an individual or organization using the Cadasta Platform.** If you have administrator access to the organization you're working for, you'll be able to perform many of the key functions for that organization using your [authorization token](02-users.md#user-content-log-a-user-in). 
+1. **You're a developer working with an individual or organization using the Cadasta Platform.** If you have administrator access to the organization you're working for, you'll be able to perform many of the key functions for that organization using your [authorization token](02-users.md#user-content-log-a-user-in--get-authorization-key). 
 
 2. **You've created a locally-hosted version of the platform.** 
 
