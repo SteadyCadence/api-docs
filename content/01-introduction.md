@@ -62,11 +62,11 @@ Property | Description
 `403` | Permission denied, the user has no permission to access this resource or perform this action. 
 `404` | Not found. (The object with the given ID was not in the database.)
 
-### Slugs
+### Formatting URLS for Accessing Specific Objects
 
-> Beth, Maybe we should rephase this a little, as this also applies to IDs for other objects. Maybe call this section "Accessing objects via URLs" or so.
+To get at, create, or modify projects, organizations, organization members and more, you'll need to access certain IDs (such as `username`) or a couple different kinds of slugs.  
 
-To get at, create, or modify projects, organizations, organization members and more, you'll need to access a couple different kinds of slugs: 
+Two slugs that appear frequently are: 
 
 * `organization_slug`, and 
 * `project_slug`
@@ -88,3 +88,5 @@ If the `organization_slug` is `sample-organization` and the `project_slug` is `s
 ```
 GET /api/v1/organizations/sample-organization/projects/sample-project/
 ```
+
+This API uses many other IDs, which are explained along with the endpoint they are used in. 
