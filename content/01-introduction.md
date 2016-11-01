@@ -1,6 +1,5 @@
 ## Cadasta API documentation
 
-
 Welcome to the Cadasta Platform API documentation. 
 
 Using this platform API, you can: 
@@ -8,10 +7,12 @@ Using this platform API, you can:
 * Manage user [accounts](02-users.md) - creating them, deleting them, and amending them as needed; 
 * Create and edit [organizations](03-organization.md); 
 * View, create, and modify [projects](04-project.md) in the system, 
-* Upload new [questionnaires](05-questionnaires.md), and
-* Add, modify, and delete [project resources](07-resources.md) (including [spatial data](06-records.md)). 
-
-> Beth We should add a bullet point + links to everything records (spatial units, parties, relationships)
+* Upload new [questionnaires](05-questionnaires.md),
+* Add, modify and delete records for: 
+	* [spatial units/project locations](06_records.md#user-content-spatial-units-aka-project-locations), 
+	* [parties](06_records.md#user-content-parties) associated with these locations, and
+	* the [relationships](06_records.md#user-content-relationships) between the two. 
+* And finally add, modify, and delete [project resources](07-resources.md). 
 
 Each of the sections listed above will outline how to use API endpoints to make these things happen.
 
@@ -31,10 +32,7 @@ Each endpoint is described using several parts:
 
 In addition, each method + endpoint combination is described by a request payload, properties, and an example output. 
 
-All URLs referenced here begin with the base path `https://platform-staging-api.cadasta.org`, which you put before the endpoint. If you're using a browser, the completed path will take you to the [API UI](#using-the-platform-api-ui), described below. 
-
-> Beth Not sure about using the staging site as an example. The API docs should be generic and not pointing to a specific instance. Maybe we can rephrase this to "You have to prepend to the host name to the API examples." We could point to the demo site for users who want to explore the API. 
-
+All URLs referenced here require their own base path, likely your own local instance of the Cadasta Platform. If you'd like to use an existing base path to explore the API, you can use the one for our demo site: `https://demo.cadasta.org/`. 
 
 ### Using the API
 
@@ -44,7 +42,7 @@ This API works best in one of two scenarios:
 
 2. **You've created a locally-hosted version of the platform.** 
 
-If you have any questions about using the API, please don't hesitate to [contact us](http://http://cadasta.org/contact/). 
+If you have any questions about using the API, please don't hesitate to [contact us](http://cadasta.org/contact/). 
 
 ### Using the Platform API UI
 
