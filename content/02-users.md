@@ -158,14 +158,6 @@ GET /api/v1/account/
 ```
 The above method and endpoint returns the account information for the user authenticated with the request.
 
-**Request Payload**
-
-Property | Type | Required? | Description
----|---|:---:|---
-`username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | CharField | | (optional) The user's full name.
-`email` | EmailField | x | The user's email address.
-
 **Response**
 
 The response contains a JSON object with the following properties:
@@ -349,12 +341,6 @@ GET /api/v1/users/
 ```
 The above method and endpoint return all of the users in the platform. 
 
-**Request Payload**
-
-No request payload, however an authorization key connected to an account with appropriate permissions is required.
-
-> Beth, if there is no request payload, e.g. for all `GET` requests we shouldn't add this section.
-
 **Response**
 
 The response contains a [list of user objects](#manage-platform-users), including the organizations the user is a member of.
@@ -398,10 +384,6 @@ Use the above method to view a single user in the platform. For example, to see 
 ```
 https://platform-staging-api.cadasta.org/api/v1/users/janesmith/
 ``` 
-
-**Request Payload**
-
-No request payload, however an authorization key connected to an account with appropriate permissions is required.
 
 **Response**
 
