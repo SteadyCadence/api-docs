@@ -47,8 +47,8 @@ Note that logging a user into the API does not log them into the platform.
 
 Property | Type | Required? | Description
 ---|---|:---:|---
-`username` | CharField | x | The user's username.
 `password` | CharField | x | The user's password.
+`username` | CharField | x | The user's username.
 
 **Response**
 
@@ -84,10 +84,6 @@ POST /api/v1/account/logout/
 Logging a user out removes their authorization token. Requests cannot be signed with any token obtained previously.
 
 Note that logging a user out of the API does not log them out of the platform.
-
-**Request payload**
-
-No payload required.
 
 **Response**
 
