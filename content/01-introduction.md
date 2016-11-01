@@ -73,7 +73,7 @@ Two slugs that appear frequently are:
 
 You can find the `organization_slug` by locating the organization in the [list of all organziations](03-organization.md#user-content-list-organizations) and then copying the value of the `slug` property. 
 
-You can find most `project_slugs` by [viewing all of the projects in the Cadasta system](04-project.md#user-content-list-all-projects), which returns publicly viewable projects as well as projects you have access to. If it's a private project, you must have access to it and find it by [listing all of the projects in an organization](03-organization.md#user-content-list-all-projects-in-an-organization). 
+You can find most `project_slugs` by [viewing all of the projects in the Cadasta system](04-project.md#user-content-list-all-projects), which returns publicly viewable projects as well as projects you have access to. If it's a private project, you must have access to it and find it by [listing all of the projects in an organization](03-project.md#user-content-list-all-projects-in-an-organization). 
 
 Once you get your slugs, add them to your endpoint outside of the curly braces. 
 
