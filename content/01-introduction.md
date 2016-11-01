@@ -9,7 +9,7 @@ Using this platform API, you can:
 * View, create, and modify [projects](04-project.md) in the system, 
 * Upload new [questionnaires](05-questionnaires.md),
 * Add, modify and delete records for: 
-	* [spatial units/project locations](06_records.md#user-content-spatial-units-aka-project-locations), 
+	* [spatial units/project locations](#user-content-spatial-units-aka-project-locations), 
 	* [parties](06_records.md#user-content-parties) associated with these locations, and
 	* the [relationships](06_records.md#user-content-relationships) between the two. 
 * And finally add, modify, and delete [project resources](07-resources.md). 
