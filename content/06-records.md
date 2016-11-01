@@ -16,8 +16,6 @@ The endpoint you need to access JSON for spatial units / project locations start
 
 A spatial unit / project location object is structured like this:
 
-> edit based on a single unit
-
 * `type`: ChoiceField (set automatically to `FeatureCollection`)
 * `features` 
 	* `type`: ChoiceField (set automatically to `Feature`)
@@ -783,7 +781,7 @@ Using the API, you can view, create, update, and delete parties for your project
 /api/v1/organizations/{organization_slug}/projects/{project_slug}/parties/
 ```
 
-> add in object structure after writing the rest
+> add in object structure?
 
 ***
 
@@ -1191,7 +1189,7 @@ or
 /api/v1/organizations/{organization_slug}/projects/{project_slug}/relationships/tenure/{relationship_id}/
 ```
 
-> add object overview once I'm done writing
+> add object overview?
 
 ###Tenure Categories
 

@@ -54,8 +54,6 @@ Property | Type | Description
 `question_groups` | ListSerializer | List of question groups, charted in the **Question Groups** section below.
 `md5_hash` | CharField | ??
 
-> Potentially chart out the type of question as listed on XLSform to the type of question listed in the API (e.g. S1 = select_one)
-
 **Question Groups**
 
 Property | Type | Description
@@ -446,9 +444,7 @@ No payload required; only a properly formatted endpoint.
 
 **Response**
 
-> add new link to questionnaire JSON Object
-
-The response body contains a full [questionnaire JSON object](#), including questions and question groups.
+The response body contains a full [questionnaire JSON object](#user-content-example-questionnaire-json-object), including questions and question groups.
 
 
 
@@ -491,12 +487,8 @@ Property | Description
 
 > Still in progress, document when it's complete. 
 
-> Fix link to Questionnaire JSON object
-
-Creating a questionnaire from a JSON object requires a full [questionnaire JSON object](#) provided with the request payload. 
+Creating a questionnaire from a JSON object requires a full [questionnaire JSON object](#user-content-example-questionnaire-json-object) provided with the request payload. 
 
 **Response**
 
-> Fix link to Questionnaire JSON object
-
-The response body contains a full [questionnaire JSON object](#questionnaires-1), including questions and question groups.
+The response body contains a full [questionnaire JSON object](#user-content-example-questionnaire-json-object), including questions and question groups.

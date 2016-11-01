@@ -57,7 +57,7 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/resources/
 
 Use the above method and endpoint to list out all the resources associated with any given project. 
 
-> move slugs info, add link to slugs.
+This method requires using both an organization and a project slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs).
 
 **Request Payload**
 
@@ -116,6 +116,8 @@ POST /api/v1/organizations/{organization_slug}/projects/{project_slug}/resources
 ```
 
 Use the above endpoint and method to create a new project resource. 
+
+This method requires using both an organization and a project slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs).
 
 **Request Payload**
 
@@ -182,6 +184,8 @@ So the endpoint you need should look something like this:
 ```
 /api/v1/organizations/example-organization/projects/global-project/resources/rtxixdb2a5weefmzmg7kzvgr/
 ```
+
+This method also requires using both an organization and a project slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs).
 
 **Request Payload**
 
