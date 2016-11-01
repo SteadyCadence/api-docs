@@ -8,11 +8,7 @@ GET api/v1/organizations
 
 _To learn more about organizations, [see our documentation on Organizations](https://docs.cadasta.org/en/02-organizations.html)._
 
-An organization JSON object contains the following properties.
-
-> NOTE: per DRF docs, `users` is also a property. However, when I test it on the API I don't see it.
-
-> Beth, users is a property of organization, but it is only present when you look at a single organzization. User will not be listed in the list of organizations.
+An organization JSON object contains the following properties:
 
 | Property | Type | Required? | Description |
 | --- | --- | :---: | --- |
@@ -479,11 +475,6 @@ For example, to get information for username `jane`, who is a member of `example
 GET /api/v1/organizations/exmaple-organization/users/jane/
 ``` 
 
-**Request Payload**
-
-No payload required, simply a properly formatted endpoint. 
-
-
 **Response**
 
 The response includes the properties of an [organization member JSON object](user-content-example-member-json-object). 
@@ -561,28 +552,21 @@ DELETE /api/v1/organizations/{organization_slug}/users/{username}/
 
 The above method updates the information of a specific member of an organization.
 
-This method requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs). 
-
-Additionally, it requires using an orgazation member's username. You can find their username by [listing organization members](user-content-list-organization-members) and adding the username to the end of the endpoint. 
-
-For example, to get information for username `jane`, who is a member of `example-organization`, you'd write:
-
-```endpoint
-GET /api/v1/organizations/example-organization/users/jane/
-``` 
-
 Using the API UI, you can delete a member by clicking the Delete button at the top. 
 
-**Request Payload**
+**URL Parameters**
 
-No payload required; only a properly formatted endpoint. 
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organziations](03-organization.md#user-content-list-organizations)
+`username` | The username for a specific user, which can be found by [listing organization members](user-content-list-organization-members).
+
 
 **Response**
 
 Your response will be in the form of an `HTTP 204: No Content` message. 
 
 If there's an error, then you'll get an error message or another [response code](01-introduction.md#user-content-common-response-codes). 
-
 
 ####Example Response
 
