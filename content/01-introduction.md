@@ -1,38 +1,68 @@
 ## Cadasta API documentation
 
-Welcome to the Cadasta Platform API documentation. 
+> Notes for Oliver
+* Added some more overview information; looked to [Mapbox docs](https://www.mapbox.com/api-documentation/) for guidance.
+* Feel free to leave me comments inline anywhere in this documentation. Please add `> Beth` at the beginning of them if you do. (I've left you lots of notes that start with `> Oliver`, you lucky dog you ;) 
 
-> add 
-* note about reading the intro to the system documentation
-* Overview about REST (now common practice, see [Mapbox docs](https://www.mapbox.com/api-documentation/))
+
+Welcome to the Cadasta Platform API documentation. 
 
 Using this platform API, you can: 
 
-* Manage user [accounts](02-users.md) - creating them, deleting them, and amending them as needed, 
-* Create and edit [organizations](03-organization.md), 
+* Manage user [accounts](02-users.md) - creating them, deleting them, and amending them as needed; 
+* Create and edit [organizations](03-organization.md); 
 * View, create, and modify [projects](04-project.md) in the system, 
 * Upload new [questionnaires](05-questionnaires.md), and
 * Add, modify, and delete [project resources](07-resources.md) (including [spatial data](06-records.md)). 
 
 Each of the sections listed above will outline how to use API endpoints to make these things happen.
 
-> Oliver, added this note. Is it OK?
+## Topics
 
-It's worth noting that this API works best with locally-hosted versions of the platform. If you have any questions about using the API, please don't hesitate to [contact us](). 
+### Reading this Documentation
 
-## API User Interfaces
+This documentation is structured primarily by related functionality and topic, and then by endpoint. 
 
-> Note that this section may be removed, as both of the interfaces are a bit confusing.
+Each endpoint is described using several parts:
+
+* **The HTTP method.** The primary methods you'll see here are GET, POST, PATCH, and DELETE.
+
+* **The path**, such as `/api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/`.
+
+* **Any URL parameters**, a.k.a. parts of the endpoints wrapped in brackets. In the above path, those would be `{organization_slug}` and `{project_slug}`
+
+In addition, each method + endpoint combination is described by a request payload, properties, and an example output. 
+
+All URLs referenced here begin with the base path `https://platform-staging-api.cadasta.org`, which you put before the endpoint. If you're using a browser, the completed path will take you to the [API UI](#user-content-using-the-platform-api-ui), described below. 
+
+
+### Using the API
+
+> Oliver, added this section. Please check for accuracy!
+
+This API works best in one of two scenarios: 
+
+1. **You're a developer working with an individual or organization using the Cadasta Platform.** If you have administrator access to the organization you're working for, you'll be able to perform many of the key functions for that organization using your [authorization token](#user-content-authentification). 
+
+2. **You've created a locally-hosted version of the platform.** 
+
+If you have any questions about using the API, please don't hesitate to [contact us](http://http://cadasta.org/contact/). 
 
 ### Using the Platform API UI
 
-> add note about breadcrumbs at the top of the API UI
+> Note that this section may be removed, as both of the interfaces are a bit confusing. However, at this time, the documents are written to work with these interfaces.
 
-You can view each endpoint directly through the Cadasta Platform API. 
+You can view each endpoint directly through the Cadasta Platform API. This API begins with the following base URL:
 
-First, determine which endpoint you'd like to access. Then, add it to the end of the URL `https://platform-staging-api.cadasta.org/`. For example, to get to `api/v1/organizations/`, you'd write:
+```
+https://platform-staging-api.cadasta.org/
+```
 
+To get started, use this documentation to determine which endpoint you'd like to access. Then, add it to the end of the URL `https://platform-staging-api.cadasta.org/`. For example, to get to `api/v1/organizations/`, you'd write:
+
+```
 https://platform-staging-api.cadasta.org/api/v1/organizations/
+```
 
 The page you'll see looks like this:
 
@@ -48,17 +78,25 @@ You can also select Filters, which will take you to a pop-up window where you ca
 
 ![](_img/api-03-ai.png)
 
-If you'd like to post a new organization, you can scroll to the bottom of the page. Here, you can add all the fields necessary to create a new organization. Submit the information by selecting POST. 
+POST methods are available at the bottom of the page. If you'd like to post a new organization, for example, you can scroll to the bottom of the page and add all the fields necessary to create a new organization using either the Raw Data or HTML form views. Submit the information by selecting POST. 
 
 ![](_img/api-04-ai.png) 
 
+Last but not least, this API UI provides linked breadcrumbs at the top of the page. You can use these breadcrumbs to move backwards along the API paths. 
+
+![](_img/breadcrumbs.png) 
+
 Take a moment to explore the following endpoint using the API interface:
 
+```
 https://platform-staging-api.cadasta.org/api/v1/organizations/
+```
 
 ### Using DRF Docs
 
-If you'd like an alternative view into the API, you can visit the documentation automatically created using Django REST Framework, or DRF Docs. You can visit that by going here:
+> Note that this section may be removed, as both of the interfaces are a bit confusing. However, at this time, the documents are written to work with these interfaces.
+
+If you'd like an alternative UI view into the API, you can visit the documentation automatically created using Django REST Framework, or DRF Docs. You can visit that by going here:
 
 https://platform-staging-api.cadasta.org/api/v1/docs/
 
@@ -84,19 +122,19 @@ You can also select OPTIONS to add any needed additional fields.
 
 ![](_img/drf-04-ai.png)
 
-When you're done, press Send. An `HTTP 200` message indicates that your data has been posted successfully. 
+When you're done, press Send. An `HTTP 200` message indicates that your data has been posted successfully.
 
 Take a moment to explore any endpoint using DRF docs:
 
 https://platform-staging-api.cadasta.org/api/v1/docs/
 
-## Using the Cadasta API
+### Authentication / Authorization Tokens
 
-### Authentification 
+One of the first things you need to do to get started is get an authorization token, which is required by most endpoints in the Cadasta API. You can obtain an authorization token which you can obtain by logging the user into the API.
 
-One of the first things you need to do to get started is get an authentification token, which is required by many endpoints in the Cadasta API. To authenticate a user, sign API requests with an authorization token, which you can obtain by loging the user in.
+To do this, see the documentation for [`/api/v1/account/login/`](02-users.md#user-content-log-a-user-in) to see how to get an authentication token. 
 
-See documentation for [`/api/v1/account/login/`](02-users.md) to see how to get an authentication token. 
+Note that logging someone into the API does not log them into the platform.
 
 ### Permissions
 
@@ -104,11 +142,11 @@ See documentation for [`/api/v1/account/login/`](02-users.md) to see how to get 
 
 Your authorization code will allow you to see content that you have access to: primarily your account, and organizations and projects that you create or administer. 
 
-If you need access to information in someone else's account, contact them to to get their username and password. From there, you can get their authorization token and gain access to the needed information.
+If you need access to information in someone else's account, contact them to to get their username and password. From there, you can [log them into the API](02-users.md#user-content-log-a-user-in) to get their authorization token.
 
 ### Requests
 
-All requests are encoded in `application/json`, unless they involve some kind of file upload. Those requests should be indicated in the documentation.
+All requests are encoded in `application/json`, unless they involve some kind of file upload. Any exceptions requests should be indicated in the documentation.
 
 ### Common Response Codes
 
@@ -124,4 +162,4 @@ Property | Description
 
 ### Kinds of Fields
 
-> Add, listing out CharField, GeometryField, etc.
+The type of fields being used are based in Django. If you're not sure how to use one of the field types documented, visit <a href="https://docs.djangoproject.com/en/1.10/ref/models/fields/#field-types" target="_blank">Django's documentation on Field Types</a>.

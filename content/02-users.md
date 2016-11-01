@@ -1,6 +1,8 @@
 ## Managing a User Account
 
-You can use the Cadasta API to manage user accounts, provided that you have their username and password. This section outlines how to do that, focusing on endpoints that start with: 
+Every person who uses the Cadasta Platform is required to <a href="https://docs.cadasta.org/en/01-gettingstarted.html#createnewaccount" target="_blank">set up a user account</a>. 
+
+You can use the Cadasta API to manage these accounts, provided that you have their username and password. This section outlines how to do that, focusing on endpoints that start with: 
 
 ```
 api/v1/account
@@ -15,6 +17,18 @@ Property | Type | Required? | Description
 `email` | EmailField | x | The user's email address.
 `email_verified` | BooleanField | | Indicates whether the user has verified their email address.
 `last_login` | DateTimeField | | Date and time of last user login.
+
+####Example Account JSON Object
+
+```
+{
+    "username": "janedoe",
+    "full_name": "Jane Doe",
+    "email": "jane@cadasta.org",
+    "email_verified": true,
+    "last_login": "2016-10-25T20:20:14.192918Z"
+}
+```
 
 ***
 
@@ -36,14 +50,6 @@ Property | Type | Required? | Description
 `username` | CharField | x | The user's username.
 `password` | CharField | x | The user's password.
 
-#### Example response
-
-```json
-{
-  "auth_token": "UER33kHWhdLPq9nKkvENFtLvu3FF68GQ"
-}
-```
-
 **Response**
 
 The response contains a JSON object with the following properties:
@@ -52,13 +58,13 @@ Property | Description
 ---|---
 `auth_token` | The authorization token, use it to sign requests to the API.
 
+#### Example Response
 
-**Response codes**
-
-Property | Description
----|---
-`200` | The user was logged in successfully.
-`400` | Username or password were incorrect or the user has not verified their email address.
+```json
+{
+  "auth_token": "UER33kHWhdLPq9nKkvENFtLvu3FF68GQ"
+}
+```
 
 ***
 
@@ -108,11 +114,13 @@ Vary: Accept
 
 ### Register a New User / Create a New User Account
 
-Register a new user to the platform. _**Note:** This does not log the user in._
 
 ```endpoint
 POST /api/v1/account/register/
 ```
+
+Use the above method and endpoint to register a new user to the platform. Note that this does not log the user in, simply creates a new account for them.
+
 
 **Request payload**
 
@@ -123,17 +131,6 @@ Property | Type | Required? | Description
 `email` | EmailField| x |The user's email address.
 `password` | CharField | x |The user's password.
 `email_verified` | BooleanField|  |Whether or not the email has been verified.
-
-#### Example response
-
-```json
-{
-    "username": "j_smith",
-    "full_name": "Joe Smith",
-    "email": "joe.smith@example.com",
-    "email_verified": false
-}
-```
 
 **Response**
 
@@ -146,12 +143,16 @@ Property | Description
 `email` | The user's email address.
 `email_verified` | Boolean indicating whether the user has verified their email address.
 
-**Response codes**
+#### Example response
 
-Property | Description
----|---
-`201` | The user was registered successfully.
-`400` | The is problem with the user data provided.
+```json
+{
+    "username": "j_smith",
+    "full_name": "Joe Smith",
+    "email": "joe.smith@example.com",
+    "email_verified": false
+}
+```
 
 ***
 
@@ -164,7 +165,7 @@ Property | Description
 ```endpoint
 GET /api/v1/account/
 ```
-Returns the account information for the user authenticated with the request.
+The above method and endpoint returns the account information for the user authenticated with the request.
 
 **Request Payload**
 
@@ -175,18 +176,6 @@ Property | Type | Required? | Description
 `email` | EmailField | x | The user's email address.
 `email_verified` | BooleanField | | Indicates whether the user has verified their email address.
 `last_login` | DateTimeField | | Date and time of last user login.
-
-#### Example response
-
-```json
-{
-    "username": "j_smith",
-    "full_name": "Joe Smith",
-    "email": "joe.smith@example.com",
-    "email_verified": false
-    "last_login": "2016-10-20T19:20:27.848272Z"
-}
-```
 
 **Response**
 
@@ -200,13 +189,17 @@ Property | Description
 `email_verified` | Boolean indicating whether the user has verified their email address.
 `last_login` | Date and time of last user login.
 
+#### Example response
 
-**Response codes**
-
-Property | Description
----|---
-`201` | The user was returned successfully.
-`401` | No authentication token was provided with the `Authorization` header.
+```json
+{
+    "username": "j_smith",
+    "full_name": "Joe Smith",
+    "email": "joe.smith@example.com",
+    "email_verified": false
+    "last_login": "2016-10-20T19:20:27.848272Z"
+}
+```
 
 ***
 
@@ -221,7 +214,7 @@ Property | Description
 PATCH /api/v1/account/
 ```
 
-Update the user's credentials.
+Update the user's credentials using the above method and endpoint.
 
 
 **Request payload**
@@ -233,18 +226,6 @@ Property | Type | Required? | Description
 `email` | EmailField | x | The user's email address.
 `email_verified` | BooleanField | | Indicates whether the user has verified their email address.
 `last_login` | DateTimeField | | Date and time of the user's last login.
-
-#### Example response
-
-```json
-{
-    "username": "j_smith",
-    "full_name": "Joe Smith",
-    "email": "joe.smith@example.com"
-    "email_verified": false,
-    "last_login": "2016-10-20T19:20:27.848272Z"
-}
-```
 
 **Response**
 
@@ -258,13 +239,17 @@ Property | Description
 `email_verified` | Boolean indicating whether the user has verified their email address.
 `last_login` | Date and time of the user's last login.
 
-**Response codes**
+#### Example response
 
-Property | Description
----|---
-`201` | The user was updated successfully.
-`400` | There is problem with the user data provided.
-`401` | No authentication token was provided with the `Authorization` header.
+```json
+{
+    "username": "j_smith",
+    "full_name": "Joe Smith",
+    "email": "joe.smith@example.com"
+    "email_verified": false,
+    "last_login": "2016-10-20T19:20:27.848272Z"
+}
+```
 
 ***
 
@@ -282,7 +267,7 @@ Property | Description
 POST /api/v1/account/password/
 ```
 
-Changes the password for a user's account.
+This method and endpoint changes the password for a user's account.
 
 **Request payload**
 
@@ -316,11 +301,15 @@ Property | Description
 
 ## Manage Users in Relation to an Organization
 
+> Oliver, please check this description to make sure it's accurate. I still have a hard time distinguishing between users and members. 
+
 This section refers to endpoints that begin with: 
 
 ```
 /api/v1/users/
 ```
+
+Users already have an account, and they may be members of multiple organizations. You can use this endpoint to see which organizations they're a part of.
 
 The `users` JSON object is structured like this:
 
@@ -353,24 +342,7 @@ Property | Type | Required? | Description
 `id` | CharField |  | The ID of the organization.
 `name` | CharField | x | The name of the organization.
 
-***
-
-
-
-
-
-### List platform users
-
-```endpoint
-GET /api/v1/users/
-```
-The above method returns all of the users in the platform. 
-
-**Request Payload**
-
-No request payload, however an authorization key connected to an account with appropriate permissions is required.
-
-#### Example response
+####Example User Object
 
 ```json
 [
@@ -391,15 +363,47 @@ No request payload, however an authorization key connected to an account with ap
 ]
 ```
 
+***
+
+
+
+
+
+### List Platform Users
+
+```endpoint
+GET /api/v1/users/
+```
+The above method and endpoint return all of the users in the platform. 
+
+**Request Payload**
+
+No request payload, however an authorization key connected to an account with appropriate permissions is required.
+
 **Response**
 
-The response contains a a list of user objects, including the organizations the user is a member of:
+The response contains  a [list of user objects](), including the organizations the user is a member of.
 
-**Response codes**
+#### Example response
 
-Property | Description
----|---
-`403` | You do not have permission to perform this action. **Note:** You must be a superuser of the platform to perform this action.
+```json
+[
+    {
+        "username": "janesmith",
+        "full_name": "Jane Smith",
+        "email": "j.smith@example.com",
+        "last_login": "2016-10-20T19:20:27.848272Z",
+        "is_active": true,
+        "organizations": [{
+            "id": "90ush89adh89shd89sah89sah",
+            "name": "Cadasta"
+        }, {
+            "id": "kxzncjkxhziuhsaiojdioasjd",
+            "name": "Foo Coorp."
+        }]
+    }
+]
+``` 
 
 ***
 
