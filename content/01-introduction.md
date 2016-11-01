@@ -10,7 +10,7 @@ Using this platform API, you can:
 * Upload new [questionnaires](05-questionnaires.md),
 * Add, modify and delete records for: 
 	* [spatial units/project locations](https://github.com/Cadasta/api-docs/blob/master/content/06-records.md#user-content-spatial-units-aka-project-locations), 
-	* [parties](https://github.com/Cadasta/api-docs/blob/master/content/06-records.md#user-content-parties) associated with these locations, and
+	* [parties](06-records.md#user-content-parties) associated with these locations, and
 	* the [relationships](https://github.com/Cadasta/api-docs/blob/master/content/06-records.md#user-content-relationships) between the two. 
 * And finally add, modify, and delete [project resources](07-resources.md). 
 
