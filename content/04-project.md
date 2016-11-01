@@ -1,6 +1,8 @@
 ## Project
 
-The Cadasta API allows you work with data for projects that have been added to the platform. The two main endpoints you'll need to work with project data begin with:
+_To learn more about how questionnaires work, [see our documentation on Questionnaires & Custom Data Collection](https://docs.cadasta.org/en/08-XLSForms.html)._
+
+The Cadasta API allows you work with data for <a href="https://docs.cadasta.org/en/03-projects.html" target="_blank">projects</a> that have been added to the platform. The two main endpoints you'll need to work with project data begin with:
 
 ```
 GET /api/v1/projects/
@@ -89,9 +91,7 @@ Use the above method to list all the publicly viewable projects in the Cadasta s
 
 **Request Payload**
 
-Property | Type | Required? | Description 
---- | --- | :---: | --- 
-`thing` | CharField | x | words
+No payload is required; simply a properly formatted endpoint.
 
 **Response**
 
@@ -166,7 +166,7 @@ GET /api/v1/organizations/{organization_slug}/projects/
 
 To see all of the projects in an organization, use the above method. 
 
-_Not sure how to format your slugs? [Look here!](#user-content-slugs)_
+This method also requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs). 
 
 **Request Payload**
 
@@ -263,9 +263,9 @@ The response body is an array containing a [project JSON object](#user-content-e
 ```endpoint
 POST /api/v1/organizations/{organization_slug}/projects/
 ```
-Use the above endpoint to create a new project. All projects must be connected to an organization. 
+Use the above endpoint to create a new project. Note that all projects must be connected to an organization!
 
-_Not sure how to format your slugs? [Look here!](#user-content-slugs)_
+This also requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs). 
 
 
 **Request Payload**
@@ -367,7 +367,7 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/
 
 Use this method to get at a specific project. 
 
-_Not sure how to format your slugs? [Look here!](#user-content-slugs)_
+This method requires using both an organization and a project slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs). 
 
 **Request Payload**
 
@@ -434,13 +434,10 @@ PATCH /api/v1/organizations/{organization_slug}/projects/{project_slug}/
 
 Use the above method to update a project in an organization. The fields of the project that you can edit are shown in the request payload below. 
 
-If you need to update project members, see the section on members. 
-
-> Add link
 
 **Request Payload**
 
-> Which of these fields are required??
+Using the API, you can update any of the following fields. All of them are optional; fields left blank will remain the same following the PATCH method.
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
@@ -525,15 +522,13 @@ The response body is an array containing a [project JSON object](#user-content-e
 
 Project members are users associated with projects in the Cadasta Platform. Using the Cadasta API, you can add, view, update, and delete project members.
 
-> add links to above sections
-
 The endpoint for project member objects start with:
 
 ```
 /api/v1/organizations/example-organization/projects/global-project/users/
 ```
 
-An project member JSON object contains the following properties:
+A project member JSON object contains the following properties:
 
 Property | Type | Required? | Description
 ---|---|:---:|---
@@ -544,6 +539,7 @@ Property | Type | Required? | Description
 `last_login` | DateTimeField | |  Date and time of last user login.
 `role` | CharField | x | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
 
+> Note: apparently only being able to see PMs and DCs is a bug; Beth to update these docs once that is fixed.
 
 ##### Example Project Member JSON Object
 
@@ -627,9 +623,7 @@ Use the above method to add a new project member to a project.
 
 Note that project members need to already have a user account and be a member of the organization administering the project. 
 
-> update links with IDs
-
-_Learn more about [creating user accounts](02_users.md) and [adding organization members](03-organizations.md)._
+_Learn more about [creating user accounts](02_users.md#user-content-register-a-new-user--create-a-new-user-account) and [adding organization members](03-organizations.md#user-content-add-an-organization-member)._
 
 
 **Request Payload**
@@ -688,6 +682,7 @@ Property | Type | Required? | Description
 `username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
 `role` | CharField | x | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
 
+> Beth to update `role` once bug is fixed. 
 
 **Response**
 
@@ -774,10 +769,9 @@ No payload required. Pressing the **Delete** button from the API UI will delete 
 
 **Response**
 
-> add link to response code section
-
 Response will be in the form of a response code. An `HTTP 204 No Content` indicates that there is no longer content in the project associated with that username, meaning their information has been removed.
 
+If there's an error, then you'll get an error message or another [response code](01-introduction.md#user-content-common-response-codes). 
 ####Example Response
 
 ```response
@@ -787,11 +781,6 @@ Content-Type: application/json
 Vary: Accept
 ```
 
-
-
-
-
-
-
+***
 
 
