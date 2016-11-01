@@ -40,7 +40,7 @@ All URLs referenced here require their own base path, likely your own local inst
 
 This API works best in one of two scenarios: 
 
-1. **You're a developer working with an individual or organization using the Cadasta Platform.** If you have administrator access to the organization you're working for, you'll be able to perform many of the key functions for that organization using your [authorization token](#user-content-authentification). 
+1. **You're a developer working with an individual or organization using the Cadasta Platform.** If you have administrator access to the organization you're working for, you'll be able to perform many of the key functions for that organization using your [authorization token](https://github.com/Cadasta/api-docs/blob/master/content/02-users.md#user-content-authentification). 
 
 2. **You've created a locally-hosted version of the platform.** 
 
@@ -73,7 +73,7 @@ Two slugs that appear frequently are:
 
 You can find the `organization_slug` by locating the organization in the [list of all organziations](03-organization.md#user-content-list-organizations) and then copying the value of the `slug` property. 
 
-You can find most `project_slugs` by [viewing all of the projects in the Cadasta system](03-organization.md#user-content-list-all-projects), which returns publicly viewable projects as well as projects you have access to. If it's a private project, you must have access to it and find it by [listing all of the projects in an organization](#user-content-list-all-projects-in-an-organization). 
+You can find most `project_slugs` by [viewing all of the projects in the Cadasta system](04-projects.md#user-content-list-all-projects), which returns publicly viewable projects as well as projects you have access to. If it's a private project, you must have access to it and find it by [listing all of the projects in an organization](#user-content-list-all-projects-in-an-organization). 
 
 Once you get your slugs, add them to your endpoint outside of the curly braces. 
 
