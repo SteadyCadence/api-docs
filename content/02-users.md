@@ -12,11 +12,11 @@ An `account` JSON object contains the following properties:
 
 Property | Type | Required? | Description
 ---|---|:---:|---
-`username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | CharField | | (optional) The user's full name.
-`email` | EmailField | x | The user's email address.
-`email_verified` | BooleanField | | Indicates whether the user has verified their email address.
-`last_login` | DateTimeField | | Date and time of last user login.
+`username` | `String` | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` | `String` | | The user's full name.
+`email` | `String` | x | The user's email address.
+`email_verified` | `Boolean` | | Indicates whether the user has verified their email address.
+`last_login` | `String` | | Date and time of last user login.
 
 #### Example Account JSON Object
 
@@ -47,16 +47,16 @@ Note that logging a user into the API does not log them into the platform.
 
 Property | Type | Required? | Description
 ---|---|:---:|---
-`password` | CharField | x | The user's password.
-`username` | CharField | x | The user's username.
+`password` | `String` | x | The user's password.
+`username` | `String` | x | The user's username.
 
 **Response**
 
 The response contains a JSON object with the following properties:
 
-Property | Description
----|---
-`auth_token` | The authorization token, use it to sign requests to the API.
+Property | Type | Description
+---|---|---
+`auth_token` | `String` | The authorization token. Use it to sign requests to the API.
 
 #### Example Response
 
@@ -114,23 +114,23 @@ Use the above method and endpoint to register a new user to the platform. Note t
 
 Property | Type | Required? | Description
 ---|---|:---:|---
-`username` | CharField | x |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | CharField |  | The user's full name.
+`username` | `String` | x |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` | `String` |  | The user's full name.
 `email` | EmailField| x |The user's email address.
-`password` | CharField | x |The user's password.
+`password` | `String` | x |The user's password.
 
 **Response**
 
 The response contains a JSON object with the following properties:
 
-Property | Description
----|---
-`username` | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | The user's full name. (optional)
-`email` | The user's email address.
-`email_verified` | Boolean indicating whether the user has verified their email address.
+Property | Type | Description
+---|---|---
+`username` | `String` | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` | `String` | The user's full name. (optional)
+`email` | `String` | The user's email address.
+`email_verified` | `Boolean` | Indicates whether the user has verified their email address.
 
-#### Example response
+#### Example Response
 
 ```json
 {
@@ -156,17 +156,18 @@ The above method and endpoint returns the account information for the user authe
 
 **Response**
 
+
 The response contains a JSON object with the following properties:
 
-Property | Description
----|---
-`username` | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | (optional) The user's full name.
-`email` | The user's email address.
-`email_verified` | Boolean indicating whether the user has verified their email address.
-`last_login` | Date and time of last user login.
+Property | Type | Description
+---|---|---
+`username` | `String` | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` | `String` |  The user's full name.
+`email` | `String` |  The user's email address.
+`email_verified` | `Boolean` | Indicates whether the user has verified their email address.
+`last_login` | `String` | Date and time of last user login.
 
-#### Example response
+#### Example Response
 
 ```json
 {
@@ -198,23 +199,23 @@ Update a user's credentials using the above method and endpoint.
 
 Property | Type | Required? | Description
 ---|---|:---:|---
-`username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | CharField | | The user's full name.
-`email` | EmailField | x | The user's email address.
+`username` | `String` | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` | `String` | | The user's full name.
+`email` | `String` | x | The user's email address.
 
 **Response**
 
 The response contains a JSON object with the following properties.
 
-Property | Description
+Property | Type | Description
 ---|---
-`username` | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | (optional) The user's full name.
-`email` | The user's email address.
-`email_verified` | Boolean indicating whether the user has verified their email address.
-`last_login` | Date and time of the user's last login.
+`username` | `String` | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` | `String` | (optional) The user's full name.
+`email` | `String` | The user's email address.
+`email_verified` | `Boolean` | Indicates whether the user has verified their email address.
+`last_login` | `String` | Date and time of the user's last login.
 
-#### Example response
+#### Example Response
 
 ```json
 {
@@ -248,11 +249,11 @@ This method and endpoint changes the password for a user's account.
 
 Property | Type | Required? | Description
 ---|---|:---:|---
-`new_password` | CharField | x | The new password.
-`re_new_password` | CharField | x | A confirmation of the new password.
-`current_password` | CharField | x | The current password. 
+`new_password` | `String` | x | The new password.
+`re_new_password` | `String` | x | A confirmation of the new password.
+`current_password` | `String` | x | The current password. 
 
-#### Example response
+#### Example Response
 
 No response is shown; only a response code (shown below).
 
@@ -284,7 +285,7 @@ This section refers to endpoints that begin with:
 
 These endpoints are primarily for use by superusers – individuals who have special account access for an instance of of the Cadasta Platform. They can be used as an entry point to see all users in the platform. 
 
-Here is a table of the first tier properties of the :
+Here is a table of the first tier properties of the `users` object:
 
 Property | Type | Required? | Description
 ---|---|:---:|---
@@ -296,7 +297,6 @@ Property | Type | Required? | Description
 `is_active`| `Boolean |  | Whether or not the user is active.
 
 Here is a table of the properties of the `organizations` object (which is contained in the `users` object):
-
 
 Property | Type | Required? | Description
 ---|---|:---:|---
@@ -341,7 +341,7 @@ The above method and endpoint return all of the users in the platform.
 
 The response contains a [list of user objects](#manage-platform-users), including the organizations the user is a member of.
 
-#### Example response
+#### Example Response
 
 ```json
 [
@@ -386,7 +386,7 @@ https://platform-staging-api.cadasta.org/api/v1/users/janesmith/
 The response contains a [user object](#user-content-example-user-object), including the organizations the user is a member of.
 
 
-#### Example response
+#### Example Response
 
 ```json
 {
@@ -424,15 +424,15 @@ All fields are optional, if a field is not present in the request payload, that 
 
 Property | Type | Required? | Description
 ---|---|:---:|---
-`username` | CharField | | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` |  CharField | | The user's full name.
-`email` |  EmailField  | | The user's email associated with their account.
-`is_active`| BooleanField |  | Whether or not the user is active.
+`username` | `String` | | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` |  `String` | | The user's full name.
+`email` |  `String`  | | The user's email associated with their account.
+`is_active`| `Boolean` |  | Whether or not the user is active.
 
 **Response**
 The response contains a [user object](#user-content-example-user-object) that includes the organizations the user is a member of.
 
-#### Example response
+#### Example Response
 
 ```json
 {

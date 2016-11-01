@@ -1,7 +1,5 @@
 ## Project
 
-_To learn more about how questionnaires work, [see our documentation on Questionnaires & Custom Data Collection](https://docs.cadasta.org/en/08-XLSForms.html)._
-
 The Cadasta API allows you work with data for <a href="https://docs.cadasta.org/en/03-projects.html" target="_blank">projects</a> that have been added to the platform. The two main endpoints you'll need to work with project data begin with:
 
 ```
