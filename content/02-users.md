@@ -382,7 +382,7 @@ No request payload, however an authorization key connected to an account with ap
 
 **Response**
 
-The response contains  a [list of user objects](), including the organizations the user is a member of.
+The response contains a [list of user objects](#user-content-example-user-object), including the organizations the user is a member of.
 
 #### Example response
 
@@ -413,9 +413,7 @@ The response contains  a [list of user objects](), including the organizations t
 
 
 
-### Get a platform user
-
-> Oliver, need response information
+### Get a Platform User
 
 ```endpoint
 GET /api/v1/users/{username}/
@@ -430,6 +428,11 @@ https://platform-staging-api.cadasta.org/api/v1/users/janesmith/
 
 No request payload, however an authorization key connected to an account with appropriate permissions is required.
 
+**Response**
+
+The response contains a [user object](#user-content-example-user-object), including the organizations the user is a member of.
+
+
 #### Example response
 
 ```json
@@ -448,21 +451,6 @@ No request payload, however an authorization key connected to an account with ap
     }]
 }
 ```
-
-**Response**
-
-The response contains a JSON object with the following properties:
-
-Property | Description
----|---
-
-
-
-**Response codes**
-
-Property | Description
----|---
-`403` | You do not have permission to perform this action. **Note:** You must be a superuser of the platform to perform this action.
 
 ***
 
@@ -475,11 +463,11 @@ Property | Description
 PATCH /api/v1/users/{username}/
 ```
 
-Use the above method to update some of the fields associated with a specific username.
+Use the above method and endpoint to update some of the fields associated with a specific username.
 
 **Request Payload**
 
-All fields are optional, if a field is not present in the request payload, that field not be updated. 
+All fields are optional, if a field is not present in the request payload, that field will not be updated. 
 
 Property | Type | Required? | Description
 ---|---|:---:|---
@@ -490,6 +478,8 @@ Property | Type | Required? | Description
 `last_login` | DateTimeField |  | Date and time of last user login.
 `is_active`| BooleanField |  | Whether or not the user is active.
 
+**Response**
+The response contains a [user object](#user-content-example-user-object) that includes the organizations the user is a member of.
 
 #### Example response
 
@@ -509,19 +499,4 @@ Property | Type | Required? | Description
     }]
 }
 ```
-
-**Response**
-
-The response contains a JSON object with the following properties:
-
-Property | Description
----|---
-
-
-
-**Response codes**
-
-Property | Description
----|---
-
 ***
