@@ -511,7 +511,7 @@ The above method updates the admin status of a specific member of an organizatio
 URL Parameter | Description
 ---|---
 `organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organziations](03-organization.md#user-content-list-organizations)
-`username` | The username for a specific user, which can be found by [listing organization members](user-content-list-organization-members).
+`username` | The username for a specific user, which can be found by [listing organization members](#user-content-list-organization-members).
 
 **Request Payload**
 
@@ -524,7 +524,7 @@ Property | Type | Required? | Description
 
 **Response**
 
-The response is an [organization member JSON object](user-content-example-member-json-object). 
+The response is an [organization member JSON object](#user-content-example-member-json-object). 
 
 #### Example Response
 
@@ -558,7 +558,7 @@ Using the API UI, you can delete a member by clicking the Delete button at the t
 URL Parameter | Description
 ---|---
 `organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organziations](03-organization.md#user-content-list-organizations)
-`username` | The username for a specific user, which can be found by [listing organization members](user-content-list-organization-members).
+`username` | The username for a specific user, which can be found by [listing organization members](#user-content-list-organization-members).
 
 
 **Response**
