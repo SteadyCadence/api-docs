@@ -87,9 +87,6 @@ GET /api/v1/projects/
 
 Use the above method to list all the publicly viewable projects in the Cadasta system. You can also see any private projects that you have access to.
 
-**Request Payload**
-
-No payload is required; simply a properly formatted endpoint.
 
 **Response**
 
@@ -166,9 +163,6 @@ To see all of the projects in an organization, use the above method.
 
 This method also requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs). 
 
-**Request Payload**
-
-No payload required. Enter the URL for the organization in question to return all of the projects. 
 
 **Response**
 
@@ -367,9 +361,6 @@ Use this method to get at a specific project.
 
 This method requires using both an organization and a project slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs). 
 
-**Request Payload**
-
-No payload, only a properly formatted endpoint.
 
 **Response**
 
@@ -561,10 +552,6 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/
 Use the above method see the members of a project, specifically the Project Managers (PMs) and Data Collectors (DCs). 
 
 Note that Project Administrators are not listed, nor are Public Users. 
-
-**Request Payload**
-
-No request payload; only a properly formatted endpoint.
 
 **Response**
 
@@ -766,11 +753,7 @@ DELETE /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/{
 
 The above method removes a member from a project. 
 
-**Request Payload**
-
-No payload required. Pressing the **Delete** button from the API UI will delete the member.
-
-![](_img/delete-jane-doe.png)
+Pressing the **Delete** button from the API UI will delete the member.
 
 **Response**
 
@@ -785,7 +768,6 @@ Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
 Content-Type: application/json
 Vary: Accept
 ```
-
 ***
 
 
