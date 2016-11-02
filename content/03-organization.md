@@ -198,14 +198,13 @@ The response also contains the field `users`, which provides a list of members o
 GET /api/v1/organizations/{organization_slug}/
 ```
 
-The above method gets at a specific organization. It requires using the organization's slug, which is usually generated from the organization's name. To find the slug you need, find the organization using the `GET /api/v1/organizations/` method and then get the value of the `slug` property.
+The above method gets at a specific organization. 
 
-For example, Example Organization might have the slug `example-organization`. The URL you'd need to access it would look like this:
+**URL Parameters**
 
-```
-https://platform-staging-api.cadasta.org/api/v1/organizations/example-organization/
-```
-
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organziations](03-organization.md#user-content-list-organizations)
 
 **Response**
 
@@ -257,7 +256,11 @@ PATCH /api/v1/organizations/{organization_slug}/
 
 The above method allows you to update an organization. 
 
-It also requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs). 
+**URL Parameters**
+
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organziations](03-organization.md#user-content-list-organizations)
 
 **Request payload**
 
@@ -329,8 +332,6 @@ api/v1/organizations/{organization_slug}/users/
 ```
 Endpoints in this category require using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs). 
 
-> add proper links to the object below
-
 A member JSON object has the following properties. These properties are similar to the [`account` JSON object](02-users.md#user-content-example-account-json-object), but they include whether that user is an admin of the organization in question.
 
 Property | Type | Required? | Description
@@ -367,8 +368,11 @@ GET /api/v1/organizations/{organization_slug}/users/
 
 Use the above method to return all of the members of an organization.
 
-This method requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs).
+**URL Parameters**
 
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organziations](03-organization.md#user-content-list-organizations)
 
 **Response**
 
@@ -425,7 +429,11 @@ POST /api/v1/organizations/{organization_slug}/users/
 
 The above method adds a member to the organization. Note that the person needs to have an account for this to work. 
 
-This method also requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs).
+**URL Parameters**
+
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organziations](03-organization.md#user-content-list-organizations)
 
 **Request Payload**
 
@@ -462,15 +470,12 @@ GET /api/v1/organizations/{organization_slug}/users/{username}/
 ```
 The above method gets the information of a specific member of an organization. This can be helpful if you need to see whether that person is an admininstrator of the organization or not. 
 
-This method requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs).
+**URL Parameters**
 
-Additionally, it requires using an orgazation member's username. You can find their username by [listing organization members](user-content-list-organization-members) and adding the username to the end of the endpoint. 
-
-For example, to get information for username `jane`, who is a member of `example-organization`, you'd write:
-
-```
-GET /api/v1/organizations/exmaple-organization/users/jane/
-``` 
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organziations](03-organization.md#user-content-list-organizations)
+`username` | The username for a specific user, which can be found by [listing organization members](user-content-list-organization-members).
 
 **Response**
 
@@ -501,15 +506,12 @@ PATCH /api/v1/organizations/{organization_slug}/users/{username}/
 
 The above method updates the admin status of a specific member of an organization. If you need to change the user's account information, see how to [update a user account](02-users.md#user-content-update-a-user-account). 
 
-This method requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs). 
+**URL Parameters**
 
-Additionally, it requires using an orgazation member's username. You can find their username by [listing organization members](user-content-list-organization-members) and adding the username to the end of the endpoint. 
-
-For example, to get information for username `jane`, who is a member of `example-organization`, you'd write:
-
-```
-PATCH /api/v1/organizations/example-organization/users/jane/
-``` 
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organziations](03-organization.md#user-content-list-organizations)
+`username` | The username for a specific user, which can be found by [listing organization members](user-content-list-organization-members).
 
 **Request Payload**
 
