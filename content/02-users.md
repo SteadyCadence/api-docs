@@ -43,7 +43,7 @@ Getting your authorization token is one of the first things you need to do befor
 Note that logging a user into the API does not log them into the platform.
 
 
-**Request payload**
+**Request Payload**
 
 Property | Type | Required? | Description
 ---|---|:---:|---
@@ -110,7 +110,7 @@ POST /api/v1/account/register/
 Use the above method and endpoint to register a new user to the platform. Note that this does not log the user in, simply creates a new account for them.
 
 
-**Request payload**
+**Request Payload**
 
 Property | Type | Required? | Description
 ---|---|:---:|---
@@ -195,7 +195,7 @@ PATCH /api/v1/account/
 Update a user's credentials using the above method and endpoint.
 
 
-**Request payload**
+**Request Payload**
 
 Property | Type | Required? | Description
 ---|---|:---:|---
@@ -208,7 +208,7 @@ Property | Type | Required? | Description
 The response contains a JSON object with the following properties.
 
 Property | Type | Description
----|---
+---|---|---
 `username` | `String` | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
 `full_name` | `String` | (optional) The user's full name.
 `email` | `String` | The user's email address.
@@ -245,7 +245,7 @@ POST /api/v1/account/password/
 
 This method and endpoint changes the password for a user's account.
 
-**Request payload**
+**Request Payload**
 
 Property | Type | Required? | Description
 ---|---|:---:|---
@@ -339,7 +339,7 @@ The above method and endpoint return all of the users in the platform.
 
 **Response**
 
-The response contains a [list of user objects](#manage-platform-users), including the organizations the user is a member of.
+The response contains a [list of user objects](#user-content-example-user-json-object), including the organizations the user is a member of.
 
 #### Example Response
 
@@ -383,7 +383,7 @@ https://platform-staging-api.cadasta.org/api/v1/users/janesmith/
 
 **Response**
 
-The response contains a [user object](#user-content-example-user-object), including the organizations the user is a member of.
+The response contains a [user object](#user-content-example-user-json-object), including the organizations the user is a member of.
 
 
 #### Example Response
