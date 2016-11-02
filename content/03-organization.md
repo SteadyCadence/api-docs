@@ -543,8 +543,6 @@ The response is an [organization member JSON object](#user-content-example-membe
 
 ### Remove an Organization Member
 
-> Getting a platform error; add content when the error is resolved.
-
 ```endpoint
 DELETE /api/v1/organizations/{organization_slug}/users/{username}/
 ```
