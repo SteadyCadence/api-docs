@@ -1,4 +1,3 @@
-
 ## Project Resources
 
 > Questions for Oliver

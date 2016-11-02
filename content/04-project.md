@@ -1,4 +1,4 @@
-## Project
+## Projects
 
 The Cadasta API allows you work with data for <a href="https://docs.cadasta.org/en/03-projects.html" target="_blank">projects</a> that have been added to the platform. The two main endpoints you'll need to work with project data begin with:
 
