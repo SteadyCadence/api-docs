@@ -14,19 +14,20 @@ GET /api/v1/organizations/{organization_slug}/projects/
 
 A project JSON object contains the following properties.
 
-Property | Type | Description
----|---|---
-`id` | CharField | The ID of the project
-`organization` | OrganizationSerializer | [JSON object of the project's organization](03-organization.md#user-content-example-organization-json-object).
-`country` | CountryField | The country where the project is located; represented as a two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
-`name` | CharField | The name of the project.
-`description`| CharField | (optional) A long-form description of the project.
-`archived` | BooleanField| `Boolean` indicating whether the project has be archived.
-`urls` | ListField | A list of URLs to websites of this project.
-`contacts` | JSONField | A list of contacts for this project. A contact is a JSON object containing `name`, `email` (optional) and `tel` (optional).
-`users` | ListSerializer|  JSON Object of all the project's members // ADD LINK
-`access` | ChoiceField | Indicates whether access to the project is restricted; is either `"public"` or `"private"`.
-`slug` | SlugField | The short label of the project; usually used in URLs.
+
+Property | Type | Required? | Description
+---|---|:---:|---
+`id` | `String` |  | The ID of the project
+`organization` | OrganizationSerializer |  | [JSON object of the project's organization](03-organization.md#user-content-example-organization-json-object).
+`country` | `String` |    |The country where the project is located; represented as a two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
+`name` | `String` |   |The name of the project.
+`description`| `String` |   |(optional) A long-form description of the project.
+`archived` | `Boolean`|   |`Boolean` indicating whether the project has be archived.
+`urls` | `Array` |   |A list of URLs to websites of this project.
+`contacts` | `Array` |   |A list of contacts for this project. A contact is a JSON object containing `name`, `email` (optional) and `tel` (optional).
+`users` | `Array`|   | JSON Object of all the project's members // ADD LINK
+`access` | `String` |   |Indicates whether access to the project is restricted; is either `"public"` or `"private"`.
+`slug` | `String` |   |The short label of the project; usually used in URLs.
 
 
 ##### Example Project JSON Object
@@ -264,13 +265,13 @@ This also requires using an organization's slug. [Click here to learn about find
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`country` | CountryField | x | The country where the project is located; represented as a two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/
-`name` | CharField | x | The name of the project.
-`description` | CharField |  | A long-form description of the project.
-`archived` | BooleanField | x | Indicates whether the project has be archived.
-`urls` | ListField | x | A list of URLs to websites of this project.
-`contacts` | JSONField |  | A list of contacts for this project. A contact is a JSON object containing `name`, `email` (optional) and `tel` (optional).
-`access` | ChoiceField | x | Indicates whether the project is a public or a private one. 
+`country` | `String` | x | The country where the project is located; represented as a two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/
+`name` | `String` | x | The name of the project.
+`description` | `String` |  | A long-form description of the project.
+`archived` | `Boolean` | x | Indicates whether the project has be archived.
+`urls` | `Array` | x | A list of URLs to websites of this project.
+`contacts` | `Array` |  | A list of contacts for this project. A contact is a JSON object containing `name`, `email` (optional) and `tel` (optional).
+`access` | `String` | x | Indicates whether the project is a public or a private one. 
 
 **Response**
 
@@ -430,13 +431,13 @@ Using the API, you can update any of the following fields. All of them are optio
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`country` | CountryField | | The country where the project is located; represented as a two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
-`name` | CharField | | The name of the project.
-`description`| CharField | | (optional) A long-form description of the project.
-`archived` | BooleanField| | `Boolean` indicating whether the project has be archived.
-`urls` | ListField | | A list of URLs to websites of this project.
-`contacts` | JSONField | | A list of contacts for this project. A contact is a JSON object containing `name`, `email` (optional) and `tel` (optional).
-`access` | ChoiceField | | Indicates whether access to the project is restricted; is either `"public"` or `"private"`.
+`country` | `String` | | The country where the project is located; represented as a two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
+`name` | `String` | | The name of the project.
+`description`| `String` | | (optional) A long-form description of the project.
+`archived` | `Boolean`| | `Boolean` indicating whether the project has be archived.
+`urls` | `Array` | | A list of URLs to websites of this project.
+`contacts` | `Array` | | A list of contacts for this project. A contact is a JSON object containing `name`, `email` (optional) and `tel` (optional).
+`access` | `String` | | Indicates whether access to the project is restricted; is either `"public"` or `"private"`.
 
 **Response**
 
@@ -521,12 +522,12 @@ A project member JSON object contains the following properties:
 
 Property | Type | Required? | Description
 ---|---|:---:|---
-`username` | CharField | x |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | CharField | | The user's full name. (optional)
-`email` | EmailField | | The user's email address.
-`email_verified` | BooleanField | | Boolean indicating whether the user has verified their email address.
-`last_login` | DateTimeField | |  Date and time of last user login.
-`role` | CharField | x | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
+`username` | `String` | x |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` | `String` | | The user's full name. (optional)
+`email` | `String` | | The user's email address.
+`email_verified` | `Boolean` | | Boolean indicating whether the user has verified their email address.
+`last_login` | `String` | |  Date and time of last user login.
+`role` | `String` | x | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
 
 > Note: apparently only being able to see PMs and DCs is a bug; Beth to update these docs once that is fixed.
 
@@ -559,12 +560,12 @@ The response contains a JSON object with the following properties:
 
 Property | Type | Description
 ---|---|---
-`username` | CharField |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | CharField| The user's full name. (optional)
-`email` | EmailField | The user's email address.
-`email_verified` | BooleanField| Boolean indicating whether the user has verified their email address.
-`last_login` | DateTimeField | Date and time of last user login.
-`role` | CharField | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
+`username` | `String` |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` | `String`| The user's full name. (optional)
+`email` | `String` | The user's email address.
+`email_verified` | `Boolean` | Boolean indicating whether the user has verified their email address.
+`last_login` | `String` | Date and time of last user login.
+`role` | `String` | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
 
 #### Example Response
 
@@ -615,8 +616,8 @@ _Learn more about [creating user accounts](02_users.md#user-content-register-a-n
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`role` | CharField | x | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
+`username` | `String` | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`role` | `String` | x | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector, PU = Project User)
 
 **Response**
 
@@ -624,12 +625,12 @@ The response contains a JSON object with the following properties:
 
 Property | Type | Description
 ---|---|---
-`username` | CharField |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | CharField| The user's full name. (optional)
-`email` | EmailField | The user's email address.
-`email_verified` | BooleanField|Boolean indicating whether the user has verified their email address.
-`last_login` | DateTimeField | Date and time of last user login.
-`role` | CharField | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
+`username` | `String` |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` | `String`| The user's full name. (optional)
+`email` | `String` | The user's email address.
+`email_verified` | `Boolean` | Boolean indicating whether the user has verified their email address.
+`last_login` | `String` | Date and time of last user login.
+`role` | `String` | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
 
 
 #### Example Response
@@ -668,12 +669,12 @@ The response contains a JSON object with the following properties:
 
 Property | Type | Description
 ---|---|---
-`username` | CharField |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | CharField| The user's full name. (optional)
-`email` | EmailField | The user's email address.
-`email_verified` | BooleanField|Boolean indicating whether the user has verified their email address.
-`last_login` | DateTimeField | Date and time of last user login.
-`role` | CharField | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector, PU = Project User)
+`username` | `String` |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` | `String`| The user's full name. (optional)
+`email` | `String` | The user's email address.
+`email_verified` | `Boolean` | Boolean indicating whether the user has verified their email address.
+`last_login` | `String` | Date and time of last user login.
+`role` | `String` | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector, PU = Project User)
 
 #### Example Response
 
@@ -714,7 +715,7 @@ PM | Project Manager
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`role` | CharField | x | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
+`role` | `String` | x | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector, PU = Project User)
 
 **Response**
 
@@ -722,12 +723,12 @@ The response contains a JSON object with the following properties:
 
 Property | Type | Description
 ---|---|---
-`username` | CharField |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | CharField| The user's full name. (optional)
-`email` | EmailField | The user's email address.
-`email_verified` | BooleanField|Boolean indicating whether the user has verified their email address.
-`last_login` | DateTimeField | Date and time of last user login.
-`role` | CharField | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector, PU = Project User)
+`username` | `String` |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` | `String`| The user's full name. (optional)
+`email` | `String` | The user's email address.
+`email_verified` | `Boolean` | Boolean indicating whether the user has verified their email address.
+`last_login` | `String` | Date and time of last user login.
+`role` | `String` | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector, PU = Project User)
 
 #### Example Response
 
