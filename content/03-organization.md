@@ -1,4 +1,4 @@
-## Organization
+## Organizations
 
 Organizations in the Cadasta Platform represent organizations in real life. The Cadasta API allows you to work with data associated with organizations that have been added to the platform, and to add organizations as well. The endpoint for these objects starts with:
 
@@ -12,13 +12,13 @@ An organization JSON object contains the following properties:
 
 | Property | Type | Required? | Description |
 | --- | --- | :---: | --- |
-| `id` | CharField | x | The ID of the organization |
-| `slug` | SlugField | x | The short label of the organization; usually used in URLs. |
-| `name` | CharField | x | The name of the organization. |
-| `description` | CharField |  | \(optional\) A long-form description of the organization. |
-| `archived` | BooleanField | x | Indicates whether the organization has been archived. |
-| `urls` | ListField | | A list of URLs to websites of this organization. |
-| `contacts` | JSONField |  | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` \(optional\) and `tel` \(optional\). |
+| `id` | `String` | x | The ID of the organization |
+| `slug` | `String` | x | The short label of the organization; usually used in URLs. |
+| `name` | `String` | x | The name of the organization. |
+| `description` | `String` |  | \(optional\) A long-form description of the organization. |
+| `archived` | `Boolean` | x | Indicates whether the organization has been archived. |
+| `urls` | `Array` | | A list of URLs to websites of this organization. |
+| `contacts` | `Array` |  | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` \(optional\) and `tel` \(optional\). |
 
 ##### Example Organization JSON Object
 
@@ -48,7 +48,7 @@ An organization JSON object contains the following properties:
 ---
 
 
-### List organizations
+### List Organizations
 
 ```endpoint
 GET /api/v1/organizations/
@@ -114,11 +114,11 @@ The request payload is a JSON object containing the following properties.
 
 | Property | Type | Required? | Description |
 | --- | --- | --- | --- |
-| `name` | CharField | x | The name of the organization. |
-| `description` | CharField |  | A long-form description of the organization. |
-| `archived` | BooleanField |  | Indicates whether the organization has been archived. |
-| `urls` | ListField |  | A list of URLs to websites of this organization. |
-| `contacts` | JSONField |  | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` \(optional\) and `tel` \(optional\); either `email` or `tel` must be provided. |
+| `name` | `String` | x | The name of the organization. |
+| `description` | `String` |  | A long-form description of the organization. |
+| `archived` | `Boolean` |  | Indicates whether the organization has been archived. |
+| `urls` | `Array` |  | A list of URLs to websites of this organization. |
+| `contacts` | `Array` |  | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` \(optional\) and `tel` \(optional\); either `email` or `tel` must be provided. |
 
 Formatting your URLs and contacts can be tricky. The using the API UI, you'll want to use the Raw HTML window. 
 
@@ -213,7 +213,7 @@ The response body contains an [organization JSON object](#user-content-example-o
 
 The response also contains the field `users`, which provides a list of members of this organization.
 
-#### Example response
+#### Example Response
 
 ```json
 {
@@ -249,7 +249,7 @@ The response also contains the field `users`, which provides a list of members o
 
 ---
 
-### Update an organization
+### Update an Organization
 
 ```endpoint
 PATCH /api/v1/organizations/{organization_slug}/
@@ -263,13 +263,13 @@ It also requires using an organization's slug. [Click here to learn about findin
 
 The request payload is a JSON object containing the following properties. All properties are optional - if a property is not presented the request payload, the property will not be updated.
 
-| Property | Description |
-| --- | --- |
-| `name` | The name of the organization. |
-| `description` | \(optional\) A long-form description of the organization. |
-| `archived` | `Boolean` indicating whether the organization has been archived. |
-| `urls` | A list of URLs to websites of this organization. |
-| `contacts` | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` \(optional\) and `tel` \(optional\); either `email` or `tel` must be provided. |
+| Property | Type | Required? | Description 
+| --- | --- | --- | --- 
+| `name` | `String` |  | The name of the organization. 
+| `description` | `String` |  | \(optional\) A long-form description of the organization. 
+| `archived` | `Boolean` |  | Indicates whether the organization has been archived. 
+| `urls` | `Array` |  | A list of URLs to websites of this organization. 
+| `contacts` | `Array` |  | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` \(optional\) and `tel` \(optional\); either `email` or `tel` must be provided. 
 
 **Response**
 
@@ -335,12 +335,12 @@ A member JSON object has the following properties. These properties are similar 
 
 Property | Type | Required? | Description
 ---|---|:---:|---
-`username` | CharField | x | The user's username.
-`full_name` | CharField | | The user's full name.
-`email` | EmailField | x | The user's email associated with their Cadasta account.
-`email_verified` | BooleanField | | Whether or not the email has been verified.
-`last_login` | DateTimeField | | The last date of the user's login.
-`admin` | BooleanField | | Indicates whether or not the user is an admin of the organization of which they are a member.
+`username` | `String` | x | The user's username.
+`full_name` | `String` | | The user's full name.
+`email` | `String` | x | The user's email associated with their Cadasta account.
+`email_verified` | `Boolean` | | Whether or not the email has been verified.
+`last_login` | `String` | | The last date of the user's login.
+`admin` | `Boolean` | | Indicates whether or not the user is an admin of the organization of which they are a member.
 
 #### Example Member JSON Object
 
@@ -369,9 +369,6 @@ Use the above method to return all of the members of an organization.
 
 This method requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs).
 
-**Request Payload**
-
-No request payload is needed; only the `slug` value for the organization. 
 
 **Response**
 
@@ -434,8 +431,8 @@ This method also requires using an organization's slug. [Click here to learn abo
 
 Property | Type | Required? | Description
 ---|---|:---:|---
-`username` | CharField | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`admin` | BooleanField |  | Indicates whether the user will have admin
+`username` | `String` | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`admin` | `Boolean` |  | Indicates whether the user will have admin
 
 **Response**
 
@@ -520,8 +517,8 @@ You must provide the username and the admin status.
 
 Property | Type | Required? | Description
 ---|---|:---:|---
-`username` | CharField | x | The user's username.
-`admin` | BooleanField | x | Indicates whether or not the user is an admin of the organization of which they are a member.
+`username` | `String` | x | The user's username.
+`admin` | `Boolean` | x | Indicates whether or not the user is an admin of the organization of which they are a member.
 
 **Response**
 
