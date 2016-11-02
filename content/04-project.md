@@ -1,5 +1,9 @@
 ## Projects
 
+> Oliver, please check and make sure that all "required" fields are appropriately marked.
+
+> NOTE: should be able to see Public User and Administrator in the `role` field; Beth to update `roles` when that bug is fixed.
+
 The Cadasta API allows you work with data for <a href="https://docs.cadasta.org/en/03-projects.html" target="_blank">projects</a> that have been added to the platform. The two main endpoints you'll need to work with project data begin with:
 
 ```
@@ -17,12 +21,12 @@ A project JSON object contains the following properties.
 
 Property | Type | Required? | Description
 ---|---|:---:|---
-`id` | `String` |  | The ID of the project
-`organization` | OrganizationSerializer |  | [JSON object of the project's organization](03-organization.md#user-content-example-organization-json-object).
+`id` | `String` | x | The ID of the project
+`organization` | OrganizationSerializer | x | [JSON object of the project's organization](03-organization.md#user-content-example-organization-json-object).
 `country` | `String` |    |The country where the project is located; represented as a two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
-`name` | `String` |   |The name of the project.
-`description`| `String` |   |(optional) A long-form description of the project.
-`archived` | `Boolean`|   |`Boolean` indicating whether the project has be archived.
+`name` | `String` |  x |The name of the project.
+`description`| `String` |   | A long-form description of the project.
+`archived` | `Boolean`|   | Indicates whether the project has be archived.
 `urls` | `Array` |   |A list of URLs to websites of this project.
 `contacts` | `Array` |   |A list of contacts for this project. A contact is a JSON object containing `name`, `email` (optional) and `tel` (optional).
 `users` | `Array`|   | JSON Object of all the project's members // ADD LINK
@@ -162,7 +166,7 @@ GET /api/v1/organizations/{organization_slug}/projects/
 
 To see all of the projects in an organization, use the above method. 
 
-This method also requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs). 
+This method also requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#user-content-formatting-urls-for-accessing-specific-objects). 
 
 
 **Response**
@@ -258,14 +262,14 @@ POST /api/v1/organizations/{organization_slug}/projects/
 ```
 Use the above endpoint to create a new project. Note that all projects must be connected to an organization!
 
-This also requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs). 
+This also requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#user-content-formatting-urls-for-accessing-specific-objects). 
 
 
 **Request Payload**
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`country` | `String` | x | The country where the project is located; represented as a two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/
+`country` | `String` | x | The country where the project is located; represented as a two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/) code.
 `name` | `String` | x | The name of the project.
 `description` | `String` |  | A long-form description of the project.
 `archived` | `Boolean` | x | Indicates whether the project has be archived.
@@ -360,7 +364,7 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/
 
 Use this method to get at a specific project. 
 
-This method requires using both an organization and a project slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs). 
+This method requires using both an organization and a project slug. [Click here to learn about finding and formatting slugs](01-introduction.md#user-content-formatting-urls-for-accessing-specific-objects). 
 
 
 **Response**
@@ -434,7 +438,7 @@ Property | Type | Required? | Description
 `country` | `String` | | The country where the project is located; represented as a two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
 `name` | `String` | | The name of the project.
 `description`| `String` | | (optional) A long-form description of the project.
-`archived` | `Boolean`| | `Boolean` indicating whether the project has be archived.
+`archived` | `Boolean`| | Indicates whether the project has be archived.
 `urls` | `Array` | | A list of URLs to websites of this project.
 `contacts` | `Array` | | A list of contacts for this project. A contact is a JSON object containing `name`, `email` (optional) and `tel` (optional).
 `access` | `String` | | Indicates whether access to the project is restricted; is either `"public"` or `"private"`.
@@ -529,7 +533,6 @@ Property | Type | Required? | Description
 `last_login` | `String` | |  Date and time of last user login.
 `role` | `String` | x | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
 
-> Note: apparently only being able to see PMs and DCs is a bug; Beth to update these docs once that is fixed.
 
 ##### Example Project Member JSON Object
 
@@ -563,7 +566,7 @@ Property | Type | Description
 `username` | `String` |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
 `full_name` | `String`| The user's full name. (optional)
 `email` | `String` | The user's email address.
-`email_verified` | `Boolean` | Boolean indicating whether the user has verified their email address.
+`email_verified` | `Boolean` | Indicates whether the user has verified their email address.
 `last_login` | `String` | Date and time of last user login.
 `role` | `String` | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
 
@@ -599,7 +602,6 @@ Property | Type | Description
 
 ### Add a Project Member
 
-> NOTE: should be able to see Public User and Administrator; bug being fixed.
 
 ```endpoint
 POST /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/
@@ -628,7 +630,7 @@ Property | Type | Description
 `username` | `String` |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
 `full_name` | `String`| The user's full name. (optional)
 `email` | `String` | The user's email address.
-`email_verified` | `Boolean` | Boolean indicating whether the user has verified their email address.
+`email_verified` | `Boolean` | Indicates whether the user has verified their email address.
 `last_login` | `String` | Date and time of last user login.
 `role` | `String` | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
 
@@ -659,9 +661,6 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/{use
 
 Use the above method to see a member of a project. This can be helpful if you need to see or change their role in the project.
 
-> NOTE: should be able to see Public User and Administrator as options in the `role` field; bug being fixed.
-
-> Beth to update `role` once bug is fixed. 
 
 **Response**
 
@@ -672,7 +671,7 @@ Property | Type | Description
 `username` | `String` |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
 `full_name` | `String`| The user's full name. (optional)
 `email` | `String` | The user's email address.
-`email_verified` | `Boolean` | Boolean indicating whether the user has verified their email address.
+`email_verified` | `Boolean` | Indicates whether the user has verified their email address.
 `last_login` | `String` | Date and time of last user login.
 `role` | `String` | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector, PU = Project User)
 
@@ -711,7 +710,6 @@ PM | Project Manager
 
 **Request Payload**
 
-> NOTE: should be able to see Public User and Administrator in the `role` field; bug being fixed.
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
@@ -726,7 +724,7 @@ Property | Type | Description
 `username` | `String` |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
 `full_name` | `String`| The user's full name. (optional)
 `email` | `String` | The user's email address.
-`email_verified` | `Boolean` | Boolean indicating whether the user has verified their email address.
+`email_verified` | `Boolean` | Indicates whether the user has verified their email address.
 `last_login` | `String` | Date and time of last user login.
 `role` | `String` | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector, PU = Project User)
 
