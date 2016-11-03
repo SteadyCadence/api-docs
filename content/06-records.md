@@ -158,9 +158,11 @@ The response body is a JSON object containing multiple [project location / spati
 
 Encasing these objects are the following properties:
 
+> Oliver, what is `type` in the below table?
+
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`type` | `String` | x | This field is automatically set to FeatureCollection.
+`type` | `String` | x | This field is automatically set to `FeatureCollection`.
 `features` | `Array`  | x | Creates an array of all of the [project location / spatial unit JSON objects](#user-content-example-spatial-unit--project-location-json-object) in the project. 
 
 
@@ -359,7 +361,7 @@ URL Parameter | Description
 ---|---
 `organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`spatial_unit_id` | The  uniqe ID of the spatial unit, which you can find by [listing all of the spatial units](#user-content-list-spatial-units) for the project it's in. 
+`spatial_unit_id` | The  uniqe ID of the spatial unit, which you can find by [listing all of the spatial units](#user-content-list-spatial-units--project-locations) for the project it's in. 
 
 
 **Response**
@@ -440,7 +442,7 @@ URL Parameter | Description
 ---|---
 `organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`spatial_unit_id` | The  uniqe ID of the spatial unit, which you can find by [listing all of the spatial units](#user-content-list-spatial-units) for the project it's in.  
+`spatial_unit_id` | The  uniqe ID of the spatial unit, which you can find by [listing all of the spatial units](##user-content-list-spatial-units--project-locations) for the project it's in.  
 
 
 
@@ -562,7 +564,7 @@ URL Parameter | Description
 ---|---
 `organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`spatial_unit_id` | The  uniqe ID of the spatial unit, which you can find by [listing all of the spatial units](#user-content-list-spatial-units) for the project it's in. 
+`spatial_unit_id` | The  uniqe ID of the spatial unit, which you can find by [listing all of the spatial units](#user-content-list-spatial-units--project-locations) for the project it's in. 
 
 **Response**
 
@@ -576,7 +578,7 @@ NOT FOUND
 The requested URL /api/v1/organizations/example-organization/projects/global-project/spatial/w4rwh32mqctn9g223wnry2gx/ was not found on this server.
 ```
 
-When you [list all the spatial units in the project](#user-content-list-spatial-units), the one you've just deleted should be gone.
+When you [list all the spatial units in the project](#user-content-list-spatial-units--project-locations), the one you've just deleted should be gone.
 
 Otherwise, you'll get an error message or one of these [common response codes](01-introduction.md#user-content-common-response-codes).
 
@@ -1125,7 +1127,7 @@ URL Parameter | Description
 `organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
 `party_id` | The unique ID generated for the specific party, which can be found by [listing all of the parties](#user-content-list-parties). 
-`spatial_unit_id` | The  unique ID of the spatial unit, which you can find by [listing all of the spatial units](#user-content-list-spatial-units) for the project it's in. 
+`spatial_unit_id` | The  unique ID of the spatial unit, which you can find by [listing all of the spatial units](#user-content-list-spatial-units--project-locations) for the project it's in. 
 
 **Response**
 
