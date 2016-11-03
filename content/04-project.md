@@ -715,7 +715,7 @@ The response contains a JSON object with the following properties:
 Property | Type | Description
 ---|---|---
 `username` | `String` |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | `String`| The user's full name. (optional)
+`full_name` | `String`| The user's full name. 
 `email` | `String` | The user's email address.
 `email_verified` | `Boolean` | Indicates whether the user has verified their email address.
 `last_login` | `String` | Date and time of last user login.
