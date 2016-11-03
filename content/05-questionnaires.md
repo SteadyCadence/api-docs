@@ -97,17 +97,15 @@ Use this chart to figure out what type of question you're using in your form.
 
 The following values are for metadata that your questionnaire may be collecting:
 
-> Oliver, please see blank Answer Inputs below - what are those for?
-
 `type` | XLSform | Answer Input
 ---|---|---
 `ST` | `start` | Indicates the start of the survey.
 `EN` | `end` | Indicates the end of the survey.
-`TD` | `today` | 
-`DI` | `deviceid` | Stores the ID of the device used to collect the data.
-`SI` | `subscriberid` |
-`SS` | `simserial` | 
-`PN` | `phonenumber` | Phone number of the device.
+`TD` | `today` | Day of the survey.
+`DI` | `deviceid` | IMEI (International Mobile Equipment Identity)
+`SI` | `subscriberid` | IMSI (International Mobile Subscriber Identity)
+`SS` | `simserial` | SIM serial number.
+`PN` | `phonenumber` | Phone number of the device (if available)
 
 
 ##### Example Questionnaire JSON Object
