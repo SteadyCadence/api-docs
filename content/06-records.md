@@ -1130,7 +1130,6 @@ URL Parameter | Description
 ---|---
 `organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`party_id` | The unique ID generated for the specific party, which can be found by [listing all of the parties](#user-content-list-parties). 
 `spatial_unit_id` | The  unique ID of the spatial unit, which you can find by [listing all of the spatial units](#user-content-list-spatial-units--project-locations) for the project it's in. 
 
 **Response**
@@ -1152,9 +1151,9 @@ The `party` object has the following properties:
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`id` | `String` | x | the ID of the party)
-`name` | `String`  | x | (the name of the party)
-`type` | `String`  | x |  (the type of party; an individual (`IN`), a group (`GR`), or a corporation (`CO`).)
+`id` | `String` | x | The unique ID of the party. 
+`name` | `String`  | x | The name of the party.
+`type` | `String`  | x |  The type of party, e.g. an individual (`IN`), a group (`GR`), or a corporation (`CO`).
 
 The `spatial_unit` object has the following properties:
 
@@ -1384,7 +1383,7 @@ URL Parameter | Description
 ---|---
 `organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`relationship_id` | The unique ID of the relationship, which can be found by [listing all of the relationships to a spatial unit](#user-content-list-relationships-of-a-spatial-unit). 
+`relationship_id` | The unique ID of the relationship, which can be found by [listing all of the relationships to a spatial unit](#user-content-list-relationships-of-a-party-to-spatial-units--project-locations). 
 
 **Response**
 
@@ -1527,7 +1526,7 @@ RL Parameter | Description
 ---|---
 `organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`relationship_id` | The unique ID of the relationship, which can be found by [listing all of the relationships to a spatial unit](user-content-list-relationships-of-a-spatial-unit). 
+`relationship_id` | The unique ID of the relationship, which can be found by [listing all of the relationships to a spatial unit](#user-content-list-relationships-of-a-party-to-spatial-units--project-locations). 
 
 
 **Request Payload**
