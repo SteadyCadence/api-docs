@@ -75,7 +75,7 @@ Abbreviation | What it Represents
 `MI` | Miscellaneous
 
 
-#### Example Spatial Unit / Project Location
+#### Example Spatial Unit / Project Location JSON Object
 
 ```json
 
