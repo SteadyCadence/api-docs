@@ -3,9 +3,17 @@
 > Questions for Oliver
 * What's the difference between a resource and a spatial resource? I don't think I know what that is...like another map or something? GPX?
 
-For any given project, there are lots of resources that may be collected: letters, deeds, photographs, audio recordings, etc. Using the Cadasta API, you can [list all the resources connected to a specific project](#user-content-list-project-resources), as well as [create](#user-content-create-a-new-project-resource), [view](#user-content-get-a-project-resource), and [update](user-content-update-a-project-resource) individual ones.
+For any given project, there are lots of resources that may be collected: letters, deeds, photographs, audio recordings, etc. Using the Cadasta API, you can list all the resources connected to a specific project, as well as create, view, and update individual ones.
 
 _<a href="https://docs.cadasta.org/en/04-records.html#project-resources" target="_blank">Read more about Project Resources in our Platform Documentation</a>_
+
+To access project resources using the API, use the following endpoint:
+
+```
+/api/v1/organizations/{organization_slug}/projects/{project_slug}/resources/
+```
+
+These methods require using both an organization and a project slug. [Click here to learn about finding and formatting slugs](01-introduction.md#user-content-formatting-urls-for-accessing-specific-objects).
 
 **Project Resource Object Properties**
 
@@ -13,15 +21,15 @@ Each project resource appears as a JSON object with the following properties:
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`id` | CharField | x | A unique ID autmatically genereated for the file.
-`name` | CharField | x | The name of the file (e.g. Deed of Trust)
-`description` | CharField |  | A description of the file (e.g. The only deed we can find that has information relevant to the site.)
-`file` | S3Field | x | URL to a hosted version of the file, likely on an Amazon server or something similar.
-`original_file` | ?? | x | Original file name (e.g. deed-of-trust.pdf).
-`archived` | BooleanField | x | Indicates whether the file has been archived or not.
+`id` | `String` | x | A unique ID autmatically genereated for the file.
+`name` | `String` | x | The name of the file (e.g. Deed of Trust)
+`description` | `String` |  | A description of the file (e.g. The only deed we can find that has information relevant to the site.)
+`file` | `String` | x | URL to a hosted version of the file, likely on an Amazon server or something similar.
+`original_file` | `String` | x | Original file name (e.g. deed-of-trust.pdf).
+`archived` | `Boolean` | x | Indicates whether the file has been archived or not.
 
 
-####Example Project Resource Object
+####Example Project Resource JSON Object
 
 ```
 {
@@ -56,15 +64,17 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/resources/
 
 Use the above method and endpoint to list out all the resources associated with any given project. 
 
-This method requires using both an organization and a project slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs).
+**URL Parameters**
 
-**Request Payload**
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
 
-No payload required; only a properly formatted endpoint.
 
 **Response**
 
-The response body is an array containing a series of [project resource JSON objects](#user-content-list-project-resources).
+The response body is an array containing a series of [project resource JSON objects](#user-content-example-project-resource-json-object).
 
 ####Example Response
 
@@ -116,7 +126,12 @@ POST /api/v1/organizations/{organization_slug}/projects/{project_slug}/resources
 
 Use the above endpoint and method to create a new project resource. 
 
-This method requires using both an organization and a project slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs).
+**URL Parameters**
+
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
 
 **Request Payload**
 
@@ -124,16 +139,16 @@ To create a new resource, you'll need to provide the following properties:
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`name` | CharField | x | The name of the file (e.g. Deed of Trust)
-`description` | CharField |  | A description of the file (e.g. The only deed we can find that has information relevant to the site.)
-`file` | S3Field | x | URL to a hosted version of the file, likely on an Amazon server or something similar.
-`original_file` | ?? | x | Original file name (e.g. deed-of-trust.pdf).
-`archived` | BooleanField | x | Indicates whether the file has been archived or not.
+`name` | `String` | x | The name of the file (e.g. Deed of Trust)
+`description` | `String` |  | A description of the file (e.g. The only deed we can find that has information relevant to the site.)
+`file` | `String` | x | URL to a hosted version of the file, likely on an Amazon server or something similar.
+`original_file` | `String` | x | Original file name (e.g. deed-of-trust.pdf).
+`archived` | `Boolean` | x | Indicates whether the file has been archived or not.
 
 
 **Response**
 
-The response body contains a [project resource JSON object](#user-content-list-project-resources).
+The response body contains a [project resource JSON object](#user-content-example-project-resource-json-object).
 
 ####Example Response
 
@@ -170,7 +185,13 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/resources/
 
 Use the above method and endpoint to get a specific project resource. 
 
-To do this, you'll need to get the project resource ID. You can find this resource by listing all of the resources for the project, finding the project you're looking for, and then copying the ID. 
+**URL Parameters**
+
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+`resource_id` | The unique ID for the project resource. You can find this resource by listing all of the resources for the project, finding the project you're looking for, and then copying the ID. 
 
 The ID should be at the top of the project resource JSON object, and will look something like this:
 
@@ -184,15 +205,12 @@ So the endpoint you need should look something like this:
 /api/v1/organizations/example-organization/projects/global-project/resources/rtxixdb2a5weefmzmg7kzvgr/
 ```
 
-This method also requires using both an organization and a project slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs).
+This method also requires using both an organization and a project slug. [Click here to learn about finding and formatting slugs](01-introduction.md#user-content-formatting-urls-for-accessing-specific-objects).
 
-**Request Payload**
-
-No payload required; only a properly formatted endpoint.
 
 **Response**
 
-The response body contains a [project resource JSON object](#user-content-list-project-resources).
+The response body contains a [project resource JSON object](#user-content-example-project-resource-json-object).
 
 ####Example Response
 
@@ -248,16 +266,16 @@ Modify any value of the following fields of the project resource JSON object:
 
 Property | Type | Description 
 --- | --- | --- 
-`name` | CharField | The name of the file (e.g. Deed of Trust)
-`description` | CharField | A description of the file (e.g. The only deed we can find that has information relevant to the site.)
-`file` | S3Field | URL to a hosted version of the file, likely on an Amazon server or something similar.
-`original_file` | ?? | Original file name (e.g. deed-of-trust.pdf).
-`archived` | BooleanField | Indicates whether the file has been archived or not.
+`name` | `String` | The name of the file (e.g. Deed of Trust)
+`description` | `String` | A description of the file (e.g. The only deed we can find that has information relevant to the site.)
+`file` | `String` | URL to a hosted version of the file, likely on an Amazon server or something similar.
+`original_file` |`String` | Original file name (e.g. deed-of-trust.pdf).
+`archived` | `Boolean` | Indicates whether the file has been archived or not.
 
 
 **Response**
 
-The response body contains a [project resource JSON object](#user-content-list-project-resources).
+The response body contains a [project resource JSON object](#user-content-example-project-resource-json-object).
 
 ####Example Response
 
@@ -314,7 +332,7 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatialres
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`thing` | CharField | x | words
+`thing` | `String` | x | words
 
 **Response**
 
