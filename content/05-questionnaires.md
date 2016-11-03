@@ -57,7 +57,7 @@ Property | Type | Required? | Description
 `required` | `Boolean` | x | Indicates whether the field is required.
 `constraint` | ?? |  | The range of accepted values for the field.
 `default` | ?? |  | The default value of the field.
-`hint`| `String` |  | An addtional help text describing details of the field, usually displayed next to the field label.
+`hint`| `String` |  | An additional help text describing details of the field, usually displayed next to the field label.
 `relevant` | ?? |  | A reference to another field and corresponding value indicating when the field is displayed. 
 `options` | `Array` | |  A list of choices, only relevant if `type` is `select_one` or `select_multiple`. See **Options** table below for more information.
 
@@ -458,8 +458,6 @@ The above method creates a new questionnaire for the project. Questionnaires are
 
 **Note:** At the moment, updating the questionnaire is only possible as long as no data has been contributed to the project. If you need to change your questionnaire, you need to [create a new project](04-project.md#user-content-create-a-new-project). 
 
-> Notes
-* Check if it's actually now possible to change your questionnaire after data collection has begun
 
 **URL Parameters**
 
