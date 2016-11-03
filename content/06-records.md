@@ -152,16 +152,15 @@ URL Parameter | Description
 
 **Response**
 
-> update links
 
-The response body is a JSON object containing multiple [project location / spatial unit JSON objects](#user-content-example-spatial-units-in-a-project-aka-project-locations), only without the `project` property. 
+The response body is a JSON object containing multiple [project location / spatial unit JSON objects](#user-content-example-spatial-unit--project-location-json-object), only without the `project` property. 
 
 Encasing these objects are the following properties:
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
 `type` | `String` | x | This field is automatically set to FeatureCollection.
-`features` | `Array`  | x | Creates an array of all of the [project location / spatial unit JSON objects](#user-content-example-spatial-units-in-a-project-aka-project-locations) in the project. 
+`features` | `Array`  | x | Creates an array of all of the [project location / spatial unit JSON objects](#user-content-example-spatial-unit--project-location-json-object) in the project. 
 
 
 
@@ -269,7 +268,7 @@ Use the above method to create a new spatial unit / project location.
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`geometry` | `Array` | x | An object defining whether the location is recorded as a `Point`, `Line`, or `Polygon`, as well as coordinates that make it up. (See the `geometry` table above for more information.)  
+`geometry` | `Array` | x | An object defining whether the location is recorded as a `Point`, `Line`, or `Polygon`, as well as coordinates that make it up. (See the `geometry` table above for more information.) 
 `type` | `String` | x | This refers to the possible land `types` that the location could be (e.g. `PA` = Parcel). See the **Land `type` Abbreviations**  table above for more information.
 `attributes` | `Array` |  | An array of different attributes for the property. 
 
@@ -302,9 +301,7 @@ Note that the main difference between the formatting examples above is the numbe
 
 **Response**
 
->Add link
-
-The response is a spatial unit / project location JSON Object.
+The response is a complete [spatial unit / project location JSON Object](#user-content-example-spatial-unit--project-location-json-object).
 
 ####Example Response
 
@@ -355,42 +352,18 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/{s
 
 Use the above method to get the JSON object for a specific spatial unit / project location. 
 
-The endpoint requires the `id` of the unit, which you can find by [listing all of the spatial units](#user-content-list-spatial-units) for the project it's in. The ID will look something like this:
+**URL Parameters**
 
-```
-"id": "39jvd8r93jijahnvgd4s4cih",
-```
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+`spatial_unit_id` | The  uniqe ID of the spatial unit, which you can find by [listing all of the spatial units](#user-content-list-spatial-units) for the project it's in. 
 
-So the endpoint you need should look something like this:
-
-```
-/api/v1/organizations/example-organization/projects/global-project/spatial/39jvd8r93jijahnvgd4s4cih/
-```
 
 **Response**
 
-The response contains a JSON object with the following structure:
-
-> Not sure the type of field for `coordinates` and `properties`
-
-> Also, for this, does it work to just have the outline rather than a table?
-
-* `type`: ChoiceField (set automatically to `Feature`)
-* `geometry`: GeometryField
-    * `type`: ChoiceField (whether the feature is a `point`, `line `or `polygon`)
-    * `coordinates` (the coordinates that make up the geometry)
-* `properties`
-    * `id`: CharField (the unique ID for the spatial unit / project location)
-    * `type`: ChoiceField (the type of location it is; e.g. `PA` for Parcel)
-    * `attributes`: ChoiceField (Optional)
-    * `project`: NestedProjectSerializer
-        * `id`: CharField (the ID of the project)
-        * `organization`: OrganizationSerializer
-            * `id`: CharField (the ID of the organization)
-            * `slug`: SlugField (organization slug)
-            * `name`: CharField (organization name)
-        * `name`: CharField (project name)
-        * `slug`: SlugField (project slug)
+The response is a complete [spatial unit / project location JSON Object](#user-content-example-spatial-unit--project-location-json-object).
 
 
 ####Example Response
@@ -458,27 +431,25 @@ The response contains a JSON object with the following structure:
 PATCH /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/{spatial_unit_id}/
 ```
 
-Use the above method to update the JSON object for a specific spatial unit / project location. 
+Use the above method to update the JSON object for a specific spatial unit / project location.
 
-The endpoint requires the `id` of the unit, which you can find by [listing all of the spatial units](#user-content-list-spatial-units) for the project it's in. The ID will look something like this:
+**URL Parameters**
 
-```
-"id": "39jvd8r93jijahnvgd4s4cih",
-```
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+`spatial_unit_id` | The  uniqe ID of the spatial unit, which you can find by [listing all of the spatial units](#user-content-list-spatial-units) for the project it's in.  
 
-So the endpoint you need should look something like this:
 
-```
-/api/v1/organizations/example-organization/projects/global-project/spatial/39jvd8r93jijahnvgd4s4cih/
-```
 
 **Request Payload**
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`geometry` | GeometryField | x | An object defining whether the location is recorded as a point, line, or polygon, as well as coordinates that make it up. (See the `geometry` table below for more information.)  
-`type` | ChoiceField | x | This refers to the possible land `types` that the location could be (e.g. `PA` = Parcel). See the land `types` table above for more information.
-`attributes` | JSONField |  | An array of different attributes for the property. 
+`geometry` | `Array` | x | An object defining whether the location is recorded as a point, line, or polygon, as well as coordinates that make it up. (See the `geometry` table below for more information.)  
+`type` | `String` | x | This refers to the possible land `types` that the location could be (e.g. `PA` = Parcel). See the land `types` table above for more information.
+`attributes` | `Array` |  | An array of different attributes for the property. 
 
 Formatting your geometry can be a little tricky. Here are some examples to help you out. 
 
@@ -495,7 +466,7 @@ To format a **line**, write:
 "geometry": {"type": "LineString", "coordinates": [ [-122.7457809448242, 45.64344809984393 ], [-122.7457809448235, 45.64344809984393 ], [-122.7457809448219, 45.64344809984393 ] ] }
 ```
 
-To format a **polygon**, write the following:
+To format a **polygon**, write:
 
 ```json
 "geometry": {"type": "Polygon", "coordinates": [ [ [-122.7457809448242, 45.64344809984393 ], [-122.7457809448235, 45.64344809984442 ], [-122.7457809448219, 45.64344809984999 ], [-122.7457809448242, 45.64344809984393 ] ] ] }
@@ -506,31 +477,10 @@ For polygons, make sure that the last coordinate is the same as the first.
 
 Note that the main difference between the formatting examples above is the number of brackets, and the selection of `Point`, `LineString` or `Polygon` as the `type`.
 
+
 **Response**
 
-The response contains a JSON object with the following structure:
-
-> Not sure the type of field for `coordinates` and `properties`
-
-> Also, for this, does it work to just have the outline rather than a table?
-
-* `type`: ChoiceField (set automatically to `Feature`)
-* `geometry`: GeometryField
-    * `type`: ChoiceField (whether the feature is a `Point`, `LineString` or `Polygon`)
-    * `coordinates` (the coordinates that make up the geometry)
-* `properties`
-    * `id`: CharField (the unique ID for the spatial unit / project location)
-    * `type`: ChoiceField (the type of location it is; e.g. `PA` for Parcel)
-    * `attributes`: ChoiceField (Optional)
-    * `project`: NestedProjectSerializer
-        * `id`: CharField (the ID of the project)
-        * `organization`: OrganizationSerializer
-            * `id`: CharField (the ID of the organization)
-            * `slug`: SlugField (organization slug)
-            * `name`: CharField (organization name)
-        * `name`: CharField (project name)
-        * `slug`: SlugField (project slug)
-
+The response is a complete [spatial unit / project location JSON Object](#user-content-example-spatial-unit--project-location-json-object).
 
 
 ####Example Response
@@ -605,18 +555,13 @@ DELETE /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial
 Use the above method to delete a spatial unit / project location.
 
 Pressing the **Delete** button from the API UI will delete the member.
+**URL Parameters**
 
-The endpoint requires the `id` of the unit, which you can find by [listing all of the spatial units](#user-content-list-spatial-units) for the project it's in. The ID will look something like this:
-
-```
-"id": "39jvd8r93jijahnvgd4s4cih",
-```
-
-So the endpoint you need should look something like this:
-
-```
-/api/v1/organizations/example-organization/projects/global-project/spatial/39jvd8r93jijahnvgd4s4cih/
-```
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+`spatial_unit_id` | The  uniqe ID of the spatial unit, which you can find by [listing all of the spatial units](#user-content-list-spatial-units) for the project it's in. 
 
 **Response**
 
@@ -659,6 +604,8 @@ Each project location has a relationship with people of all kinds – sometimes
 _<a href="https://docs.cadasta.org/en/04-records.html#location-relationships" target="_blank">Read more about Parties in our Platform Documentation</a>_
 
 Using the API, you can view, create, update, and delete parties for your project. 
+
+The endpoint for parties begins like this:
 
 ```
 /api/v1/organizations/{organization_slug}/projects/{project_slug}/parties/
