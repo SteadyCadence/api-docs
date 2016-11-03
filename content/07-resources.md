@@ -191,21 +191,7 @@ URL Parameter | Description
 ---|---
 `organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`resource_id` | The unique ID for the project resource. You can find this resource by listing all of the resources for the project, finding the project you're looking for, and then copying the ID. 
-
-The ID should be at the top of the project resource JSON object, and will look something like this:
-
-```
-"id": "rtxixdb2a5weefmzmg7kzvgr",
-```
-
-So the endpoint you need should look something like this:
-
-```
-/api/v1/organizations/example-organization/projects/global-project/resources/rtxixdb2a5weefmzmg7kzvgr/
-```
-
-This method also requires using both an organization and a project slug. [Click here to learn about finding and formatting slugs](01-introduction.md#user-content-formatting-urls-for-accessing-specific-objects).
+`resource_id` | The unique ID for the project resource. You can find this resource by [listing all of the resources for the project](#user-content-list-project-resources), finding the project you're looking for, and then copying the ID. 
 
 
 **Response**
@@ -244,21 +230,15 @@ The response body contains a [project resource JSON object](#user-content-exampl
 PATCH /api/v1/organizations/{organization_slug}/projects/{project_slug}/resources/{resource_id}/
 ```
 
-Use the above method and endpoint to update the name, description, file, orignal fila name, and archive status of any resource.
+Use the above method and endpoint to update the name, description, file, orignal file name, and archive status of any resource.
 
-To do this, you'll need to get the project resource ID. You can find this resource by listing all of the resources for the project, finding the project you're looking for, and then copying the ID. 
+**URL Parameter**
 
-The ID should be at the top of the project resource JSON object, and will look something like this:
-
-```
-"id": "rtxixdb2a5weefmzmg7kzvgr",
-```
-
-So the endpoint you need should look something like this:
-
-```
-/api/v1/organizations/example-organization/projects/global-project/resources/rtxixdb2a5weefmzmg7kzvgr/
-```
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+`resource_id` | The unique ID for the project resource. You can find this resource by [listing all of the resources for the project](#user-content-list-project-resources), finding the project you're looking for, and then copying the ID. 
 
 **Request Payload**
 
