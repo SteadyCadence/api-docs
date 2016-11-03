@@ -79,8 +79,8 @@ Use this chart to figure out what type of question you're using in your form.
 `IN` | `integer` |	Integer (i.e., whole number) input.
 `DE` | `decimal` |	Decimal input.
 `TX` | `text` |	Free text response.
-`S1` | `select_one` [options] | Multiple choice question; only one answer can be selected.
-`SM` | `select_multiple` [options]	| Multiple choice question; multiple answers can be selected.
+`S1` | `select_one` | Multiple choice question; only one answer can be selected.
+`SM` | `select_multiple` | Multiple choice question; multiple answers can be selected.
 `NO` | `note` |	Display a note on the screen, takes no input.
 `GP` | `geopoint` |	Collect a single GPS coordinates.
 `GT` | `geotrace` |	Record a line of two or more GPS coordinates.
