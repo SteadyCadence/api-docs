@@ -128,7 +128,7 @@ Abbreviation | What it Represents
 
 ```
 
-
+***
 
 
 
@@ -994,13 +994,13 @@ The requested URL /api/v1/organizations/example-organization/projects/global-pro
 
 ## Relationships
 
-> Oliver, there are quite a few errors / gaps in this section. Will need your help to fill it in.
+> Oliver, there are quite a few errors / gaps in this section. Will need your help to fill them in.
 
 Each location has a relationship with one or more parties, and each of those parties has a specific type of relationship with the land. For example, a municipal body may own a park, and a local tribe may have right-of-way access to it. Ownership and right-of-way-access are both types of relationships. (Note that sometimes you may also see the word "tenure" in lieu of or alongside the word "relationship.")
 
 _<a href="https://docs.cadasta.org/en/04-records.html#location-relationships" target="_blank">Read more about Relationships in our Platform Documentation</a>_
 
-The Cadasta API allows you to list relationships of a party and list relationships to a spatial unit / project location. You can also get, create, update, and delete tenure relationships as well.
+The Cadasta API allows you to list relationships of a party and list relationships to a spatial unit / project location. You can also get, create, update, and delete relationships as well.
 
 Endpoints in this section start with:
 
@@ -1033,7 +1033,7 @@ A relationship object contains the following properties:
 
 ###Relationship (Tenure) Categories
 
-Relationships fall into one of the following categories. The abbreviations on the left are what you'd use when modifying or reading a tenure relationship using the API:
+Relationships fall into one of the following categories. The abbreviations on the left are what you'd use when modifying or reading a relationship using the API:
 
 Abbreviation | What it Represents
 ---|---
