@@ -166,8 +166,11 @@ GET /api/v1/organizations/{organization_slug}/projects/
 
 To see all of the projects in an organization, use the above method. 
 
-This method also requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#user-content-formatting-urls-for-accessing-specific-objects). 
+**URL Parameters**
 
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](03-organization.md#user-content-list-organizations)
 
 **Response**
 
@@ -262,7 +265,11 @@ POST /api/v1/organizations/{organization_slug}/projects/
 ```
 Use the above endpoint to create a new project. Note that all projects must be connected to an organization!
 
-This also requires using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#user-content-formatting-urls-for-accessing-specific-objects). 
+**URL Parameters**
+
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](03-organization.md#user-content-list-organizations)
 
 
 **Request Payload**
@@ -364,8 +371,12 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/
 
 Use this method to get at a specific project. 
 
-This method requires using both an organization and a project slug. [Click here to learn about finding and formatting slugs](01-introduction.md#user-content-formatting-urls-for-accessing-specific-objects). 
+**URL Parameters**
 
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
 
 **Response**
 
@@ -427,6 +438,13 @@ PATCH /api/v1/organizations/{organization_slug}/projects/{project_slug}/
 ```
 
 Use the above method to update a project in an organization. The fields of the project that you can edit are shown in the request payload below. 
+
+**URL Parameters**
+
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
 
 
 **Request Payload**
@@ -519,7 +537,7 @@ Project members are users associated with projects in the Cadasta Platform. Usin
 The endpoint for project member objects start with:
 
 ```
-/api/v1/organizations/example-organization/projects/global-project/users/
+/api/v1/organizations/{organization_slug}/projects/{project_slug}/users/
 ```
 
 A project member JSON object contains the following properties:
@@ -553,9 +571,22 @@ Property | Type | Required? | Description
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/
 ```
 
-Use the above method see the members of a project, specifically the Project Managers (PMs) and Data Collectors (DCs). 
+Use the above method see the members of a project. Additionally, you can see their role in the project in the `role` field:
+
+ID | Title
+---|---
+PU | Project User
+DC | Data Collector
+PM | Project Manager
 
 Note that Project Administrators are not listed, nor are Public Users. 
+
+**URL Parameters**
+
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
 
 **Response**
 
@@ -613,6 +644,11 @@ Note that project members need to already have a user account and be a member of
 
 _Learn more about [creating user accounts](02_users.md#user-content-register-a-new-user--create-a-new-user-account) and [adding organization members](03-organizations.md#user-content-add-an-organization-member)._
 
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+
 
 **Request Payload**
 
@@ -661,6 +697,15 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/{use
 
 Use the above method to see a member of a project. This can be helpful if you need to see or change their role in the project.
 
+**URL Parameters**
+
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+`username` | The username for a specific user, which can be found by [listing organization members](03-organization.md#user-content-list-organization-members).
+
+
 
 **Response**
 
@@ -708,6 +753,14 @@ PU | Project User
 DC | Data Collector
 PM | Project Manager
 
+**URL Parameters**
+
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+`username` | The username for a specific user, which can be found by [listing organization members](03-organization.md#user-content-list-organization-members).
+
 **Request Payload**
 
 
@@ -753,6 +806,14 @@ DELETE /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/{
 The above method removes a member from a project. 
 
 Pressing the **Delete** button from the API UI will delete the member.
+
+**URL Parameters**
+
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+`username` | The username for a specific user, which can be found by [listing organization members](03-organization.md#user-content-list-organization-members).
 
 **Response**
 
