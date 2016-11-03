@@ -22,7 +22,7 @@ A project JSON object contains the following properties.
 Property | Type | Required? | Description
 ---|---|:---:|---
 `id` | `String` | x | The ID of the project
-`organization` | OrganizationSerializer | x | [JSON object of the project's organization](03-organization.md#user-content-example-organization-json-object).
+`organization` | `Array` | x | [JSON object of the project's organization](03-organization.md#user-content-example-organization-json-object).
 `country` | `String` |    |The country where the project is located; represented as a two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
 `name` | `String` |  x |The name of the project.
 `description`| `String` |   | A long-form description of the project.
@@ -95,7 +95,7 @@ Use the above method to list all the publicly viewable projects in the Cadasta s
 
 **Response**
 
-The response body is an array containing a [project JSON object](#user-content-example-project-json-object).
+The response body is an array containing multiple [project JSON objects](#user-content-example-project-json-object).
 
 #### Example Response
 
@@ -147,6 +147,7 @@ The response body is an array containing a [project JSON object](#user-content-e
     }
 ]
 
+...
 
 ```
 
@@ -642,7 +643,7 @@ Use the above method to add a new project member to a project.
 
 Note that project members need to already have a user account and be a member of the organization administering the project. 
 
-_Learn more about [creating user accounts](02_users.md#user-content-register-a-new-user--create-a-new-user-account) and [adding organization members](03-organizations.md#user-content-add-an-organization-member)._
+_Learn more about [creating user accounts](02-users.md#user-content-register-a-new-user--create-a-new-user-account) and [adding organization members](03-organization.md#user-content-add-an-organization-member)._
 
 URL Parameter | Description
 ---|---
