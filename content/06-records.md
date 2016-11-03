@@ -1136,41 +1136,40 @@ Property | Type | Required? | Description
 `rel_class`| `String` | x | ??
 `id` | `String`  | x | The unique ID of the relationship
 `party` | `Array`  | x | The object containing the party that the spatial unit is related to. (See the `party` table below for more information.)
-`spatial_unit` | `Array`  | x | The spatial unit / project location object. 
-`tenure_type`| `String`  | x |  the kind of relationship; see the Tenure Relationship table for more information)
-`attributes`| `Array`  | |  (an array of attributes)
+`spatial_unit` | `Array`  | x | The spatial unit / project location object. (See the `spatial unit` table below for more information.)
+`tenure_type`| `String`  | x |  the kind of relationship; see the  [Relationship (Tenure) Categories table](#user-content-relationship-tenure-categories) for more information.)
+`attributes`| `Array`  | | An array of attributes. 
 
-`party` properties
-
-Property | Type | Required? | Description 
---- | --- | :---: | --- 
-`id` | CharField | | the ID of the party)
-`name` | CharField | | (the name of the party)
-`type` | ChoiceField | |  (the type of party; an individual (`IN`), a group (`GR`), or a corporation (`CO`).)
-
-`spatial_unit` properties
-Property | Type | Required? | Description 
---- | --- | :---: | --- 
-`type` | ChoiceField | | (automatically set to `Feature`)
-`geometry` | GeometryField | | 
-`properties` | | | 
-
-
-`geometry` properties
+The `party` object has the following properties: 
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`type` | ChoiceField | | (whether the feature is a `Point`, `LineString` or `Polygon`)
-`coordinates` | | | (the coordinates that make up the geometry)
+`id` | `String` | x | the ID of the party)
+`name` | `String`  | x | (the name of the party)
+`type` | `String`  | x |  (the type of party; an individual (`IN`), a group (`GR`), or a corporation (`CO`).)
 
-`properties` properties
+The `spatial_unit` object has the following properties:
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`id` | CharField | | (unique ID of the spatial unit / project location)
-`type` | ChoiceField | | (the kind of property it is; e.g. `PA` = Parcel)
+`type` | `String` | | Type of spatial unit; automatically set to `Feature`.
+`geometry` | `Array` | | An object defining whether the location is recorded as a point, line, or polygon, as well as coordinates that make it up. (See the `geometry` table below for more information.) 
+`properties` | `Array` | | An object that gives the location a unique ID and defines the type of location it is (land `types`). (See  the `properties` table below for more information)
 
-> add link to Tenure Relationship table when live
+
+The `geometry` object has the following properties: 
+
+Property | Type | Required? | Description 
+--- | --- | :---: | --- 
+`type` |  `String` | x | Indicates the geometry type: a `Point`, `LineString`, or `Polygon`.
+`coordinates` | `Array` | x | An array of all the GPS coordinates that make up the geometry of the spatial unit.
+
+And finally, the `properties` object has the following properties: 
+
+Property | Type | Required? | Description 
+--- | --- | :---: | --- 
+`id` | CharField | x | The unique ID of the spatial unit / project location.
+`type` | ChoiceField | x | This refers to the possible land `types` that the location could be (e.g. `PA` = Parcel). See the land `types` table above for more information.
 
 
 ####Example Response
@@ -1318,13 +1317,17 @@ Property | Type | Required? | Description
 
 
 
-### Create a New Tenure Relationship
+### Create a New  Relationship
 
-> Not sure how to format this to get it to work. Also, `attributes` may not be left blank, but I haven't seen an example of what goes into that field...
+> Oliver, not sure how to format this to get it to work. Also, `attributes` may not be left blank, but I haven't seen an example of what goes into that field...
 
 ```endpoint
 POST /api/v1/organizations/{organization_slug}/projects/{project_slug}/relationships/tenure/
 ```
+
+> Oliver, is this correct?
+
+Use the above endpoint to create a new relationship between an existing party and spatial unit.
 
 **Request Payload**
 
@@ -1332,7 +1335,11 @@ POST /api/v1/organizations/{organization_slug}/projects/{project_slug}/relations
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`thing` | CharField | x | words
+`party` | `String` | x | The name of the party.
+`spatial_unit` | `String` | x | ??
+`tenure_type` | `String` | x | ??
+`attributes` | `Array` | x | ??
+
 
 **Response**
 
@@ -1357,53 +1364,65 @@ Property | Type | Required? | Description
 
 
 
-### Get a Tenure Relationship
+### Get a Relationship
 
 ```endpoint
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/relationships/tenure/{relationship_id}/
 ```
 
-Use the above method and endpoint to get a specific tenure relationship. 
+Use the above method and endpoint to get a specific  relationship. 
 
-Doing this requires finding the relationship ID, which can be found from [listing all of the relationships to a spatial unit](user-content-list-relationships-of-a-spatial-unit). 
-
-The ID can be found towards the top of the relationship object, just below the `rel_class` field. It looks something like this:
-
-```
-"id": "f2eq96ez7rnkucwz9sr4my9y",
-```
-
-Add this ID – without any quotation marks, commas, spaces or other characters – to the end of the endpoint, so that it reads something like this:
-
-```endpoint
-GET /api/v1/organizations/example-organization/projects/global-project/relationships/tenure/f2eq96ez7rnkucwz9sr4my9y/
-
-```
-
-**Request Payload**
-
-There's no request payload; only a properly formatted endpoint. 
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+`relationship_id` | The unique ID of the relationship, which can be found by [listing all of the relationships to a spatial unit](user-content-list-relationships-of-a-spatial-unit). 
 
 **Response**
 
-The response is a JSON Object with an array of spatial relationship objects, which have the following structure: 
+The response is a JSON objects with the following properties:
 
-* `rel_class` (automatically defined as `tenure`)
-* `id`: CharField (the ID of the relationship)
-* `party` (the object containing the party that the spatial unit is related to)
-    * `id`: CharField(the ID of the party)
-    * `name`: CharField (the name of the party)
-    * `type`: ChoiceField (the type of party; an individual (`IN`), a group (`GR`), or a corporation (`CO`).)
-* `spatial_unit` (the spatial unit / project location object)
-    * `type`: ChoiceField (automatically set to `Feature`)
-    * `geometry`: GeometryField
-        * `type`: ChoiceField (whether the feature is a `Point`, `LineString` or `Polygon`)
-        * `coordinates` (the coordinates that make up the geometry)
-    * `properties`
-        * `id`: CharField (unique ID of the spatial unit / project location)
-        * `type`: ChoiceField (the kind of property it is; e.g. `PA` = Parcel)
-* `tenure_type`: ChoiceField (the kind of relationship; see the Tenure Relationship table for more information)
-* `attributes`: JSONField (an array of attributes)
+> Oliver, see ?? below - what are those properties ?
+
+Property | Type | Required? | Description 
+--- | --- | :---: | --- 
+`rel_class`| `String` | x | ??
+`id` | `String`  | x | The unique ID of the relationship
+`party` | `Array`  | x | The object containing the party that the spatial unit is related to. (See the `party` table below for more information.)
+`spatial_unit` | `Array`  | x | The spatial unit / project location object. (See the `spatial unit` table below for more information.)
+`tenure_type`| `String`  | x |  the kind of relationship; see the  [Relationship (Tenure) Categories table](#user-content-relationship-tenure-categories) for more information.)
+`attributes`| `Array`  | | An array of attributes. 
+
+The `party` object has the following properties: 
+
+Property | Type | Required? | Description 
+--- | --- | :---: | --- 
+`id` | `String` | x | the ID of the party)
+`name` | `String`  | x | (the name of the party)
+`type` | `String`  | x |  (the type of party; an individual (`IN`), a group (`GR`), or a corporation (`CO`).)
+
+The `spatial_unit` object has the following properties:
+
+Property | Type | Required? | Description 
+--- | --- | :---: | --- 
+`type` | `String` | | Type of spatial unit; automatically set to `Feature`.
+`geometry` | `Array` | | An object defining whether the location is recorded as a point, line, or polygon, as well as coordinates that make it up. (See the `geometry` table below for more information.) 
+`properties` | `Array` | | An object that gives the location a unique ID and defines the type of location it is (land `types`). (See  the `properties` table below for more information)
+
+
+The `geometry` object has the following properties: 
+
+Property | Type | Required? | Description 
+--- | --- | :---: | --- 
+`type` |  `String` | x | Indicates the geometry type: a `Point`, `LineString`, or `Polygon`.
+`coordinates` | `Array` | x | An array of all the GPS coordinates that make up the geometry of the spatial unit.
+
+And finally, the `properties` object has the following properties: 
+
+Property | Type | Required? | Description 
+--- | --- | :---: | --- 
+`id` | CharField | x | The unique ID of the spatial unit / project location.
+`type` | ChoiceField | x | This refers to the possible land `types` that the location could be (e.g. `PA` = Parcel). See the land `types` table above for more information.
 
 
 ####Example Response
@@ -1486,29 +1505,21 @@ The response is a JSON Object with an array of spatial relationship objects, whi
 
 
 
-### Update a Tenure Relationship
+### Update a Relationship
 
-> Not able to perform this method; getting errors that have to do with `spatial_unit` and `party`
+> Oliver, Not able to perform this method; getting errors that have to do with `spatial_unit` and `party`
 
 ```endpoint
 PATCH /api/v1/organizations/{organization_slug}/projects/{project_slug}/relationships/tenure/{relationship_id}/
 ```
 
-Use the above method and endpoint to update a tenure relationship.
+Use the above method and endpoint to update a  relationship.
 
-Doing this requires finding the relationship ID, which can be found from [listing all of the relationships to a spatial unit](user-content-list-relationships-of-a-spatial-unit). 
-
-The ID can be found towards the top of the relationship object, just below the `rel_class` field. It looks something like this:
-
-```
-"id": "f2eq96ez7rnkucwz9sr4my9y",
-```
-
-Add this ID – without any quotation marks, commas, spaces or other characters – to the end of the endpoint, so that it reads something like this:
-
-```endpoint
-GET /api/v1/organizations/example-organization/projects/global-project/relationships/tenure/f2eq96ez7rnkucwz9sr4my9y/
-```
+RL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+`relationship_id` | The unique ID of the relationship, which can be found by [listing all of the relationships to a spatial unit](user-content-list-relationships-of-a-spatial-unit). 
 
 
 **Request Payload**
