@@ -1,5 +1,9 @@
 ## Questionnaires
 
+> 11.2.2016: Beth is getting an error and can't see how the 
+
+> Oliver, please fill in the `Required?` fields
+
 Each project in the Cadasta Platform requires a questionnaire in order to work. This questionnaire creates the essential framework for data collection, either online or in the field. 
 
 Using the API, you can get the structure of your questionnaire in JSON format, or you can replace the questionnaire being used for a project. 
@@ -10,119 +14,98 @@ Note that you **cannot** replace a questionnaire in an active project once data 
 
 _To learn more about how questionnaires work, [see our documentation on Questionnaires & Custom Data Collection](https://docs.cadasta.org/en/08-XLSForms.html)._
 
-The endpoint you'll use to work with questinnaires begins with:
+The endpoint you'll use to work with questionnaires begins with:
 
 ```
-/api/v1/organizations/example-organization/projects/global-project/questionnaire/
+/api/v1/organizations/{organization_slug}/projects/{project_slug}/questionnaire/
 ```
-
-A questionnaire JSON object is structured like this:
-
-* `id`: CharField
-* `filename`: CharField
-* `title`: CharField
-* `id_string`: CharField
-* `xls_form`: S3Field (Required)
-* `xml_form`: S3Field
-* `version`: IntegerField
-* `questions`: SerializerMethodField
-* `question_groups`: ListSerializer (Array of objects)
-	* `id`: CharField
-	* `name`: CharField
-	* `label`: ReadOnlyField
-	* `questions`: ListSerializer (Array of objects)
-		* `id`: CharField
-		* `name`: CharField
-		* `label`: ReadOnlyField
-		* `type`: ChoiceField
-		* `required`: BooleanField
-		* `constraint`: CharField
-* `md5_hash`: CharField
 
 A questionnaire JSON object contains the following properties:
 
-Property | Type | Description
----|---|---
-`id` | CharField | The questionnaire ID.
-`filename` | CharField | The file name of the questionnaire.
-`title` | CharField | The questionnaire title.
-`id_string` | CharField | The unique ID for the spreadsheet, as defined in the spreadsheet itself in the Settings tab.
-`xls_form` | S3Field | Link to an Excel spreadsheet version of the form hosted on Amazon AWS.
-`xml_form` | S3Field | Link to an XML version of the form hosted on Amazon AWS.
-`version` | IntegerField | Time stamp when the questionnaire was last updated
-`questions` | SerializerMethodField| List of questions, charted in the **Questions** section below. 
-`question_groups` | ListSerializer | List of question groups, charted in the **Question Groups** section below.
-`md5_hash` | CharField | ??
+Property | Type | Required? | Description
+---|---|:---:|---
+`id` | `String` |  | The questionnaire ID.
+`filename` | `String` |  | The file name of the questionnaire.
+`title` | `String` |  | The questionnaire title.
+`id_string` | `String` |  | The unique ID for the spreadsheet, as defined in the spreadsheet itself in the Settings tab.
+`xls_form` | `String` |  | Link to an Excel spreadsheet version of the form hosted on Amazon AWS.
+`xml_form` | `String` |  | Link to an XML version of the form hosted on Amazon AWS.
+`version` | `String` |  | Time stamp when the questionnaire was last updated
+`questions` | `Array`|  | List of questions, charted in the **Questions** section below. 
+`question_groups` | `Array` |  | List of question groups, charted in the **Question Groups** section below.
+`md5_hash` | `String` |  | ??
 
 **Question Groups**
 
-Property | Type | Description
+Property | Type | Required? | Description
 ---|---|---
-`id` | CharField | The ID of the question group.
-`name` | CharField | Question group name, usually used to identify the group in the form. 
-`label` | ReadOnlyField | Question group label, usually displayed to the user.
-`questions` | ListSerializer | List of questions in the group.
+`id` | `String` | x | The ID of the question group.
+`name` | `String` | x | Question group name, usually used to identify the group in the form. 
+`label` | `String` | x | Question group label, usually displayed to the user.
+`questions` | `Array` | x | List of questions in the group. See the Questions table below. 
 
 **Questions**
 
-> Oliver, see below - there are a few fields listed that do not appear in either DRF Docs or in the output I have, so I'm not sure what type they are.
-
-
-Property | Type | Description
----|---|---
-`id` | CharField |The ID of the question.
-`name` | CharField |Question name, usually used to identify fields in the form. 
-`label` | ReadOnlyField | Question label, usually displayed to the user.
-`type` | ChoiceField | The field type, based on the question types available through [XLSforms](http://xlsform.org/#question-types). See the table below to see how they translate.
-`required` | BooleanField | `Boolean` idicating whether the field is required.
-`constraint` | ?? | (Optional field) The range of accepted values for the field.
-`default` | ?? | (Optional field) The default value of the field.
-`hint`| CharField | (Optional field) An addtional help text describing details of the field, usually displayed next to the field label.
-`relevant` | ?? | (Optional field) A reference to another field and corresponding value indicating when the field is displayed. 
-`options` | ListSerializer | (Optional field) A list of choices, only relevant if `type` is `select_one` or `select_multiple`. See **Options** section below for more information.
+Property | Type | Required? | Description
+---|---|:---:|---
+`id` | `String` | x | The ID of the question.
+`name` | `String` | x | Question name, usually used to identify fields in the form. 
+`label` | `String` | x | Question label, usually displayed to the user.
+`type` | `String` | x | The field type, based on the question types available through [XLSforms](http://xlsform.org/#question-types). See the table below to see how they translate.
+`required` | `Boolean` | x | Indicates whether the field is required.
+`constraint` | ?? |  | The range of accepted values for the field.
+`default` | ?? |  | The default value of the field.
+`hint`| CharField |  | An addtional help text describing details of the field, usually displayed next to the field label.
+`relevant` | ?? |  | A reference to another field and corresponding value indicating when the field is displayed. 
+`options` | `Array` | |  A list of choices, only relevant if `type` is `select_one` or `select_multiple`. See **Options** table below for more information.
 
 
 **Options**
 
-Property | Type | Description
----|---|---
-`id` | CharField | The ID of the choice option.
-`name` | ChoiceField | Choice name, usually as value for the form field. 
-`label` | CharField | Choice label, usually displayed to the user.
+Property | Type | Required? | Description
+---|---|:---:|---
+`id` | CharField | x | The ID of the choice option.
+`name` | ChoiceField | x | Choice name, usually as value for the form field. 
+`label` | CharField | x | Choice label, usually displayed to the user.
 
 **`type` Options**
-
-> Oliver, see below, I've made a chart to link  `type` as defined by the API as how they're defined in XLS forms. However, I don't know all the codes. Please fill in or pass me a reference and I can do it, thanks!
 
 Use this chart to figure out what type of question you're using in your form.
 
 `type` | XLSform | Answer Input
 ---|---|---
-xx | integer |	Integer (i.e., whole number) input.
-xx | decimal |	Decimal input.
-xx | text |	Free text response.
-S1 | select_one [options] | Multiple choice question; only one answer can be selected.
-xx | select_multiple [options]	| Multiple choice question; multiple answers can be selected.
-xx | note |	Display a note on the screen, takes no input.
-xx | geopoint |	Collect a single GPS coordinates.
-xx | geotrace |	Record a line of two or more GPS coordinates.
-xx | geoshape |	Record a polygon of multiple GPS coordinates; the last point is the same as the first point.
-xx | date |	Date input.
-xx | time |	Time input.
-xx | dateTime |	Accepts a date and a time input.
-PH | image | Take a picture.
-xx | audio | Take an audio recording.
-xx | video | Take a video recording.
-xx | barcode | Scan a barcode, requires the barcode scanner app to be installed.
-xx | calculate | Perform a calculation; see the Calculation section below.
-xx | acknowledge | Acknowledge prompt that sets value to “OK” if selected.
-ST | start | Indicates the start of the survey.
-EN | end | Indicates the end of the survey.
-TD | today |
-DI | deviceid | Stores the ID of the device used to collect the data.
-xx | subscriberid |
-xx | simserial | 
-xx | phonenumber | Enter a phone number.
+`IN` | `integer` |	Integer (i.e., whole number) input.
+`DE` | `decimal` |	Decimal input.
+`TX` | `text` |	Free text response.
+`S1` | `select_one` [options] | Multiple choice question; only one answer can be selected.
+`SM` | `select_multiple` [options]	| Multiple choice question; multiple answers can be selected.
+`NO` | `note` |	Display a note on the screen, takes no input.
+`GP` | `geopoint` |	Collect a single GPS coordinates.
+`GT` | `geotrace` |	Record a line of two or more GPS coordinates.
+`GS` | `geoshape` |	Record a polygon of multiple GPS coordinates; the last point is the same as the first point.
+`DA` | `date` |	Date input.
+`TI` | `time` |	Time input.
+`DT` | `dateTime` |	Accepts a date and a time input.
+`PH` | `image` | Take a picture.
+`AU` | `audio` (or `photo`) | Take an audio recording.
+`VI` | `video` | Take a video recording.
+`BC` | `barcode` | Scan a barcode, requires the barcode scanner app to be installed.
+`CA` | `calculate` | Perform a calculation; see the Calculation section below.
+`AC` | `acknowledge` | Acknowledge prompt that sets value to “OK” if selected.
+
+The following values are for metadata that your questionnaire may be collecting:
+
+> Oliver, please see blank Answer Inputs below - what are those for?
+
+`type` | XLSform | Answer Input
+---|---|---
+`ST` | `start` | Indicates the start of the survey.
+`EN` | `end` | Indicates the end of the survey.
+`TD` | `today` | 
+`DI` | `deviceid` | Stores the ID of the device used to collect the data.
+`SI` | `subscriberid` |
+`SS` | `simserial` | 
+`PN` | `phonenumber` | Phone number of the device.
 
 
 ##### Example Questionnaire JSON Object
@@ -437,9 +420,12 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/questionna
 
 Returns the projects current questionnaire structure. 
 
-**Request Payload**
+**URL Parameters**
 
-No payload required; only a properly formatted endpoint.
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
 
 
 **Response**
@@ -468,11 +454,18 @@ PUT /api/v1/organizations/{organization_slug}/projects/{project_slug}/questionna
 
 The above method creates a new questionnaire for the project. Questionnaires are either created by providing a link to a XLSForm or by providing a valid Questionnaire JSON object. 
 
-**Note:** At the moment, updating the questionnaire is only possible as long as no data has been contributed to the project. If you need to change your questionnaire, you need to [create a new project](04-project.md). 
+**Note:** At the moment, updating the questionnaire is only possible as long as no data has been contributed to the project. If you need to change your questionnaire, you need to [create a new project](04-project.md#user-content-create-a-new-project). 
 
 > Notes
 * Check if it's actually now possible to change your questionnaire after data collection has begun
-* Add link to specifically how to create a new project.
+
+**URL Parameters**
+
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+
 
 **Request Payload: XLS Form Replacement**
 
@@ -485,7 +478,7 @@ Property | Description
 
 **Request Payload: Replacement by JSON Object**
 
-> Still in progress, document when it's complete. 
+> This feature is still being developed. Documentation to be completed when it's done. 
 
 Creating a questionnaire from a JSON object requires a full [questionnaire JSON object](#user-content-example-questionnaire-json-object) provided with the request payload. 
 
