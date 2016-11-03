@@ -38,13 +38,15 @@ Property | Type | Required? | Description
 **Question Groups**
 
 Property | Type | Required? | Description
----|---|---
+---|---|:---:|---
 `id` | `String` | x | The ID of the question group.
 `name` | `String` | x | Question group name, usually used to identify the group in the form. 
 `label` | `String` | x | Question group label, usually displayed to the user.
 `questions` | `Array` | x | List of questions in the group. See the Questions table below. 
 
 **Questions**
+
+> Oliver, the API isnt' showing me the JSON at the moment; not sure what type some of the fields below are supposed to be
 
 Property | Type | Required? | Description
 ---|---|:---:|---
@@ -55,7 +57,7 @@ Property | Type | Required? | Description
 `required` | `Boolean` | x | Indicates whether the field is required.
 `constraint` | ?? |  | The range of accepted values for the field.
 `default` | ?? |  | The default value of the field.
-`hint`| CharField |  | An addtional help text describing details of the field, usually displayed next to the field label.
+`hint`| `String` |  | An addtional help text describing details of the field, usually displayed next to the field label.
 `relevant` | ?? |  | A reference to another field and corresponding value indicating when the field is displayed. 
 `options` | `Array` | |  A list of choices, only relevant if `type` is `select_one` or `select_multiple`. See **Options** table below for more information.
 
@@ -64,9 +66,9 @@ Property | Type | Required? | Description
 
 Property | Type | Required? | Description
 ---|---|:---:|---
-`id` | CharField | x | The ID of the choice option.
-`name` | ChoiceField | x | Choice name, usually as value for the form field. 
-`label` | CharField | x | Choice label, usually displayed to the user.
+`id` | `String` | x | The ID of the choice option.
+`name` | `String`  | x | Choice name, usually as value for the form field. 
+`label` | `String`  | x | Choice label, usually displayed to the user.
 
 **`type` Options**
 
@@ -86,8 +88,8 @@ Use this chart to figure out what type of question you're using in your form.
 `DA` | `date` |	Date input.
 `TI` | `time` |	Time input.
 `DT` | `dateTime` |	Accepts a date and a time input.
-`PH` | `image` | Take a picture.
-`AU` | `audio` (or `photo`) | Take an audio recording.
+`PH` | `image` / `photo`| Take a picture.
+`AU` | `audio` | Take an audio recording.
 `VI` | `video` | Take a video recording.
 `BC` | `barcode` | Scan a barcode, requires the barcode scanner app to be installed.
 `CA` | `calculate` | Perform a calculation; see the Calculation section below.
