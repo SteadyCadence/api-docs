@@ -2,7 +2,7 @@
 
 > Questions for Oliver:
 * Should we call these Spatial Units or Project Locations? They're called Project Locations in the docs and on the platform, so I'm inclined to go that route. Are they called Spatial Units for a reason?
-* I'm noticing that spatical unit / project locations are sometimes structured differently than they are in this introduction. Would love to talk through that with you to make sure I understand.
+
 
 Projects in the Cadasta Platform are spatial in nature – collections of points, lines, and polygons representing areas where land rights documentation is happening. These points, lines, and polygons can be retrieved and modified using the Cadasta API.  
 
@@ -13,44 +13,54 @@ The endpoint you need to access JSON for spatial units / project locations start
 ```
 /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/
 ```
+> Oliver, is `geometry` an `array` or an `object`? Used `array` since `object` wasn't listed as a type literal.
 
-A spatial unit / project location object is structured like this:
+A spatial unit / project location JSON object contains the following properties: 
 
-* `type`: ChoiceField (set automatically to `FeatureCollection`)
-* `features` 
-	* `type`: ChoiceField (set automatically to `Feature`)
-	* `geometry`: GeometryField
-		* `type`: ChoiceField (whether the feature is a `point`, `line `or `polygon`)
-		* `coordinates` (contains an array of GPS coordinates)
-	* `properties`
-		* `id`: CharField
-		* `type`: ChoiceField (the type of location it is, e.g. `PA` for Parcel)
-		* `attributes`: JSONField
+Property | Type | Required? | Description
+---|---|:---:|---
+`type` | `String` | x | This field is automatically set to `Feature`.
+`geometry` | `Array` | x | An object defining whether the location is recorded as a point, line, or polygon, as well as coordinates that make it up. (See the `geometry` table below for more information.)   
+`properties` | `Array` | x | An object that gives the location a unique ID, defines the type of location it is (land `types`), and lists any attributes. (See  the `properties` table below for more information)
 
-Its JSON object contains the following properties: 
+The `geometry` object contains the following properties: 
 
-Property | Type | Description
----|---|---
-`type` | ChoiceField | This field is automatically set to Feature.
-`geometry` | GeometryField | An object defining whether the location is recorded as a point, line, or polygon, as well as coordinates that make it up. (See the `geometry` table below for more information.)   
-`properties` | ?? | An object that gives the location a unique ID, defines the type of location it is (land `types`), and lists any attributes. (See  the `properties` table below for more information)
+> Oliver, is `coordinates` an `Array` if it's only a single point?
 
-Each object in `geometry` contains the following properties: 
+Property | Type | Required? | Description
+---|---|:---:|---
+`type` |  `String` | x | Indicates the geometry type: a `Point`, `LineString`, or `Polygon`.
+`coordinates` | `Array` | x | An array of all the GPS coordinates that make up the geometry of the spatial unit.
 
-Property | Type | Description
----|---|---
-`type` | ?? | Indicates the geometry type: a `point`, `line`, or `polygon`.
-`coordinates` | ?? | An array of all the GPS coordinates that make up the geometry of the spatial unit
+The `properties` object contains the following properties:
 
-Each object in `properties` contains the following properties:
-
-Property | Type | Description
----|---|---
-`id` | CharField | A unique ID for the spatial unit
-`type` | ChoiceField | The type of spatial unit that it is, defined by the fields in your questionnaire. (See the land `types` table below )
-`attributes` | JSONField | (Optional) An array of different attributes for the property. 
+Property | Type | Required? | Description
+---|---|:---:|---
+`id` | `String` | x |  A unique ID for the spatial unit
+`type` | `String` | x | The type of spatial unit that it is, defined by the fields in your questionnaire. (See the land `types` table below )
+`attributes` | `Array` |  | An array of different attributes for the property. 
+`project` | `Array` |  | An object containing basic information about the project, and within that, the organization. This field will not be present when working with a list of spatial units, as with `GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/`. See the `project` table below for more information.
 
 > Oliver, `attributes` looks like an object, but I don't see any listed as an example. How are these objects structured? 
+
+The `project` object contains the following properties:
+
+Property | Type | Required? | Description
+---|---|:---:|---
+`id` | `String` | x |  A unique ID for the project
+`organization` | `Array` | x |  An object containing the organization `id`, `slug` and `name`. (See the `organization` table below.)
+`name` | `String` | x |  The name of the project that the spatial unit is a project. 
+`slug` | `String` | x |  The project slug.
+
+Finally, the `organization` object contains the following properties:
+
+Property | Type | Required? | Description
+---|---|:---:|---
+`id` | `String` | x |  A unique ID for the organization.
+`slug` | `String` | x |  The organization slug.
+`name` | `String` | x |  The name of the organization that's housing the project. 
+
+**Land `type` Abbreviatiosn**
 
 If you need to plot out the land `types`, these are the abbreviations you need:
 
@@ -65,7 +75,7 @@ Abbreviation | What it Represents
 `MI` | Miscellaneous
 
 
-#### Example Spatial Unit in a Project (a.k.a Project Locations)
+#### Example Spatial Unit / Project Location
 
 ```json
 
@@ -76,32 +86,47 @@ Abbreviation | What it Represents
         "coordinates": [
             [
                 [
-                    -122.7457809448242,
-                    45.64344809984393
+                    -122.66475677490233,
+                    45.50045162361647
                 ],
                 [
-                    -122.7308464050293,
-                    45.640807770704704
+                    -122.66956329345703,
+                    45.487395598055215
                 ],
                 [
-                    -122.74543762207031,
-                    45.64068775278732
+                    -122.66252517700195,
+                    45.49954923075264
                 ],
                 [
-                    -122.7457809448242,
-                    45.64344809984393
+                    -122.66475677490233,
+                    45.50045162361647
                 ]
             ]
         ]
     },
     "properties": {
-        "id": "xtc4de68iawwzgtawp8avgv8",
+        "id": "39jvd8r93jijahnvgd4s4cih",
         "type": "PA",
-        "attributes": {}
+        "attributes": {},
+        "project": {
+            "id": "hxk4k8aee5rh5htahhh5uenn",
+            "organization": {
+                "id": "gae6pjf9xygxddgyg5dq45iq",
+                "slug": "example-organization",
+                "name": "Example Organization"
+            },
+            "name": "Portland Project",
+            "slug": "portland-project"
+        }
     }
 }
 
 ```
+
+
+
+
+
 
 
 
@@ -117,18 +142,26 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/
 
 Use the above method to get the GPS coordinates for all of the locations in a spatial unit / project location. These coordinates may be shown as a point, line or polygon.
 
-**Request Payload**
 
-No payload required; only a properly formatted endpoint.
+**URL Parameters**
+
+URL Parameter | Description
+---|---
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
 
 **Response**
 
-The response body is a JSON object containing multiple [project location / spatial unit JSON objects](#user-content-example-spatial-units-in-a-project-aka-project-locations). Encasing these objects are the following properties:
+> update links
 
-Property | Type | Description
----|---|---
-`type` | ChoiceField | This field is automatically set to FeatureCollection.
-`features` | ?? | Creates an array of all of the [project location / spatial unit JSON objects](#user-content-example-spatial-units-in-a-project-aka-project-locations) in the project. 
+The response body is a JSON object containing multiple [project location / spatial unit JSON objects](#user-content-example-spatial-units-in-a-project-aka-project-locations), only without the `project` property. 
+
+Encasing these objects are the following properties:
+
+Property | Type | Required? | Description 
+--- | --- | :---: | --- 
+`type` | `String` | x | This field is automatically set to FeatureCollection.
+`features` | `Array`  | x | Creates an array of all of the [project location / spatial unit JSON objects](#user-content-example-spatial-units-in-a-project-aka-project-locations) in the project. 
 
 
 
@@ -151,46 +184,6 @@ Property | Type | Description
                         [
                             -122.7308464050293,
                             45.640807770704704
-                        ],
-                        [
-                            -122.71333694458006,
-                            45.63456649809911
-                        ],
-                        [
-                            -122.68827438354492,
-                            45.62328243346257
-                        ],
-                        [
-                            -122.66819000244142,
-                            45.61463778373898
-                        ],
-                        [
-                            -122.64501571655272,
-                            45.60479086492599
-                        ],
-                        [
-                            -122.64656066894531,
-                            45.602869313350624
-                        ],
-                        [
-                            -122.65205383300781,
-                            45.60226881498576
-                        ],
-                        [
-                            -122.67093658447266,
-                            45.60310951089689
-                        ],
-                        [
-                            -122.6905059814453,
-                            45.6092342008613
-                        ],
-                        [
-                            -122.71368026733398,
-                            45.61956059488118
-                        ],
-                        [
-                            -122.72998809814452,
-                            45.62940492064501
                         ],
                         [
                             -122.74543762207031,
@@ -223,51 +216,7 @@ Property | Type | Description
                             -122.66956329345703,
                             45.487395598055215
                         ],
-                        [
-                            -122.66750335693358,
-                            45.481739052946516
-                        ],
-                        [
-                            -122.66441345214844,
-                            45.47903093138234
-                        ],
-                        [
-                            -122.66372680664062,
-                            45.47668378740375
-                        ],
-                        [
-                            -122.6597785949707,
-                            45.47710507685561
-                        ],
-                        [
-                            -122.65746116638182,
-                            45.47860965632908
-                        ],
-                        [
-                            -122.654972076416,
-                            45.482641731208865
-                        ],
-                        [
-                            -122.65402793884277,
-                            45.48613195107752
-                        ],
-                        [
-                            -122.65445709228516,
-                            45.48865921668583
-                        ],
-                        [
-                            -122.65780448913574,
-                            45.49052450666501
-                        ],
-                        [
-                            -122.66063690185547,
-                            45.493352409132655
-                        ],
-                        [
-                            -122.66218185424803,
-                            45.497443591159865
-                        ],
-                        [
+                        [     [
                             -122.66252517700195,
                             45.49954923075264
                         ],
@@ -301,6 +250,12 @@ Property | Type | Description
 
 
 
+
+
+
+
+
+
 ### Create a New Spatial Unit / Project Location
 
 
@@ -314,9 +269,9 @@ Use the above method to create a new spatial unit / project location.
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`geometry` | GeometryField | x | An object defining whether the location is recorded as a point, line, or polygon, as well as coordinates that make it up. (See the `geometry` table below for more information.)  
-`type` | ChoiceField | x | This refers to the possible land `types` that the location could be (e.g. `PA` = Parcel). See the land `types` table above for more information.
-`attributes` | JSONField |  | An array of different attributes for the property. 
+`geometry` | `Array` | x | An object defining whether the location is recorded as a `Point`, `Line`, or `Polygon`, as well as coordinates that make it up. (See the `geometry` table above for more information.)  
+`type` | `String` | x | This refers to the possible land `types` that the location could be (e.g. `PA` = Parcel). See the **Land `type` Abbreviations**  table above for more information.
+`attributes` | `Array` |  | An array of different attributes for the property. 
 
 Formatting your geometry can be a little tricky. Here are some examples to help you out. 
 
@@ -347,29 +302,9 @@ Note that the main difference between the formatting examples above is the numbe
 
 **Response**
 
->For this, does it work to just have the outline rather than a table?
+>Add link
 
-The response is a JSON Object with the following properties:
-
-* `type`: ChoiceField (set automatically to `Feature`)
-* `geometry`: GeometryField
-    * `type`: ChoiceField (whether the feature is a `point`, `line `or `polygon`)
-    * `coordinates` (the coordinates that make up the geometry)
-* `properties`
-    * `id`: CharField (the unique ID for the spatial unit / project location)
-    * `type`: ChoiceField (the type of location it is; e.g. `PA` for Parcel)
-    * `attributes`: ChoiceField (Optional)
-    * `project`: NestedProjectSerializer
-        * `id`: CharField (the ID of the project)
-        * `organization`: OrganizationSerializer
-            * `id`: CharField (the ID of the organization)
-            * `slug`: SlugField (organization slug)
-            * `name`: CharField (organization name)
-        * `name`: CharField (project name)
-        * `slug`: SlugField (project slug)
-
-```
-
+The response is a spatial unit / project location JSON Object.
 
 ####Example Response
 
@@ -432,10 +367,6 @@ So the endpoint you need should look something like this:
 /api/v1/organizations/example-organization/projects/global-project/spatial/39jvd8r93jijahnvgd4s4cih/
 ```
 
-**Request Payload**
-
-No payload required; only a properly formatted endpoint.
-
 **Response**
 
 The response contains a JSON object with the following structure:
@@ -478,50 +409,6 @@ The response contains a JSON object with the following structure:
                 [
                     -122.66956329345703,
                     45.487395598055215
-                ],
-                [
-                    -122.66750335693358,
-                    45.481739052946516
-                ],
-                [
-                    -122.66441345214844,
-                    45.47903093138234
-                ],
-                [
-                    -122.66372680664062,
-                    45.47668378740375
-                ],
-                [
-                    -122.6597785949707,
-                    45.47710507685561
-                ],
-                [
-                    -122.65746116638182,
-                    45.47860965632908
-                ],
-                [
-                    -122.654972076416,
-                    45.482641731208865
-                ],
-                [
-                    -122.65402793884277,
-                    45.48613195107752
-                ],
-                [
-                    -122.65445709228516,
-                    45.48865921668583
-                ],
-                [
-                    -122.65780448913574,
-                    45.49052450666501
-                ],
-                [
-                    -122.66063690185547,
-                    45.493352409132655
-                ],
-                [
-                    -122.66218185424803,
-                    45.497443591159865
                 ],
                 [
                     -122.66252517700195,
@@ -717,6 +604,8 @@ DELETE /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial
 
 Use the above method to delete a spatial unit / project location.
 
+Pressing the **Delete** button from the API UI will delete the member.
+
 The endpoint requires the `id` of the unit, which you can find by [listing all of the spatial units](#user-content-list-spatial-units) for the project it's in. The ID will look something like this:
 
 ```
@@ -728,13 +617,6 @@ So the endpoint you need should look something like this:
 ```
 /api/v1/organizations/example-organization/projects/global-project/spatial/39jvd8r93jijahnvgd4s4cih/
 ```
-
-**Request Payload**
-
-There's no payload required; only a properly formatted endpoint. Pressing the **Delete** button from the API UI will delete the member.
-
-![](_img/delete-spatial-unit.png)
-
 
 **Response**
 
@@ -800,9 +682,7 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/parties/
 
 Use the above method to return al of the parties listed as part of a project.
 
-**Request Payload**
 
-No payload required; only a properly formatted endpoint. 
 
 **Response**
 
@@ -948,9 +828,6 @@ Add the ID to the end of your endpoint, without quotes or commas, so that it rea
 GET /api/v1/organizations/example-organization/projects/global-project/parties/z8f83bt6fskq6wcvnp223t3q/
 ```
 
-**Request Payload**
-
-There's no payload; only a propertly formatted URL.
 
 **Response**
 
@@ -1106,6 +983,10 @@ DELETE /api/v1/organizations/{organization_slug}/projects/{project_slug}/parties
 
 Use the above method and endpoint to delete a party. 
 
+Pressing the **Delete** button from the API UI will delete the party.
+
+![](_img/delete-party.png)
+
 Using this method requires using the party ID, which you can find by [listing all of the parties](#user-content-list-parties). Find the party that you're looking for, and then identify the `id` field. It will look something like this:
 
 ```
@@ -1117,13 +998,6 @@ Add the ID to the end of your endpoint, without quotes or commas, so that it rea
 ```endpoint
 GET /api/v1/organizations/example-organization/projects/global-project/parties/z8f83bt6fskq6wcvnp223t3q/
 ```
-
-
-**Request Payload**
-
-No payload required. Pressing the **Delete** button from the API UI will delete the party.
-
-![](_img/delete-party.png)
 
 
 **Response**
@@ -1309,10 +1183,6 @@ Add the ID to the end of your endpoint, without quotes or commas, so that it rea
 ```endpoint
 GET /api/v1/organizations/example-organization/projects/global-project/spatial/xtc4de68iawwzgtawp8avgv8/relationships/
 ```
-
-**Request Payload**
-
-No payload is required; only a properly formatted endpoint.
 
 **Response**
 
@@ -1709,17 +1579,15 @@ Property | Type | Required? | Description
 
 
 
-### Delete a Tenure Relationship
+### Delete a Relationship
 
 ```endpoint
 DELETE /api/v1/organizations/{organization_slug}/projects/{project_slug}/relationships/tenure/{relationship_id}/
 ```
 
-Use the above method to delete a tenure relationship from a project.
+Use the above method to delete a relationship from a project.
 
-**Request Payload**
-
-No payload required. Pressing the **Delete** button from the API UI will delete the relationship between the party and the spatial unit.
+Pressing the **Delete** button from the API UI will delete the relationship between the party and the spatial unit.
 
 ![](_img/delete-tenure-relationship.png)
 
