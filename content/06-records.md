@@ -13,6 +13,10 @@ The endpoint you need to access JSON for spatial units / project locations start
 ```
 /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/
 ```
+
+_These methods require using both an organization and a project slug. [Click here to learn about finding and formatting slugs](01-introduction.md#user-content-formatting-urls-for-accessing-specific-objects)._
+
+
 > Oliver, is `geometry` an `array` or an `object`? Used `array` since `object` wasn't listed as a type literal. (this is true for all instances in this doc.)
 
 A spatial unit / project location JSON object contains the following properties: 
@@ -426,7 +430,7 @@ The response is a complete [spatial unit / project location JSON Object](#user-c
 
 
 
-### Update a Spatial Unit
+### Update a Spatial Unit / Project Location
 
 > Oliver, PATCH does not seem to be working with geometry / coordinates, only with `type`. Have not tried modifying `attributes`, as I'm not sure what goes there.
 
@@ -442,7 +446,7 @@ URL Parameter | Description
 ---|---
 `organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`spatial_unit_id` | The  uniqe ID of the spatial unit, which you can find by [listing all of the spatial units](##user-content-list-spatial-units--project-locations) for the project it's in.  
+`spatial_unit_id` | The  uniqe ID of the spatial unit, which you can find by [listing all of the spatial units](#user-content-list-spatial-units--project-locations) for the project it's in.  
 
 
 
@@ -614,7 +618,7 @@ The endpoint for parties begins like this:
 /api/v1/organizations/{organization_slug}/projects/{project_slug}/parties/
 ```
 
-_These methods requires using both an organization and a project slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs)._
+_These methods require using both an organization and a project slug. [Click here to learn about finding and formatting slugs](01-introduction.md#user-content-formatting-urls-for-accessing-specific-objects)._
 
 A party JSON object contains the following properties:
 
@@ -697,7 +701,7 @@ URL Parameter | Description
 
 **Response**
 
-The response is an array of [party JSON objects](user-content-example-party-json-object) without the `project` property. 
+The response is an array of [party JSON objects](#user-content-example-party-json-object) without the `project` property. 
 
 
 ####Example Response
@@ -766,7 +770,7 @@ Property | Type | Required? | Description
 
 **Response**
 
-The response is a [party JSON object](user-content-example-party-json-object). 
+The response is a [party JSON object](#user-content-example-party-json-object). 
 
 ####Example Response
 
@@ -820,7 +824,7 @@ URL Parameter | Description
 
 **Response**
 
-The response contains a [party JSON object](user-content-example-party-json-object). 
+The response contains a [party JSON object](#user-content-example-party-json-object). 
 
 ####Example Response
 
@@ -890,7 +894,7 @@ Property | Type  | Required? | Description
 
 **Response**
 
-The response contains a [party JSON object](user-content-example-party-json-object). 
+The response contains a [party JSON object](#user-content-example-party-json-object). 
 
 
 ####Example Response
@@ -1016,7 +1020,7 @@ or
 /api/v1/organizations/{organization_slug}/projects/{project_slug}/relationships/tenure/{relationship_id}/
 ```
 
-_These methods require using both an organization and a project slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs)._
+_These methods require using both an organization and a project slug. [Click here to learn about finding and formatting slugs](01-introduction.md#user-content-formatting-urls-for-accessing-specific-objects)._
 
 A relationship object contains the following properties:
 
@@ -1380,7 +1384,7 @@ URL Parameter | Description
 ---|---
 `organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`relationship_id` | The unique ID of the relationship, which can be found by [listing all of the relationships to a spatial unit](user-content-list-relationships-of-a-spatial-unit). 
+`relationship_id` | The unique ID of the relationship, which can be found by [listing all of the relationships to a spatial unit](#user-content-list-relationships-of-a-spatial-unit). 
 
 **Response**
 
