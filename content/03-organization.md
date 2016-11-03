@@ -204,7 +204,7 @@ The above method gets at a specific organization.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organziations](03-organization.md#user-content-list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](03-organization.md#user-content-list-organizations)
 
 **Response**
 
@@ -260,7 +260,7 @@ The above method allows you to update an organization.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organziations](03-organization.md#user-content-list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](03-organization.md#user-content-list-organizations)
 
 **Request payload**
 
@@ -372,7 +372,7 @@ Use the above method to return all of the members of an organization.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organziations](03-organization.md#user-content-list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](03-organization.md#user-content-list-organizations)
 
 **Response**
 
@@ -433,7 +433,7 @@ The above method adds a member to the organization. Note that the person needs t
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organziations](03-organization.md#user-content-list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](03-organization.md#user-content-list-organizations)
 
 **Request Payload**
 
@@ -474,7 +474,7 @@ The above method gets the information of a specific member of an organization. T
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organziations](03-organization.md#user-content-list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](03-organization.md#user-content-list-organizations)
 `username` | The username for a specific user, which can be found by [listing organization members](#user-content-list-organization-members).
 
 **Response**
@@ -510,7 +510,7 @@ The above method updates the admin status of a specific member of an organizatio
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organziations](03-organization.md#user-content-list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](03-organization.md#user-content-list-organizations)
 `username` | The username for a specific user, which can be found by [listing organization members](#user-content-list-organization-members).
 
 **Request Payload**
@@ -555,7 +555,7 @@ Using the API UI, you can delete a member by clicking the Delete button at the t
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organziations](03-organization.md#user-content-list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](03-organization.md#user-content-list-organizations)
 `username` | The username for a specific user, which can be found by [listing organization members](#user-content-list-organization-members).
 
 
