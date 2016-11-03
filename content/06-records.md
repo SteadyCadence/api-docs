@@ -65,6 +65,7 @@ Property | Type | Required? | Description
 If you need to plot out the land `types`, these are the abbreviations you need:
 
 Abbreviation | What it Represents
+--- | ---
 `PA` | Parcel
 `CB` | Community Boundary
 `BU` | Building
@@ -940,6 +941,7 @@ Use the above method and endpoint to delete a party.
 Pressing the **Delete** button from the API UI will delete the party.
 
 ![](_img/delete-party.png)
+
 URL Parameter | Description
 ---|---
 `organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
@@ -986,9 +988,9 @@ The requested URL /api/v1/organizations/example-organization/projects/global-pro
 
 ## Relationships
 
-> Oliver, I'm getting lots of empty responses for this seciont
+> Oliver, there are quite a few errors / gaps in this section. Will need your help to fill it in.
 
-Each location has a relationship with one or more parties, and each of those parties has a specific type of relationship with the land. For example, a municipal body may own a park, and a local tribe may have right-of-way access to it. Ownership and right-of-way-access are both types of relationships. (Note that sometimes you may also see the word "tenure" in lieu of the word "relationship.")
+Each location has a relationship with one or more parties, and each of those parties has a specific type of relationship with the land. For example, a municipal body may own a park, and a local tribe may have right-of-way access to it. Ownership and right-of-way-access are both types of relationships. (Note that sometimes you may also see the word "tenure" in lieu of or alongside the word "relationship.")
 
 _<a href="https://docs.cadasta.org/en/04-records.html#location-relationships" target="_blank">Read more about Relationships in our Platform Documentation</a>_
 
