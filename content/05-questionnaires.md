@@ -1,6 +1,6 @@
 ## Questionnaires
 
-> 11.2.2016: Beth is getting an error and can't see how the 
+> 11.2.2016: Beth is getting an error and can't see how the JSON object is formatted (see [Issue 19](https://github.com/Cadasta/api-docs/issues/19))
 
 > Oliver, please fill in the `Required?` fields
 
