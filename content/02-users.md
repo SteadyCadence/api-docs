@@ -10,13 +10,13 @@ api/v1/account
 
 An `account` JSON object contains the following properties:
 
-Property | Type | Required? | Description
----|---|:---:|---
-`username` | `String` | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | `String` | | The user's full name.
-`email` | `String` | x | The user's email address.
-`email_verified` | `Boolean` | | Indicates whether the user has verified their email address.
-`last_login` | `String` | | Date and time of last user login.
+Property | Type Description
+---|---|---
+`username` | `String` | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` | `String` | The user's full name.
+`email` | `String` | The user's email address.
+`email_verified` | `Boolean` | Indicates whether the user has verified their email address.
+`last_login` | `String` | Date and time of last user login.
 
 #### Example Account JSON Object
 
@@ -116,7 +116,7 @@ Property | Type | Required? | Description
 ---|---|:---:|---
 `username` | `String` | x |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
 `full_name` | `String` |  | The user's full name.
-`email` | EmailField| x |The user's email address.
+`email` | `String` | x |The user's email address.
 `password` | `String` | x |The user's password.
 
 **Response**
@@ -221,7 +221,7 @@ Property | Type | Description
 {
     "username": "j_smith",
     "full_name": "Joe Smith",
-    "email": "joe.smith@example.com"
+    "email": "joe.smith@example.com",
     "email_verified": false,
     "last_login": "2016-10-20T19:20:27.848272Z"
 }
@@ -287,41 +287,39 @@ These endpoints are primarily for use by superusers – individuals who have sp
 
 Here is a table of the first tier properties of the `users` object:
 
-Property | Type | Required? | Description
----|---|:---:|---
-`username` | `String` | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` |  `String` | | The user's full name.
-`email` |  `String` | x | The user's email associated with their account. Must be valid email address.
-`organizations` |  `Array` | | An array of organizations the user is a member of. (See the `organizations object` table below for more information).
-`last_login` | `String` |  | Date and time of last user login. 
-`is_active`| `Boolean |  | Whether or not the user is active.
+Property | Type Description
+---|---|---
+`username` | `String` | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` |  `String` | The user's full name.
+`email` |  `String` | The user's email associated with their account. Must be valid email address.
+`organizations` |  `Array` | An array of organizations the user is a member of. (See the `organizations` object table below for more information).
+`last_login` | `String` | Date and time of last user login. 
+`is_active`| `Boolean` | Whether or not the user is active.
 
 Here is a table of the properties of the `organizations` object (which is contained in the `users` object):
 
-Property | Type | Required? | Description
----|---|:---:|---
-`id` | `String` |  | The ID of the organization.
-`name` | `String` | x | The name of the organization.
+Property | Type | Description
+---|---|---
+`id` | `String` | The ID of the organization.
+`name` | `String` | The name of the organization.
 
-####Example User JSON Object
+#### Example User JSON Object
 
 ```json
-[
-    {
-        "username": "janesmith",
-        "full_name": "Jane Smith",
-        "email": "j.smith@example.com",
-        "last_login": "2016-10-20T19:20:27.848272Z",
-        "is_active": true,
-        "organizations": [{
-            "id": "90ush89adh89shd89sah89sah",
-            "name": "Cadasta"
-        }, {
-            "id": "kxzncjkxhziuhsaiojdioasjd",
-            "name": "Foo Coorp."
-        }]
-    }
-]
+{
+    "username": "janesmith",
+    "full_name": "Jane Smith",
+    "email": "j.smith@example.com",
+    "last_login": "2016-10-20T19:20:27.848272Z",
+    "is_active": true,
+    "organizations": [{
+        "id": "90ush89adh89shd89sah89sah",
+        "name": "Cadasta"
+    }, {
+        "id": "kxzncjkxhziuhsaiojdioasjd",
+        "name": "Foo Coorp."
+    }]
+}
 ```
 
 ***
@@ -430,6 +428,7 @@ Property | Type | Required? | Description
 `is_active`| `Boolean` |  | Whether or not the user is active.
 
 **Response**
+
 The response contains a [user object](#user-content-example-user-object) that includes the organizations the user is a member of.
 
 #### Example Response

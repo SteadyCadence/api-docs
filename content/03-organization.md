@@ -10,15 +10,15 @@ _To learn more about organizations, [see our documentation on Organizations](htt
 
 An organization JSON object contains the following properties:
 
-| Property | Type | Required? | Description |
-| --- | --- | :---: | --- |
-| `id` | `String` | x | The ID of the organization |
-| `slug` | `String` | x | The short label of the organization; usually used in URLs. |
-| `name` | `String` | x | The name of the organization. |
-| `description` | `String` |  | \(optional\) A long-form description of the organization. |
-| `archived` | `Boolean` | x | Indicates whether the organization has been archived. |
-| `urls` | `Array` | | A list of URLs to websites of this organization. |
-| `contacts` | `Array` |  | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` \(optional\) and `tel` \(optional\). |
+| Property | Type Description |
+| --- | --- | --- |
+| `id` | `String` | The ID of the organization |
+| `slug` | `String` | The short label of the organization; usually used in URLs. |
+| `name` | `String` | The name of the organization. |
+| `description` | `String` | \(optional\) A long-form description of the organization. |
+| `archived` | `Boolean` | Indicates whether the organization has been archived. |
+| `urls` | `Array` | A list of URLs to websites of this organization. |
+| `contacts` | `Array` | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` \(optional\) and `tel` \(optional\). |
 
 ##### Example Organization JSON Object
 
@@ -330,18 +330,17 @@ Users associated with an organization are known as **members**. The endpoint you
 ```
 api/v1/organizations/{organization_slug}/users/
 ```
-Endpoints in this category require using an organization's slug. [Click here to learn about finding and formatting slugs](01-introduction.md#slugs). 
 
 A member JSON object has the following properties. These properties are similar to the [`account` JSON object](02-users.md#user-content-example-account-json-object), but they include whether that user is an admin of the organization in question.
 
-Property | Type | Required? | Description
----|---|:---:|---
-`username` | `String` | x | The user's username.
-`full_name` | `String` | | The user's full name.
-`email` | `String` | x | The user's email associated with their Cadasta account.
-`email_verified` | `Boolean` | | Whether or not the email has been verified.
-`last_login` | `String` | | The last date of the user's login.
-`admin` | `Boolean` | | Indicates whether or not the user is an admin of the organization of which they are a member.
+Property | Type | Description
+---|---|---
+`username` | `String` | The user's username.
+`full_name` | `String` | The user's full name.
+`email` | `String` | The user's email associated with their Cadasta account.
+`email_verified` | `Boolean` | Whether or not the email has been verified.
+`last_login` | `String` | The last date of the user's login.
+`admin` | `Boolean` | Indicates whether or not the user is an admin of the organization of which they are a member.
 
 #### Example Member JSON Object
 
@@ -440,7 +439,7 @@ URL Parameter | Description
 Property | Type | Required? | Description
 ---|---|:---:|---
 `username` | `String` | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`admin` | `Boolean` |  | Indicates whether the user will have admin
+`admin` | `Boolean` |  | Indicates whether the user will have admin. Defaults to `false`.
 
 **Response**
 
@@ -519,7 +518,6 @@ You must provide the username and the admin status.
 
 Property | Type | Required? | Description
 ---|---|:---:|---
-`username` | `String` | x | The user's username.
 `admin` | `Boolean` | x | Indicates whether or not the user is an admin of the organization of which they are a member.
 
 **Response**
@@ -565,7 +563,7 @@ Your response will be in the form of an `HTTP 204: No Content` message.
 
 If there's an error, then you'll get an error message or another [response code](01-introduction.md#user-content-common-response-codes). 
 
-####Example Response
+#### Example Response
 
 ```json
 HTTP 204 No Content

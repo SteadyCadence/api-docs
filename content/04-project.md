@@ -1,37 +1,23 @@
 ## Projects
 
-> Oliver, please check and make sure that all "required" fields are appropriately marked.
-
-> NOTE: should be able to see Public User and Administrator in the `role` field; Beth to update `roles` when that bug is fixed.
-
-The Cadasta API allows you work with data for <a href="https://docs.cadasta.org/en/03-projects.html" target="_blank">projects</a> that have been added to the platform. The two main endpoints you'll need to work with project data begin with:
-
-```
-GET /api/v1/projects/
-```
-
-and 
-
-```endpoint
-GET /api/v1/organizations/{organization_slug}/projects/
-```
+The Cadasta API allows you work with data for <a href="https://docs.cadasta.org/en/03-projects.html" target="_blank">projects</a> that have been added to the platform. 
 
 A project JSON object contains the following properties.
 
 
-Property | Type | Required? | Description
----|---|:---:|---
-`id` | `String` | x | The ID of the project
-`organization` | `Array` | x | [JSON object of the project's organization](03-organization.md#user-content-example-organization-json-object).
-`country` | `String` |    |The country where the project is located; represented as a two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
-`name` | `String` |  x |The name of the project.
-`description`| `String` |   | A long-form description of the project.
-`archived` | `Boolean`|   | Indicates whether the project has be archived.
-`urls` | `Array` |   |A list of URLs to websites of this project.
-`contacts` | `Array` |   |A list of contacts for this project. A contact is a JSON object containing `name`, `email` (optional) and `tel` (optional).
-`users` | `Array`|   | JSON Object of all the project's members // ADD LINK
-`access` | `String` |   |Indicates whether access to the project is restricted; is either `"public"` or `"private"`.
-`slug` | `String` |   |The short label of the project; usually used in URLs.
+Property | Type | Description
+---|---|---
+`id` | `String` | The ID of the project
+`organization` | `Array` | [JSON object of the project's organization](03-organization.md#user-content-example-organization-json-object).
+`country` | `String` |The country where the project is located; represented as a two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
+`name` | `String` |The name of the project.
+`description`| `String` | A long-form description of the project.
+`archived` | `Boolean` | Indicates whether the project has be archived.
+`urls` | `Array` |A list of URLs to websites of this project.
+`contacts` | `Array` |A list of contacts for this project. A contact is a JSON object containing `name`, `email` (optional) and `tel` (optional).
+`users` | `Array` | JSON Object of all the project's members // ADD LINK
+`access` | `String` | Indicates whether access to the project is restricted; is either `"public"` or `"private"`.
+`slug` | `String` | The short label of the project; usually used in URLs.
 
 
 ##### Example Project JSON Object
@@ -146,8 +132,6 @@ The response body is an array containing multiple [project JSON objects](#user-c
         "slug": "import-test-1"
     }
 ]
-
-...
 
 ```
 
@@ -277,13 +261,12 @@ URL Parameter | Description
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`country` | `String` | x | The country where the project is located; represented as a two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/) code.
 `name` | `String` | x | The name of the project.
 `description` | `String` |  | A long-form description of the project.
-`archived` | `Boolean` | x | Indicates whether the project has be archived.
-`urls` | `Array` | x | A list of URLs to websites of this project.
+`archived` | `Boolean` | | Indicates whether the project has be archived. Defaults to `false`.
+`urls` | `Array` | | A list of URLs to websites of this project.
 `contacts` | `Array` |  | A list of contacts for this project. A contact is a JSON object containing `name`, `email` (optional) and `tel` (optional).
-`access` | `String` | x | Indicates whether the project is a public or a private one. 
+`access` | `String` | | Indicates whether the project is a `"public"` or a `"private"` one. Defaults to `"public"`.
 
 **Response**
 
@@ -292,72 +275,30 @@ The response body is an array containing a [project JSON object](#user-content-e
 #### Example Response
 
 ```json
-[
-    {
-        "id": "h8ridjt2jazkac4e97srzmh2",
-        "organization": {
-            "id": "gae6pjf9xygxddgyg5dq45iq",
-            "slug": "example-organization",
-            "name": "Example Organization",
-            "description": "",
-            "archived": false,
-            "urls": [
-                "http://example.com"
-            ],
-            "contacts": null
-        },
-        "country": "",
-        "name": "Atlanta Project",
+{
+    "id": "h8ridjt2jazkac4e97srzmh2",
+    "organization": {
+        "id": "gae6pjf9xygxddgyg5dq45iq",
+        "slug": "example-organization",
+        "name": "Example Organization",
         "description": "",
         "archived": false,
         "urls": [
-            "http://www.atlanta-example.org"
+            "http://example.com"
         ],
-        "contacts": null,
-        "access": "public",
-        "slug": "atlanta-project"
+        "contacts": null
     },
-    {
-        "id": "hxk4k8aee5rh5htahhh5uenn",
-        "organization": {
-            "id": "gae6pjf9xygxddgyg5dq45iq",
-            "slug": "example-organization",
-            "name": "Example Organization",
-            "description": "",
-            "archived": false,
-            "urls": [
-                "http://example.com"
-            ],
-            "contacts": null
-        },
-        "country": "US",
-        "name": "Portland Project",
-        "description": "",
-        "archived": false,
-        "urls": [
-            ""
-        ],
-        "contacts": [
-            {
-                "name": "Kate",
-                "tel": null,
-                "email": "kate@example.org"
-            },
-            {
-                "name": "Oliver",
-                "tel": "444-555-6789",
-                "email": "oliver@example.org"
-            },
-            {
-                "name": "David",
-                "tel": "555-555-5555",
-                "email": null
-            }
-        ],
-        "access": "public",
-        "slug": "global-project"
-    }
-]
+    "country": "",
+    "name": "Atlanta Project",
+    "description": "",
+    "archived": false,
+    "urls": [
+        "http://www.atlanta-example.org"
+    ],
+    "contacts": null,
+    "access": "public",
+    "slug": "atlanta-project"
+}
 ```
 
 
@@ -543,14 +484,22 @@ The endpoint for project member objects start with:
 
 A project member JSON object contains the following properties:
 
-Property | Type | Required? | Description
----|---|:---:|---
-`username` | `String` | x |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | `String` | | The user's full name. (optional)
-`email` | `String` | | The user's email address.
-`email_verified` | `Boolean` | | Boolean indicating whether the user has verified their email address.
-`last_login` | `String` | |  Date and time of last user login.
-`role` | `String` | x | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
+Property | Type | Description
+---|---|---
+`username` | `String` | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
+`full_name` | `String` | The user's full name. (optional)
+`email` | `String` | The user's email address.
+`email_verified` | `Boolean` | Boolean indicating whether the user has verified their email address.
+`last_login` | `String` | Date and time of last user login.
+`role` | `String` | Indicates the role of the user on the project.
+
+The `role` key resolves to:
+
+ID | Title
+---|---
+PU | Project User
+DC | Data Collector
+PM | Project Manager
 
 
 ##### Example Project Member JSON Object
@@ -572,15 +521,7 @@ Property | Type | Required? | Description
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/
 ```
 
-Use the above method see the members of a project. Additionally, you can see their role in the project in the `role` field:
-
-ID | Title
----|---
-PU | Project User
-DC | Data Collector
-PM | Project Manager
-
-Note that Project Administrators are not listed, nor are Public Users. 
+Use the above method see the members of a project.
 
 **URL Parameters**
 
@@ -600,7 +541,7 @@ Property | Type | Description
 `email` | `String` | The user's email address.
 `email_verified` | `Boolean` | Indicates whether the user has verified their email address.
 `last_login` | `String` | Date and time of last user login.
-`role` | `String` | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
+`role` | `String` | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector, PU = Project User)
 
 #### Example Response
 
@@ -669,7 +610,7 @@ Property | Type | Description
 `email` | `String` | The user's email address.
 `email_verified` | `Boolean` | Indicates whether the user has verified their email address.
 `last_login` | `String` | Date and time of last user login.
-`role` | `String` | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector)
+`role` | `String` | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector, PU = Project User)
 
 
 #### Example Response
@@ -746,13 +687,7 @@ Property | Type | Description
 PATCH /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/{username}/
 ```
 
-This method allows you to update the permissions granted to a project member. You can select one of the following permissions:
-
-ID | Title
----|---
-PU | Project User
-DC | Data Collector
-PM | Project Manager
+This method allows you to update the permissions granted to a project member. 
 
 **URL Parameters**
 
@@ -768,6 +703,14 @@ URL Parameter | Description
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
 `role` | `String` | x | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector, PU = Project User)
+
+You can select one of the following permissions:
+
+ID | Title
+---|---
+PU | Project User
+DC | Data Collector
+PM | Project Manager
 
 **Response**
 
@@ -805,8 +748,6 @@ DELETE /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/{
 ```
 
 The above method removes a member from a project. 
-
-Pressing the **Delete** button from the API UI will delete the member.
 
 **URL Parameters**
 

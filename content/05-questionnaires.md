@@ -22,44 +22,43 @@ The endpoint you'll use to work with questionnaires begins with:
 
 A questionnaire JSON object contains the following properties:
 
-Property | Type | Required? | Description
+Property | Type | Description
 ---|---|:---:|---
-`id` | `String` |  | The questionnaire ID.
-`filename` | `String` |  | The file name of the questionnaire.
-`title` | `String` |  | The questionnaire title.
-`id_string` | `String` |  | The unique ID for the spreadsheet, as defined in the spreadsheet itself in the Settings tab.
-`xls_form` | `String` |  | Link to an Excel spreadsheet version of the form hosted on Amazon AWS.
-`xml_form` | `String` |  | Link to an XML version of the form hosted on Amazon AWS.
-`version` | `String` |  | Time stamp when the questionnaire was last updated
-`questions` | `Array`|  | List of questions, charted in the **Questions** section below. 
-`question_groups` | `Array` |  | List of question groups, charted in the **Question Groups** section below.
-`md5_hash` | `String` |  | ??
+`id` | `String` | The questionnaire ID.
+`filename` | `String` | The file name of the questionnaire.
+`title` | `String` | The questionnaire title.
+`id_string` | `String` | The unique ID for the spreadsheet, as defined in the spreadsheet itself in the Settings tab.
+`xls_form` | `String` | Link to an Excel spreadsheet version of the form hosted on Amazon AWS.
+`version` | `String` | Time stamp when the questionnaire was last updated
+`questions` | `Array` | List of questions, charted in the **Questions** section below. 
+`question_groups` | `Array` | List of question groups, charted in the **Question Groups** section below.
 
 **Question Groups**
 
-Property | Type | Required? | Description
----|---|:---:|---
-`id` | `String` | x | The ID of the question group.
-`name` | `String` | x | Question group name, usually used to identify the group in the form. 
-`label` | `String` | x | Question group label, usually displayed to the user.
-`questions` | `Array` | x | List of questions in the group. See the Questions table below. 
+Property | Type | Description
+---|---|---
+`id` | `String` | The ID of the question group.
+`name` | `String` | Question group name, usually used to identify the group in the form. 
+`label` | `String` | Question group label, usually displayed to the user.
+`questions` | `Array` | List of questions in the group. See the Questions table below. 
+`relevant` | `String` | A reference to another field and corresponding value indicating when the field is displayed. 
 
 **Questions**
 
 > Oliver, the API isnt' showing me the JSON at the moment; not sure what type some of the fields below are supposed to be
 
-Property | Type | Required? | Description
----|---|:---:|---
-`id` | `String` | x | The ID of the question.
-`name` | `String` | x | Question name, usually used to identify fields in the form. 
-`label` | `String` | x | Question label, usually displayed to the user.
-`type` | `String` | x | The field type, based on the question types available through [XLSforms](http://xlsform.org/#question-types). See the table below to see how they translate.
-`required` | `Boolean` | x | Indicates whether the field is required.
-`constraint` | ?? |  | The range of accepted values for the field.
-`default` | ?? |  | The default value of the field.
-`hint`| `String` |  | An additional help text describing details of the field, usually displayed next to the field label.
-`relevant` | ?? |  | A reference to another field and corresponding value indicating when the field is displayed. 
-`options` | `Array` | |  A list of choices, only relevant if `type` is `select_one` or `select_multiple`. See **Options** table below for more information.
+Property | Type | Description
+---|---|---
+`id` | `String` | The ID of the question.
+`name` | `String` | Question name, usually used to identify fields in the form. 
+`label` | `String` | Question label, usually displayed to the user.
+`type` | `String` | The field type, based on the question types available through [XLSforms](http://xlsform.org/#question-types). See the table below to see how they translate.
+`required` | `Boolean` | Indicates whether the field is required.
+`constraint` | `String` | The range of accepted values for the field. [See XLSForms documentation](http://xlsform.org/#constraints) for more information.
+`default` | `String`  | The default value of the field.
+`hint`| `String` | An additional help text describing details of the field, usually displayed next to the field label.
+`relevant` | `String` | A reference to another field and corresponding value indicating when the field is displayed. 
+`options` | `Array` | A list of choices, only relevant if `type` is `select_one` or `select_multiple`. See **Options** table below for more information.
 
 
 **Options**

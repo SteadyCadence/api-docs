@@ -13,25 +13,23 @@ To access project resources using the API, use the following endpoint:
 /api/v1/organizations/{organization_slug}/projects/{project_slug}/resources/
 ```
 
-These methods require using both an organization and a project slug. [Click here to learn about finding and formatting slugs](01-introduction.md#user-content-formatting-urls-for-accessing-specific-objects).
-
 **Project Resource Object Properties**
 
 Each project resource appears as a JSON object with the following properties:
 
-Property | Type | Required? | Description 
---- | --- | :---: | --- 
-`id` | `String` | x | A unique ID autmatically genereated for the file.
-`name` | `String` | x | The name of the file (e.g. Deed of Trust)
-`description` | `String` |  | A description of the file (e.g. The only deed we can find that has information relevant to the site.)
-`file` | `String` | x | URL to a hosted version of the file, likely on an Amazon server or something similar.
-`original_file` | `String` | x | Original file name (e.g. deed-of-trust.pdf).
-`archived` | `Boolean` | x | Indicates whether the file has been archived or not.
+Property | Type | Description 
+--- | --- | --- 
+`id` | `String` | A unique ID autmatically genereated for the file.
+`name` | `String` | The name of the file (e.g. Deed of Trust)
+`description` | `String` | A description of the file (e.g. The only deed we can find that has information relevant to the site.)
+`file` | `String` | URL to a hosted version of the file, likely on an Amazon server or something similar.
+`original_file` | `String` | Original file name (e.g. deed-of-trust.pdf).
+`archived` | `Boolean` | Indicates whether the file has been archived or not.
 
 
-####Example Project Resource JSON Object
+#### Example Project Resource JSON Object
 
-```
+```json
 {
 	"id": "8u5dgnvgzix6kmg9hvbfdy3c",
 	"name": "Deed",
@@ -76,7 +74,7 @@ URL Parameter | Description
 
 The response body is an array containing a series of [project resource JSON objects](#user-content-example-project-resource-json-object).
 
-####Example Response
+#### Example Response
 
 ```JSON
 [
@@ -150,7 +148,7 @@ Property | Type | Required? | Description
 
 The response body contains a [project resource JSON object](#user-content-example-project-resource-json-object).
 
-####Example Response
+#### Example Response
 
 ```json
 {
@@ -198,7 +196,7 @@ URL Parameter | Description
 
 The response body contains a [project resource JSON object](#user-content-example-project-resource-json-object).
 
-####Example Response
+#### Example Response
 
 ```json
 {
@@ -257,7 +255,7 @@ Property | Type | Description
 
 The response body contains a [project resource JSON object](#user-content-example-project-resource-json-object).
 
-####Example Response
+#### Example Response
 
 ```json
 {

@@ -9,9 +9,9 @@ Using this platform API, you can:
 * View, create, and modify [projects](04-project.md) in the system, 
 * Upload new [questionnaires](05-questionnaires.md),
 * Add, modify and delete records for: 
-	* [spatial units/project locations](06-records.md#user-content-spatial-units-aka-project-locations), 
-	* [parties](06-records.md#user-content-parties) associated with these locations, and
-	* the [relationships](06-records.md#user-content-relationships) between the two. 
+  * [spatial units/project locations](06-records.md#user-content-spatial-units-aka-project-locations), 
+  * [parties](06-records.md#user-content-parties) associated with these locations, and
+  * the [relationships](06-records.md#user-content-relationships) between the two. 
 * And finally add, modify, and delete [project resources](07-resources.md). 
 
 Each of the sections listed above will outline how to use API endpoints to make these things happen.
@@ -31,8 +31,6 @@ Each endpoint is described using several parts:
 * **Any URL parameters**, a.k.a. parts of the endpoints wrapped in brackets. In the above path, those would be `{organization_slug}` and `{project_slug}`
 
 In addition, each method + endpoint combination is described by a request payload, properties, and an example output. 
-
-> Oliver, added mention of API interfaces here. 
 
 All URLs referenced here require their own base path, likely your own local instance of the Cadasta Platform. If you'd like to use an existing base path to explore the API, you can use the one for our demo site: `https://demo.cadasta.org/`. This will take you to a basic API UI, which is better used for exploration than it is for actually interacting with the API.
 
@@ -58,9 +56,9 @@ Property | Description
 ---|---
 `200` | The operation has been completed successfully
 `400` | There was a problem with the request payload. Usually this means required attributes are missing or the values provided are not accepted. Only applies the `POST`, `PATCH` and `PUT` requests. 
-`401` | No valid authentication token was provided with the request. 
+`401` | This request requires a user to be authenticated. You either have not provided an authentication token or the  authentication token provided is not valid. 
 `403` | Permission denied, the user has no permission to access this resource or perform this action. 
-`404` | Not found. (The object with the given ID was not in the database.)
+`404` | Not found. (The object with the given slug or ID was not in the database.)
 
 ### Formatting URLS for Accessing Specific Objects
 
