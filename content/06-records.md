@@ -274,20 +274,20 @@ Property | Type | Required? | Description
 
 Formatting your geometry can be a little tricky. Here are some examples to help you out. 
 
-To format a **point**, write:
+To format a **point**, write something like::
 
 ```json
 geometry: {"type": "Point", "coordinates": [-122.7457809448242, 45.64344809984393]}
 ```
 > Oliver, is `LineString` the correct thing to use here? `Line` didn't work, but in the GeoJSON docs I found LineString
 
-To format a **line**, write:
+To format a **line**, write something like:
 
 ```json
 "geometry": {"type": "LineString", "coordinates": [ [-122.7457809448242, 45.64344809984393 ], [-122.7457809448235, 45.64344809984393 ], [-122.7457809448219, 45.64344809984393 ] ] }
 ```
 
-To format a **polygon**, write the following:
+To format a **polygon**, write something like:
 
 ```json
 "geometry": {"type": "Polygon", "coordinates": [ [ [-122.7457809448242, 45.64344809984393 ], [-122.7457809448235, 45.64344809984442 ], [-122.7457809448219, 45.64344809984999 ], [-122.7457809448242, 45.64344809984393 ] ] ] }
@@ -453,20 +453,20 @@ Property | Type | Required? | Description
 
 Formatting your geometry can be a little tricky. Here are some examples to help you out. 
 
-To format a **point**, write:
+To format a **point**, write something like:
 
 ```json
 geometry: {"type": "Point", "coordinates": [-122.7457809448242, 45.64344809984393]}
 ```
 > Oliver, is `LineString` the correct thing to use here? `Line` didn't work, but in the GeoJSON docs I found LineString
 
-To format a **line**, write:
+To format a **line**, write something like:
 
 ```json
 "geometry": {"type": "LineString", "coordinates": [ [-122.7457809448242, 45.64344809984393 ], [-122.7457809448235, 45.64344809984393 ], [-122.7457809448219, 45.64344809984393 ] ] }
 ```
 
-To format a **polygon**, write:
+To format a **polygon**, write something like:
 
 ```json
 "geometry": {"type": "Polygon", "coordinates": [ [ [-122.7457809448242, 45.64344809984393 ], [-122.7457809448235, 45.64344809984442 ], [-122.7457809448219, 45.64344809984999 ], [-122.7457809448242, 45.64344809984393 ] ] ] }
@@ -1023,31 +1023,31 @@ A relationship object contains the following properties:
 > Fill in when I can see / access the relationship object.
 
 
-###Tenure Categories
+###Relationship (Tenure) Categories
 
-Tenure relationships fall into one of the following categories. The abbreviations on the left are what you'd use when modifying or reading a tenure relationship using the API:
+Relationships fall into one of the following categories. The abbreviations on the left are what you'd use when modifying or reading a tenure relationship using the API:
 
 Abbreviation | What it Represents
 ---|---
-AL | All Types
-CR | Carbon Rights
-CO | Concessionary Rights
-CU | Customary Rights
-EA | Easement
-ES | Equitable Servitude
-FH | Freehold
-GR | Grazing Rights
-HR | Hunting/Fishing/Harvest Rights
-IN | Indigenous Land Rights
-JT | Joint Tenancy
-LH | Leasehold
-LL | Longterm leasehold
-MR | Mineral Rights
-OC | Occupancy (No Documented Rights)
-TN | Tenancy (Documented Sub-lease)
-TC | Tenancy in Common
-UC | Undivided Co-ownership
-WR | Water Rights
+`AL `| All Types
+`CR` | Carbon Rights
+`CO` | Concessionary Rights
+`CU` | Customary Rights
+`EA` | Easement
+`ES` | Equitable Servitude
+`FH` | Freehold
+`GR` | Grazing Rights
+`HR` | Hunting/Fishing/Harvest Rights
+`IN` | Indigenous Land Rights
+`JT` | Joint Tenancy
+`LH` | Leasehold
+`LL` | Longterm leasehold
+`MR` | Mineral Rights
+`OC` | Occupancy (No Documented Rights)
+`TN` | Tenancy (Documented Sub-lease)
+`TC` | Tenancy in Common
+`UC` | Undivided Co-ownership
+`WR` | Water Rights
 
 
 
