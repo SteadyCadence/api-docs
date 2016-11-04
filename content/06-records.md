@@ -1201,7 +1201,7 @@ Property | Type | Required? | Description
 
 > fill in
 
-####Example Response
+#### Example Response
 
 > fill in
 
@@ -1236,7 +1236,7 @@ URL Parameter | Description
 
 **Response**
 
-The response is a relationship JSON object.
+The response contains a relationship JSON object.
 
 
 #### Example Response
@@ -1283,7 +1283,6 @@ The response is a relationship JSON object.
     "tenure_type": "LL",
     "attributes": {}
 }
-
 ```
 
 
@@ -1321,8 +1320,6 @@ The response is a relationship JSON object.
 
 ### Update a Relationship
 
-> Oliver, Not able to perform this method; getting errors that have to do with `spatial_unit` and `party`
-
 ```endpoint
 PATCH /api/v1/organizations/{organization_slug}/projects/{project_slug}/relationships/tenure/{relationship_id}/
 ```
@@ -1338,19 +1335,60 @@ URL Parameter | Description
 
 **Request Payload**
 
-> Fill in 
-
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`thing` | CharField | x | words
+`tenure_type` | `String` | | The relationship type; see [Relationship (Tenure) Categories]() for an overview of accepted values.
+`attributes` | `Object` | | Project-specific attributes that are defined through the projects questionnaire. 
 
 **Response**
 
-> Fill in 
+The response contains a relationship JSON object.
 
-####Example Response
+#### Example Response
 
-> Fill in 
+```json
+{
+    "rel_class": "tenure",
+    "id": "f2eq96ez7rnkucwz9sr4my9y",
+    "party": {
+        "id": "ajnyj54mpma7kpexxejfv5he",
+        "name": "Example Corp.",
+        "type": "CO"
+    },
+    "spatial_unit": {
+        "type": "Feature",
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -122.7457809448242,
+                        45.64344809984393
+                    ],
+                    [
+                        -122.7308464050293,
+                        45.640807770704704
+                    ],
+                    [
+                        -122.74543762207031,
+                        45.64068775278732
+                    ],
+                    [
+                        -122.7457809448242,
+                        45.64344809984393
+                    ]
+                ]
+            ]
+        },
+        "properties": {
+            "id": "xtc4de68iawwzgtawp8avgv8",
+            "type": "PA"
+        }
+    },
+    "tenure_type": "LL",
+    "attributes": {}
+}
+```
 
 
 
