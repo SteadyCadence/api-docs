@@ -70,6 +70,7 @@ body pre {
 .endpoint {
   width: 100%;
   display: flex;
+  overflow-x: auto;
 }
 
 .endpoint-method {
