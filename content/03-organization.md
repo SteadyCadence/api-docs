@@ -6,7 +6,7 @@ Organizations in the Cadasta Platform represent organizations in real life. The 
 GET api/v1/organizations
 ```
 
-_To learn more about organizations, [see our documentation on Organizations](https://docs.cadasta.org/en/02-organizations.html)._
+_To learn more about organizations, <a href="https://docs.cadasta.org/en/02-organizations.html" target="_blank">see our documentation on Organizations</a>._
 
 An organization JSON object contains the following properties:
 
@@ -58,7 +58,7 @@ The above method returns all of the publicly available organizations in the plat
 
 **Response**
 
-The response body is an array containing an [organization JSON object](#user-content-example-organization-json-object).
+The response body is an array containing an [organization JSON object](#example-organization-json-object).
 
 #### Example response
 
@@ -152,7 +152,7 @@ Note that this formatting can be on a single line; they're shown on multiple lin
 
 **Response**
 
-The response body contains an [organization JSON object](#user-content-example-organization-json-object).
+The response body contains an [organization JSON object](#example-organization-json-object).
 
 The response also contains the field `users`, which provides a list of members of this organization. In this case, there will only be one user shown: the user who created the organization.
 
@@ -204,11 +204,11 @@ The above method gets at a specific organization.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](03-organization.md#user-content-list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
 
 **Response**
 
-The response body contains an [organization JSON object](#user-content-example-organization-json-object).
+The response body contains an [organization JSON object](#example-organization-json-object).
 
 The response also contains the field `users`, which provides a list of members of this organization.
 
@@ -260,7 +260,7 @@ The above method allows you to update an organization.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](03-organization.md#user-content-list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
 
 **Request payload**
 
@@ -276,7 +276,7 @@ The request payload is a JSON object containing the following properties. All pr
 
 **Response**
 
-The response body contains an [organization JSON object](#user-content-example-organization-json-object).
+The response body contains an [organization JSON object](#example-organization-json-object).
 
 The response also contains the field `users`, which provides a list of members of this organization.
 
@@ -331,7 +331,7 @@ Users associated with an organization are known as **members**. The endpoint you
 api/v1/organizations/{organization_slug}/users/
 ```
 
-A member JSON object has the following properties. These properties are similar to the [`account` JSON object](02-users.md#user-content-example-account-json-object), but they include whether that user is an admin of the organization in question.
+A member JSON object has the following properties. These properties are similar to the [`account` JSON object](#example-account-json-object), but they include whether that user is an admin of the organization in question.
 
 Property | Type | Description
 ---|---|---
@@ -371,11 +371,11 @@ Use the above method to return all of the members of an organization.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](03-organization.md#user-content-list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
 
 **Response**
 
-The response body is an array containing an [organization JSON object](#user-content-example-organization-json-object).
+The response body is an array containing an [organization JSON object](#example-organization-json-object).
 
 #### Example Response
 
@@ -432,7 +432,7 @@ The above method adds a member to the organization. Note that the person needs t
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](03-organization.md#user-content-list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
 
 **Request Payload**
 
@@ -443,7 +443,7 @@ Property | Type | Required? | Description
 
 **Response**
 
-The response is an [organization member JSON object](user-content-example-member-json-object). 
+The response is an [organization member JSON object](#example-member-json-object). 
 
 #### Example Response
 
@@ -473,12 +473,12 @@ The above method gets the information of a specific member of an organization. T
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](03-organization.md#user-content-list-organizations)
-`username` | The username for a specific user, which can be found by [listing organization members](#user-content-list-organization-members).
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`username` | The username for a specific user, which can be found by [listing organization members](#list-organization-members).
 
 **Response**
 
-The response includes the properties of an [organization member JSON object](user-content-example-member-json-object). 
+The response includes the properties of an [organization member JSON object](#example-member-json-object). 
 
 
 #### Example Response
@@ -503,14 +503,14 @@ The response includes the properties of an [organization member JSON object](use
 PATCH /api/v1/organizations/{organization_slug}/users/{username}/
 ```
 
-The above method updates the admin status of a specific member of an organization. If you need to change the user's account information, see how to [update a user account](02-users.md#user-content-update-a-user-account). 
+The above method updates the admin status of a specific member of an organization. If you need to change the user's account information, see how to [update a user account](#update-a-user-account). 
 
 **URL Parameters**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](03-organization.md#user-content-list-organizations)
-`username` | The username for a specific user, which can be found by [listing organization members](#user-content-list-organization-members).
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`username` | The username for a specific user, which can be found by [listing organization members](#list-organization-members).
 
 **Request Payload**
 
@@ -522,7 +522,7 @@ Property | Type | Required? | Description
 
 **Response**
 
-The response is an [organization member JSON object](#user-content-example-member-json-object). 
+The response is an [organization member JSON object](#example-member-json-object). 
 
 #### Example Response
 
@@ -553,15 +553,15 @@ Using the API UI, you can delete a member by clicking the Delete button at the t
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](03-organization.md#user-content-list-organizations)
-`username` | The username for a specific user, which can be found by [listing organization members](#user-content-list-organization-members).
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`username` | The username for a specific user, which can be found by [listing organization members](#list-organization-members).
 
 
 **Response**
 
 Your response will be in the form of an `HTTP 204: No Content` message. 
 
-If there's an error, then you'll get an error message or another [response code](01-introduction.md#user-content-common-response-codes). 
+If there's an error, then you'll get an error message or another [response code](#common-response-codes). 
 
 #### Example Response
 
