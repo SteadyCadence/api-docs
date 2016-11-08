@@ -8,8 +8,8 @@ A project JSON object contains the following properties.
 Property | Type | Description
 ---|---|---
 `id` | `String` | The ID of the project
-`organization` | `Array` | [JSON object of the project's organization](03-organization.md#user-content-example-organization-json-object).
-`country` | `String` |The country where the project is located; represented as a two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
+`organization` | `Array` | [JSON object of the project's organization](#example-organization-json-object).
+`country` | `String` |The country where the project is located; represented as a two-letter <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2</a> code.
 `name` | `String` |The name of the project.
 `description`| `String` | A long-form description of the project.
 `archived` | `Boolean` | Indicates whether the project has be archived.
@@ -81,7 +81,7 @@ Use the above method to list all the publicly viewable projects in the Cadasta s
 
 **Response**
 
-The response body is an array containing multiple [project JSON objects](#user-content-example-project-json-object).
+The response body is an array containing multiple [project JSON objects](#example-project-json-object).
 
 #### Example Response
 
@@ -155,11 +155,11 @@ To see all of the projects in an organization, use the above method.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](03-organization.md#user-content-list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
 
 **Response**
 
-The response body is an array containing a [project JSON object](#user-content-example-project-json-object).
+The response body is an array containing a [project JSON object](#example-project-json-object).
 
 #### Example Response
 
@@ -254,7 +254,7 @@ Use the above endpoint to create a new project. Note that all projects must be c
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](03-organization.md#user-content-list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
 
 
 **Request Payload**
@@ -270,7 +270,7 @@ Property | Type | Required? | Description
 
 **Response**
 
-The response body is an array containing a [project JSON object](#user-content-example-project-json-object).
+The response body is an array containing a [project JSON object](#example-project-json-object).
 
 #### Example Response
 
@@ -317,12 +317,12 @@ Use this method to get at a specific project.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 **Response**
 
-The response body is an array containing a [project JSON object](#user-content-example-project-json-object).
+The response body is an array containing a [project JSON object](#example-project-json-object).
 
 
 #### Example Response
@@ -385,8 +385,8 @@ Use the above method to update a project in an organization. The fields of the p
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 
 **Request Payload**
@@ -395,7 +395,7 @@ Using the API, you can update any of the following fields. All of them are optio
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`country` | `String` | | The country where the project is located; represented as a two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.
+`country` | `String` | | The country where the project is located; represented as a two-letter <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2</a> code.
 `name` | `String` | | The name of the project.
 `description`| `String` | | (optional) A long-form description of the project.
 `archived` | `Boolean`| | Indicates whether the project has be archived.
@@ -405,7 +405,7 @@ Property | Type | Required? | Description
 
 **Response**
 
-The response body is an array containing a [project JSON object](#user-content-example-project-json-object).
+The response body is an array containing a [project JSON object](#example-project-json-object).
 
 #### Example Response
 
@@ -527,8 +527,8 @@ Use the above method see the members of a project.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 **Response**
 
@@ -584,12 +584,12 @@ Use the above method to add a new project member to a project.
 
 Note that project members need to already have a user account and be a member of the organization administering the project. 
 
-_Learn more about [creating user accounts](02-users.md#user-content-register-a-new-user--create-a-new-user-account) and [adding organization members](03-organization.md#user-content-add-an-organization-member)._
+_Learn more about [creating user accounts](#register-a-new-user--create-a-new-user-account) and [adding organization members](#add-an-organization-member)._
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 
 **Request Payload**
@@ -643,9 +643,9 @@ Use the above method to see a member of a project. This can be helpful if you ne
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`username` | The username for a specific user, which can be found by [listing organization members](03-organization.md#user-content-list-organization-members).
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
+`username` | The username for a specific user, which can be found by [listing organization members](#list-organization-members).
 
 
 
@@ -693,9 +693,9 @@ This method allows you to update the permissions granted to a project member.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`username` | The username for a specific user, which can be found by [listing organization members](03-organization.md#user-content-list-organization-members).
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
+`username` | The username for a specific user, which can be found by [listing organization members](#list-organization-members).
 
 **Request Payload**
 
@@ -753,15 +753,16 @@ The above method removes a member from a project.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`username` | The username for a specific user, which can be found by [listing organization members](03-organization.md#user-content-list-organization-members).
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
+`username` | The username for a specific user, which can be found by [listing organization members](#list-organization-members).
 
 **Response**
 
 Response will be in the form of a response code. An `HTTP 204 No Content` indicates that there is no longer content in the project associated with that username, meaning their information has been removed.
 
-If there's an error, then you'll get an error message or another [response code](01-introduction.md#user-content-common-response-codes). 
+If there's an error, then you'll get an error message or another [response code](#common-response-codes).
+
 #### Example Response
 
 ```response
