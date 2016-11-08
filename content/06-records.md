@@ -14,7 +14,7 @@ The endpoint you need to access JSON for spatial units / project locations start
 
 A spatial unit / project location JSON object contains the following properties: 
 
-Property | Type Description
+Property | Type | Description
 ---|---|---
 `type` | `String` | This field is automatically set to `Feature`.
 `geometry` | `Object` | A [GeoJSON represenation](https://en.wikipedia.org/wiki/GeoJSON#Geometries) of the spatial unit's geometry. 
@@ -22,7 +22,7 @@ Property | Type Description
 
 The `properties` object contains the following properties:
 
-Property | Type | Required? | Description
+Property | Type | Description
 ---|---|---
 `id` | `String` |  A unique ID for the spatial unit
 `type` | `String` | The type of spatial unit that it is, defined by the fields in your questionnaire. (See the land `types` table below )
