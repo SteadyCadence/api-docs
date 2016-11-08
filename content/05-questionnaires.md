@@ -12,7 +12,7 @@ Using the API, you can get the structure of your questionnaire in JSON format, o
 
 Note that you **cannot** replace a questionnaire in an active project once data is being collected about it.
 
-_To learn more about how questionnaires work, [see our documentation on Questionnaires & Custom Data Collection](https://docs.cadasta.org/en/08-XLSForms.html)._
+_To learn more about how questionnaires work, <a href="https://docs.cadasta.org/en/08-XLSForms.html" target="_blank">see our documentation on Questionnaires & Custom Data Collection</a>._
 
 The endpoint you'll use to work with questionnaires begins with:
 
@@ -52,9 +52,9 @@ Property | Type | Description
 `id` | `String` | The ID of the question.
 `name` | `String` | Question name, usually used to identify fields in the form. 
 `label` | `String` | Question label, usually displayed to the user.
-`type` | `String` | The field type, based on the question types available through [XLSforms](http://xlsform.org/#question-types). See the table below to see how they translate.
+`type` | `String` | The field type, based on the question types available through <a href="http://xlsform.org/#question-types" target="_blank">XLSforms]</a>. See the table below to see how they translate.
 `required` | `Boolean` | Indicates whether the field is required.
-`constraint` | `String` | The range of accepted values for the field. [See XLSForms documentation](http://xlsform.org/#constraints) for more information.
+`constraint` | `String` | The range of accepted values for the field. <a href="http://xlsform.org/#constraints" target="_blank">See XLSForms documentation</a> for more information.
 `default` | `String`  | The default value of the field.
 `hint`| `String` | An additional help text describing details of the field, usually displayed next to the field label.
 `relevant` | `String` | A reference to another field and corresponding value indicating when the field is displayed. 
@@ -423,13 +423,13 @@ Returns the projects current questionnaire structure.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 
 **Response**
 
-The response body contains a full [questionnaire JSON object](#user-content-example-questionnaire-json-object), including questions and question groups.
+The response body contains a full [questionnaire JSON object](#example-questionnaire-json-object), including questions and question groups.
 
 
 
@@ -453,15 +453,15 @@ PUT /api/v1/organizations/{organization_slug}/projects/{project_slug}/questionna
 
 The above method creates a new questionnaire for the project. Questionnaires are either created by providing a link to a XLSForm or by providing a valid Questionnaire JSON object. 
 
-**Note:** At the moment, updating the questionnaire is only possible as long as no data has been contributed to the project. If you need to change your questionnaire, you need to [create a new project](04-project.md#user-content-create-a-new-project). 
+**Note:** At the moment, updating the questionnaire is only possible as long as no data has been contributed to the project. If you need to change your questionnaire, you need to [create a new project](#create-a-new-project). 
 
 
 **URL Parameters**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 
 **Request Payload: XLS Form Replacement**
@@ -477,8 +477,8 @@ Property | Description
 
 > This feature is still being developed. Documentation to be completed when it's done. 
 
-Creating a questionnaire from a JSON object requires a full [questionnaire JSON object](#user-content-example-questionnaire-json-object) provided with the request payload. 
+Creating a questionnaire from a JSON object requires a full [questionnaire JSON object](#example-questionnaire-json-object) provided with the request payload. 
 
 **Response**
 
-The response body contains a full [questionnaire JSON object](#user-content-example-questionnaire-json-object), including questions and question groups.
+The response body contains a full [questionnaire JSON object](#example-questionnaire-json-object), including questions and question groups.
