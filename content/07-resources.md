@@ -1,8 +1,5 @@
 ## Project Resources
 
-> Questions for Oliver
-* What's the difference between a resource and a spatial resource? I don't think I know what that is...like another map or something? GPX?
-
 For any given project, there are lots of resources that may be collected: letters, deeds, photographs, audio recordings, etc. Using the Cadasta API, you can list all the resources connected to a specific project, as well as create, view, and update individual ones.
 
 _<a href="https://docs.cadasta.org/en/04-records.html#project-resources" target="_blank">Read more about Project Resources in our Platform Documentation</a>_
@@ -280,44 +277,149 @@ The response body contains a [project resource JSON object](#user-content-exampl
 
 
 
-x       x
- x     x
-  x   x
-   x x
-    x
 
-## Spatial resources
+## Spatial Resources
 
-> Oliver, not sure what these are, and when I try to use the endpoint below, it returns an empty array. Will fill in when I have more information.
-
-
-***
-
-
-
+Sometimes your resources may be in the form of an XML file (usually converted from a GPS Exchange Format, or .gpx). You can use this API to return all of the GPS coordinates logged in the file. 
 
 
 
 ### List All Spatial Resources
 
-> Fill in when I have more info
-
 ```endpoint
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatialresources/
 ```
 
-**Request Payload**
-
-Property | Type | Required? | Description 
---- | --- | :---: | --- 
-`thing` | `String` | x | words
+Use the above endpoint to return all of the spatial resources in a given project, along with the GPS coordinates in each resource.
 
 **Response**
 
+The response is an array of [project resource JSON objects](#user-content-example-project-resource-json-object), each with an additional `spatial_resources` object field. 
 
+The `spatial_resources` object has the following properties:
+
+Property | Type | Description 
+--- | --- | --- 
+`id` | `String` | A unique ID autmatically generated for the file.
+`name` | `String` | The name of the file (e.g. Waypoints)
+`time` | `String` | The date and time that the file was uploaded.
+`geom` | `Array` | The object containing all of the geometric information in the spatial resource. (See the `geom` table below.)
+
+The `geom` object has the following properties:
+
+Property | Type | Description 
+--- | --- | --- 
+`geometries` | `Array` | Contains an array of all the coordinates and type of coordinates for a particular spatial resource.
+`type` | `String` | The type of coordinate collection (usually listed as `GeometryCollection`). (See the `geometries` table below.)
+
+The objects in `geometries` each have the following properties:
+
+Property | Type | Description 
+--- | --- | --- 
+`coordinates` | `Array` | Contains the latitude and longitude coordinates for each point.
+`type` | `String` | The type of coordinate (usually set to `Point`).
 
 ####Example Response
 
+```json
+[
+    {
+        "id": "casjsraq9hmqaxkuh6scmue2",
+        "name": "Waypoints",
+        "description": "",
+        "original_file": "Example (Waypoints_26-NOV-15).xml",
+        "archived": false,
+        "spatial_resources": [
+            {
+                "id": "ancghgmzbk8wi92fgt9yszdt",
+                "name": "waypoints",
+                "time": "2016-11-08T17:54:43.903091Z",
+                "geom": {
+                    "geometries": [
+                        {
+                            "coordinates": [
+                                3.35652,
+                                6.464177
+                            ],
+                            "type": "Point"
+                        },
+                        {
+                            "coordinates": [
+                                3.356425,
+                                6.462206
+                            ],
+                            "type": "Point"
+                        },
+                        {
+                            "coordinates": [
+                                3.35627,
+                                6.46216
+                            ],
+                            "type": "Point"
+                        },
+                        {
+                            "coordinates": [
+                                3.356593,
+                                6.462282
+                            ],
+                            "type": "Point"
+                        }
+                    ],
+                    "type": "GeometryCollection"
+                }
+            }
+        ]
+    },
+    {
+        "id": "uqzbwpbeiyejfafx8t7nadcr",
+        "name": "Waypoints 2",
+        "description": "",
+        "original_file": "Example 2 (Waypoints_26-NOV-15).xml",
+        "archived": false,
+        "spatial_resources": [
+            {
+                "id": "ryqfpbk6jmmrjshq7t7yguij",
+                "name": "waypoints",
+                "time": "2016-11-08T18:09:39.076667Z",
+                "geom": {
+                    "geometries": [
+                        {
+                            "coordinates": [
+                                4.35652,
+                                7.464177
+                            ],
+                            "type": "Point"
+                        },
+                        {
+                            "coordinates": [
+                                3.356389,
+                                6.462436
+                            ],
+                            "type": "Point"
+                        },
+                        {
+                            "coordinates": [
+                                4.356569,
+                                7.462434
+                            ],
+                            "type": "Point"
+                        },
+                        {
+                            "coordinates": [
+                                4.356593,
+                                7.462282
+                            ],
+                            "type": "Point"
+                        }
+                    ],
+                    "type": "GeometryCollection"
+                }
+            }
+        ]
+    }
+]
+
+```
 
 
 ***
