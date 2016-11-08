@@ -467,7 +467,7 @@ The response is an [organization member JSON object](#example-member-json-object
 ```endpoint
 GET /api/v1/organizations/{organization_slug}/users/{username}/
 ```
-The above method gets the information of a specific member of an organization. This can be helpful if you need to see whether that person is an admininstrator of the organization or not. 
+The above method gets the information of a specific member of an organization. This can be helpful if you need to see whether that person is an administrator of the organization or not. 
 
 **URL Parameters**
 

@@ -317,7 +317,7 @@ Use this method to get at a specific project.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 **Response**
@@ -385,7 +385,7 @@ Use the above method to update a project in an organization. The fields of the p
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 
@@ -527,7 +527,7 @@ Use the above method see the members of a project.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 **Response**
@@ -588,7 +588,7 @@ _Learn more about [creating user accounts](#register-a-new-user--create-a-new-us
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 
@@ -643,7 +643,7 @@ Use the above method to see a member of a project. This can be helpful if you ne
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 `username` | The username for a specific user, which can be found by [listing organization members](#list-organization-members).
 
@@ -693,7 +693,7 @@ This method allows you to update the permissions granted to a project member.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 `username` | The username for a specific user, which can be found by [listing organization members](#list-organization-members).
 
@@ -753,7 +753,7 @@ The above method removes a member from a project.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 `username` | The username for a specific user, which can be found by [listing organization members](#list-organization-members).
 

@@ -16,7 +16,7 @@ Each project resource appears as a JSON object with the following properties:
 
 Property | Type | Description 
 --- | --- | --- 
-`id` | `String` | A unique ID autmatically genereated for the file.
+`id` | `String` | A unique ID automatically generated for the file.
 `name` | `String` | The name of the file (e.g. Deed of Trust)
 `description` | `String` | A description of the file (e.g. The only deed we can find that has information relevant to the site.)
 `file` | `String` | URL to a hosted version of the file, likely on an Amazon server or something similar.
@@ -63,7 +63,7 @@ Use the above method and endpoint to list out all the resources associated with 
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 
@@ -125,7 +125,7 @@ Use the above endpoint and method to create a new project resource.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 **Request Payload**
@@ -184,7 +184,7 @@ Use the above method and endpoint to get a specific project resource.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 `resource_id` | The unique ID for the project resource. You can find this resource by [listing all of the resources for the project](#list-project-resources), finding the project you're looking for, and then copying the ID. 
 
@@ -225,13 +225,13 @@ The response body contains a [project resource JSON object](#example-project-res
 PATCH /api/v1/organizations/{organization_slug}/projects/{project_slug}/resources/{resource_id}/
 ```
 
-Use the above method and endpoint to update the name, description, file, orignal file name, and archive status of any resource.
+Use the above method and endpoint to update the name, description, file, original file name, and archive status of any resource.
 
 **URL Parameter**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 `resource_id` | The unique ID for the project resource. You can find this resource by [listing all of the resources for the project](#list-project-resources), finding the project you're looking for, and then copying the ID. 
 
@@ -300,7 +300,7 @@ The `spatial_resources` object has the following properties:
 
 Property | Type | Description 
 --- | --- | --- 
-`id` | `String` | A unique ID autmatically generated for the file.
+`id` | `String` | A unique ID automatically generated for the file.
 `name` | `String` | The name of the file (e.g. Waypoints)
 `time` | `String` | The date and time that the file was uploaded.
 `geom` | `Array` | The object containing all of the geometric information in the spatial resource. (See the `geom` table below.)

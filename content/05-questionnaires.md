@@ -45,7 +45,7 @@ Property | Type | Description
 
 **Questions**
 
-> Oliver, the API isnt' showing me the JSON at the moment; not sure what type some of the fields below are supposed to be
+> Oliver, the API isn't showing me the JSON at the moment; not sure what type some of the fields below are supposed to be
 
 Property | Type | Description
 ---|---|---
@@ -423,7 +423,7 @@ Returns the projects current questionnaire structure.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 
@@ -460,7 +460,7 @@ The above method creates a new questionnaire for the project. Questionnaires are
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 

@@ -69,7 +69,7 @@ Two slugs that appear frequently are:
 * `organization_slug`, and 
 * `project_slug`
 
-You can find the `organization_slug` by locating the organization in the [list of all organziations](#list-organizations) and then copying the value of the `slug` property. 
+You can find the `organization_slug` by locating the organization in the [list of all organizations](#list-organizations) and then copying the value of the `slug` property. 
 
 You can find most `project_slugs` by [viewing all of the projects in the Cadasta system](#list-all-projects), which returns publicly viewable projects as well as projects you have access to. If it's a private project, you must have access to it and find it by [listing all of the projects in an organization](#list-all-projects). 
 

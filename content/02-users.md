@@ -317,7 +317,7 @@ Property | Type | Description
         "name": "Cadasta"
     }, {
         "id": "kxzncjkxhziuhsaiojdioasjd",
-        "name": "Foo Coorp."
+        "name": "Foo Corp."
     }]
 }
 ```
@@ -354,7 +354,7 @@ The response contains a [list of user JSON objects](#example-user-json-object), 
             "name": "Cadasta"
         }, {
             "id": "kxzncjkxhziuhsaiojdioasjd",
-            "name": "Foo Coorp."
+            "name": "Foo Corp."
         }]
     }
 ]
@@ -398,7 +398,7 @@ The response contains a [user JSON object](#example-user-json-object), including
         "name": "Cadasta"
     }, {
         "id": "kxzncjkxhziuhsaiojdioasjd",
-        "name": "Foo Coorp."
+        "name": "Foo Corp."
     }]
 }
 ```
@@ -445,7 +445,7 @@ The response contains a [user JSON object](#example-user-json-object) that inclu
         "name": "Cadasta"
     }, {
         "id": "kxzncjkxhziuhsaiojdioasjd",
-        "name": "Foo Coorp."
+        "name": "Foo Corp."
     }]
 }
 ```
