@@ -17,7 +17,7 @@ A spatial unit / project location JSON object contains the following properties:
 Property | Type | Description
 ---|---|---
 `type` | `String` | This field is automatically set to `Feature`.
-`geometry` | `Object` | A [GeoJSON represenation](https://en.wikipedia.org/wiki/GeoJSON#Geometries) of the spatial unit's geometry. 
+`geometry` | `Object` | A <a href="https://en.wikipedia.org/wiki/GeoJSON#Geometries" target="_blank"> GeoJSON represenation</a> of the spatial unit's geometry. 
 `properties` | `Object` | An object that gives the location a unique ID, defines the type of location it is (land `types`), and lists any attributes. (See  the `properties` table below for more information)
 
 The `properties` object contains the following properties:
@@ -134,20 +134,20 @@ Use the above method to get the GPS coordinates for all of the locations in a sp
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 **Response**
 
 
-The response body is a GeoJSON feature collection multiple [project location / spatial unit JSON objects](#user-content-example-spatial-unit--project-location-json-object), but without the `project` property. 
+The response body is a GeoJSON feature collection multiple [project location / spatial unit JSON objects](#example-spatial-unit--project-location-json-object), but without the `project` property. 
 
 Encasing these objects are the following properties:
 
 Property | Type | Description 
 --- | --- | --- 
 `type` | `String` | This field is automatically set to `FeatureCollection`.
-`features` | `Array` | An array of all of the [project location / spatial unit JSON objects](#user-content-example-spatial-unit--project-location-json-object) in the project. 
+`features` | `Array` | An array of all of the [project location / spatial unit JSON objects](#example-spatial-unit--project-location-json-object) in the project. 
 
 
 
@@ -255,14 +255,14 @@ Use the above method to create a new spatial unit / project location.
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`geometry` | `Object` | x | A [GeoJSON geometry](https://en.wikipedia.org/wiki/GeoJSON#Geometries) defining the geographic coordinates of the location.
+`geometry` | `Object` | x | A <a href="https://en.wikipedia.org/wiki/GeoJSON#Geometries" target="_blank"> GeoJSON geometry</a>) defining the geographic coordinates of the location.
 `type` | `String` | x | This refers to the possible land `types` that the location could be (e.g. `PA` = Parcel). See the **Land `type` Abbreviations**  table above for more information.
 `attributes` | `Array` |  | An array of different attributes for the property. 
 
 
 **Response**
 
-The response is a complete [spatial unit / project location JSON Object](#user-content-example-spatial-unit--project-location-json-object).
+The response is a complete [spatial unit / project location JSON Object](#example-spatial-unit--project-location-json-object).
 
 #### Example Response
 
@@ -317,14 +317,14 @@ Use the above method to get the JSON object for a specific spatial unit / projec
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`spatial_unit_id` | The  uniqe ID of the spatial unit, which you can find by [listing all of the spatial units](#user-content-list-spatial-units--project-locations) for the project it's in. 
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
+`spatial_unit_id` | The  uniqe ID of the spatial unit, which you can find by [listing all of the spatial units](#list-spatial-units--project-locations) for the project it's in. 
 
 
 **Response**
 
-The response is a complete [spatial unit / project location JSON Object](#user-content-example-spatial-unit--project-location-json-object).
+The response is a complete [spatial unit / project location JSON Object](#example-spatial-unit--project-location-json-object).
 
 
 #### Example Response
@@ -396,9 +396,9 @@ Use the above method to update the JSON object for a specific spatial unit / pro
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`spatial_unit_id` | The  uniqe ID of the spatial unit, which you can find by [listing all of the spatial units](#user-content-list-spatial-units--project-locations) for the project it's in.  
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
+`spatial_unit_id` | The  uniqe ID of the spatial unit, which you can find by [listing all of the spatial units](#list-spatial-units--project-locations) for the project it's in.  
 
 
 
@@ -406,14 +406,14 @@ URL Parameter | Description
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`geometry` | `Object` | x | A [GeoJSON geometry](https://en.wikipedia.org/wiki/GeoJSON#Geometries) defining the geographic coordinates of the location. 
+`geometry` | `Object` | x | A <a href="https://en.wikipedia.org/wiki/GeoJSON#Geometries" target="_blank"> GeoJSON geometry</a> defining the geographic coordinates of the location. 
 `type` | `String` | x | This refers to the possible land `types` that the location could be (e.g. `PA` = Parcel). See the land `types` table above for more information.
 `attributes` | `Object` |  | An array of different attributes for the property. 
 
 
 **Response**
 
-The response is a complete [spatial unit / project location JSON Object](#user-content-example-spatial-unit--project-location-json-object).
+The response is a complete [spatial unit / project location JSON Object](#example-spatial-unit--project-location-json-object).
 
 
 #### Example Response
@@ -491,9 +491,9 @@ Use the above method to delete a spatial unit / project location.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`spatial_unit_id` | The  uniqe ID of the spatial unit, which you can find by [listing all of the spatial units](#user-content-list-spatial-units--project-locations) for the project it's in. 
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
+`spatial_unit_id` | The  uniqe ID of the spatial unit, which you can find by [listing all of the spatial units](#list-spatial-units--project-locations) for the project it's in. 
 
 **Response**
 
@@ -589,12 +589,12 @@ Use the above method to return al of the parties listed as part of a project.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 **Response**
 
-The response is an array of [party JSON objects](#user-content-example-party-json-object) without the `project` property. 
+The response is an array of [party JSON objects](#example-party-json-object) without the `project` property. 
 
 
 #### Example Response
@@ -646,8 +646,8 @@ Use the above method to create a new party.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 **Request Payload**
 
@@ -659,7 +659,7 @@ Property | Type | Required? | Description
 
 **Response**
 
-The response is a [party JSON object](#user-content-example-party-json-object). 
+The response is a [party JSON object](#example-party-json-object). 
 
 #### Example Response
 
@@ -705,14 +705,14 @@ Use the above method to get at a specific party.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`party_id` | The unique ID generated for the specific party, which can be found by [listing all of the parties](#user-content-list-parties). 
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
+`party_id` | The unique ID generated for the specific party, which can be found by [listing all of the parties](#list-parties). 
 
 
 **Response**
 
-The response contains a [party JSON object](#user-content-example-party-json-object). 
+The response contains a [party JSON object](#example-party-json-object). 
 
 #### Example Response
 
@@ -762,9 +762,9 @@ Use the above method to update the `name`, `type`, or `attributes` of a party.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`party_id` | The unique ID generated for the specific party, which can be found by [listing all of the parties](#user-content-list-parties). 
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
+`party_id` | The unique ID generated for the specific party, which can be found by [listing all of the parties](#list-parties). 
 
 
 **Request Payload**
@@ -780,7 +780,7 @@ Property | Type  | Required? | Description
 
 **Response**
 
-The response contains a [party JSON object](#user-content-example-party-json-object). 
+The response contains a [party JSON object](#example-party-json-object). 
 
 
 #### Example Response
@@ -831,9 +831,9 @@ Use the above method and endpoint to delete a party.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`party_id` | The unique ID generated for the specific party, which can be found by [listing all of the parties](#user-content-list-parties). 
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
+`party_id` | The unique ID generated for the specific party, which can be found by [listing all of the parties](#list-parties). 
 
 **Response**
 
@@ -886,7 +886,7 @@ Property | Type | Description
 `id` | `String`  | The unique ID of the relationship
 `party` | `Array` | The object containing the party that the spatial unit is related to. (See the `party` table below for more information.)
 `spatial_unit` | `Object` | The spatial unit / project location object. (See the `spatial unit` table below for more information.)
-`tenure_type`| `String` |  The kind of relationship. (See the [Relationship (Tenure) Categories table](#user-content-relationship-tenure-categories) for more information.)
+`tenure_type`| `String` |  The kind of relationship. (See the Relationship (Tenure) Categories table for more information.)
 `attributes`| `Object`  | Project-specific attributes that are defined through the project's questionnaire. 
 
 The `party` object has the following properties: 
@@ -902,7 +902,7 @@ The `spatial_unit` object has the following properties:
 Property | Type | Description 
 --- | --- | --- 
 `type` | `String` | Type of spatial unit; automatically set to `Feature`.
-`geometry` | `Object` |  A [GeoJSON represenation](https://en.wikipedia.org/wiki/GeoJSON#Geometries) of the spatial unit's geometry.
+`geometry` | `Object` |  A <a href="https://en.wikipedia.org/wiki/GeoJSON#Geometries" target="_blank"> GeoJSON represenation</a> of the spatial unit's geometry.
 `properties` | `Object` | An object that gives the location a unique ID and defines the type of location it is (land `types`). (See  the `properties` table below for more information)
 
 #### Example Relationship JSON Object
@@ -1018,10 +1018,10 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/{s
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`party_id` | **Only required when listing relationships to a party.** The unique ID generated for the specific party, which can be found by [listing all of the parties](#user-content-list-parties). 
-`spatial_unit_id` | **Only required when listing relationships to a spatial unit.** The unique ID generated for the specific spatial unit, which can be found by [listing all of the spatial units](#user-content-list-parties). 
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
+`party_id` | **Only required when listing relationships to a party.** The unique ID generated for the specific party, which can be found by [listing all of the parties](#list-parties). 
+`spatial_unit_id` | **Only required when listing relationships to a spatial unit.** The unique ID generated for the specific spatial unit, which can be found by [listing all of the spatial units](#list-spatial-units--project-locations). 
 
 **Response**
 
@@ -1230,9 +1230,9 @@ Use the above method and endpoint to get a specific  relationship.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`relationship_id` | The unique ID of the relationship, which can be found by [listing all of the relationships to a spatial unit](#user-content-list-relationships-of-a-party-to-spatial-units--project-locations). 
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
+`relationship_id` | The unique ID of the relationship, which can be found by [listing all of the relationships to a spatial unit](#list-relationships). 
 
 **Response**
 
@@ -1328,16 +1328,16 @@ Use the above method and endpoint to update a  relationship.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`relationship_id` | The unique ID of the relationship, which can be found by [listing all of the relationships to a spatial unit](#user-content-list-relationships-of-a-party-to-spatial-units--project-locations). 
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
+`relationship_id` | The unique ID of the relationship, which can be found by [listing all of the relationships to a spatial unit](#list-relationships). 
 
 
 **Request Payload**
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`tenure_type` | `String` | | The relationship type; see [Relationship (Tenure) Categories]() for an overview of accepted values.
+`tenure_type` | `String` | | The relationship type; see Relationship (Tenure) Categories for an overview of accepted values.
 `attributes` | `Object` | | Project-specific attributes that are defined through the projects questionnaire. 
 
 **Response**
@@ -1417,9 +1417,9 @@ Use the above method to delete a relationship from a project.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`relationship_id` | The unique ID of the relationship, which can be found by [listing all of the relationships to a spatial unit](#user-content-list-relationships-of-a-party-to-spatial-units--project-locations). 
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
+`relationship_id` | The unique ID of the relationship, which can be found by [listing all of the relationships to a spatial unit](#list-relationships). 
 
 
 **Response**
