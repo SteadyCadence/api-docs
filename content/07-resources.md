@@ -63,13 +63,13 @@ Use the above method and endpoint to list out all the resources associated with 
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 
 **Response**
 
-The response body is an array containing a series of [project resource JSON objects](#user-content-example-project-resource-json-object).
+The response body is an array containing a series of [project resource JSON objects](#example-project-resource-json-object).
 
 #### Example Response
 
@@ -125,8 +125,8 @@ Use the above endpoint and method to create a new project resource.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 **Request Payload**
 
@@ -143,7 +143,7 @@ Property | Type | Required? | Description
 
 **Response**
 
-The response body contains a [project resource JSON object](#user-content-example-project-resource-json-object).
+The response body contains a [project resource JSON object](#example-project-resource-json-object).
 
 #### Example Response
 
@@ -184,14 +184,14 @@ Use the above method and endpoint to get a specific project resource.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`resource_id` | The unique ID for the project resource. You can find this resource by [listing all of the resources for the project](#user-content-list-project-resources), finding the project you're looking for, and then copying the ID. 
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
+`resource_id` | The unique ID for the project resource. You can find this resource by [listing all of the resources for the project](#list-project-resources), finding the project you're looking for, and then copying the ID. 
 
 
 **Response**
 
-The response body contains a [project resource JSON object](#user-content-example-project-resource-json-object).
+The response body contains a [project resource JSON object](#example-project-resource-json-object).
 
 #### Example Response
 
@@ -231,9 +231,9 @@ Use the above method and endpoint to update the name, description, file, orignal
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](03-organization.md#user-content-list-organizations)
-`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects).
-`resource_id` | The unique ID for the project resource. You can find this resource by [listing all of the resources for the project](#user-content-list-project-resources), finding the project you're looking for, and then copying the ID. 
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organzations](#list-organizations)
+`project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
+`resource_id` | The unique ID for the project resource. You can find this resource by [listing all of the resources for the project](#list-project-resources), finding the project you're looking for, and then copying the ID. 
 
 **Request Payload**
 
@@ -250,7 +250,7 @@ Property | Type | Description
 
 **Response**
 
-The response body contains a [project resource JSON object](#user-content-example-project-resource-json-object).
+The response body contains a [project resource JSON object](#example-project-resource-json-object).
 
 #### Example Response
 
@@ -294,7 +294,7 @@ Use the above endpoint to return all of the spatial resources in a given project
 
 **Response**
 
-The response is an array of [project resource JSON objects](#user-content-example-project-resource-json-object), each with an additional `spatial_resources` object field. 
+The response is an array of [project resource JSON objects](#example-project-resource-json-object), each with an additional `spatial_resources` object field. 
 
 The `spatial_resources` object has the following properties:
 
@@ -319,7 +319,8 @@ Property | Type | Description
 `coordinates` | `Array` | Contains the latitude and longitude coordinates for each point.
 `type` | `String` | The type of coordinate (usually set to `Point`).
 
-####Example Response
+
+#### Example Response
 
 ```json
 [
