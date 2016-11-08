@@ -4,15 +4,15 @@ Welcome to the Cadasta Platform API documentation.
 
 Using this platform API, you can: 
 
-* Manage user [accounts](02-users.md) - creating them, deleting them, and amending them as needed; 
-* Create and edit [organizations](03-organization.md); 
-* View, create, and modify [projects](04-project.md) in the system, 
-* Upload new [questionnaires](05-questionnaires.md),
+* Manage user [accounts](#managing-a-user-account) - creating them, deleting them, and amending them as needed; 
+* Create and edit [organizations](#organizations); 
+* View, create, and modify [projects](#projects) in the system, 
+* Upload new [questionnaires](#questionnaires-1),
 * Add, modify and delete records for: 
-  * [spatial units/project locations](06-records.md#user-content-spatial-units-aka-project-locations), 
-  * [parties](06-records.md#user-content-parties) associated with these locations, and
-  * the [relationships](06-records.md#user-content-relationships) between the two. 
-* And finally add, modify, and delete [project resources](07-resources.md). 
+  * [spatial units/project locations](#spatial-units-aka-project-locations), 
+  * [parties](#parties) associated with these locations, and
+  * the [relationships](#relationships) between the two. 
+* And finally add, modify, and delete [project resources](#project-resources). 
 
 Each of the sections listed above will outline how to use API endpoints to make these things happen.
 
@@ -38,11 +38,11 @@ All URLs referenced here require their own base path, likely your own local inst
 
 This API works best in one of two scenarios: 
 
-1. **You're a developer working with an individual or organization using the Cadasta Platform.** If you have administrator access to the organization you're working for, you'll be able to perform many of the key functions for that organization using your [authorization token](02-users.md#user-content-log-a-user-in--get-authorization-key). 
+1. **You're a developer working with an individual or organization using the Cadasta Platform.** If you have administrator access to the organization you're working for, you'll be able to perform many of the key functions for that organization using your [authorization token](#log-a-user-in--get-authorization-key). 
 
 2. **You've created a locally-hosted version of the platform.** 
 
-If you have any questions about using the API, please don't hesitate to [contact us](http://cadasta.org/contact/). 
+If you have any questions about using the API, please don't hesitate to <a href="(http://cadasta.org/contact/)" target="_blank">contact us</a>. 
 
 ### Requests
 
@@ -69,9 +69,9 @@ Two slugs that appear frequently are:
 * `organization_slug`, and 
 * `project_slug`
 
-You can find the `organization_slug` by locating the organization in the [list of all organziations](03-organization.md#user-content-list-organizations) and then copying the value of the `slug` property. 
+You can find the `organization_slug` by locating the organization in the [list of all organziations](#list-organizations) and then copying the value of the `slug` property. 
 
-You can find most `project_slugs` by [viewing all of the projects in the Cadasta system](04-project.md#user-content-list-all-projects), which returns publicly viewable projects as well as projects you have access to. If it's a private project, you must have access to it and find it by [listing all of the projects in an organization](04-project.md#user-content-list-all-projects). 
+You can find most `project_slugs` by [viewing all of the projects in the Cadasta system](#list-all-projects), which returns publicly viewable projects as well as projects you have access to. If it's a private project, you must have access to it and find it by [listing all of the projects in an organization](#list-all-projects). 
 
 Once you get your slugs, add them to your endpoint outside of the curly braces. 
 
