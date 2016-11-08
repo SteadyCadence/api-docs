@@ -4,21 +4,43 @@ The Cadasta API docs provide documentation for Cadasta's REST API. The API docs 
 
 ## Contributing
 
-To edit contents of the documentation you have to edit Markdown files that live in [`content`](https://github.com/Cadasta/api-docs/tree/master/content). 
+If you'd like to contribute to this documentation, you'll need to edit Markdown files that live in [`content`](https://github.com/Cadasta/api-docs/tree/master/content). Each file here follows the [Docbox format](https://github.com/mapbox/docbox/blob/master/content/example.md), as developed by MapBox. 
 
-See [Docbox documentation](https://github.com/mapbox/docbox#writing-documentation) for further information.
+_[Learn more about writing documentation using Docbox DocboxSee](https://github.com/mapbox/docbox#writing-documentation)_
 
 
-## Installing and compiling docs locally
+## Installing and Compiling Docs Locally
 
-To view what your changes will look like on the website you need to compile the docs and run a local web server. [Follow docbox instructions](https://github.com/mapbox/docbox#development) to learn how to install and run the docs locally.
+To view what your changes will look like on the website, you need to compile the docs and run a local web server. Below are instructions for how to do this, modified from the [Docbox instructions](https://github.com/mapbox/docbox#development). 
+
+After you `npm install` the project, you can run `npm start` and its development server, [budo](https://github.com/mattdesl/budo), will serve the website locally and update automatically.
+
+###Requirements
+
+* Node v4 or higher
+* NPM
+* Git
+
+> Oliver, you prefer cloning using SSH, yes?
+
+To run the site locally:
+
+1. Clone this repository
+	1. `git clone git@github.com:Cadasta/api-docs.git`
+2. `npm install`
+3. `npm start`
+4. Open http://localhost:9966/
+
+To exit `npm start`, hit `ctrl + C`. 
+
+_[Follow Docbox instructions](https://github.com/mapbox/docbox#development)_
 
 
 ## Deployment
 
 We host API docs on [Github pages](https://pages.github.com/); the current live site is pushed to `gh-pages` branch. There is a shell script that simplifies deployment. 
 
-The script
+The script:
 
 1. Compiles the markdown files into an HTML website.
 2. Clones the `gh-pages` branch into a new directory.
