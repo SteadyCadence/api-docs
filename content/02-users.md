@@ -5,7 +5,7 @@ Unless simply viewing publicly available organizations and projects, individuals
 You can use the Cadasta API to manage these accounts, provided that you have their username and password. This section outlines how to do that, focusing on endpoints that start with: 
 
 ```
-api/v1/account
+api/v1/
 ```
 
 An `account` JSON object contains the following properties:
@@ -337,7 +337,7 @@ The above method and endpoint return all of the users in the platform.
 
 **Response**
 
-The response contains a [list of user objects](#user-content-example-user-json-object), including the organizations the user is a member of.
+The response contains a [list of user JSON objects](#example-user-json-object), including the organizations the user is a member of.
 
 #### Example Response
 
@@ -381,7 +381,7 @@ https://platform-staging-api.cadasta.org/api/v1/users/janesmith/
 
 **Response**
 
-The response contains a [user object](#user-content-example-user-json-object), including the organizations the user is a member of.
+The response contains a [user JSON object](#example-user-json-object), including the organizations the user is a member of.
 
 
 #### Example Response
@@ -429,7 +429,7 @@ Property | Type | Required? | Description
 
 **Response**
 
-The response contains a [user object](#user-content-example-user-object) that includes the organizations the user is a member of.
+The response contains a [user JSON object](#example-user-json-object) that includes the organizations the user is a member of.
 
 #### Example Response
 
