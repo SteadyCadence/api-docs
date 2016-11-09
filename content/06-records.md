@@ -1175,35 +1175,71 @@ The response contains a list of relationship JSON objects.
 
 ### Create a New  Relationship
 
-> Oliver, not sure how to format this to get it to work. Also, `attributes` may not be left blank, but I haven't seen an example of what goes into that field...
-
 ```endpoint
 POST /api/v1/organizations/{organization_slug}/projects/{project_slug}/relationships/tenure/
 ```
-
-> Oliver, is this correct?
 
 Use the above endpoint to create a new relationship between an existing party and spatial unit.
 
 **Request Payload**
 
-> fill in 
-
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`party` | `String` | x | The name of the party.
-`spatial_unit` | `String` | x | ??
-`tenure_type` | `String` | x | ??
-`attributes` | `Array` | x | ??
+`party` | `String` | x | The ID of the party connected to the new relationship.
+`spatial_unit` | `String` | x | The ID of the spatial connected to the new relationship.
+`tenure_type` | `String` | x | The tenure relationship category.
+`attributes` | `Object` | x | Project-specific attributes that are defined through the project's questionnaire. 
 
 
 **Response**
 
-> fill in
+The response contains a relationship JSON object.
 
 #### Example Response
 
-> fill in
+```json
+{
+    "rel_class": "tenure",
+    "id": "f2eq96ez7rnkucwz9sr4my9y",
+    "party": {
+        "id": "ajnyj54mpma7kpexxejfv5he",
+        "name": "Example Corp.",
+        "type": "CO"
+    },
+    "spatial_unit": {
+        "type": "Feature",
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -122.7457809448242,
+                        45.64344809984393
+                    ],
+                    [
+                        -122.7308464050293,
+                        45.640807770704704
+                    ],
+                    [
+                        -122.74543762207031,
+                        45.64068775278732
+                    ],
+                    [
+                        -122.7457809448242,
+                        45.64344809984393
+                    ]
+                ]
+            ]
+        },
+        "properties": {
+            "id": "xtc4de68iawwzgtawp8avgv8",
+            "type": "PA"
+        }
+    },
+    "tenure_type": "LL",
+    "attributes": {}
+}
+```
 
 ***
 
