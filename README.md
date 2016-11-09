@@ -21,12 +21,11 @@ After you `npm install` the project, you can run `npm start` and its development
 * NPM
 * Git
 
-> Oliver, you prefer cloning using SSH, yes?
-
 To run the site locally:
 
 1. Clone this repository
-	1. `git clone git@github.com:Cadasta/api-docs.git`
+	1. using SSH: `git clone git@github.com:Cadasta/api-docs.git`
+	2. using HTTPS: `git clone https://github.com/Cadasta/api-docs.git`
 2. `npm install`
 3. `npm start`
 4. Open http://localhost:9966/
