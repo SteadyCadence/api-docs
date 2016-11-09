@@ -57,7 +57,7 @@ Property | Type | Description
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/resources/
 ```
 
-Use the above method and endpoint to list out all the resources associated with any given project. 
+Use this method and endpoint to list out all the resources associated with any given project. 
 
 **URL Parameters**
 
@@ -119,7 +119,7 @@ The response body is an array containing a series of [project resource JSON obje
 POST /api/v1/organizations/{organization_slug}/projects/{project_slug}/resources/
 ```
 
-Use the above endpoint and method to create a new project resource. 
+Use this endpoint and method to create a new project resource. 
 
 **URL Parameters**
 
@@ -178,7 +178,7 @@ The response body contains a [project resource JSON object](#example-project-res
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/resources/{resource_id}/
 ```
 
-Use the above method and endpoint to get a specific project resource. 
+Use this method and endpoint to get a specific project resource. 
 
 **URL Parameters**
 
@@ -225,7 +225,7 @@ The response body contains a [project resource JSON object](#example-project-res
 PATCH /api/v1/organizations/{organization_slug}/projects/{project_slug}/resources/{resource_id}/
 ```
 
-Use the above method and endpoint to update the name, description, file, original file name, and archive status of any resource.
+Use this method and endpoint to update the name, description, file, original file name, and archive status of any resource.
 
 **URL Parameter**
 
@@ -282,7 +282,11 @@ The response body contains a [project resource JSON object](#example-project-res
 
 Sometimes your resources may be in the form of an XML file (usually converted from a GPS Exchange Format, or .gpx). You can use this API to return all of the GPS coordinates logged in the file. 
 
+Spatial resources can be accessed using endpoints that start like this:
 
+```
+/api/v1/organizations/{organization_slug}/projects/{project_slug}/spatialresources/
+```
 
 ### List All Spatial Resources
 
@@ -290,7 +294,7 @@ Sometimes your resources may be in the form of an XML file (usually converted fr
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatialresources/
 ```
 
-Use the above endpoint to return all of the spatial resources in a given project, along with the GPS coordinates in each resource.
+Use this endpoint to return all of the spatial resources in a given project, along with the GPS coordinates in each resource.
 
 **Response**
 

@@ -423,7 +423,7 @@ Returns the projects current questionnaire structure.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 
@@ -451,7 +451,7 @@ The response body contains a full [questionnaire JSON object](#example-questionn
 PUT /api/v1/organizations/{organization_slug}/projects/{project_slug}/questionnaire/
 ```
 
-The above method creates a new questionnaire for the project. Questionnaires are either created by providing a link to a XLSForm or by providing a valid Questionnaire JSON object. 
+This method creates a new questionnaire for the project. Questionnaires are either created by providing a link to a XLSForm or by providing a valid Questionnaire JSON object. 
 
 **Note:** At the moment, updating the questionnaire is only possible as long as no data has been contributed to the project. If you need to change your questionnaire, you need to [create a new project](#create-a-new-project). 
 
@@ -460,7 +460,7 @@ The above method creates a new questionnaire for the project. Questionnaires are
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 

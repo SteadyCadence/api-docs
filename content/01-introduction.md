@@ -14,7 +14,7 @@ Using this platform API, you can:
   * the [relationships](#relationships) between the two. 
 * And finally add, modify, and delete [project resources](#project-resources). 
 
-Each of the sections listed above will outline how to use API endpoints to make these things happen.
+Each of the sections listed above outline how to use API endpoints to make these things happen.
 
 ## Topics
 
@@ -32,7 +32,7 @@ Each endpoint is described using several parts:
 
 In addition, each method + endpoint combination is described by a request payload, properties, and an example output. 
 
-All URLs referenced here require their own base path, likely your own local instance of the Cadasta Platform. If you'd like to use an existing base path to explore the API, you can use the one for our demo site: `https://demo.cadasta.org/`. This will take you to a basic API UI, which is better used for exploration than it is for actually interacting with the API.
+All URLs referenced here require their own base path, which may be your own local instance of the Cadasta Platform. If you'd like to use an existing base path to explore the API, you can use the one for our demo site: `https://demo.cadasta.org/`. This will take you to a basic API UI, which is better used for exploration than it is for actually interacting with the API.
 
 ### Using the API
 
@@ -87,4 +87,4 @@ If the `organization_slug` is `sample-organization` and the `project_slug` is `s
 GET /api/v1/organizations/sample-organization/projects/sample-project/
 ```
 
-This API uses many other IDs, which are explained along with the endpoint they are used in. 
+This API uses many other IDs and slugs, each of which are explained along with the endpoint they are used in. 

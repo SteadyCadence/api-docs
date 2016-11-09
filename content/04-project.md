@@ -76,7 +76,7 @@ Property | Type | Description
 GET /api/v1/projects/
 ```
 
-Use the above method to list all the publicly viewable projects in the Cadasta system. You can also see any private projects that you have access to.
+Use this method to list all the publicly viewable projects in the Cadasta system. You can also see any private projects that you have access to.
 
 
 **Response**
@@ -149,13 +149,13 @@ The response body is an array containing multiple [project JSON objects](#exampl
 GET /api/v1/organizations/{organization_slug}/projects/
 ```
 
-To see all of the projects in an organization, use the above method. 
+To see all of the projects in an organization, use this method.
 
 **URL Parameters**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 
 **Response**
 
@@ -248,13 +248,13 @@ The response body is an array containing a [project JSON object](#example-projec
 ```endpoint
 POST /api/v1/organizations/{organization_slug}/projects/
 ```
-Use the above endpoint to create a new project. Note that all projects must be connected to an organization!
+Use this endpoint to create a new project. Note that all projects must be connected to an organization!
 
 **URL Parameters**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 
 
 **Request Payload**
@@ -317,7 +317,7 @@ Use this method to get at a specific project.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 **Response**
@@ -379,13 +379,13 @@ The response body is an array containing a [project JSON object](#example-projec
 PATCH /api/v1/organizations/{organization_slug}/projects/{project_slug}/
 ```
 
-Use the above method to update a project in an organization. The fields of the project that you can edit are shown in the request payload below. 
+Use this method to update a project in an organization. The fields of the project that you can edit are shown in the request payload below. 
 
 **URL Parameters**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 
@@ -499,7 +499,7 @@ ID | Title
 ---|---
 PU | Project User
 DC | Data Collector
-PM | Project Manager
+PM | Project Manager 
 
 
 ##### Example Project Member JSON Object
@@ -521,13 +521,13 @@ PM | Project Manager
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/
 ```
 
-Use the above method see the members of a project.
+Use this method see the members of a project.
 
 **URL Parameters**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 **Response**
@@ -541,7 +541,7 @@ Property | Type | Description
 `email` | `String` | The user's email address.
 `email_verified` | `Boolean` | Indicates whether the user has verified their email address.
 `last_login` | `String` | Date and time of last user login.
-`role` | `String` | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector, PU = Project User)
+`role` | `String` | Indicates the role of the user on the project. (PM = Project Manager, DC = Data Collector, PU = Project User)
 
 #### Example Response
 
@@ -580,7 +580,7 @@ Property | Type | Description
 POST /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/
 ```
 
-Use the above method to add a new project member to a project. 
+Use this method to add a new project member to a project. 
 
 Note that project members need to already have a user account and be a member of the organization administering the project. 
 
@@ -588,7 +588,7 @@ _Learn more about [creating user accounts](#register-a-new-user--create-a-new-us
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 
@@ -597,7 +597,7 @@ URL Parameter | Description
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
 `username` | `String` | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`role` | `String` | x | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector, PU = Project User)
+`role` | `String` | x | Indicates the role of the user on the project. (PM = Project Manager, DC = Data Collector, PU = Project User)
 
 **Response**
 
@@ -637,13 +637,13 @@ Property | Type | Description
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/{username}/
 ```
 
-Use the above method to see a member of a project. This can be helpful if you need to see or change their role in the project.
+Use this method to see a member of a project. This can be helpful if you need to see or change their role in the project.
 
 **URL Parameters**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 `username` | The username for a specific user, which can be found by [listing organization members](#list-organization-members).
 
@@ -693,7 +693,7 @@ This method allows you to update the permissions granted to a project member.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 `username` | The username for a specific user, which can be found by [listing organization members](#list-organization-members).
 
@@ -710,7 +710,7 @@ ID | Title
 ---|---
 PU | Project User
 DC | Data Collector
-PM | Project Manager
+PM | Project Manager 
 
 **Response**
 
@@ -723,7 +723,7 @@ Property | Type | Description
 `email` | `String` | The user's email address.
 `email_verified` | `Boolean` | Indicates whether the user has verified their email address.
 `last_login` | `String` | Date and time of last user login.
-`role` | `String` | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector, PU = Project User)
+`role` | `String` | Indicates the role of the user on the project. (PM = Project Manager, DC = Data Collector, PU = Project User)
 
 #### Example Response
 
@@ -747,30 +747,32 @@ Property | Type | Description
 DELETE /api/v1/organizations/{organization_slug}/projects/{project_slug}/users/{username}/
 ```
 
-The above method removes a member from a project. 
+This method removes a member from a project. 
 
 **URL Parameters**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 `username` | The username for a specific user, which can be found by [listing organization members](#list-organization-members).
 
 **Response**
 
-Response will be in the form of a response code. An `HTTP 204 No Content` indicates that there is no longer content in the project associated with that username, meaning their information has been removed.
+Response will be in the form of a response code like this one. 
 
-If there's an error, then you'll get an error message or another [response code](#common-response-codes).
-
-#### Example Response
-
-```response
+```
 HTTP 204 No Content
 Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
 Content-Type: application/json
 Vary: Accept
 ```
+
+An `HTTP 204 No Content` indicates that there is no longer content in the project associated with that username, meaning their information has been removed.
+
+If there's an error, then you'll get an error message or another [response code](#common-response-codes).
+
+
 ***
 
 

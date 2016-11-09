@@ -127,14 +127,14 @@ Abbreviation | What it Represents
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/
 ```
 
-Use the above method to get the GPS coordinates for all of the locations in a spatial unit / project location. These coordinates may be shown as a point, line or polygon.
+Use this method to get the GPS coordinates for all of the locations in a spatial unit / project location. These coordinates may be shown as a point, line or polygon.
 
 
 **URL Parameters**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 **Response**
@@ -249,7 +249,7 @@ Property | Type | Description
 POST /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/
 ```
 
-Use the above method to create a new spatial unit / project location.
+Use this method to create a new spatial unit / project location.
 
 **Request Payload**
 
@@ -311,13 +311,13 @@ The response is a complete [spatial unit / project location JSON Object](#exampl
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/{spatial_unit_id}/
 ```
 
-Use the above method to get the JSON object for a specific spatial unit / project location. 
+Use this method to get the JSON object for a specific spatial unit / project location. 
 
 **URL Parameters**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 `spatial_unit_id` | The  uniqe ID of the spatial unit, which you can find by [listing all of the spatial units](#list-spatial-units--project-locations) for the project it's in. 
 
@@ -390,13 +390,13 @@ The response is a complete [spatial unit / project location JSON Object](#exampl
 PATCH /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/{spatial_unit_id}/
 ```
 
-Use the above method to update the JSON object for a specific spatial unit / project location.
+Use this method to update the JSON object for a specific spatial unit / project location.
 
 **URL Parameters**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 `spatial_unit_id` | The  unique ID of the spatial unit, which you can find by [listing all of the spatial units](#list-spatial-units--project-locations) for the project it's in.  
 
@@ -485,13 +485,13 @@ The response is a complete [spatial unit / project location JSON Object](#exampl
 DELETE /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/{spatial_unit_id}/
 ```
 
-Use the above method to delete a spatial unit / project location.
+Use this method to delete a spatial unit / project location.
 
 **URL Parameters**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 `spatial_unit_id` | The  unique ID of the spatial unit, which you can find by [listing all of the spatial units](#list-spatial-units--project-locations) for the project it's in. 
 
@@ -583,13 +583,13 @@ Property | Type | Description
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/parties/
 ```
 
-Use the above method to return all of the parties listed as part of a project.
+Use this method to return all of the parties listed as part of a project.
 
 **URL Parameters**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 **Response**
@@ -640,13 +640,13 @@ The response is an array of [party JSON objects](#example-party-json-object) wit
 POST /api/v1/organizations/{organization_slug}/projects/{project_slug}/parties/
 ```
 
-Use the above method to create a new party.
+Use this method to create a new party.
 
 **URL Parameters**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 
 **Request Payload**
@@ -700,12 +700,12 @@ The response is a [party JSON object](#example-party-json-object).
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/parties/{party_id}/
 ```
 
-Use the above method to get at a specific party. 
+Use this method to get at a specific party. 
 
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 `party_id` | The unique ID generated for the specific party, which can be found by [listing all of the parties](#list-parties). 
 
@@ -756,13 +756,13 @@ The response contains a [party JSON object](#example-party-json-object).
 PATCH /api/v1/organizations/{organization_slug}/projects/{project_slug}/parties/{party_id}/
 ```
 
-Use the above method to update the `name`, `type`, or `attributes` of a party.
+Use this method to update the `name`, `type`, or `attributes` of a party.
 
 **URL Parameters**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 `party_id` | The unique ID generated for the specific party, which can be found by [listing all of the parties](#list-parties). 
 
@@ -827,11 +827,11 @@ The response contains a [party JSON object](#example-party-json-object).
 DELETE /api/v1/organizations/{organization_slug}/projects/{project_slug}/parties/{party_id}/
 ```
 
-Use the above method and endpoint to delete a party. 
+Use this method and endpoint to delete a party. 
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 `party_id` | The unique ID generated for the specific party, which can be found by [listing all of the parties](#list-parties). 
 
@@ -1018,7 +1018,7 @@ GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/{s
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 `party_id` | **Only required when listing relationships to a party.** The unique ID generated for the specific party, which can be found by [listing all of the parties](#list-parties). 
 `spatial_unit_id` | **Only required when listing relationships to a spatial unit.** The unique ID generated for the specific spatial unit, which can be found by [listing all of the spatial units](#list-spatial-units--project-locations). 
@@ -1175,6 +1175,9 @@ The response contains a list of relationship JSON objects.
 
 ### Create a New  Relationship
 
+
+This section is still in progress. 
+
 > Oliver, not sure how to format this to get it to work. Also, `attributes` may not be left blank, but I haven't seen an example of what goes into that field...
 
 ```endpoint
@@ -1183,7 +1186,7 @@ POST /api/v1/organizations/{organization_slug}/projects/{project_slug}/relations
 
 > Oliver, is this correct?
 
-Use the above endpoint to create a new relationship between an existing party and spatial unit.
+Use this endpoint to create a new relationship between an existing party and spatial unit.
 
 **Request Payload**
 
@@ -1226,11 +1229,11 @@ Property | Type | Required? | Description
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/relationships/tenure/{relationship_id}/
 ```
 
-Use the above method and endpoint to get a specific  relationship. 
+Use this method and endpoint to get a specific  relationship. 
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 `relationship_id` | The unique ID of the relationship, which can be found by [listing all of the relationships to a spatial unit](#list-relationships). 
 
@@ -1324,11 +1327,11 @@ The response contains a relationship JSON object.
 PATCH /api/v1/organizations/{organization_slug}/projects/{project_slug}/relationships/tenure/{relationship_id}/
 ```
 
-Use the above method and endpoint to update a  relationship.
+Use this method and endpoint to update a  relationship.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 `relationship_id` | The unique ID of the relationship, which can be found by [listing all of the relationships to a spatial unit](#list-relationships). 
 
@@ -1413,11 +1416,11 @@ The response contains a relationship JSON object.
 DELETE /api/v1/organizations/{organization_slug}/projects/{project_slug}/relationships/tenure/{relationship_id}/
 ```
 
-Use the above method to delete a relationship from a project.
+Use this method to delete a relationship from a project.
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `project_slug` | The slug provided for the project, which can be found by [listing all of the projects in an organization](#list-all-projects).
 `relationship_id` | The unique ID of the relationship, which can be found by [listing all of the relationships to a spatial unit](#list-relationships). 
 

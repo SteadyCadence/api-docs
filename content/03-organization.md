@@ -54,7 +54,7 @@ An organization JSON object contains the following properties:
 GET /api/v1/organizations/
 ```
 
-The above method returns all of the publicly available organizations in the platform.
+This method returns all of the publicly available organizations in the platform.
 
 **Response**
 
@@ -106,7 +106,7 @@ The response body is an array containing an [organization JSON object](#example-
 POST /api/v1/organizations/
 ```
 
-Use the above endpoint to create a new organization. The user who creates this organization automatically becomes its first user, and thereby the administrator.
+Use this endpoint to create a new organization. The user who creates this organization automatically becomes its first user, and thereby the administrator.
 
 **Request payload**
 
@@ -198,13 +198,13 @@ The response also contains the field `users`, which provides a list of members o
 GET /api/v1/organizations/{organization_slug}/
 ```
 
-The above method gets at a specific organization. 
+This method gets at a specific organization. 
 
 **URL Parameters**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 
 **Response**
 
@@ -254,13 +254,13 @@ The response also contains the field `users`, which provides a list of members o
 PATCH /api/v1/organizations/{organization_slug}/
 ```
 
-The above method allows you to update an organization. 
+This method allows you to update an organization. 
 
 **URL Parameters**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 
 **Request payload**
 
@@ -323,7 +323,7 @@ The response also contains the field `users`, which provides a list of members o
 
 ---
 
-## Members
+## Organization Members
 
 Users associated with an organization are known as **members**. The endpoint you need to access the members of an organization is:
 
@@ -331,7 +331,7 @@ Users associated with an organization are known as **members**. The endpoint you
 api/v1/organizations/{organization_slug}/users/
 ```
 
-A member JSON object has the following properties. These properties are similar to the [`account` JSON object](#example-account-json-object), but they include whether that user is an admin of the organization in question.
+A member JSON object has the following properties. These properties are similar to the [`account` JSON object](#example-account-json-object), but they include whether the user is an admin of the organization in question.
 
 Property | Type | Description
 ---|---|---
@@ -365,13 +365,13 @@ Property | Type | Description
 GET /api/v1/organizations/{organization_slug}/users/
 ```
 
-Use the above method to return all of the members of an organization.
+Use this method to return all of the members of an organization.
 
 **URL Parameters**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 
 **Response**
 
@@ -426,13 +426,13 @@ The response body is an array containing an [organization JSON object](#example-
 POST /api/v1/organizations/{organization_slug}/users/
 ```
 
-The above method adds a member to the organization. Note that the person needs to have an account for this to work. 
+This method adds a member to the organization. Note that the person needs to have an account for this to work. 
 
 **URL Parameters**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 
 **Request Payload**
 
@@ -467,13 +467,13 @@ The response is an [organization member JSON object](#example-member-json-object
 ```endpoint
 GET /api/v1/organizations/{organization_slug}/users/{username}/
 ```
-The above method gets the information of a specific member of an organization. This can be helpful if you need to see whether that person is an administrator of the organization or not. 
+This method gets the information of a specific member of an organization. This can be helpful if you need to see whether that person is an administrator of the organization or not. 
 
 **URL Parameters**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `username` | The username for a specific user, which can be found by [listing organization members](#list-organization-members).
 
 **Response**
@@ -503,13 +503,13 @@ The response includes the properties of an [organization member JSON object](#ex
 PATCH /api/v1/organizations/{organization_slug}/users/{username}/
 ```
 
-The above method updates the admin status of a specific member of an organization. If you need to change the user's account information, see how to [update a user account](#update-a-user-account). 
+This method updates the admin status of a specific member of an organization. If you need to change the user's account information, see how to [update a user account](#update-a-user-account). 
 
 **URL Parameters**
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `username` | The username for a specific user, which can be found by [listing organization members](#list-organization-members).
 
 **Request Payload**
@@ -518,6 +518,7 @@ You must provide the username and the admin status.
 
 Property | Type | Required? | Description
 ---|---|:---:|---
+`username` | `String` | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
 `admin` | `Boolean` | x | Indicates whether or not the user is an admin of the organization of which they are a member.
 
 **Response**
@@ -545,7 +546,7 @@ The response is an [organization member JSON object](#example-member-json-object
 DELETE /api/v1/organizations/{organization_slug}/users/{username}/
 ```
 
-The above method updates the information of a specific member of an organization.
+This method updates the information of a specific member of an organization.
 
 Using the API UI, you can delete a member by clicking the Delete button at the top. 
 
@@ -553,7 +554,7 @@ Using the API UI, you can delete a member by clicking the Delete button at the t
 
 URL Parameter | Description
 ---|---
-`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations)
+`organization_slug` | The slug provided for the organization, which can be found by locating the organization in the [list of all organizations](#list-organizations).
 `username` | The username for a specific user, which can be found by [listing organization members](#list-organization-members).
 
 
