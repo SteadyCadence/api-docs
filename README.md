@@ -6,14 +6,14 @@ The Cadasta API docs provide documentation for Cadasta's REST API. The API docs 
 
 If you'd like to contribute to this documentation, you'll need to edit Markdown files that live in [`content`](https://github.com/Cadasta/api-docs/tree/master/content). Each file here follows the [Docbox format](https://github.com/mapbox/docbox/blob/master/content/example.md), as developed by MapBox. 
 
-_[Learn more about writing documentation using Docbox DocboxSee](https://github.com/mapbox/docbox#writing-documentation)_
+_[Learn more about writing documentation using Docbox](https://github.com/mapbox/docbox#writing-documentation)_
 
 
 ## Installing and Compiling Docs Locally
 
 To view what your changes will look like on the website, you need to compile the docs and run a local web server. Below are instructions for how to do this, modified from the [Docbox instructions](https://github.com/mapbox/docbox#development). 
 
-After you `npm install` the project, you can run `npm start` and its development server, [budo](https://github.com/mattdesl/budo), will serve the website locally and update automatically.
+After you `npm install` the project, you can run `npm start` and its development server, [budo](https://github.com/mattdesl/budo) will serve the website locally and update automatically.
 
 ###Requirements
 
