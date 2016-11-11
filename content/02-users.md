@@ -2,11 +2,9 @@
 
 People who want to do more than view publicly available organizations and projects, individuals who use the Cadasta Platform are required to <a href="https://docs.cadasta.org/en/01-gettingstarted.html#createnewaccount" target="_blank">set up a user account</a>. 
 
-You can use the Cadasta API to manage these accounts, provided that you have their username and password. This section outlines how to do that, focusing on endpoints that start with: 
+You can use the Cadasta API to manage these accounts, provided that you have their username and password. This section outlines how to do that, focusing on endpoints that start with `api/v1/account/`.
 
-```
-api/v1/
-```
+### Account object
 
 An `account` JSON object contains the following properties:
 
@@ -30,7 +28,6 @@ Property | Type Description
 }
 ```
 
-***
 
 ### Log a User In / Get Authorization Key
 
@@ -66,7 +63,7 @@ Property | Type | Description
 }
 ```
 
-***
+
 
 
 
@@ -89,7 +86,7 @@ Note that logging a user out of the API does not log them out of the platform.
 
 When the logout was successful, you receive an empty response with status code `200`.
 
-***
+
 
 
 
@@ -121,14 +118,7 @@ Property | Type | Required? | Description
 
 **Response**
 
-The response contains a JSON object with the following properties:
-
-Property | Type | Description
----|---|---
-`username` | `String` | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | `String` | The user's full name. (optional)
-`email` | `String` | The user's email address.
-`email_verified` | `Boolean` | Indicates whether the user has verified their email address.
+The response contains an [account JSON object](#account-object).
 
 #### Example Response
 
@@ -141,7 +131,7 @@ Property | Type | Description
 }
 ```
 
-***
+
 
 
 
@@ -156,16 +146,7 @@ This method and endpoint returns the account information for the user authentica
 
 **Response**
 
-
-The response contains a JSON object with the following properties:
-
-Property | Type | Description
----|---|---
-`username` | `String` | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | `String` |  The user's full name.
-`email` | `String` |  The user's email address.
-`email_verified` | `Boolean` | Indicates whether the user has verified their email address.
-`last_login` | `String` | Date and time of last user login.
+The response contains an [account JSON object](#account-object).
 
 #### Example Response
 
@@ -179,7 +160,7 @@ Property | Type | Description
 }
 ```
 
-***
+
 
 
 
@@ -205,15 +186,7 @@ Property | Type | Required? | Description
 
 **Response**
 
-The response contains a JSON object with the following properties.
-
-Property | Type | Description
----|---|---
-`username` | `String` | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | `String` | (optional) The user's full name.
-`email` | `String` | The user's email address.
-`email_verified` | `Boolean` | Indicates whether the user has verified their email address.
-`last_login` | `String` | Date and time of the user's last login.
+The response contains an [account JSON object](#account-object).
 
 #### Example Response
 
@@ -227,7 +200,7 @@ Property | Type | Description
 }
 ```
 
-***
+
 
 
 
@@ -253,19 +226,11 @@ Property | Type | Required? | Description
 `re_new_password` | `String` | x | A confirmation of the new password.
 `current_password` | `String` | x | The current password. 
 
-#### Example Response
+**Response**
 
-No response is shown; only a response code (shown below).
+If the password was changed successfully, an empty response with response code `200` is returned. 
 
-**Response codes**
 
-Property | Description
----|---
-`200` | The user's password was updated successfully.
-`400` | The is problem with the user data provided, e.g. the passwords don't match.
-`401` | No authentication token was provided with the `Authorization` header.
-
-***
 
 
 
@@ -277,13 +242,11 @@ Property | Description
 
 ## Manage Platform Users
 
-This section refers to endpoints that begin with: 
+This section refers to endpoints that begin with `/api/v1/users/`.
 
-```
-/api/v1/users/
-```
+These endpoints are for use by superusers only – individuals who have special account access for an instance of of the Cadasta Platform. They can be used as an entry point to see all users in the platform. 
 
-These endpoints are primarily for use by superusers – individuals who have special account access for an instance of of the Cadasta Platform. They can be used as an entry point to see all users in the platform. 
+### Platform user response object
 
 Here is a table of the first tier properties of the `users` object:
 
@@ -322,7 +285,7 @@ Property | Type | Description
 }
 ```
 
-***
+
 
 
 
@@ -337,7 +300,7 @@ This method and endpoint return all of the users in the platform.
 
 **Response**
 
-The response contains a [list of user JSON objects](#example-user-json-object), including the organizations the user is a member of.
+The response contains a [list of user JSON objects](#platform-user-response-object), including the organizations the user is a member of.
 
 #### Example Response
 
@@ -360,7 +323,7 @@ The response contains a [list of user JSON objects](#example-user-json-object), 
 ]
 ``` 
 
-***
+
 
 
 
@@ -370,18 +333,15 @@ The response contains a [list of user JSON objects](#example-user-json-object), 
 
 ### Get a Platform User
 
+Use this method to view a single user in the platform. 
+
 ```endpoint
 GET /api/v1/users/{username}/
 ```
-Use this method to view a single user in the platform. For example, to see the information for username `janesmith`, you'd write:
-
-```
-https://platform-staging-api.cadasta.org/api/v1/users/janesmith/
-``` 
 
 **Response**
 
-The response contains a [user JSON object](#example-user-json-object), including the organizations the user is a member of.
+The response contains a [user JSON object](#platform-user-response-object), including the organizations the user is a member of.
 
 
 #### Example Response
@@ -403,7 +363,7 @@ The response contains a [user JSON object](#example-user-json-object), including
 }
 ```
 
-***
+
 
 
 
@@ -429,7 +389,7 @@ Property | Type | Required? | Description
 
 **Response**
 
-The response contains a [user JSON object](#example-user-json-object) that includes the organizations the user is a member of.
+The response contains a [user JSON object](#platform-user-response-object) that includes the organizations the user is a member of.
 
 #### Example Response
 
@@ -449,4 +409,4 @@ The response contains a [user JSON object](#example-user-json-object) that inclu
     }]
 }
 ```
-***
+

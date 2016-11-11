@@ -10,7 +10,7 @@ To access project resources using the API, use the following endpoint:
 /api/v1/organizations/{organization_slug}/projects/{project_slug}/resources/
 ```
 
-**Project Resource Object Properties**
+### Project Resource Object
 
 Each project resource appears as a JSON object with the following properties:
 
@@ -31,13 +31,13 @@ Property | Type | Description
 	"id": "8u5dgnvgzix6kmg9hvbfdy3c",
 	"name": "Deed",
 	"description": "",
-	"file": "https://s3-us-west-2.amazonaws.com/cadasta-platformstaging-bucket/resources/wcajeysz7ngrae3bd84af99q.pdf",
+	"file": "https://example.com/resources/wcajeysz7ngrae3bd84af99q.pdf",
 	"original_file": "Deed-of-Trust-1912.pdf",
 	"archived": false
 }
 ```
 
-***
+
 
 
 
@@ -69,17 +69,17 @@ URL Parameter | Description
 
 **Response**
 
-The response body is an array containing a series of [project resource JSON objects](#example-project-resource-json-object).
+The response body is an array containing a series of [project resource JSON objects](#project-resource-object).
 
 #### Example Response
 
-```JSON
+```json
 [
     {
         "id": "8u5dgnvgzix6kmg9hvbfdy3c",
         "name": "Deed",
         "description": "",
-        "file": "https://s3-us-west-2.amazonaws.com/cadasta-platformstaging-bucket/resources/wcajeysz7ngrae3bd84af99q.pdf",
+        "file": "https://example.com/resources/wcajeysz7ngrae3bd84af99q.pdf",
         "original_file": "Deed-of-Trust-1912.pdf",
         "archived": false
     },
@@ -87,7 +87,7 @@ The response body is an array containing a series of [project resource JSON obje
         "id": "xnbqgubg99x6w54q363tjx5d",
         "name": "Ross Island - 1963",
         "description": "",
-        "file": "https://s3-us-west-2.amazonaws.com/cadasta-platformstaging-bucket/resources/tab6kkdfx9c5pifzsmmh4iep.jpg",
+        "file": "https://example.com/resources/tab6kkdfx9c5pifzsmmh4iep.jpg",
         "original_file": "a2004-001-1012-marquam-bridge-under-construction-1963.jpg",
         "archived": false
     },
@@ -95,7 +95,7 @@ The response body is an array containing a series of [project resource JSON obje
         "id": "p5d2wb5xnj4bn93vve8ntzwc",
         "name": "Ross Island Aerial - 1945",
         "description": "",
-        "file": "https://s3-us-west-2.amazonaws.com/cadasta-platformstaging-bucket/resources/acguba29wstyexf8uhxkvezn.jpg",
+        "file": "https://example.com/resources/acguba29wstyexf8uhxkvezn.jpg",
         "original_file": "a2005-001-815-ross-island-bridge-west-approach-north-at-sw-kelly-1945.jpg",
         "archived": false
     }
@@ -103,7 +103,7 @@ The response body is an array containing a series of [project resource JSON obje
 
 ```
 
-***
+
 
 
 
@@ -143,7 +143,7 @@ Property | Type | Required? | Description
 
 **Response**
 
-The response body contains a [project resource JSON object](#example-project-resource-json-object).
+The response body contains a [project resource JSON object](#project-resource-object).
 
 #### Example Response
 
@@ -152,14 +152,14 @@ The response body contains a [project resource JSON object](#example-project-res
     "id": "rtxixdb2a5weefmzmg7kzvgr",
     "name": "Original Questionnaire",
     "description": "This is the original questionnaire we were using; we updated it on 10.31.2016.",
-    "file": "https://s3-us-west-2.amazonaws.com/cadasta-resources/sample-forms/minimum_cadasta_questionnaire.xlsx",
+    "file": "https://example.com/minimum_cadasta_questionnaire.xlsx",
     "original_file": "mimimum_cadasta_questionnaire.xlsx",
     "archived": false
 }
 
 ```
 
-***
+
 
 
 
@@ -191,7 +191,7 @@ URL Parameter | Description
 
 **Response**
 
-The response body contains a [project resource JSON object](#example-project-resource-json-object).
+The response body contains a [project resource JSON object](#project-resource-object).
 
 #### Example Response
 
@@ -200,14 +200,14 @@ The response body contains a [project resource JSON object](#example-project-res
     "id": "rtxixdb2a5weefmzmg7kzvgr",
     "name": "Original Questionnaire",
     "description": "This is the original questionnaire we were using; we updated it on 10.31.2016.",
-    "file": "https://s3-us-west-2.amazonaws.com/cadasta-resources/sample-forms/minimum_cadasta_questionnaire.xlsx",
+    "file": "https://example.com/minimum_cadasta_questionnaire.xlsx",
     "original_file": "mimimum_cadasta_questionnaire.xlsx",
     "archived": false
 }
 
 ```
 
-***
+
 
 
 
@@ -250,7 +250,7 @@ Property | Type | Description
 
 **Response**
 
-The response body contains a [project resource JSON object](#example-project-resource-json-object).
+The response body contains a [project resource JSON object](#project-resource-object).
 
 #### Example Response
 
@@ -259,7 +259,7 @@ The response body contains a [project resource JSON object](#example-project-res
     "id": "rtxixdb2a5weefmzmg7kzvgr",
     "name": "Original Questionnaire",
     "description": "This is the original questionnaire we were using; we updated it on 10.31.2016.",
-    "file": "https://s3-us-west-2.amazonaws.com/cadasta-resources/sample-forms/minimum_cadasta_questionnaire.xlsx",
+    "file": "https://example.com/minimum_cadasta_questionnaire.xlsx",
     "original_file": "mimimum_cadasta_questionnaire.xlsx",
     "archived": false
 }
@@ -267,7 +267,7 @@ The response body contains a [project resource JSON object](#example-project-res
 ```
 
 
-***
+
 
 
 
@@ -298,7 +298,7 @@ Use this endpoint to return all of the spatial resources in a given project, alo
 
 **Response**
 
-The response is an array of [project resource JSON objects](#example-project-resource-json-object), each with an additional `spatial_resources` object field. 
+The response is an array of [project resource JSON objects](#project-resource-object), each with an additional `spatial_resources` object field. 
 
 The `spatial_resources` object has the following properties:
 
@@ -427,4 +427,4 @@ Property | Type | Description
 ```
 
 
-***
+

@@ -28,11 +28,11 @@ Each endpoint is described using several parts:
 
 * **The path**, such as `/api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/`.
 
-* **Any URL parameters**, a.k.a. parts of the endpoints wrapped in brackets. In the above path, those would be `{organization_slug}` and `{project_slug}`
+* **Any URL parameters**, a.k.a. parts of the endpoints are wrapped in brackets. In the above path, those would be `{organization_slug}` and `{project_slug}`
 
-In addition, each method + endpoint combination is described by a request payload, properties, and an example output. 
+In addition, each combination of method and endpoint is described by a request payload, properties, and an example response. 
 
-All URLs referenced here require their own base path, which may be your own local instance of the Cadasta Platform. If you'd like to use an existing base path to explore the API, you can use the one for our demo site: `https://demo.cadasta.org/`. This will take you to a basic API UI, which is better used for exploration than it is for actually interacting with the API.
+All URLs referenced here require their own base path, which may be your own local instance of the Cadasta Platform. If you'd like to use an existing base path to explore the API, you can use the one for our demo site: `https://demo.cadasta.org/`. 
 
 ### Using the API
 
@@ -60,9 +60,9 @@ Property | Description
 `403` | Permission denied, the user has no permission to access this resource or perform this action. 
 `404` | Not found. (The object with the given slug or ID was not in the database.)
 
-### Formatting URLS for Accessing Specific Objects
+### Formatting URLs for Accessing Specific Objects
 
-To get at, create, or modify projects, organizations, organization members and more, you'll need to access certain IDs (such as `username`) or a couple different kinds of slugs.  
+To get, create, or modify projects, organizations, organization members and more, you'll need to access certain IDs (such as `username`) or a couple different kinds of slugs.  
 
 Two slugs that appear frequently are: 
 

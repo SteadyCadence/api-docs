@@ -1,21 +1,19 @@
 ## Organizations
 
-Organizations in the Cadasta Platform represent organizations in real life. The Cadasta API allows you to work with data associated with organizations that have been added to the platform, and to add organizations as well. The endpoint for these objects starts with:
-
-```
-GET api/v1/organizations
-```
+Organizations in the Cadasta Platform represent organizations in real life. The Cadasta API allows you to work with data associated with organizations that have been added to the platform, and to add organizations as well. The endpoints for these objects start with `api/v1/organizations`.
 
 _To learn more about organizations, <a href="https://docs.cadasta.org/en/02-organizations.html" target="_blank">see our documentation on Organizations</a>._
 
+### Organization JSON object
+
 An organization JSON object contains the following properties:
 
-| Property | Type Description |
+| Property | Type | Description |
 | --- | --- | --- |
 | `id` | `String` | The ID of the organization |
 | `slug` | `String` | The short label of the organization; usually used in URLs. |
 | `name` | `String` | The name of the organization. |
-| `description` | `String` | \(optional\) A long-form description of the organization. |
+| `description` | `String` | A long-form description of the organization. |
 | `archived` | `Boolean` | Indicates whether the organization has been archived. |
 | `urls` | `Array` | A list of URLs to websites of this organization. |
 | `contacts` | `Array` | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` \(optional\) and `tel` \(optional\). |
@@ -45,7 +43,10 @@ An organization JSON object contains the following properties:
 }
 ```
 
----
+
+
+
+
 
 
 ### List Organizations
@@ -58,7 +59,7 @@ This method returns all of the publicly available organizations in the platform.
 
 **Response**
 
-The response body is an array containing an [organization JSON object](#example-organization-json-object).
+The response body is an array containing an [organization JSON object](#organization-json-object).
 
 #### Example response
 
@@ -96,7 +97,11 @@ The response body is an array containing an [organization JSON object](#example-
 ]
 ```
 
----
+
+
+
+
+
 
 
 
@@ -120,15 +125,13 @@ The request payload is a JSON object containing the following properties.
 | `urls` | `Array` |  | A list of URLs to websites of this organization. |
 | `contacts` | `Array` |  | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` \(optional\) and `tel` \(optional\); either `email` or `tel` must be provided. |
 
-Formatting your URLs and contacts can be tricky. The using the API UI, you'll want to use the Raw HTML window. 
-
 Here's how you need to format your URLs:
 
 ```
 "urls": [
   "http://www.example.org",
   "http://bethsorganization.org"
-],
+]
 ```
 
 Here's how you need to format your contacts:
@@ -148,11 +151,9 @@ Here's how you need to format your contacts:
 ]
 ```
 
-Note that this formatting can be on a single line; they're shown on multiple lines above for easier reading.
-
 **Response**
 
-The response body contains an [organization JSON object](#example-organization-json-object).
+The response body contains an [organization JSON object](#organization-json-object).
 
 The response also contains the field `users`, which provides a list of members of this organization. In this case, there will only be one user shown: the user who created the organization.
 
@@ -190,7 +191,9 @@ The response also contains the field `users`, which provides a list of members o
 }
 ```
 
----
+
+
+
 
 ### Get a Specific Organization
 
@@ -208,7 +211,7 @@ URL Parameter | Description
 
 **Response**
 
-The response body contains an [organization JSON object](#example-organization-json-object).
+The response body contains an [organization JSON object](#organization-json-object).
 
 The response also contains the field `users`, which provides a list of members of this organization.
 
@@ -264,19 +267,19 @@ URL Parameter | Description
 
 **Request payload**
 
-The request payload is a JSON object containing the following properties. All properties are optional - if a property is not presented the request payload, the property will not be updated.
+The request payload is a JSON object containing the following properties. All properties are optional — if a property is not presented the request payload, the property will not be updated.
 
 | Property | Type | Required? | Description 
 | --- | --- | --- | --- 
 | `name` | `String` |  | The name of the organization. 
-| `description` | `String` |  | \(optional\) A long-form description of the organization. 
+| `description` | `String` |  | A long-form description of the organization. 
 | `archived` | `Boolean` |  | Indicates whether the organization has been archived. 
 | `urls` | `Array` |  | A list of URLs to websites of this organization. 
 | `contacts` | `Array` |  | A list of contacts for this organization. A contact is a JSON object containing `name`, `email` \(optional\) and `tel` \(optional\); either `email` or `tel` must be provided. 
 
 **Response**
 
-The response body contains an [organization JSON object](#example-organization-json-object).
+The response body contains an [organization JSON object](#organization-json-object).
 
 The response also contains the field `users`, which provides a list of members of this organization.
 
@@ -321,17 +324,16 @@ The response also contains the field `users`, which provides a list of members o
 }
 ```
 
----
+
+
 
 ## Organization Members
 
-Users associated with an organization are known as **members**. The endpoint you need to access the members of an organization is:
+Users associated with an organization are known as **members**. The endpoint you need to access the members of an organization is: `/api/v1/organizations/{organization_slug}/users/`.
 
-```
-api/v1/organizations/{organization_slug}/users/
-```
+### Organization Member JSON object
 
-A member JSON object has the following properties. These properties are similar to the [`account` JSON object](#example-account-json-object), but they include whether the user is an admin of the organization in question.
+A member JSON object has the following properties. These properties are similar to the [`account` JSON object](#account-object), but they include whether the user is an admin of the organization in question.
 
 Property | Type | Description
 ---|---|---
@@ -375,7 +377,7 @@ URL Parameter | Description
 
 **Response**
 
-The response body is an array containing an [organization JSON object](#example-organization-json-object).
+The response body is an array containing an [organization JSON object](#organization-member-json-object).
 
 #### Example Response
 
@@ -418,7 +420,10 @@ The response body is an array containing an [organization JSON object](#example-
    ]
 }]
 ```
----
+
+
+
+
 
 ### Add an Organization Member
 
@@ -443,7 +448,7 @@ Property | Type | Required? | Description
 
 **Response**
 
-The response is an [organization member JSON object](#example-member-json-object). 
+The response is an [organization member JSON object](#organization-member-json-object). 
 
 #### Example Response
 
@@ -459,7 +464,7 @@ The response is an [organization member JSON object](#example-member-json-object
 ```
 
 
----
+
 
 ### Get an Organization Member
 
@@ -478,7 +483,7 @@ URL Parameter | Description
 
 **Response**
 
-The response includes the properties of an [organization member JSON object](#example-member-json-object). 
+The response includes the properties of an [organization member JSON object](#organization-member-json-object). 
 
 
 #### Example Response
@@ -495,7 +500,7 @@ The response includes the properties of an [organization member JSON object](#ex
 ```
 
 
----
+
 
 ### Update an Organization Member's Admin Status
 
@@ -518,12 +523,11 @@ You must provide the username and the admin status.
 
 Property | Type | Required? | Description
 ---|---|:---:|---
-`username` | `String` | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
 `admin` | `Boolean` | x | Indicates whether or not the user is an admin of the organization of which they are a member.
 
 **Response**
 
-The response is an [organization member JSON object](#example-member-json-object). 
+The response is an [organization member JSON object](#organization-member-json-object). 
 
 #### Example Response
 
@@ -538,7 +542,7 @@ The response is an [organization member JSON object](#example-member-json-object
 }
 ```
 
----
+
 
 ### Remove an Organization Member
 
@@ -547,8 +551,6 @@ DELETE /api/v1/organizations/{organization_slug}/users/{username}/
 ```
 
 This method updates the information of a specific member of an organization.
-
-Using the API UI, you can delete a member by clicking the Delete button at the top. 
 
 **URL Parameters**
 
@@ -560,18 +562,4 @@ URL Parameter | Description
 
 **Response**
 
-Your response will be in the form of an `HTTP 204: No Content` message. 
-
-If there's an error, then you'll get an error message or another [response code](#common-response-codes). 
-
-#### Example Response
-
-```json
-HTTP 204 No Content
-Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
-Content-Type: application/json
-Vary: Accept
-```
-
----
-
+If the user was successfully deleted, an empty response with status code `204` will be returned. 

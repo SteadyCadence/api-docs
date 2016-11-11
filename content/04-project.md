@@ -2,6 +2,8 @@
 
 The Cadasta API allows you work with data for <a href="https://docs.cadasta.org/en/03-projects.html" target="_blank">projects</a> that have been added to the platform. 
 
+### Project JSON Object
+
 A project JSON object contains the following properties.
 
 
@@ -57,7 +59,7 @@ Property | Type | Description
 }
 ```
 
-***
+
 
 
 
@@ -81,7 +83,7 @@ Use this method to list all the publicly viewable projects in the Cadasta system
 
 **Response**
 
-The response body is an array containing multiple [project JSON objects](#example-project-json-object).
+The response body is an array containing multiple [project JSON objects](#project-json-object).
 
 #### Example Response
 
@@ -135,7 +137,7 @@ The response body is an array containing multiple [project JSON objects](#exampl
 
 ```
 
-***
+
 
 
 
@@ -159,7 +161,7 @@ URL Parameter | Description
 
 **Response**
 
-The response body is an array containing a [project JSON object](#example-project-json-object).
+The response body is an array containing multiple [project JSON objects](#project-json-object).
 
 #### Example Response
 
@@ -233,7 +235,7 @@ The response body is an array containing a [project JSON object](#example-projec
 
 ```
 
-***
+
 
 
 
@@ -270,7 +272,7 @@ Property | Type | Required? | Description
 
 **Response**
 
-The response body is an array containing a [project JSON object](#example-project-json-object).
+The response body is an array containing a [project JSON object](#project-json-object).
 
 #### Example Response
 
@@ -322,7 +324,7 @@ URL Parameter | Description
 
 **Response**
 
-The response body is an array containing a [project JSON object](#example-project-json-object).
+The response body is an array containing a [project JSON object](#project-json-object).
 
 
 #### Example Response
@@ -391,7 +393,7 @@ URL Parameter | Description
 
 **Request Payload**
 
-Using the API, you can update any of the following fields. All of them are optional; fields left blank will remain the same following the PATCH method.
+Using the API, you can update any of the following fields. All of them are optional; fields left blank will remain the same following the update.
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
@@ -405,7 +407,7 @@ Property | Type | Required? | Description
 
 **Response**
 
-The response body is an array containing a [project JSON object](#example-project-json-object).
+The response body is an array containing a [project JSON object](#project-json-object).
 
 #### Example Response
 
@@ -476,11 +478,9 @@ The response body is an array containing a [project JSON object](#example-projec
 
 Project members are users associated with projects in the Cadasta Platform. Using the Cadasta API, you can add, view, update, and delete project members.
 
-The endpoint for project member objects start with:
+The endpoint for project member objects start with `/api/v1/organizations/{organization_slug}/projects/{project_slug}/users/`.
 
-```
-/api/v1/organizations/{organization_slug}/projects/{project_slug}/users/
-```
+### Project Member JSON Object
 
 A project member JSON object contains the following properties:
 
@@ -500,7 +500,6 @@ ID | Title
 PU | Project User
 DC | Data Collector
 PM | Project Manager 
-
 
 ##### Example Project Member JSON Object
 
@@ -532,16 +531,7 @@ URL Parameter | Description
 
 **Response**
 
-The response contains a JSON object with the following properties:
-
-Property | Type | Description
----|---|---
-`username` | `String` |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | `String`| The user's full name. (optional)
-`email` | `String` | The user's email address.
-`email_verified` | `Boolean` | Indicates whether the user has verified their email address.
-`last_login` | `String` | Date and time of last user login.
-`role` | `String` | Indicates the role of the user on the project. (PM = Project Manager, DC = Data Collector, PU = Project User)
+The response contains an array of multiple [project member JSON objects](#project-member-json-object).
 
 #### Example Response
 
@@ -596,21 +586,11 @@ URL Parameter | Description
 
 Property | Type | Required? | Description 
 --- | --- | :---: | --- 
-`username` | `String` | x | The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
 `role` | `String` | x | Indicates the role of the user on the project. (PM = Project Manager, DC = Data Collector, PU = Project User)
 
 **Response**
 
-The response contains a JSON object with the following properties:
-
-Property | Type | Description
----|---|---
-`username` | `String` |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | `String`| The user's full name. (optional)
-`email` | `String` | The user's email address.
-`email_verified` | `Boolean` | Indicates whether the user has verified their email address.
-`last_login` | `String` | Date and time of last user login.
-`role` | `String` | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector, PU = Project User)
+The response contains a [project member JSON object](#project-member-json-object).
 
 
 #### Example Response
@@ -651,16 +631,7 @@ URL Parameter | Description
 
 **Response**
 
-The response contains a JSON object with the following properties:
-
-Property | Type | Description
----|---|---
-`username` | `String` |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | `String`| The user's full name. 
-`email` | `String` | The user's email address.
-`email_verified` | `Boolean` | Indicates whether the user has verified their email address.
-`last_login` | `String` | Date and time of last user login.
-`role` | `String` | Indicates the role of the user on the project. (PM = Project manager, DC = Data Collector, PU = Project User)
+The response contains a [project member JSON object](#project-member-json-object).
 
 #### Example Response
 
@@ -714,16 +685,7 @@ PM | Project Manager
 
 **Response**
 
-The response contains a JSON object with the following properties:
-
-Property | Type | Description
----|---|---
-`username` | `String` |The user's username (30 characters or fewer. Letters, digits and @/./+/-/_ only.)
-`full_name` | `String`| The user's full name. (optional)
-`email` | `String` | The user's email address.
-`email_verified` | `Boolean` | Indicates whether the user has verified their email address.
-`last_login` | `String` | Date and time of last user login.
-`role` | `String` | Indicates the role of the user on the project. (PM = Project Manager, DC = Data Collector, PU = Project User)
+The response contains a [project member JSON object](#project-member-json-object).
 
 #### Example Response
 
@@ -759,20 +721,5 @@ URL Parameter | Description
 
 **Response**
 
-Response will be in the form of a response code like this one. 
-
-```
-HTTP 204 No Content
-Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
-Content-Type: application/json
-Vary: Accept
-```
-
-An `HTTP 204 No Content` indicates that there is no longer content in the project associated with that username, meaning their information has been removed.
-
-If there's an error, then you'll get an error message or another [response code](#common-response-codes).
-
-
-***
-
+If the user was removed successfully from the project, an empty response with status code `204` will be returned.
 

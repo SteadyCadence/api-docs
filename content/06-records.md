@@ -5,14 +5,12 @@ Projects in the Cadasta Platform are spatial in nature – collections of points
 
 _<a href="https://docs.cadasta.org/en/04-records.html#project-locations" target="_blank">Read more about Project Locations in our Platform Documentation</a>_
 
-The endpoint you need to access JSON for spatial units / project locations starts like this:
-
-```
-/api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/
-```
+The endpoint you need to access JSON for spatial units / project locations starts like this: `/api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/`
 
 
-A spatial unit / project location JSON object contains the following properties: 
+### Spatial Unit JSON Object
+
+A spatial unit / project location JSON object is a [GEOJSON object](http://geojson.org/) contains the following properties: 
 
 Property | Type | Description
 ---|---|---
@@ -26,8 +24,8 @@ Property | Type | Description
 ---|---|---
 `id` | `String` |  A unique ID for the spatial unit
 `type` | `String` | The type of spatial unit that it is, defined by the fields in your questionnaire. (See the land `types` table below )
-`attributes` | `Object` | An array of different attributes for the property. 
-`project` | `Object` | An object containing basic information about the project, and within that, the organization. This field will not be present when working with a list of spatial units, as with `GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/`. See the `project` table below for more information.
+`attributes` | `Object` | Project-specific attributes that are defined through the projects questionnaire. 
+`project` | `Object` | An object containing basic information about the project, and within that, the organization. This field will not be present in lists of spatial units.
 
 The `project` object contains the following properties:
 
@@ -110,7 +108,7 @@ Abbreviation | What it Represents
 
 ```
 
-***
+
 
 
 
@@ -127,7 +125,7 @@ Abbreviation | What it Represents
 GET /api/v1/organizations/{organization_slug}/projects/{project_slug}/spatial/
 ```
 
-Use this method to get the GPS coordinates for all of the locations in a spatial unit / project location. These coordinates may be shown as a point, line or polygon.
+Use this method to get a list of all spatial units in a project. 
 
 
 **URL Parameters**
@@ -140,14 +138,7 @@ URL Parameter | Description
 **Response**
 
 
-The response body is a GeoJSON feature collection multiple [project location / spatial unit JSON objects](#example-spatial-unit--project-location-json-object), but without the `project` property. 
-
-Encasing these objects are the following properties:
-
-Property | Type | Description 
---- | --- | --- 
-`type` | `String` | This field is automatically set to `FeatureCollection`.
-`features` | `Array` | An array of all of the [project location / spatial unit JSON objects](#example-spatial-unit--project-location-json-object) in the project. 
+The response body is a GeoJSON feature collection pf multiple [project location / spatial unit JSON objects](#spatial-unit-json-object), but without the `project` property. 
 
 
 
@@ -225,7 +216,7 @@ Property | Type | Description
 
 
 
-***
+
 
 
 
@@ -262,7 +253,7 @@ Property | Type | Required? | Description
 
 **Response**
 
-The response is a complete [spatial unit / project location JSON Object](#example-spatial-unit--project-location-json-object).
+The response is a complete [spatial unit / project location JSON Object](#spatial-unit-json-object).
 
 #### Example Response
 
@@ -295,7 +286,7 @@ The response is a complete [spatial unit / project location JSON Object](#exampl
 
 ```
 
-***
+
 
 
 
@@ -324,7 +315,7 @@ URL Parameter | Description
 
 **Response**
 
-The response is a complete [spatial unit / project location JSON Object](#example-spatial-unit--project-location-json-object).
+The response is a complete [spatial unit / project location JSON Object](#spatial-unit-json-object).
 
 
 #### Example Response
@@ -373,7 +364,7 @@ The response is a complete [spatial unit / project location JSON Object](#exampl
 }
 ```
 
-***
+
 
 
 
@@ -413,7 +404,7 @@ Property | Type | Required? | Description
 
 **Response**
 
-The response is a complete [spatial unit / project location JSON Object](#example-spatial-unit--project-location-json-object).
+The response is a complete [spatial unit / project location JSON Object](#spatial-unit-json-object).
 
 
 #### Example Response
@@ -463,7 +454,7 @@ The response is a complete [spatial unit / project location JSON Object](#exampl
 
 ```
 
-***
+
 
 
 
@@ -513,11 +504,9 @@ _<a href="https://docs.cadasta.org/en/04-records.html#location-relationships" ta
 
 Using the API, you can view, create, update, and delete parties for your project. 
 
-The endpoint for parties begins like this:
+The endpoint for parties begins like this: `/api/v1/organizations/{organization_slug}/projects/{project_slug}/parties/`
 
-```
-/api/v1/organizations/{organization_slug}/projects/{project_slug}/parties/
-```
+### Party JSON object
 
 A party JSON object contains the following properties:
 
@@ -570,7 +559,7 @@ Property | Type | Description
 
 ```
 
-***
+
 
 
 
@@ -594,7 +583,7 @@ URL Parameter | Description
 
 **Response**
 
-The response is an array of [party JSON objects](#example-party-json-object) without the `project` property. 
+The response is an array of [party JSON objects](#party-json-object) without the `project` property. 
 
 
 #### Example Response
@@ -622,7 +611,7 @@ The response is an array of [party JSON objects](#example-party-json-object) wit
 ]
 
 ```
-***
+
 
 
 
@@ -659,7 +648,7 @@ Property | Type | Required? | Description
 
 **Response**
 
-The response is a [party JSON object](#example-party-json-object). 
+The response is a [party JSON object](#party-json-object). 
 
 #### Example Response
 
@@ -683,7 +672,7 @@ The response is a [party JSON object](#example-party-json-object).
 
 ```
 
-***
+
 
 
 
@@ -712,7 +701,7 @@ URL Parameter | Description
 
 **Response**
 
-The response contains a [party JSON object](#example-party-json-object). 
+The response contains a [party JSON object](#party-json-object). 
 
 #### Example Response
 
@@ -735,7 +724,7 @@ The response contains a [party JSON object](#example-party-json-object).
 }
 ```
 
-***
+
 
 
 
@@ -780,7 +769,7 @@ Property | Type  | Required? | Description
 
 **Response**
 
-The response contains a [party JSON object](#example-party-json-object). 
+The response contains a [party JSON object](#party-json-object). 
 
 
 #### Example Response
@@ -805,7 +794,7 @@ The response contains a [party JSON object](#example-party-json-object).
 
 ```
 
-***
+
 
 
 
@@ -837,7 +826,7 @@ URL Parameter | Description
 
 **Response**
 
-If the party was successfully deleted, an empty response with status code 204 is returned.
+If the party was successfully deleted, an empty response with status code `204` is returned.
 
 
 
@@ -875,9 +864,9 @@ or
 /api/v1/organizations/{organization_slug}/projects/{project_slug}/relationships/tenure/{relationship_id}/
 ```
 
-A relationship object contains the following properties:
+### Relationship JSON object
 
-The response is a an array of JSON Objects, each of which has the following properties:
+A relationship object contains the following properties:
 
 
 Property | Type | Description 
@@ -980,7 +969,7 @@ Abbreviation | What it Represents
 
 
 
-***
+
 
 
 
@@ -1025,7 +1014,7 @@ URL Parameter | Description
 
 **Response**
 
-The response contains a list of relationship JSON objects. 
+The response contains a list of [relationship JSON objects](#relationship-json-object). 
 
 
 #### Example Response
@@ -1158,7 +1147,7 @@ The response contains a list of relationship JSON objects.
 ]
 ```
 
-***
+
 
 
 
@@ -1175,11 +1164,7 @@ The response contains a list of relationship JSON objects.
 
 ### Create a New  Relationship
 
-<<<<<<< HEAD
-
 This section is still in progress. 
-
-> Oliver, not sure how to format this to get it to work. Also, `attributes` may not be left blank, but I haven't seen an example of what goes into that field...
 
 
 ```endpoint
@@ -1198,7 +1183,7 @@ Property | Type | Required? | Description
 
 **Response**
 
-The response contains a relationship JSON object.
+The response contains a [relationship JSON object](#relationship-json-object).
 
 #### Example Response
 
@@ -1246,7 +1231,7 @@ The response contains a relationship JSON object.
 }
 ```
 
-***
+
 
 
 
@@ -1327,7 +1312,7 @@ The response contains a relationship JSON object.
 ```
 
 
-***
+
 
 
 
@@ -1383,7 +1368,7 @@ Property | Type | Required? | Description
 
 **Response**
 
-The response contains a relationship JSON object.
+The response contains a [relationship JSON object](#relationship-json-object).
 
 #### Example Response
 
@@ -1435,7 +1420,7 @@ The response contains a relationship JSON object.
 
 
 
-***
+
 
 
 
