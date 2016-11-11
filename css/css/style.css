@@ -126,3 +126,11 @@ body .prose blockquote {
   margin-left: 10px;
   vertical-align: middle;
 }
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
