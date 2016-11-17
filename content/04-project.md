@@ -10,7 +10,7 @@ A project JSON object contains the following properties.
 Property | Type | Description
 ---|---|---
 `id` | `String` | The ID of the project
-`organization` | `Array` | [JSON object of the project's organization](#example-organization-json-object).
+`organization` | `Object` | [JSON object of the project's organization](#example-organization-json-object).
 `country` | `String` |The country where the project is located; represented as a two-letter <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO 3166-1 alpha-2</a> code.
 `name` | `String` |The name of the project.
 `description`| `String` | A long-form description of the project.
@@ -20,6 +20,7 @@ Property | Type | Description
 `users` | `Array` | JSON Object of all the project's members // ADD LINK
 `access` | `String` | Indicates whether access to the project is restricted; is either `"public"` or `"private"`.
 `slug` | `String` | The short label of the project; usually used in URLs.
+`extent` | `Object` | A <a href="https://en.wikipedia.org/wiki/GeoJSON#Geometries" target="_blank"> GeoJSON geometry</a> of the project's geographic area.
 
 
 ##### Example Project JSON Object
@@ -33,6 +34,29 @@ Property | Type | Description
     "name": "Example Organization",
     "description": "Example Organization is a non-profit, non-governmental organization working to empower poor and marginalized individuals and communities.",
     "archived": false,
+    "extent": {
+        "type": "Polygon",
+        "coordinates": [
+            [
+                [
+                    -0.17329216003417966,
+                    51.51194758264939
+                ],
+                [
+                    -0.17303466796874997,
+                    51.511092905004745
+                ],
+                [
+                    -0.1709747314453125,
+                    51.51023821132554
+                ],
+                [
+                    -0.17329216003417966,
+                    51.51194758264939
+                ]
+            ]
+        ]
+    },
     "urls": [
       "http://www.example.org/"
     ],
@@ -109,7 +133,30 @@ The response body is an array containing multiple [project JSON objects](#projec
         ],
         "contacts": [],
         "access": "public",
-        "slug": "download-test"
+        "slug": "download-test",
+        "extent": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -0.17329216003417966,
+                        51.51194758264939
+                    ],
+                    [
+                        -0.17303466796874997,
+                        51.511092905004745
+                    ],
+                    [
+                        -0.1709747314453125,
+                        51.51023821132554
+                    ],
+                    [
+                        -0.17329216003417966,
+                        51.51194758264939
+                    ]
+                ]
+            ]
+        },
     },
     {
         "id": "jugibdxzaz5i2v3uni5bt6d9",
@@ -131,7 +178,8 @@ The response body is an array containing multiple [project JSON objects](#projec
         ],
         "contacts": [],
         "access": "public",
-        "slug": "import-test-1"
+        "slug": "import-test-1",
+        "extent": null
     }
 ]
 
@@ -189,7 +237,30 @@ The response body is an array containing multiple [project JSON objects](#projec
         ],
         "contacts": null,
         "access": "public",
-        "slug": "atlanta-project"
+        "slug": "atlanta-project",
+        "extent": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -0.17329216003417966,
+                        51.51194758264939
+                    ],
+                    [
+                        -0.17303466796874997,
+                        51.511092905004745
+                    ],
+                    [
+                        -0.1709747314453125,
+                        51.51023821132554
+                    ],
+                    [
+                        -0.17329216003417966,
+                        51.51194758264939
+                    ]
+                ]
+            ]
+        },
     },
     {
         "id": "hxk4k8aee5rh5htahhh5uenn",
@@ -229,7 +300,8 @@ The response body is an array containing multiple [project JSON objects](#projec
             }
         ],
         "access": "public",
-        "slug": "portland-project"
+        "slug": "portland-project",
+        "extent": null
     }
 ]
 
@@ -269,6 +341,7 @@ Property | Type | Required? | Description
 `urls` | `Array` | | A list of URLs to websites of this project.
 `contacts` | `Array` |  | A list of contacts for this project. A contact is a JSON object containing `name`, `email` (optional) and `tel` (optional).
 `access` | `String` | | Indicates whether the project is a `"public"` or a `"private"` one. Defaults to `"public"`.
+`extent` | `Object` | A <a href="https://en.wikipedia.org/wiki/GeoJSON#Geometries" target="_blank"> GeoJSON geometry</a> of the project's geographic area.
 
 **Response**
 
@@ -299,7 +372,30 @@ The response body is an array containing a [project JSON object](#project-json-o
     ],
     "contacts": null,
     "access": "public",
-    "slug": "atlanta-project"
+    "slug": "atlanta-project",
+    "extent": {
+        "type": "Polygon",
+        "coordinates": [
+            [
+                [
+                    -0.17329216003417966,
+                    51.51194758264939
+                ],
+                [
+                    -0.17303466796874997,
+                    51.511092905004745
+                ],
+                [
+                    -0.1709747314453125,
+                    51.51023821132554
+                ],
+                [
+                    -0.17329216003417966,
+                    51.51194758264939
+                ]
+            ]
+        ]
+    }
 }
 ```
 
@@ -369,7 +465,30 @@ The response body is an array containing a [project JSON object](#project-json-o
     ],
     "users": [],
     "access": "public",
-    "slug": "global-project"
+    "slug": "global-project",
+    "extent": {
+        "type": "Polygon",
+        "coordinates": [
+            [
+                [
+                    -0.17329216003417966,
+                    51.51194758264939
+                ],
+                [
+                    -0.17303466796874997,
+                    51.511092905004745
+                ],
+                [
+                    -0.1709747314453125,
+                    51.51023821132554
+                ],
+                [
+                    -0.17329216003417966,
+                    51.51194758264939
+                ]
+            ]
+        ]
+    }
 }
 ```
 
@@ -466,7 +585,30 @@ The response body is an array containing a [project JSON object](#project-json-o
         }
     ],
     "access": "public",
-    "slug": "portland-project"
+    "slug": "portland-project",
+    "extent": {
+        "type": "Polygon",
+        "coordinates": [
+            [
+                [
+                    -0.17329216003417966,
+                    51.51194758264939
+                ],
+                [
+                    -0.17303466796874997,
+                    51.511092905004745
+                ],
+                [
+                    -0.1709747314453125,
+                    51.51023821132554
+                ],
+                [
+                    -0.17329216003417966,
+                    51.51194758264939
+                ]
+            ]
+        ]
+    }
 }
 
 ```
@@ -497,9 +639,11 @@ The `role` key resolves to:
 
 ID | Title
 ---|---
-PU | Project User
-DC | Data Collector
+A  | Organization administrator or platform superuser (has the same permissions as a project manager)
 PM | Project Manager 
+DC | Data Collector
+PU | Project User
+
 
 ##### Example Project Member JSON Object
 

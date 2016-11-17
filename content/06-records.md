@@ -25,24 +25,6 @@ Property | Type | Description
 `id` | `String` |  A unique ID for the spatial unit
 `type` | `String` | The type of spatial unit that it is, defined by the fields in your questionnaire. (See the land `types` table below )
 `attributes` | `Object` | Project-specific attributes that are defined through the projects questionnaire. 
-`project` | `Object` | An object containing basic information about the project, and within that, the organization. This field will not be present in lists of spatial units.
-
-The `project` object contains the following properties:
-
-Property | Type | Description
----|---|---
-`id` | `String` | A unique ID for the project
-`organization` | `Object` |  An object containing the organization `id`, `slug` and `name`. (See the `organization` table below.)
-`name` | `String` | The name of the project that the spatial unit is a project. 
-`slug` | `String` | The project slug.
-
-Finally, the `organization` object contains the following properties:
-
-Property | Type | Description
----|---|---
-`id` | `String` |  A unique ID for the organization.
-`slug` | `String` |  The organization slug.
-`name` | `String` |  The name of the organization that's housing the project. 
 
 **Land `type` Abbreviations**
 
@@ -270,17 +252,7 @@ The response is a complete [spatial unit / project location JSON Object](#spatia
     "properties": {
         "id": "n776cwdhqriaqdwsfafiajib",
         "type": "MI",
-        "attributes": {},
-        "project": {
-            "id": "hxk4k8aee5rh5htahhh5uenn",
-            "organization": {
-                "id": "gae6pjf9xygxddgyg5dq45iq",
-                "slug": "example-organization",
-                "name": "Example Organization"
-            },
-            "name": "Portland Project",
-            "slug": "global-project"
-        }
+        "attributes": {}
     }
 }
 
@@ -349,17 +321,7 @@ The response is a complete [spatial unit / project location JSON Object](#spatia
     "properties": {
         "id": "39jvd8r93jijahnvgd4s4cih",
         "type": "PA",
-        "attributes": {},
-        "project": {
-            "id": "hxk4k8aee5rh5htahhh5uenn",
-            "organization": {
-                "id": "gae6pjf9xygxddgyg5dq45iq",
-                "slug": "example-organization",
-                "name": "Example Organization"
-            },
-            "name": "Portland Project",
-            "slug": "portland-project"
-        }
+        "attributes": {}
     }
 }
 ```
@@ -438,17 +400,7 @@ The response is a complete [spatial unit / project location JSON Object](#spatia
     "properties": {
         "id": "w4rwh32mqctn9g223wnry2gx",
         "type": "PA",
-        "attributes": {},
-        "project": {
-            "id": "hxk4k8aee5rh5htahhh5uenn",
-            "organization": {
-                "id": "gae6pjf9xygxddgyg5dq45iq",
-                "slug": "example-organization",
-                "name": "Example Organization"
-            },
-            "name": "Portland Project",
-            "slug": "portland-project"
-        }
+        "attributes": {}
     }
 }
 
@@ -516,25 +468,6 @@ Property | Type | Description
 `name` | `String` | The name of the party.
 `type` | `String` | The type of party, indicating whether it's an individual (`IN`), a group (`GR`), or a corporation (`CO`).
 `attributes` | `Object` | Project-specific attributes that are defined through the projects questionnaire. 
-`project` | `Object` | A field with the project `id`, `name`, `slug`, and `organization`, which is itself an array including the organization `id`, `slug`, and `name`. (See the `project` and `organization` tables below for more information.) Note that this property will not appear in all responses. 
-
-The `project` object contains the following properties:
-
-Property | Type | Description
----|---|---
-`id` | `String` | A unique ID for the project
-`organization` | `Array` | An object containing the organization `id`, `slug` and `name`. (See the `organization` table below.)
-`name` | `String` | The name of the project that the spatial unit is a project. 
-`slug` | `String` | The project slug.
-
-Finally, the `organization` object contains the following properties:
-
-Property | Type | Description
----|---|---
-`id` | `String` |  A unique ID for the organization.
-`slug` | `String` |  The organization slug.
-`name` | `String` |  The name of the organization that's housing the project. 
-
 
 #### Example Party JSON Object
 
@@ -543,17 +476,7 @@ Property | Type | Description
     "id": "z8f83bt6fskq6wcvnp223t3q",
     "name": "Jane Doe",
     "type": "IN",
-    "attributes": {},
-    "project": {
-        "id": "hxk4k8aee5rh5htahhh5uenn",
-        "organization": {
-            "id": "gae6pjf9xygxddgyg5dq45iq",
-            "slug": "example-organization",
-            "name": "Example Organization"
-        },
-        "name": "Portland Project",
-        "slug": "global-project"
-    }
+    "attributes": {}
 }
 
 
@@ -657,17 +580,7 @@ The response is a [party JSON object](#party-json-object).
     "id": "z8f83bt6fskq6wcvnp223t3q",
     "name": "Jane Doe",
     "type": "IN",
-    "attributes": {},
-    "project": {
-        "id": "hxk4k8aee5rh5htahhh5uenn",
-        "organization": {
-            "id": "gae6pjf9xygxddgyg5dq45iq",
-            "slug": "example-organization",
-            "name": "Example Organization"
-        },
-        "name": "Portland Project",
-        "slug": "global-project"
-    }
+    "attributes": {}
 }
 
 ```
@@ -710,17 +623,7 @@ The response contains a [party JSON object](#party-json-object).
     "id": "z8f83bt6fskq6wcvnp223t3q",
     "name": "Jane Doe",
     "type": "IN",
-    "attributes": {},
-    "project": {
-        "id": "hxk4k8aee5rh5htahhh5uenn",
-        "organization": {
-            "id": "gae6pjf9xygxddgyg5dq45iq",
-            "slug": "example-organization",
-            "name": "Example Organization"
-        },
-        "name": "Portland Project",
-        "slug": "global-project"
-    }
+    "attributes": {}
 }
 ```
 
@@ -779,17 +682,7 @@ The response contains a [party JSON object](#party-json-object).
     "id": "z8f83bt6fskq6wcvnp223t3q",
     "name": "Jane Doe",
     "type": "IN",
-    "attributes": {},
-    "project": {
-        "id": "hxk4k8aee5rh5htahhh5uenn",
-        "organization": {
-            "id": "gae6pjf9xygxddgyg5dq45iq",
-            "slug": "example-organization",
-            "name": "Example Organization"
-        },
-        "name": "Portland Project",
-        "slug": "portland-project"
-    }
+    "attributes": {}
 }
 
 ```
