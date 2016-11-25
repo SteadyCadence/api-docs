@@ -100,8 +100,84 @@ The response body is an array containing an [organization JSON object](#organiza
 
 
 
+### List Organizations using a permissions filter
+
+```endpoint
+GET /api/v1/organizations/?permissions={permission[,permission]}
+```
+
+Using the `permissions` query parameter, the list of organizations can be filtered according to the permissions the authenticated user has on the individual organization. 
+
+If you want to list only organizations where the user can create projects, you request:
+
+```
+GET /api/v1/organizations/?permissions=project.create
+```
+
+To filter against more than one permission, provide a comma-separated list of these permissions.
+
+```
+GET /api/v1/organizations/?permissions=project.create,org.update
+```
+
+Organizations can be filtered using the following permissions:
+
+| Permission | Description |
+| --- | --- |
+| `org.view`| View the organization. |
+| `org.view_archived`| View the organization, if it's archived. |
+| `org.update` | Update the organization. |
+| `org.archive` | Archive the organization. |
+| `org.unarchive` | Unarchive the organization. |
+| `org.users.list` | List members of an organization. |
+| `org.users.add` | Add a member to an organization. |
+| `org.users.edit` | Edit the permissions of members in the organization. |
+| `org.users.remove` | Remove a member from the organization. |
+| `project.create` | Create a new project in the organization. |
+| `project.list` | List projects in the organization. |
 
 
+
+
+**Response**
+
+The response body is an array containing an [organization JSON object](#organization-json-object).
+
+#### Example response
+
+```json
+[
+  {
+    "id": "C9nWLc9znHQ5V0aaX1tmZQoN",
+    "slug": "cadasta",
+    "name": "Cadasta",
+    "description": "",
+    "archived": true,
+    "urls": [],
+    "contacts": []
+  },
+  {
+    "id": "wS3Mp76Spqu9A0Crg9bMxB2o",
+    "slug": "david-org",
+    "name": "David Org",
+    "description": "David Org (testing)",
+    "archived": false,
+    "urls": [],
+    "contacts": [
+      {
+        "tel": null,
+        "name": "David",
+        "email": "david@example.com"
+      },
+      {
+        "tel": null,
+        "name": "Frank",
+        "email": "frank@example.com"
+      }
+    ]
+  }
+]
+```
 
 
 

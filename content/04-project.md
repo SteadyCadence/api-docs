@@ -189,10 +189,6 @@ The response body is an array containing multiple [project JSON objects](#projec
 
 
 
-
-
-
-
 ### List All Projects in an Organization
 
 ```endpoint
@@ -310,8 +306,54 @@ The response body is an array containing multiple [project JSON objects](#projec
 
 
 
+### List projects using a permissions filter
 
+#### Filtering all projects
 
+```endpoint
+GET /api/v1/projects/?permissions={permission[,permission]}
+```
+
+#### Filtering organization projects
+
+```endpoint
+GET /api/v1/organizations/{organization_slug}/projects/?permissions={permission[,permission]}
+```
+
+Using the `permissions` query parameter, the list of projects can be filtered according to the permissions the authenticated user has on the individual project. 
+
+If you want to list only project where the user can create parties, you request:
+
+```
+GET /api/v1/projects/?permissions=party.create
+```
+
+To filter against more than one permission, provide a comma-separated list of these permissions.
+
+```
+GET /api/v1/projects/?permissions=party.create,project.update
+```
+
+Projects can be filtered using the following permissions:
+
+| Permission | Description |
+| --- | --- |
+| `project.view`| View the project. |
+| `project.view_private`| View the project, if it is private. |
+| `project.view_archived`| View the project, if it is archived. |
+| `project.update`| Update the project. |
+| `project.archive` | Archive the project. |
+| `project.unarchive` | Unarchive the project. |
+| `project.users.list` | List members of an project. |
+| `project.users.add` | Add a member to an project. |
+| `project.users.edit` | Edit the permissions of members in the project. |
+| `project.users.remove` | Remove a member from the project. |
+| `party.list` | List parties in this project. |
+| `party.create` | Create a new party for this project. |
+| `tenure_rel.list` | List tenure relationships in this project. |
+| `tenure_rel.create` | Create a new tenure relationship for this project. |
+| `spatial.list` | List spatial units in this project. |
+| `spatial.create` | Create a new spatial unit for this project. |
 
 
 
