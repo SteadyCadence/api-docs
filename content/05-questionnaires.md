@@ -1,14 +1,8 @@
 ## Questionnaires
 
-> 11.2.2016: Beth is getting an error and can't see how the JSON object is formatted (see [Issue 19](https://github.com/Cadasta/api-docs/issues/19))
-
-> Oliver, please fill in the `Required?` fields
-
 Each project in the Cadasta Platform requires a questionnaire in order to work. This questionnaire creates the essential framework for data collection, either online or in the field. 
 
 Using the API, you can get the structure of your questionnaire in JSON format, or you can replace the questionnaire being used for a project. 
-
-> Oliver, David tells me that now you *can* update a questionnaire after the project has started. Is it just that you can't do it in the API?
 
 Note that you **cannot** replace a questionnaire in an active project once data is being collected about it.
 
@@ -44,8 +38,6 @@ Property | Type | Description
 `relevant` | `String` | A reference to another field and corresponding value indicating when the field is displayed. 
 
 **Questions**
-
-> Oliver, the API isn't showing me the JSON at the moment; not sure what type some of the fields below are supposed to be
 
 Property | Type | Description
 ---|---|---
