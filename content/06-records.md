@@ -128,71 +128,63 @@ The response body is a GeoJSON feature collection pf multiple [project location 
 
 ```json
 {
-    "type": "FeatureCollection",
-    "features": [
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            -122.7457809448242,
-                            45.64344809984393
-                        ],
-                        [
-                            -122.7308464050293,
-                            45.640807770704704
-                        ],
-                        [
-                            -122.74543762207031,
-                            45.64068775278732
-                        ],
-                        [
-                            -122.7457809448242,
-                            45.64344809984393
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "xtc4de68iawwzgtawp8avgv8",
-                "type": "PA",
-                "attributes": {}
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            -122.66475677490233,
-                            45.50045162361647
-                        ],
-                        [
-                            -122.66956329345703,
-                            45.487395598055215
-                        ],
-                        [     [
-                            -122.66252517700195,
-                            45.49954923075264
-                        ],
-                        [
-                            -122.66475677490233,
-                            45.50045162361647
-                        ]
-                    ]
-                ]
-            },
-            "properties": {
-                "id": "39jvd8r93jijahnvgd4s4cih",
-                "type": "PA",
-                "attributes": {}
-            }
-        }
-    ]
+  "type": "FeatureCollection",
+  "features": [{
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            -122.7457809448242,
+            45.64344809984393
+          ],[
+            -122.7308464050293,
+            45.640807770704704
+          ],[
+            -122.74543762207031,
+            45.64068775278732
+          ],[
+            -122.7457809448242,
+            45.64344809984393
+          ]
+        ]
+      ]
+    },
+    "properties": {
+      "id": "xtc4de68iawwzgtawp8avgv8",
+      "type": "PA",
+      "attributes": {}
+    }
+  },{
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            -122.66475677490233,
+            45.50045162361647
+          ],[
+            -122.66956329345703,
+            45.487395598055215
+          ],[
+            -122.66252517700195,
+            45.49954923075264
+          ],[
+            -122.66475677490233,
+            45.50045162361647
+          ]
+        ]
+      ]
+    },
+      "properties": {
+        "id": "39jvd8r93jijahnvgd4s4cih",
+        "type": "PA",
+        "attributes": {}
+      }
+    }
+  ]
 }
 ```
 
