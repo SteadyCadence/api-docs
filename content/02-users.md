@@ -106,6 +106,12 @@ POST /api/v1/account/register/
 
 Use this method and endpoint to register a new user to the platform. Note that this does not log the user in; simply creates a new account for them.
 
+If you would like to use the command line, you could use a line like this: 
+
+```
+curl -X POST -H "Content-Type: application/json" -d '{"username": "Name","full_name": "Full Name","email": "email@address.com","password": "p@sswordCADASTA"}' https://platform.cadasta.org/api/v1/account/register/
+```
+
 
 **Request Payload**
 
@@ -155,7 +161,7 @@ The response contains an [account JSON object](#account-object).
     "username": "j_smith",
     "full_name": "Joe Smith",
     "email": "joe.smith@example.com",
-    "email_verified": false
+    "email_verified": false,
     "last_login": "2016-10-20T19:20:27.848272Z"
 }
 ```
